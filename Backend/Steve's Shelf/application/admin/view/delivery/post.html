@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    {include file="public/head" title="添加物流信息" /}
+
+    <body class="inside-header inside-aside is-dialog">
+        <div id="main" role="main">
+            <div class="tab-content tab-addtabs">
+                <div id="content">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <section class="content-header hide">
+                                <h1>
+                                    控制台                                    <small>Control panel</small>
+                                </h1>
+                            </section>
+
+                            <div class="content">
+                                <form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="{:url('admin/delivery/post')}">
+
+                                    <input type="hidden" name="order_id" value="{$row['order_id']}">  
+									<input type="hidden" name="og_id" value="{$row['og_id']}">
+									<input type="hidden" name="og_supplier_id" value="{$og_supplier_id}">
+                                    <div class="form-group">
+                                        <label for="c-goods_name" class="control-label col-xs-12 col-sm-2">订单编号:</label>
+                                        <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+                                            <span>{$row['order_no']}</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="c-goods_name" class="control-label col-xs-12 col-sm-2">下单时间:</label>
+                                        <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+                                            <span>{$row['create_time']}</span>
+                                        </div>
+                                    </div>
+
+									{volist name="$row['goods_list']" id="v"}
+									
+                                    <div class="form-group">
+                                        <label for="c-goods_name" class="control-label col-xs-12 col-sm-2">订购商品:</label>
+                                        <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+
+                                            <span>{$v.og_goods_name}  【{$v.og_goods_spec_val}】</span><br>
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="c-goods_name" class="control-label col-xs-12 col-sm-2">商品单价:</label>
+                                        <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+                                            <span>{$v['og_goods_price']}</span>
+                                        </div>
+                                    </div>
+									<div class="form-group">
+                                        <label for="c-goods_name" class="control-label col-xs-12 col-sm-2">商品数目:</label>
+                                        <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+                                            <span>{$v['og_goods_num']}</span>
+                                        </div>
+                                    </div>
+									  <hr style="background-color: black;height: 1px;">
+
+									{/volist}
+
+                                    <div class="form-group">
+                                        <label for="c-goods_name" class="control-label col-xs-12 col-sm-2">联系人:</label>
+                                        <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+                                            <span>{$row['consigee']}</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="c-goods_name" class="control-label col-xs-12 col-sm-2">联系电话:</label>
+                                        <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+                                            <span>{$row['addr_phone']}</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="c-goods_name" class="control-label col-xs-12 col-sm-2">配送地址:</label>
+                                        <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+                                            <span>{$row['address']}</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="c-goods_name" class="control-label col-xs-12 col-sm-2">备注信息:</label>
+                                        <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+                                            <span>{$row['order_remark']}</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="c-post_id" class="control-label col-xs-12 col-sm-2">配送人备注:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input id="c-post_id" class="form-control" name="post_no" data-rule="required" type="text" value="" placeholder="">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group layer-footer">
+                                        <label class="control-label col-xs-12 col-sm-2"></label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <button type="submit" class="btn btn-success btn-embossed disabled" >确定</button>
+                                            <button type="reset" class="btn btn-default btn-embossed">重置</button>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            var index_url="{:url('admin/delivery/index',['order_status'=>$order_status])}";
+            var add_url="{:url('admin/goods/add')}";
+            var edit_url="{:url('admin/delivery/post')}";
+            var del_url="{:url('admin/order/close')}";
+            var multi_url="{:url('admin/delivery/multi')}";
+        </script>
+        {include file="public/javascript" jsname="backend/delivery/index" controllername="delivery"  actionname="add"/}
+    </body>
+</html>

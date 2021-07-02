@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    {include file="public/head" title="添加物流信息" /}
+
+    <body class="inside-header inside-aside is-dialog">
+        <div id="main" role="main">
+            <div class="tab-content tab-addtabs">
+                <div id="content">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <section class="content-header hide">
+                                <h1>
+                                    控制台                                    <small>Control panel</small>
+                                </h1>
+                            </section>
+
+                            <div class="content">
+                                <form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="{:url('/admin/order/logistic')}">
+                                {if condition="$row.order_goods"}
+                                    {volist name="$row.order_goods" id="v" key="k"}
+									<div class="form-group">
+                                        <label for="c-og_goods_name" class="control-label col-xs-12 col-sm-2">商品名称:</label>
+                                        <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+                                            <span>{$v.og_goods_name}</span><br>
+                                        </div>
+                                    </div>   
+									<div class="form-group">
+                                        <label for="c-og_goods_spec_val" class="control-label col-xs-12 col-sm-2">商品规格:</label>
+                                        <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+
+                                            <span>{$v.og_goods_spec_val}</span><br>
+
+                                        </div>
+                                    </div>   
+									<div class="form-group">
+                                        <label for="c-goods_name" class="control-label col-xs-12 col-sm-2">发货时间:</label>
+                                        <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+                                            <span>{:date('Y-m-d H:i',$row['delivery_time'])}</span>
+                                        </div>
+                                    </div>
+										<div class="form-group">
+                                        <label for="c-order_no" class="control-label col-xs-12 col-sm-2">物流单号:</label>
+                                        <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+
+                                            <span>{$v.post_no}</span><br>
+
+                                        </div>
+                                    </div>
+
+                                    {/volist}
+                                    {/if}
+                                    <div class="form-group">
+                                        <label for="c-order_no" class="control-label col-xs-12 col-sm-2">订单编号:</label>
+                                        <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+
+                                            <span>{$row.order_no}</span><br>
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="c-post_type" class="control-label col-xs-12 col-sm-2">物流公司 :</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                          <!--   <input id="c-post_type" class="form-control" name="post_type" data-rule="required" type="text" value="" placeholder=""> -->
+											 <select  id="brandid" data-rule="" class="form-control" name="post_type" disabled>
+                                                {if condition="$express.field"}
+                                                {volist name="express.field" id="v"  key="k"}
+                                                <option value="{$v}" {if $data['post_type']== $v} selected {/if} >{$express['value'][$key]}</option>
+                                                {/volist}
+                                                {else/}
+                                                <option value="">暂无数据</option>
+                                                {/if}
+                                            </select>
+                                        </div>
+                                    </div>
+
+									<div class="form-group">
+                                        <label for="c-og_goods_name" class="control-label col-xs-12 col-sm-2">快递单号:</label>
+                                        <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+
+                                            <span>{$data.postno}</span><br>
+
+                                        </div>
+                                    </div>
+									<div class="form-group">
+                                        <label for="c-og_goods_name" class="control-label col-xs-12 col-sm-2">收件人姓名:</label>
+                                        <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+
+                                            <span>{$row.addr_receiver}</span><br>
+
+                                        </div>
+                                    </div>
+									<div class="form-group">
+                                        <label for="c-og_goods_name" class="control-label col-xs-12 col-sm-2">收件人电话:</label>
+                                        <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+
+                                            <span>{$row.addr_phone}</span><br>
+
+                                        </div>
+                                    </div>
+									<div class="form-group">
+                                        <label for="c-og_goods_name" class="control-label col-xs-12 col-sm-2">地址:</label>
+                                        <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+
+                                            <span>{$row.address} {$row.addr_cont}</span><br>
+
+                                        </div>
+                                    </div>
+								 
+									 {volist name="wuliu" id="v" key="k"}
+									<div class="form-group">
+                                        <label for="c-og_goods_price" class="control-label col-xs-12 col-sm-2">物流信息:</label>
+										
+                                        <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+											 {if condition="$v.time"}
+												  <span>{$v['time']} </span> <br>
+											{/if}
+												 <span>{$v['context']} </span>
+											 
+											 
+                                        </div>
+									
+                                    </div>
+										{/volist}
+									
+ 
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            var index_url="{:url('admin/order/index',['order_status'=>$order_status])}";
+            var add_url="{:url('admin/goods/add')}";
+            var edit_url="{:url('admin/order/post')}";
+            var del_url="{:url('admin/order/close')}";
+            var multi_url="{:url('admin/goods/multi')}";
+        </script>
+        {include file="public/javascript" jsname="backend/order/index" controllername="order"  actionname="add"/}
+    </body>
+</html>

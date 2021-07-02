@@ -1,0 +1,406 @@
+body{
+	background-color: #fff;
+}
+body,html{
+	height: inherit;
+}
+.mui-content {
+	height: 100%;
+	padding: 2%;
+	background: #f5f5f5 !important;
+}
+
+
+/*content*/
+.find {
+	box-sizing: content-box;
+	margin-top: 2%;
+}
+
+.find-list {
+	border-radius: 4px;
+	padding: 2% 2% 1% 2%;
+	background-color: #fff;
+	margin-bottom: 2%; 
+}
+
+.find-list-top {
+	overflow: hidden;
+}
+
+.find-list-top img {
+	float: left;
+	width: 50px;
+	margin-right: 2%;
+	margin-bottom: 2%;
+	box-sizing: content-box;
+	border-radius: 50%;
+}
+
+.find-list-top span {
+	float: left;
+	line-height: 50px;
+	color: #181818;
+	font-size: 15px;
+}
+.find-list-top span em{
+	color: #D31A1A;
+	margin-left: 15px;
+}
+.find-list-top p {
+	float: right;
+	color: #999999;
+	line-height: 50px;
+	font-size: 13px;
+	margin-bottom: 0;
+}
+
+.find-list-text {
+	-webkit-line-clamp: 20;
+}
+
+.find-list-text p {
+	color: #181818;
+	font-size: 14px;
+	line-height: 22px;
+}
+
+.find-list-imgs {
+	overflow: hidden;
+	height: auto;
+}
+
+.find-list-imgs img {
+	float: left;
+	width: 33.33333%;
+	padding: 2px;
+}
+/*预览图片样式*/
+.mui-preview-image.mui-fullscreen {
+	position: fixed;
+	z-index: 20;
+	background-color: #fff;
+}
+
+.mui-preview-header,
+.mui-preview-footer {
+	position: absolute;
+	width: 100%;
+	left: 0;
+	z-index: 10;
+}
+
+.mui-preview-header {
+	height: 44px;
+	top: 0;
+}
+
+.mui-preview-footer {
+	height: 50px;
+	bottom: 0px;
+}
+
+.mui-preview-header .mui-preview-indicator {
+	display: block;
+	line-height: 25px;
+	color: #fff;
+	text-align: center;
+	margin: 15px auto 4;
+	width: 70px;
+	background-color: rgba(0, 0, 0, 0.1);
+	border-radius: 12px;
+	font-size: 16px;
+}
+
+.mui-preview-image {
+	display: none;
+	-webkit-animation-duration: 0.5s;
+	animation-duration: 0.5s;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+}
+
+.mui-preview-image.mui-preview-in {
+	-webkit-animation-name: fadeIn;
+	animation-name: fadeIn;
+}
+
+.mui-preview-image.mui-preview-out {
+	background: none;
+	-webkit-animation-name: fadeOut;
+	animation-name: fadeOut;
+}
+
+.mui-preview-image.mui-preview-out .mui-preview-header,
+.mui-preview-image.mui-preview-out .mui-preview-footer {
+	display: none;
+}
+
+.mui-zoom-scroller {
+	position: absolute;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	-webkit-backface-visibility: hidden;
+}
+
+.mui-zoom {
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+}
+
+.mui-slider .mui-slider-group .mui-slider-item img {
+	width: auto;
+	height: auto;
+	max-width: 100%;
+	max-height: 100%;
+}
+
+.mui-android-4-1 .mui-slider .mui-slider-group .mui-slider-item img {
+	width: 100%;
+}
+
+.mui-android-4-1 .mui-slider.mui-preview-image .mui-slider-group .mui-slider-item {
+	display: inline-table;
+}
+
+.mui-android-4-1 .mui-slider.mui-preview-image .mui-zoom-scroller img {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.mui-preview-loading {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	display: none;
+}
+
+.mui-preview-loading.mui-active {
+	display: block;
+}
+
+.mui-preview-loading .mui-spinner-white {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-left: -25px;
+	margin-top: -25px;
+	height: 50px;
+	width: 50px;
+}
+
+.mui-preview-image img.mui-transitioning {
+	-webkit-transition: -webkit-transform 0.5s ease, opacity 0.5s ease;
+	transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+@-webkit-keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@-webkit-keyframes fadeOut {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+@keyframes fadeOut {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+p img {
+	max-width: 100%;
+	height: auto;
+}
+/*预览结束*/
+.find-list-goods{
+	overflow: hidden;
+	padding: 2% 0;
+	display: flex;
+	border-bottom: 1px solid #e8e8e8;
+}
+.find-list-goods img{
+	width: 60px;
+	height: 60px;
+	padding-right: 2%;
+	box-sizing: content-box;
+}
+.find-list-goods-right{
+	flex: 1;
+}
+.find-list-goods-right p{
+	-webkit-line-clamp:1;
+	color: #181818;
+	font-size: 14px;
+}
+.find-list-goods-right span{
+	font-size: 14px;
+	color: #222222;
+}
+.find-list-goods-right i{
+	color: #d31a1a;
+	font-size: 12px;
+	padding-left: 2%; 
+}
+.find-list-goods-right span.vip{
+	color: #d31a1a;
+}
+.find-list-goods-right i.vip{
+	color: #666666;
+	font-size: 11px;
+	padding-left: 2%;
+}
+.collect{
+	overflow: hidden;
+	display: flex;
+	padding-top: 1%;
+}
+
+.collect span{
+	font-size: 12px;
+	color: #666666;
+	display: inline-block;
+	margin-left: -6px;
+}
+.collect div{
+	flex: 1;
+	max-width: 40%;
+}
+.coll i{
+	/*background:url(../../../img/sprite.png) no-repeat;
+	width: 36px;
+	height: 34px;
+	background-position: 0 0;
+	display: inline-block;
+	transform: scale(0.5);
+	//vertical-align: middle;*/
+}
+.share i{
+	/*background:url(../../../img/sprite.png) no-repeat;
+	width: 36px;
+	height: 35px;
+	background-position: -39px 0;
+	display: inline-block;
+	transform: scale(0.5);
+	vertical-align: middle;*/
+	margin-right: 10px;
+}
+.dianzan img{
+	width: 20px;
+	height: 20px;
+	margin-right: 5px;
+}
+
+
+
+
+
+/*content end*/
+
+.zhedang{
+	width: 100%;
+	height: 100%;
+	bottom: 0;
+	position: absolute;
+	background: #2a2a2a;
+	background-color: rgba(0,0,0,0.4);
+	z-index: 99;
+}
+.zhedang_fenxiang{
+	width: 100%;
+	height: 100%;
+	bottom: 0;
+	position: fixed;
+	background: #2a2a2a;
+	background-color: rgba(0,0,0,0.4);
+	z-index: 99;
+}
+.sex_choice{
+	width: 100%;
+	text-align: center;
+	position: absolute;
+	bottom: 0;
+	background: #fff;
+	z-index: 9999999;	
+	border: 1px solid #d7d7d7;
+}
+.sex_choice div.fenxiang{
+	width: 80%;
+	margin-left: 10%;
+	margin-right: 10%;
+}
+.sex_choice div h4{
+	height: 45px;
+	line-height: 45px;
+	font-size: 15px;
+	font-weight: normal;
+	color: #181818;
+}
+.sex_choice ul li{
+	float: left;
+}
+.sex_choice ul li{
+	width: 33.33%;
+	border:none;
+	font-size: 13px;
+}
+.sex_choice ul li img{
+	height: 35px;
+	margin-bottom: 5px;
+}
+.sex_choice ul li p{
+	color: #181818;
+	margin-bottom: 15px;
+}
+.sex_choice div.quxiao{
+	width: 100%;
+	height: 55px;
+	line-height: 55px;
+	clear: both;
+	border-top: 1px solid #e8e8e8;
+}
+.sex_choice div.quxiao_fengxiang{
+	width: 100%;
+	height: 55px;
+	line-height: 55px;
+	clear: both;
+	border-top: 1px solid #e8e8e8;
+}

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    {include file="public/head" title="增加店铺" /}
+    <style>
+        .form-text,.form-textarea,.form-file{
+            width: 100%;
+            margin-bottom: 10px;
+            margin-right: 20px;
+        }
+        .form-text label,.form-textarea label,.form-file label{
+            width: 100px;
+            font-size: 15px;
+        }
+        .form-text .input-control{
+            width: 300px;
+            height: 30px;
+            padding-left: 10px;            
+        }
+        .form-textarea label{
+            height: 100px;
+            vertical-align: middle;
+        }
+        .form-textarea .input-control{
+            width: 300px;
+            height: 100px;
+            padding-left: 10px;
+        }
+        .form-file .input-control{
+            width: 300px;
+            height: 30px;
+        }
+        .form-file .logo img{
+            width: 100px;
+            height: 100px;
+            margin-left: 20px;
+            border-radius: 50%;
+        }
+        .form-file .thumb img{
+            width: 200px;
+            height: 100px;
+            margin-left: 20px;
+            border-radius: 5%;
+        }
+        .form-button .button-control{
+            width: 70px;
+            height: 30px;
+            margin-left: 50px;
+        }
+    </style>
+    <body class="inside-header inside-aside ">
+        <div id="main" role="main">
+            <div class="tab-content tab-addtabs">
+                <div id="content">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">                           
+                            <div class="content">
+                                <div class="panel panel-default panel-intro">
+                                    <div class="panel-body">
+                                        <div id="myTabContent" class="tab-content">
+                                            <div class="tab-pane fade active in" id="one">
+                                                <div class="widget-body no-padding">
+                                                    <div id="toolbar" class="toolbar">
+                                                        <form class="form-inline form-commonsearch nice-validator n-default" id="store_form" novalidate="novalidate" enctype="multipart/form-data">
+                                                            <fieldset>
+                                                                <div class="form-text">
+                                                                    <label >店铺名称：</label>
+                                                                    <input type="text" class="input-control" name="s_name" maxlength="50" placeholder="请输入店铺名称" >               
+                                                                </div>
+                                                                <div class="form-text">
+                                                                    <label >选择会员：</label>
+                                                                    <input type="text" class="input-control" name="user_mobile" minlength="11" maxlength="11" placeholder="请输入会员手机号" >
+                                                                </div>
+                                                                <div class="form-textarea">
+                                                                    <label >店铺介绍：</label>
+                                                                    <textarea class="input-control" name="s_intro" placeholder="请输入店铺介绍" ></textarea>
+                                                                </div>
+                                                                <div class="form-file">
+                                                                    <label >店铺logo：</label>
+                                                                    <input type="file" class="input-control" name="s_logo" accept="image/*" />
+                                                                    <label class="image-view logo"></label>
+                                                                </div>
+                                                                <div class="form-file">
+                                                                    <label >店招图：</label>
+                                                                    <input type="file" class="input-control" name="s_thumb"/>
+                                                                    <label class="image-view thumb"></label>
+                                                                </div>
+             <!--                                                    <div class="form-text">
+                                                                    <label >店铺等级：</label>
+                                                                    <select name="s_grade" class="input-control">
+                                                                        <option value="0">请选择店铺等级</option>
+                                                                        <option value="1">会员店铺</option>
+                                                                        <option value="2">高级店铺</option>
+                                                                        <option value="3">旗舰店铺</option>
+                                                                    </select>
+                                                                </div> -->
+                                                                <div class="form-button">
+                                                                    <input type="button" id="form_submit" class="button-control" value="提交" />                       
+                                                                </div>
+                                                            </fieldset>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       <script type="text/javascript">
+            var index_url = "{:url('admin/store/addStore')}";
+            // 图片预览
+            $(".form-file").find(".input-control").on('change', function(event){
+                var oFile = event.target.files;
+                var oUrl = window.URL || window.webkitURL;
+                var imgSrc = oUrl.createObjectURL(oFile[0]);
+                var oImg = '<img src='+imgSrc+' />';
+                $(oImg).appendTo($(event.target).siblings('.image-view'));
+            });
+            // 店铺名检测
+            $('[name="s_name"]').on('blur', function(){
+                $('#form_submit').attr("disabled", true);
+                var name = $.trim($(this).val());
+                if(name.length){
+                    $.ajax({
+                        url : "{:url('admin/store/checkStoreName')}",
+                        type : 'post',
+                        data : {name : name},
+                        dataType : 'json',
+                        success : function(res){
+                            if(!res.code){
+                                layer.tips(res.msg, $('[name="s_name"]'));
+                            }
+                            else $('#form_submit').removeAttr("disabled");
+                        },
+                    });
+                }
+                else layer.tips('请输入店铺名', $('[name="s_name"]'));
+            });
+            // 会员检测
+            $('[name="user_mobile"]').on('blur', function(){
+                $('#form_submit').attr("disabled", true);
+                var mobile = $.trim($(this).val());
+                if(mobile.length == 11){
+                    $.ajax({
+                        url : "{:url('admin/store/checkMobile')}",
+                        type : 'post',
+                        data : {mobile : mobile},
+                        dataType : 'json',
+                        success : function(res){
+                            if(!res.code){
+                                layer.tips(res.msg, '[name="user_mobile"]');
+                            }
+                            else $('#form_submit').removeAttr("disabled");
+                        },
+                        error : function(){
+                            layer.msg('网络错误');
+                        }
+                    });
+                }
+                else layer.tips('请输入正确的手机号', '[name="user_mobile"]');
+            });
+            // 表单上传
+            $('#form_submit').on('click', function(){
+                if(!$('[name="s_name"]').val()){
+                    layer.msg('请输入店铺名');
+                    return false;
+                }
+                if(!$('[name="user_mobile"]').val()){
+                    layer.msg('请输入会员手机号');
+                    return false;
+                }
+                $(this).val('提交中。。').attr("disabled", true);
+                var oData = new FormData($('#store_form')[0]);
+                $.ajax({
+                    url : "{:url('admin/store/addStore')}",
+                    type : 'post',
+                    data : oData,
+                    dataType : 'json',
+                    cache : false,
+                    processData : false,
+                    contentType : false,
+                    success : function(res){
+                        if(!res.code){
+                            layer.msg(res.msg);
+                            return false;
+                        }
+                        else{
+                            layer.msg('添加成功');
+                            setTimeout(function(){
+                                parent.location.href = "{:url('admin/store/index')}";
+                            }, 1500);
+                        }
+                    },
+                    error : function(){
+                        layer.msg('网络错误');
+                    }
+                });
+            });
+        </script>
+         {include file="public/javascript" jsname="backend/store/index" controllername="store"  actionname="addStore"/}
+    </body>
+</html>

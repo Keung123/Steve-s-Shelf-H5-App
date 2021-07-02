@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+{include file="public/head" title="新增发现" /}
+
+<body class="inside-header inside-aside is-dialog">
+<div id="main" role="main">
+    <div class="tab-content tab-addtabs">
+        <div id="content">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <section class="content-header hide">
+                        <h1>
+                            控制台                                    <small>Control panel</small>
+                        </h1>
+                    </section>
+                    <div class="content">
+                        <form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="{:url('admin/user/sucaiAdd')}">
+                            <div class="form-group">
+                                <label for="c-pid" class="control-label col-xs-12 col-sm-2">商品一级分类:</label>
+                                <div class="col-xs-3 col-sm-8">
+
+                                    <select  id="category" data-rule="required" class="form-control selectpicker" >
+                                        {volist name="goodCategory" id="v"}
+                                        <option value="{$v.category_id}">|—{:str_repeat('—',$v['level'])}{$v.category_name}</option>
+                                        {/volist}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="c-category_er" class="control-label col-xs-12 col-sm-2">商品二级分类:</label>
+                                <div class="col-xs-5 col-sm-8">
+                                    <select  id="category_er" data-rule="required" class="form-control selectpicker" >
+
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="c-goods_name" class="control-label col-xs-12 col-sm-2">商品名称:</label>
+                                <div class="col-xs-12 col-sm-8" >
+                                    <select name="row[m_goods_id]" id="goods_name" class="form-control">
+
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="c-goods_stock" class="control-label col-xs-12 col-sm-2">库存:</label>
+                                <div class="col-xs-12 col-sm-8">
+                                    <input id="c-goods_stock" data-rule="required" class="form-control" type="text"  value="" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="c-goods_price" class="control-label col-xs-12 col-sm-2">商品价格:</label>
+                                <div class="col-xs-12 col-sm-8">
+                                    <input id="c-goods_price" data-rule="required" class="form-control" type="text" value="" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="c-name" class="control-label col-xs-12 col-sm-2">用户名:</label>
+                                <div class="col-xs-12 col-sm-8" style="width:364px;">
+                                    <input id="name-hidden" class="form-control hidden" name="row[m_uid]" type="hidden" value="">
+                                    <input id="c-name" class="form-control" name="" type="text" value="">
+                                </div>
+                                <span class="btn btn-success" id="check">检测用户是否存在</span>
+                                <span id="waring"></span>
+                            </div>
+
+                            <div class="form-group" >
+                                <label for="c-pid" class="control-label col-xs-12 col-sm-2 ">素材分类:</label>
+                                <div class="col-xs-12 col-sm-8">
+
+                                    <select   class="form-control selectpicker " id="c-flag" name="row[m_cat_id]" onchange="typeChange();" >
+                                        {volist name="material" id="val"}
+                                        <option  value="{$val.cat_id}">{$val.cat_name}</option>
+                                        {/volist}
+                                    </select>
+                                </div>
+                            </div>
+
+                             <div class="form-group">
+                                        <label for="user_name" class="control-label col-xs-12 col-sm-2"> 素材内容:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                           <textarea rows="8" cols="80"    name="row[mate_content]" class="nei">
+                                         {$row['mate_content']}
+                                         </textarea>  
+                                        </div>
+          
+                                    </div>
+                                      <div class="m-text">
+            <div class="face_img" style="display: none">
+                <ul>
+                    <li><img src="/faces_img/face1.png" ></li>
+                    <li><img src="/faces_img/face2.png" ></li>
+                    <li><img src="/faces_img/face3.png" ></li>
+                    <li><img src="/faces_img/face4.png" ></li>
+                    <li><img src="/faces_img/face5.png" ></li>
+                    <li><img src="/faces_img/face6.png" ></li>
+                    <li><img src="/faces_img/face7.png" ></li>
+                    <li><img src="/faces_img/face8.png" ></li>
+                    <li><img src="/faces_img/face9.png" ></li>
+                    <li><img src="/faces_img/face10.png" ></li>
+                    <li><img src="/faces_img/face11.png" ></li>
+                    <li><img src="/faces_img/face12.png" ></li>
+                    <li><img src="/faces_img/face13.png" ></li>
+                    <li><img src="/faces_img/face14.png" ></li>
+                    <li><img src="/faces_img/face15.png" ></li>
+                    <li><img src="/faces_img/face16.png" ></li>
+                    <li><img src="/faces_img/face17.png" ></li>
+                    <li><img src="/faces_img/face18.png" ></li>
+                    <li><img src="/faces_img/face19.png" ></li>
+                    <li><img src="/faces_img/face20.png" ></li>
+                    <li><img src="/faces_img/face21.png" ></li>
+                    <li><img src="/faces_img/face22.png" ></li>
+                    <li><img src="/faces_img/face23.png" ></li>
+                    <li><img src="/faces_img/face24.png" ></li>
+                    <li><img src="/faces_img/face25.png" ></li>
+                    <li><img src="/faces_img/face25.png" ></li>
+                    <li><img src="/faces_img/face27.png" ></li>
+                    <li><img src="/faces_img/face28.png" ></li>
+                    <li><img src="/faces_img/face29.png" ></li>
+                    <li><img src="/faces_img/face30.png" ></li>
+                    <li><img src="/faces_img/face31.png" ></li>
+                    <li><img src="/faces_img/face32.png" ></li>
+                    <li><img src="/faces_img/face33.png" ></li>
+                    <li><img src="/faces_img/face34.png" ></li>
+                    <li><img src="/faces_img/face35.png" ></li>
+                    <li><img src="/faces_img/face36.png" ></li>
+                    <li><img src="/faces_img/face37.png" ></li>
+                    <li><img src="/faces_img/face38.png" ></li>
+                    <li><img src="/faces_img/face39.png" ></li>
+                    <li><img src="/faces_img/face40.png" ></li>
+                    <li><img src="/faces_img/face41.png" ></li>
+                    <li><img src="/faces_img/face42.png" ></li>
+                    <li><img src="/faces_img/face43.png" ></li>
+                    <li><img src="/faces_img/face44.png" ></li>
+                    <li><img src="/faces_img/face45.png" ></li>
+                    <li><img src="/faces_img/face46.png" ></li>
+                    <li><img src="/faces_img/face47.png" ></li>
+                    <li><img src="/faces_img/face48.png" ></li>
+                    <li><img src="/faces_img/face49.png" ></li>
+                    <li><img src="/faces_img/face50.png" ></li>
+                    <li><img src="/faces_img/face51.png" ></li>
+                    <li><img src="/faces_img/face52.png" ></li>
+                    <li><img src="/faces_img/face53.png" ></li>
+                    <li><img src="/faces_img/face54.png" ></li>
+                    <li><img src="/faces_img/face55.png" ></li>
+                    <li><img src="/faces_img/face56.png" ></li>
+                </ul>
+            </div>
+            <style type="text/css">
+                .face_img{
+                /*height: 240px;*/
+                padding: 10px 10px 30px;
+                background-color: #F3F3F3;
+                /*position: fixed;
+                bottom: 50px;*/
+            }
+            .face_img ul li{
+                display: inline-block;
+                padding: 2px;
+            }
+            ul,li{
+                margin: 0px;
+                padding: 0px;
+                list-style: none;
+            }
+            </style>
+            <!-- <textarea placeholder="按 Enter 发送" id="contents" onkeydown="keySend(event);"></textarea> -->
+            <img src="/faces_img/face1.png" class="fa_biaoqing" alt=""/>
+            <!-- <input type="file" class="shang_pic1" id="upfile" name="uploadkey"> -->
+            <!-- <img src="/faces_img/send.png" class="shang_pic" alt=""/>
+            <button class="fasong">发送</button> -->
+        </div><!--v-component-->
+
+                            <div class="form-group">
+                                <label for="c-zhiding" class="control-label col-xs-12 col-sm-2">是否置顶:</label>
+                                <div class="col-xs-12 col-sm-8">
+                                    <label for="row[mate_zhiding]-normal"><input id="row[mate_zhiding]-normal" checked="checked" name="row[mate_zhiding]" type="radio" value="0">否</label>
+                                    <label for="row[mate_zhiding]-hidden"><input id="row[mate_zhiding]-hidden" name="row[mate_zhiding]" type="radio" value="1"> 是</label>
+                                </div>
+                            </div>
+                            <div class="form-group" id="gongying">
+                                <label for="c-img" class="control-label col-xs-12 col-sm-2">素材图片:</label>
+                                <div class="col-xs-12 col-sm-8">
+                                    <div class="form-inline">
+                                        <input id="c-img" class="form-control" size="50" name="row[mate_thumb]" type="text" value="">
+
+                                        <span><button type="button" id="plupload-banner" class="btn btn-danger plupload" data-multiple="true" data-input-id="c-img" data-maxsize="102400" data-preview-id="p-img"><i class="fa fa-upload"></i> 上传</button></span>
+
+                                        <ul class="row list-inline plupload-preview" id="p-img"></ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group" id="supplier">
+                                <label for="c-video" class="control-label col-xs-12 col-sm-2">素材视频</label>
+                                <div class="col-xs-12 col-sm-8">
+                                    <div class="form-inline">
+                                        <input id="c-video" class="form-control" size="50" name="row[mate_video]" type="text" value="">
+
+                                        <span><button type="button" id="plupload-video" class="btn btn-danger plupload" data-multiple="false" data-input-id="c-video" data-preview-id="p-video"><i class="fa fa-upload"></i> 上传</button></span>
+
+                                        <!--<ul class="row list-inline plupload-preview" id="p-video"></ul>-->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="c-status" class="control-label col-xs-12 col-sm-2">加精状态:</label>
+                                <div class="col-xs-12 col-sm-8">
+                                    <label for="row[mate_status]-normal"><input id="row[mate_status]-normal" checked="checked" name="row[mate_status]" type="radio" value="0">不加精</label>
+                                    <label for="row[mate_status]-hidden"><input id="row[mate_status]-hidden" name="row[mate_status]" type="radio" value="1"> 加精</label>
+                                </div>
+                            </div>
+                            <div class="form-group layer-footer">
+                                <label class="control-label col-xs-12 col-sm-2"></label>
+                                <div class="col-xs-12 col-sm-8">
+                                    <button type="submit" class="btn btn-success btn-embossed disabled">确定</button>
+                                    <button type="reset" class="btn btn-default btn-embossed">重置</button>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var attribute_url="{:url('admin/goods/attributeInfo')}";
+    var getcatebrand_url="{:url('admin/goods/getCatebrand')}";
+    var getGoodsInfo_url="{:url('admin/goods/getGoodsInfo')}";
+    var getGoodsName="{:url('admin/goods/getGoodsNames')}";
+    var getSecondName="{:url('admin/goods/getSecondName')}";
+    var check_name="{:url('admin/user/nameCheck')}";
+</script>
+
+ <script type="text/javascript">
+	window.onload = typeChange();
+ 
+	function typeChange(){
+ 
+	var countrySelect = document.getElementById('c-flag');//获取select的dom
+	var index = countrySelect.selectedIndex;
+	var gongying = document.getElementById('gongying');
+	var supplier = document.getElementById('supplier');
+	
+		if(countrySelect.options[index].value == 23){
+			  gongying.style.display="block";			  
+			  supplier.style.display="none";			  
+			 		  
+
+		}else {
+			  gongying.style.display="none";			  
+			  supplier.style.display="block";			
+		} 
+
+
+	}
+     $('.fa_biaoqing').click(function () {
+        $('.face_img').css('display','block');
+    })
+      $('.face_img').on('click','li',function (){
+        //alert(1)
+        var content=$(this).find('img').attr('src');
+        var arr=$(".nei").val();
+        //alert(content);
+         var url = window.location.origin;
+        //进行ajax提交
+         var contents='../..'+content;
+        //var touid = $(".cl").find("input").val();
+         var htmls=arr+'<img src="'+contents+'" />';
+         
+                    //$("#contents").val("");
+                    $(".nei").val(htmls);
+
+        
+    });
+	 
+</script>   
+{include file="public/javascript" jsname="backend/auth/sucai" controllername="user"  actionname="add"/}
+</body>
+</html>

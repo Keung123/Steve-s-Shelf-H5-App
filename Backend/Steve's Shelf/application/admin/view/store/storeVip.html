@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    {include file="public/head" title="VIP管理" /}
+    <style>
+        .sr-stat ul{
+            list-style: none;
+            display: inline-block;
+            font-size: 16px;
+        }
+        .sr-stat ul li{
+            float: left;
+            margin-right: 100px;
+        }
+        .sr-stat ul li input{
+            padding-left: 10px;
+        }
+        .sr-table{
+            font-size: 16px;
+            text-align: center;
+            width: 800px;
+            margin: 0 auto;
+        }
+        .sr-table .sr-store-avat{
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+        }
+        .sr-table .sr-detail{
+            width: 150px;
+        }
+        .sr-table th{
+            width: 100px;
+            text-align: center;
+            border-bottom: 1px solid black;
+        }
+        .sr-table tr{
+            height: 40px;
+            margin-top: 5px;
+            border-bottom: 1px solid black;
+        }
+        .no-record{
+            font-size: 16px;
+            width: 150px;
+            margin: 100px auto;
+        }
+
+    </style>
+    <body class="inside-header inside-aside is-dialog">
+        <div id="main" role="main">
+            <div class="tab-content tab-addtabs">
+                <div id="content">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <section class="content-header hide">
+                                <h1>
+                                    控制台<small>Control panel</small>
+                                </h1>
+                            </section>
+                            <div class="content">
+                                {if($info['list'])}
+                                    <div class="sr-stat">
+                                        <ul>
+                                            <li>vip总数：{$info['total']}&nbsp;人</li>
+                                        </ul>
+                                    </div>
+                                    <table class="sr-table">
+                                     
+                                        <thead>
+                                            <th></th>
+                                            <th>昵称</th>
+                                            <th>手机号</th>
+                                            <th>成为下级时间</th>
+                                        </thead>
+                                        <tbody>                                                  
+                                            {foreach $info['list'] as $val}
+                                                <tr>
+                                                    <td><img class="sr-store-avat" src="{$val['user_avat']}"/></td>
+                                                    <td>{$val['user_name']}</td>
+                                                    <td>{$val['user_mobile']}</td>
+                                                    <td>{$val['add_time']}</td>
+                                                </tr>
+                                            {/foreach}                                    
+                                        </tbody>
+                                    {else}
+                                        <div class="no-record">暂无VIP信息</div>
+                                    {/if}
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {include file="public/javascript" jsname="backend/recharge/rcOnline" controllername="recharge"  actionname="roEdit"/}
+    </body>
+</html>

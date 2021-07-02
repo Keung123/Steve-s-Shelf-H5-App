@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="utf-8">
+        <title>业绩管理</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="renderer" content="webkit">
+        <link href="__STATIC__/assets/libs/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+        <link href="__STATIC__/assets/css/backend.min.css" rel="stylesheet">
+        <link href="__STATIC__/assets/css/app.css" rel="stylesheet">
+        <script type="text/javascript" src="__STATIC__/assets/libs/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="__STATIC__/assets/js/layer/layer.min.js"></script>
+        <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
+        <!--[if lt IE 9]>
+          <script src="assets/js/html5shiv.js"></script>
+          <script src="assets/js/respond.min.js"></script>
+        <![endif]-->
+        <style>
+            .content{
+                width: 95%;
+                margin: 10px 20px;
+                background: white;
+            }
+            .control-tab{
+                margin-left: 5px;
+            }
+
+            .control-tab h5{
+                display: inline-block;
+            }
+            .sr-stat ul{
+                width: 100%;
+                list-style: none;
+                display: inline-block;
+                font-size: 16px;
+            }
+            .sr-stat ul li{
+                float: left;
+                margin-right: 100px;
+            }
+            .sr-stat ul li input{
+                padding-left: 10px;
+            }
+            .btn-back{
+                width: 60px;
+                height: 25px;
+                border: 1px solid black;
+                background: #F1F4F6;
+                text-align: center;
+                position: absolute;
+                right: 10px;
+            }
+            .btn-back span a:link{
+                color: black;
+            }
+            .sr-table{
+                font-size: 16px;
+                text-align: center;
+                width: 800px;
+                margin: 0 auto;
+            }
+            .sr-table .sr-store-avat{
+                width: 35px;
+                height: 35px;
+                border-radius: 50%;
+            }
+            .sr-table .sr-detail{
+                width: 150px;
+            }
+            .sr-table th{
+                width: 100px;
+                text-align: center;
+                border-bottom: 1px solid black;
+            }
+            .sr-table tr{
+                height: 40px;
+                margin-top: 5px;
+                border-bottom: 1px solid black;
+            }
+            .no-record{
+                font-size: 16px;
+                width: 150px;
+                margin: 100px auto;
+            }
+
+        </style>
+    </head>
+
+    <body class="">
+        <div id="" >
+            <div class="">
+                <div id="">
+                    <div class="">
+                        <div class="">
+                            <section class="control-tab">
+                            </section>
+                            <div id="ribbon">
+                                <ol class="breadcrumb pull-left">
+                                   <li><a href="{:url('admin/index/dashboard')}" class="addtabsit"><i class="fa fa-dashboard"></i> 控制台</a></li>
+                                </ol>
+                                <ol class="breadcrumb pull-right">
+                                    <li><a href="javascript:;" data-url="store">店铺管理</a></li>
+                                    <li><a href="javascript:;" data-url="store/index">店铺管理</a></li>
+                                </ol>
+                            </div>
+                            <div class="content">                                
+                                <div class="sr-stat">
+                                    <ul>
+                                        <li>总收入：{$info['all_income']}（{$info['all_gift']}）</li>
+                                        <li class="btn-back">
+                                            <span><a href="javascript:history.go(-1)">返回</a></span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                {if($info['list'])}
+                                    <table class="sr-table">                                     
+                                        <thead>
+                                            <th></th>
+                                            <th>昵称</th>
+                                            <th>手机号</th>
+                                            <th>会员类型</th>
+                                            <th>成为下级时间</th>
+                                            <th>总业绩</th>
+                                            <th>大礼包业绩</th>
+                                            <th>操作</th>
+                                        </thead>
+                                        <tbody>                                                  
+                                            {foreach $info['list'] as $val}
+                                                <tr>
+                                                    <input type="hidden" value="{$val['list-uid']}" class="uid">
+                                                    <td><img class="sr-store-avat" src="{$val['user_avat']}"/></td>
+                                                    <td>{$val['user_name']}</td>
+                                                    <td>{$val['user_mobile']}</td>
+                                                    <td>{$val['user_type']}</td>
+                                                    <td>{$val['add_time']}</td>
+                                                    <td>{$val['goods']}</td>
+                                                    <td>{$val['gift']}</td>
+                                                    <td><a href="javascript:void(0)" onclick="viewDetails(event)">详细</a></td>
+                                                </tr>
+                                            {/foreach}                                    
+                                        </tbody>
+                                    {else}
+                                        <div class="no-record">暂无业绩信息</div>
+                                    {/if}
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- {include file="public/javascript" jsname="backend/recharge/rcOnline" controllername="recharge"  actionname="roEdit"/} -->
+        <script type="text/javascript">
+            function viewDetails(ev){
+                var oTr = $(ev.target);
+                var uid = oTr.parent().siblings('.uid').html();
+                $.post('/admin/store/storePerfor', {uid : uid}, function(data){
+                    console.log(data);
+                    layer.open({
+                        type : 1,
+                        title : '查看销售额',
+                        shadeClose : true,
+                        area : ['1000px','600px'],
+                        skin : 'yourclass',
+                        maxmin : 1,
+                        content : data,
+                    });
+                });
+            }
+        </script>
+    </body>
+</html>

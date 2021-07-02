@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    {include file="public/head" title="优惠券查看" /}
+
+    <body class="inside-header inside-aside is-dialog">
+        <div id="main" role="main">
+            <div class="tab-content tab-addtabs">
+                <div id="content">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <section class="content-header hide">
+                                <h1>
+                                    控制台                                    <small>Control panel</small>
+                                </h1>
+                            </section>
+                            <div class="content">
+                                <form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="{:url('admin/coupon/edit')}">
+                                      <input type="hidden" name="row[coupon_id]" value="{$row['coupon_id']}">
+ 
+
+                                    <div class="form-group">
+                                        <label for="c-name" class="control-label col-xs-12 col-sm-2">优惠券名称:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input id="c-name" data-rule="required" class="form-control" name="row[coupon_title]" type="text" value="{$row['coupon_title']}" readonly>
+                                        </div>
+                                    </div>
+									
+									<div class="form-group">
+											<label for="c-user_avat" class="control-label col-xs-12 col-sm-2"> 商品主图:</label>
+											<div class="col-xs-12 col-sm-8">
+												<div class="form-inline">
+													<ul class="row list-inline plupload-preview" id="p-mate_thumb">
+													
+													<li class="col-xs-3"><a href="public{$row['coupon_thumb']}" data-url="{ $row['coupon_thumb']}" target="_blank" class="thumbnail"><img src=" {$row['coupon_thumb']}" class="img-responsive"></a></li>
+													
+													</ul>
+												</div>
+											</div>
+										</div>                                         
+ 
+                                    <div class="form-group">
+                                        <label for="coupon_type" class="control-label col-xs-12 col-sm-2">优惠券类型:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <select name="row[coupon_type]" class="form-control selectpicker" id="coupon_type" onchange="gradeChange()" readonly>
+                                                <option value="1" {if $row['coupon_type']==1}selected{/if} >商品券</option>
+                                                <option value="2" {if $row['coupon_type']==2}selected{/if}>专区券</option>
+                                                <option value="3" {if $row['coupon_type']==3}selected{/if}>全场券</option>
+                                            </select>
+                                        </div>
+                                    </div>
+									<div class="form-group" id="spdatas">
+                                         <label for="coupon_type_id" class="control-label col-xs-12 col-sm-2"> 商品名称:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <select  class="form-control selectpicker" id="coupon_sp" readonly >
+												{volist name="spdatas" id="v"}
+                                                <option value="{$v.goods_id}" {if $row['coupon_type_id']==$v['goods_id']}selected{/if}  data-price="{$v.goods_name}">{$v.goods_name}</option>
+                                                {/volist}
+                                                
+                                            </select>
+                                        </div>
+                                    </div>
+									<div class="form-group" id="hddatas">
+                                        <label for="coupon_type_id" class="control-label col-xs-12 col-sm-2"> 活动名称:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <select  class="form-control selectpicker" id="coupon_hd"  readonly>
+												{volist name="hddatas" id="v"}
+                                                <option value="{$v.id}" {if $row['coupon_type_id']==$v['id']}selected{/if}  data-price="{$v.active_type_name}">{$v.active_type_name}</option>
+                                                {/volist}
+                                                
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="c-description" class="control-label col-xs-12 col-sm-2">优惠券面额:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input  class="form-control" name="row[coupon_price]" type="text" value="{$row['coupon_price']} " readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="c-weigh" class="control-label col-xs-12 col-sm-2">优惠券购买金额:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input  class="form-control" name="row[coupon_buy_price]" type="number" value="{$row['coupon_buy_price']}" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="c-weigh" class="control-label col-xs-12 col-sm-2"> 使用条件（最低消费金额）:</label>
+                                        <div class="col-xs-12 col-sm-8">
+											 <input  class="form-control" name="row[coupon_use_limit]" type="number" value="{$row['coupon_use_limit']}" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="c-weigh" class="control-label col-xs-12 col-sm-2">每人限领张数:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input  class="form-control" name="row[coupon_get_limit]" type="number" value="{$row['coupon_get_limit']}" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="c-weigh" class="control-label col-xs-12 col-sm-2">优惠券生效时间:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input  class="form-control" name="row[coupon_s_time]" type="date" value="{$row['coupon_s_time']}" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="c-weigh" class="control-label col-xs-12 col-sm-2">优惠券截止日期:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input  class="form-control" name="row[coupon_aval_time]" type="date" value="{$row['coupon_aval_time']}"  readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="c-weigh" class="control-label col-xs-12 col-sm-2">优惠券总张数:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input class="form-control" name="row[coupon_total]" type="number" value="{$row['coupon_total']}" readonly >
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {include file="public/javascript" jsname="backend/goods/category" controllername="category"  actionname="add"/}
+		
+		<script type="text/javascript">
+				window.onload = gradeChange();
+				//select的onchange调用函数
+				function gradeChange(){
+				
+					var countrySelect = document.getElementById('coupon_type');//获取select的dom
+					var index = countrySelect.selectedIndex;//获取选中的index
+					var value = countrySelect.options[index].value;//获取value值
+					var hddatas = document.getElementById('hddatas');
+					var spdatas = document.getElementById('spdatas');
+					var coupon_sp = document.getElementById('coupon_sp');
+					var coupon_hd = document.getElementById('coupon_hd');
+				
+					if(value == 1){
+						  
+						  hddatas.style.display="none";
+						  spdatas.style.display="block";	
+						  coupon_sp.setAttribute('name','row[coupon_type_id]');						  
+						  coupon_hd.setAttribute('name','');						  
+					}else if(value == 2){
+						  spdatas.style.display="none";  
+						  hddatas.style.display="block";
+						  coupon_sp.setAttribute('name','');						  
+						  coupon_hd.setAttribute('name','row[coupon_type_id]');	
+					}else{
+						hddatas.style.display="none";
+						 spdatas.style.display="none";
+						 coupon_hd.setAttribute('name','');
+						 coupon_sp.setAttribute('name','');						 
+					}
+				}
+					
+						
+		  </script>
+    </body>
+</html>

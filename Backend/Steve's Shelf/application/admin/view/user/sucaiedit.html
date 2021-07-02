@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    {include file="public/head" title="素材编辑" /}
+    <body class="inside-header inside-aside is-dialog">
+        <div id="main" role="main">
+            <div class="tab-content tab-addtabs">
+                <div id="content">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <section class="content-header hide">
+                                <h1>
+                                    控制台                                    <small>Control panel</small>
+                                </h1>
+                            </section>
+                            <div class="content">
+                                <form id="edit-form" class="form-horizontal form-ajax" role="form" data-toggle="validator" method="POST" action="{:url('admin/user/sucaiedit')}">
+                                    <input name="m_id" value="{$row['m_id']}" type="hidden" >
+                                    <div class="form-group">
+                                        <label for="user_name" class="control-label col-xs-12 col-sm-2">用户名:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input type="text" class="form-control" id="username"  disabled value="{$row['user_name']}" data-rule="required;name" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="c-user_avat" class="control-label col-xs-12 col-sm-2">用户头像:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <div class="form-inline">
+                                                <ul class="row list-inline plupload-preview" id="p-user_avat">
+												
+												<li class="col-xs-3"><a href="{$row['user_avat']}" data-url="{$row['user_avat']}" target="_blank" class="thumbnail"><img src="{$row['user_avat']}" class="img-responsive"></a></li>
+												
+												</ul>
+                                            </div>
+                                        </div>
+                                    </div>                                    
+									                     
+
+                                    <div class="form-group">
+                                        <label for="goods_name" class="control-label col-xs-12 col-sm-2">商品名称:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input type="text" class="form-control" id="goods_name"  disabled value="{$row['goods_name']}"  />
+                                        </div>
+                                    </div>  
+								<div class="form-group">
+                                        <label for="cat_name" class="control-label col-xs-12 col-sm-2">素材分类名称:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input type="text" class="form-control" id="cat_name" disabled value="{$row['cat_name']}"  />
+                                        </div>
+                                    </div>  
+
+                                    <div class="form-group">
+                                        <label for="user_name" class="control-label col-xs-12 col-sm-2"> 素材内容:</label>
+                                        <div class="col-xs-12 col-sm-8">
+										   <textarea rows="8" cols="80"    name="row[mate_content]" class="nei">
+                                         {$row['mate_content']}
+										 </textarea>  
+                                        </div>
+                                    </div>
+                                   <div class="m-text">
+            <div class="face_img" style="display: none">
+                <ul>
+                    <li><img src="/faces_img/face1.gif" ></li>
+                    <li><img src="/faces_img/face2.png" ></li>
+                    <li><img src="/faces_img/face3.gif" ></li>
+                    <li><img src="/faces_img/face4.gif" ></li>
+                    <li><img src="/faces_img/face5.gif" ></li>
+                    <li><img src="/faces_img/face6.gif" ></li>
+                    <li><img src="/faces_img/face7.gif" ></li>
+                    <li><img src="/faces_img/face8.gif" ></li>
+                    <li><img src="/faces_img/face9.gif" ></li>
+                    <li><img src="/faces_img/face10.gif" ></li>
+                    <li><img src="/faces_img/face11.gif" ></li>
+                    <li><img src="/faces_img/face12.gif" ></li>
+                    <li><img src="/faces_img/face13.gif" ></li>
+                    <li><img src="/faces_img/face14.gif" ></li>
+                    <li><img src="/faces_img/face15.gif" ></li>
+                    <li><img src="/faces_img/face16.gif" ></li>
+                    <li><img src="/faces_img/face17.gif" ></li>
+                    <li><img src="/faces_img/face18.gif" ></li>
+                    <li><img src="/faces_img/face19.gif" ></li>
+                    <li><img src="/faces_img/face20.gif" ></li>
+                    <li><img src="/faces_img/face21.gif" ></li>
+                    <li><img src="/faces_img/face22.gif" ></li>
+                    <li><img src="/faces_img/face23.gif" ></li>
+                    <li><img src="/faces_img/face24.gif" ></li>
+                    <li><img src="/faces_img/face25.gif" ></li>
+                    <li><img src="/faces_img/face25.gif" ></li>
+                    <li><img src="/faces_img/face27.gif" ></li>
+                    <li><img src="/faces_img/face28.gif" ></li>
+                    <li><img src="/faces_img/face29.gif" ></li>
+                    <li><img src="/faces_img/face30.gif" ></li>
+                    <li><img src="/faces_img/face31.gif" ></li>
+                    <li><img src="/faces_img/face32.gif" ></li>
+                    <li><img src="/faces_img/face33.gif" ></li>
+                    <li><img src="/faces_img/face34.gif" ></li>
+                    <li><img src="/faces_img/face35.gif" ></li>
+                    <li><img src="/faces_img/face36.gif" ></li>
+                    <li><img src="/faces_img/face37.gif" ></li>
+                    <li><img src="/faces_img/face38.gif" ></li>
+                    <li><img src="/faces_img/face39.gif" ></li>
+                    <li><img src="/faces_img/face40.gif" ></li>
+                    <li><img src="/faces_img/face41.gif" ></li>
+                    <li><img src="/faces_img/face42.gif" ></li>
+                    <li><img src="/faces_img/face43.gif" ></li>
+                    <li><img src="/faces_img/face44.gif" ></li>
+                    <li><img src="/faces_img/face45.gif" ></li>
+                    <li><img src="/faces_img/face46.gif" ></li>
+                    <li><img src="/faces_img/face47.gif" ></li>
+                    <li><img src="/faces_img/face48.gif" ></li>
+                    <li><img src="/faces_img/face49.gif" ></li>
+                    <li><img src="/faces_img/face50.gif" ></li>
+                    <li><img src="/faces_img/face51.gif" ></li>
+                    <li><img src="/faces_img/face52.gif" ></li>
+                    <li><img src="/faces_img/face53.gif" ></li>
+                    <li><img src="/faces_img/face54.gif" ></li>
+                    <li><img src="/faces_img/face55.gif" ></li>
+                    <li><img src="/faces_img/face56.gif" ></li>
+                </ul>
+            </div>
+            <style type="text/css">
+                .face_img{
+                /*height: 240px;*/
+                padding: 10px 10px 30px;
+                background-color: #F3F3F3;
+                /*position: fixed;
+                bottom: 50px;*/
+            }
+            .face_img ul li{
+                display: inline-block;
+                padding: 2px;
+            }
+            ul,li{
+                margin: 0px;
+                padding: 0px;
+                list-style: none;
+            }
+            </style>
+            <!-- <textarea placeholder="按 Enter 发送" id="contents" onkeydown="keySend(event);"></textarea> -->
+            <img src="/faces_img/face1.png" class="fa_biaoqing" alt=""/>
+            <!-- <input type="file" class="shang_pic1" id="upfile" name="uploadkey"> -->
+            <!-- <img src="/faces_img/send.png" class="shang_pic" alt=""/>
+            <button class="fasong">发送</button> -->
+        </div><!--v-component-->
+
+                                    <div class="form-group">
+                                        <label for="c-goods_banner" class="control-label col-xs-12 col-sm-2">素材图片:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <div class="form-inline">
+                                                <input id="c-goods_banner" class="form-control" size="50" name="row[mate_thumb]" type="text" value="{$row['mate_thumb']}">
+
+                                                <span><button type="button" id="plupload-goods_banner" class="btn btn-danger plupload" data-multiple="true" data-maxsize="102400" data-input-id="c-goods_banner" data-preview-id="p-goods_banner"><i class="fa fa-upload"></i> 上传</button></span>
+
+                                                                              <!--                   <span><button type="button" id="fachoose-image" class="btn btn-primary fachoose" data-multiple="false" data-input-id="c-image"><i class="fa fa-list-ul"></i> 选择</button></span>   -->
+
+                                                <ul class="row list-inline plupload-preview" id="p-goods_banner"></ul>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {if condition="$row['mate_thumb']"}
+									<!--<div class="form-group">-->
+                                        <!--<label for="c-user_avat" class="control-label col-xs-12 col-sm-2"> 素材图片:</label>-->
+                                        <!--<div class="col-xs-12 col-sm-8">-->
+                                            <!--<div class="form-inline">-->
+                                                <!--<ul class="row list-inline plupload-preview" id="p-mate_thumb">-->
+												<!---->
+												<!--<li class="col-xs-3"><a href="{$row['mate_thumb']}" data-url="{$row['mate_thumb']}" target="_blank" class="thumbnail"><img src="{$row['mate_thumb']}" class="img-responsive"></a></li>-->
+												<!---->
+												<!--</ul>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                    <!--</div>               -->
+									 {/if}
+									 {if condition="$row['mate_video']"}
+                                    <div class="form-group">
+                                        <label for="mate_status" class="control-label col-xs-12 col-sm-2">素材视频:</label>
+                                         <div class="col-xs-12 col-sm-8">
+                                         <video   class="col-xs-12 col-sm-8" src="{$row['mate_video']}" controls="controls"></video>
+                                        </div>
+                                    </div>
+									 {/if}
+									<div class="form-group">
+                                        <label for="mate_status" class="control-label col-xs-12 col-sm-2">加精状态:</label>
+                                         <div class="col-xs-12 col-sm-8">
+										 
+										  <label for="row[mate_status]-normal"><input id="row[mate_status]-normal" {if $row['mate_status']=='0'}checked="checked"{/if} name="row[mate_status]" type="radio" value="0"> 不加精</label>
+                                            <label for="row[mate_status]-hidden"><input id="row[mate_status]-hidden" {if $row['mate_status']=='1'}checked="checked"{/if} name="row[mate_status]" type="radio" value="1"> 加精</label>
+                                        </div>
+                                    </div>                                                                          
+
+                                 <div class="form-group">
+                                        <label for="user_email" class="control-label col-xs-12 col-sm-2">添加时间:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input  
+											class="form-control" name="row[mate_add_time]"    value="{:date('Y-m-d H:i:s',$row.mate_add_time)}" data-rule="required"  onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:00'})" autocomplete="off" autocomplete="off" />
+                                        </div>
+                                    </div>  
+								<div class="form-group layer-footer">
+                                        <label class="control-label col-xs-12 col-sm-2"></label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <button type="submit" class="btn btn-success btn-embossed disabled">确定</button>
+                                            <button type="reset" class="btn btn-default btn-embossed">重置</button>
+                                        </div>
+                                    </div>									
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {include file="public/javascript" jsname="backend/auth/user" controllername="user"  actionname="add"/}
+    </body>
+</html>
+<script type="text/javascript">
+    $('.fa_biaoqing').click(function () {
+        $('.face_img').css('display','block');
+    })
+      $('.face_img').on('click','li',function (){
+        //alert(1)
+        var content=$(this).find('img').attr('src');
+        var arr=$(".nei").val();
+        //alert(content);
+        //进行ajax提交
+         var contents='../..'+content;
+        //var touid = $(".cl").find("input").val();
+         var htmls=arr+'<img src="'+contents+'" />';
+         
+                    //$("#contents").val("");
+                    $(".nei").val(htmls);
+
+        
+    });
+</script>

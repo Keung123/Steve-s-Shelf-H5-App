@@ -1,0 +1,174 @@
+<div class="tab-pane fade" id="sms">
+    <div class="widget-body no-padding">
+        <form id="sms-form" class="edit-form form-horizontal" role="form" data-toggle="validator" method="POST" action="{:url('admin/config/index')}">
+            <input type="hidden" name="key" value="sms"/>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th width="15%">
+                            变量标题
+                        </th>
+                        <th width="70%">
+                            变量值
+                        </th>
+                        <!-- <th width="15%">
+                            变量名
+                        </th> -->
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            Access Key ID
+                        </td>
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-8 col-xs-12">
+                                    <input type="text" name="row[access_key_id]" value="{$config[sms][access_key_id]}" class="form-control" data-rule="" data-tip="请填写阿里云Access Key ID"  />
+                                </div>
+                                <div class="col-sm-4">
+                                </div>
+                            </div>
+                        </td>
+                       <!--  <td>
+                            {literal}{$config.sms.access_key_id}{/literal}
+                        </td> -->
+                    </tr>
+                    <tr>
+                        <td>
+                            Access Key Secret
+                        </td>
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-8 col-xs-12">
+                                    <input type="text" name="row[access_key_secret]" value="{$config.sms.access_key_secret}" class="form-control" data-tip="请填写阿里云Access Key Secret"  />
+                                </div>
+                                <div class="col-sm-4">
+                                </div>
+                            </div>
+                        </td>
+                      <!--   <td>
+                            {literal}{$config.sms.access_key_secret}{/literal}
+                        </td> -->
+                    </tr>
+
+                    <tr>
+                        <td>
+                            注册验证码模板CODE
+                        </td>
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-8 col-xs-12">
+                                    <input type="text" name="row[register_code]" value="{$config.sms.register_code}" class="form-control" data-tip="请填写阿里云短信注册验证码模板CODE" placeholder="模板变量${code}"  />
+                                </div>
+                                <div class="col-sm-4">
+                                </div>
+                            </div>
+                        </td>
+                       <!--  <td>
+                            {literal}{$config.sms.register_code}{/literal}
+                        </td> -->
+                    </tr>
+
+                    <tr>
+                        <td>
+                            找回密码验证码模板CODE
+                        </td>
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-8 col-xs-12">
+                                    <input type="text" name="row[find_code]" value="{$config.sms.find_code}" class="form-control" data-tip="请填写阿里云短信找回密码验证码模板CODE" placeholder="模板变量${code}"  />
+                                </div>
+                                <div class="col-sm-4">
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            绑定手机模板CODE
+                        </td>
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-8 col-xs-12">
+                                    <input type="text" name="row[bind_code]" value="{$config.sms.bind_code}" class="form-control" data-tip="请填写绑定手机模板CODE" placeholder="模板变量${code}"  />
+                                </div>
+                                <div class="col-sm-4">
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            登录验证码模板CODE
+                        </td>
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-8 col-xs-12">
+                                    <input type="text" name="row[login_code]" value="{$config.sms.login_code}" class="form-control" data-tip="请填写阿里云短信登录验证码模板CODE" placeholder="模板变量${code}"  />
+                                </div>
+                                <div class="col-sm-4">
+                                </div>
+                            </div>
+                        </td>
+                       <!--  <td>
+                            {literal}{$config.sms.register_code}{/literal}
+                        </td> -->
+                    </tr>
+                    <tr>
+                        <td>
+                            短信签名
+                        </td>
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-8 col-xs-12">
+                                    <input type="text" name="row[sign]" value="{$config.sms.sign}" class="form-control" data-tip="请填写阿里云短信审核通过的签名"  />
+                                </div>
+                                <div class="col-sm-4">
+                                </div>
+                            </div>
+                        </td>
+                        <!-- <td>
+                            {literal}{$config.sms.sign}{/literal}
+                        </td> -->
+                    </tr>                    
+
+<!--                     <tr>
+                        <td>
+                            管理员手机号
+                        </td>
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-8 col-xs-12">
+                                    <input type="text" name="row[admin_mobile]" value="{$config.sms.admin_mobile}" class="form-control" data-rule="" data-tip=""  />
+                                </div>
+                                <div class="col-sm-4">
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            {literal}{$config.sms.admin_mobile}{/literal}
+                        </td>
+                    </tr> -->
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>
+                        </td>
+                        <td>
+                            <button type="submit" class="btn btn-success btn-embossed">
+                                确定
+                            </button>
+                            <button type="reset" class="btn btn-default btn-embossed">
+                                重置
+                            </button>
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </form>
+    </div>
+</div>

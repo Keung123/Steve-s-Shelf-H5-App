@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>登录</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="renderer" content="webkit">
+
+        <link rel="shortcut icon" href="__STATIC__/assets/img/favicon.ico" />
+        <!-- Loading Bootstrap -->
+        <link href="__STATIC__/assets/css/backend.min.css" rel="stylesheet">
+
+        <style type="text/css">
+            body {
+                color:#999;
+                background:url('__STATIC__/assets/img/login.jpg');
+                background-size:cover;
+            }
+            a {
+                color:#fff;
+            }
+            .login-panel{margin-top:150px;}
+            .login-screen {
+                max-width:400px;
+                padding:0;
+                margin:100px auto 0 auto;
+
+            }
+            .login-screen .well {
+                border-radius: 3px;
+                -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                background: rgba(255,255,255, 0.2);
+            }
+            .login-screen .copyright {
+                text-align: center;
+            }
+            @media(max-width:767px) {
+                .login-screen {
+                    padding:0 20px;
+                }
+            }
+            .profile-img-card {
+                width: 100px;
+                height: 100px;
+                margin: 10px auto;
+                display: block;
+                -moz-border-radius: 50%;
+                -webkit-border-radius: 50%;
+                border-radius: 50%;
+            }
+            .profile-name-card {
+                text-align: center;
+            }
+
+            #login-form {
+                margin-top:20px;
+            }
+            #login-form .input-group {
+                margin-bottom:15px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="login-wrapper">
+                <div class="login-screen">
+                    <div class="well">
+                        <div class="login-form">
+                            <img id="profile-img" class="profile-img-card" src="__STATIC__/assets/img/avatar.png" />
+                            <p id="profile-name" class="profile-name-card"></p>
+
+                            <form action="{:url('admin/login/index')}" method="post" id="login-form">
+                                <div id="errtips" class="hide"></div>
+                                <input type="hidden" name="__token__" value="68041f02fc8315b7ccdfaeb0e189a743" />                                <div class="input-group">
+                                    <div class="input-group-addon"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></div>
+                                    <input type="text" class="form-control" id="pd-form-username" placeholder="用户名" name="admin_name" autocomplete="off" value="" data-rule="用户名:required;username" />
+                                </div>
+
+                                <div class="input-group">
+                                    <div class="input-group-addon"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span></div>
+                                    <input type="password" class="form-control" id="pd-form-password" placeholder="密码" name="password" autocomplete="off" value="" data-rule="密码:required;password" />
+                                </div>
+
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-success btn-lg btn-block">登 录</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            var debug="{$app_debug}";
+            var version="{$Think.const.VERSION}";
+            var root="__STATIC__";
+            var actionname="login";
+        </script>
+        <script src="__STATIC__/assets/js/config.js?v={$Think.const.VERSION}"></script>
+        <script src="__STATIC__/assets/js/require.min.js?v={$Think.const.VERSION}" data-main="__STATIC__/assets/js/require-backend.min.js?v={$Think.const.VERSION}"></script>
+    </body>
+</html>

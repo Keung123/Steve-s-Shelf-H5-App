@@ -1,0 +1,143 @@
+
+.mui-bar{
+	border: none !important;
+}
+.order_sn{
+	width: 100%;
+	margin-top: 8px;
+	
+	border-bottom: 1px solid #E8E8E8;
+}
+.order_sn img{
+	width: 20%;
+	margin-left: 2%;
+	margin-right: 2%;
+	margin-bottom: 8px;
+}
+.order_sn div{
+	width: 74%;
+	margin-right: 2%;
+}
+.order_sn div span{
+	display: block;
+	color: #181818;
+}
+.base_bottom{
+	width: 100%;
+	height: 8px;
+	clear: both;
+	background: #eeeeee;
+}
+.jindu{
+	width: 96%;
+	margin-left: 2%;
+	margin-right: 2%;
+	font-size: 13px;
+	color: #181818;
+}
+.jindu ul li{
+	width: 25%;
+	margin-top: 8px;
+	margin-bottom: 8px;
+	position: relative;
+	text-align: center;
+	float: left;
+}
+.jindu ul li span{
+	width: 60%;
+	margin-left: 20%;
+	margin-bottom: 5px;
+	display: block;
+	color: #b6b6b6;
+}
+.jindu ul li span.active1{
+	color: #fff;
+	background: #1aac19;
+	border-radius: 20px;
+}
+.jindu ul li img{
+	width: 14%;
+	margin-bottom: 5px;
+	position: relative;
+}
+.jindu ul li label{
+	display: block;
+}
+.jindu ul li em{
+	width: 100%;
+	height: 1px;
+	margin-top: 9px;
+	display: inline-block;
+	position: absolute;
+	background: #cccccc;
+}
+.active{
+	color: #1aac19 !important;
+}
+.genzong{
+	width: 100%;
+}
+.genzong h6{
+	width: 96%;
+	height: 45px;
+	line-height: 45px;
+	margin-left: 2%;
+	margin-right: 2%;
+	color: #181818;
+	border-bottom: 1px solid #e8e8e8;
+}
+.genzong ul{
+	width: 96%;
+	margin-left: 2%;
+	margin-right: 2%;
+	/*border: 1px solid red;*/
+}
+.genzong ul li{
+	width: 96%;
+	height: 80px;
+	margin-left: 2%;
+	margin-right: 2%;
+	position: relative;
+}
+.genzong ul li:first-child span{
+	color: #1aac19 !important;
+}
+.genzong ul li:first-child p{
+	color: #1aac19 !important;
+}
+.genzong ul li:last-child em{
+	display: none;
+}
+.genzong ul li span{
+	margin-top: 8px;
+	color: #181818;
+	display: block;
+	margin-left: 6%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.genzong ul li p{
+	margin-top: 8px;
+	margin-bottom: 8px;
+	color: #181818;
+	margin-left: 6%;
+}
+.genzong ul li label{
+	color: #999999;
+	margin-left: 6%;
+}
+.genzong ul li img{
+	width: 4%;
+	position: absolute;
+	left: -2%;
+	top:4px
+}
+.genzong ul li em{
+	width: 1px;
+	height: 77px;
+	top:16px;
+	background: #cccccc;
+	position: absolute;
+	display: inline-block;
+}

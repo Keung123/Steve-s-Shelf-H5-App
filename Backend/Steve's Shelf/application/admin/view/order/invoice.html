@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    {include file="public/head" title="添加物流信息" /}
+
+    <body class="inside-header inside-aside is-dialog">
+        <div id="main" role="main">
+            <div class="tab-content tab-addtabs">
+                <div id="content">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <section class="content-header hide">
+                                <h1>
+                                    控制台                                    <small>Control panel</small>
+                                </h1>
+                            </section>
+
+                            <div class="content">
+                                <form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="{:url('admin/order/post')}">
+
+                                    <input type="hidden" name="order_id" value="{$row['order_id']}">
+                                    <div class="form-group">
+                                        <label for="c-invoice_header" class="control-label col-xs-12 col-sm-2">发票抬头:</label>
+                                        <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+                                            <span>{$row['header']}</span>
+                                        </div>
+                                    </div>
+									<div class="form-group">
+                                        <label for="c-invoice_type" class="control-label col-xs-12 col-sm-2">发票类型:</label>
+                                        <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+
+                                            <span>{$row.invoice_type}</span><br>
+
+                                        </div>
+                                    </div>
+									 {if $row['invoice_com'] neq 0}
+                                    <div class="form-group">
+                                        <label for="c-invoice_com" class="control-label col-xs-12 col-sm-2">公司名称:</label>
+                                        <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+                                            <span>{$row['invoice_com']}</span>
+                                        </div>
+                                    </div>
+									{/if}  
+									{if $row['invoice_com_tax'] neq 0}
+                                    <div class="form-group">
+                                        <label for="c-invoice_com_tax" class="control-label col-xs-12 col-sm-2">税号:</label>
+                                        <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+                                            <span>{$row['invoice_com_tax']}</span>
+                                        </div>
+                                    </div>
+									{/if} 
+                                    <div class="form-group">
+                                        <label for="c-order_no" class="control-label col-xs-12 col-sm-2">订单编号:</label>
+                                        <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+
+                                            <span>{$row.order_no}</span><br>
+
+                                        </div>
+                                    </div> 
+									{if $data['s_name'] neq 0}
+									 <div class="form-group">
+                                        <label for="c-s_name" class="control-label col-xs-12 col-sm-2">店铺名称:</label>
+                                        <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+
+                                            <span>{$data.s_name}</span><br>
+
+                                        </div>
+                                    </div>
+									{/if} 
+									<div class="form-group">
+                                        <label for="c-og_goods_name" class="control-label col-xs-12 col-sm-2">商品名称:</label>
+                                        <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+
+                                            <span>{$data.og_goods_name}</span><br>
+
+                                        </div>
+                                    </div>
+									<div class="form-group">
+                                        <label for="c-og_goods_spec_val" class="control-label col-xs-12 col-sm-2">商品规格:</label>
+                                        <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+
+                                            <span>{$data.og_goods_spec_val}</span><br>
+
+                                        </div>
+                                    </div>
+									<div class="form-group">
+                                        <label for="c-og_goods_price" class="control-label col-xs-12 col-sm-2">商品单价:</label>
+                                        <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+
+                                            <span>{$data.og_goods_price}</span><br>
+
+                                        </div>
+                                    </div>
+									<div class="form-group">
+                                        <label for="c-og_goods_num" class="control-label col-xs-12 col-sm-2">商品数目:</label>
+                                        <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+
+                                            <span>{$data.og_goods_num}</span><br>
+
+                                        </div>
+                                    </div>
+									 
+									<div class="form-group">
+                                        <label for="c-og_goods_price" class="control-label col-xs-12 col-sm-2">订单支付价格:</label>
+                                        <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+
+                                            <span>{$data.og_goods_pay_price}</span><br>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="c-order_pay_time" class="control-label col-xs-12 col-sm-2">支付时间:</label>
+                                        <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+                                            <span>{$row['order_pay_time']}</span>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            var index_url="{:url('admin/order/index',['order_status'=>$order_status])}";
+            var add_url="{:url('admin/goods/add')}";
+            var edit_url="{:url('admin/order/post')}";
+            var del_url="{:url('admin/order/close')}";
+            var multi_url="{:url('admin/goods/multi')}";
+        </script>
+        {include file="public/javascript" jsname="backend/order/index" controllername="order"  actionname="add"/}
+    </body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    {include file="public/head" title="参与管理详情" /}
+    <body class="inside-header inside-aside is-dialog">
+        <div id="main" role="main">
+            <div class="tab-content tab-addtabs">
+                <div id="content">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <section class="content-header hide">
+                                <h1>
+                                    控制台                                    <small>Control panel</small>
+                                </h1>
+                            </section>
+                            <div class="content">
+                                <form id="edit-form" class="form-horizontal form-ajax" role="form" data-toggle="validator" method="POST" action="">
+                                        <input name="user_id" value="{$row['user_id']}" type="hidden" >
+                                    <div class="form-group">
+                                        <label for="user_name" class="control-label col-xs-12 col-sm-2">用户名:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input type="text" class="form-control" id="username" name="row[user_name]" value="{$row['user_name']}" data-rule="required;name" disabled/>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="c-user_avat" class="control-label col-xs-12 col-sm-2">用户头像:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <div class="form-inline">
+                                                <ul class="row list-inline plupload-preview" id="p-user_avat">
+												
+												<li class="col-xs-3"><a href="{$row['user_avat']}" data-url="{$row['user_avat']}" target="_blank" class="thumbnail"><img src="{$row['user_avat']}" class="img-responsive"></a></li>
+												
+												</ul>
+                                            </div>
+                                        </div>
+                                    </div>                                    
+									                     
+
+                                    <div class="form-group">
+                                        <label for="goods_name" class="control-label col-xs-12 col-sm-2">商品名称:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input type="text" class="form-control" id="goods_name" name="row[goods_name]" value="{$row['goods_name']}" disabled />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="user_name" class="control-label col-xs-12 col-sm-2"> 素材内容:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                           <textarea cols="100" rows="5" disabled>{$row['mate_content']}</textarea>
+                                        </div>
+                                    </div> 
+									{if condition="$row['mate_thumb']"}
+									<div class="form-group">
+                                        <label for="c-user_avat" class="control-label col-xs-12 col-sm-2"> 素材图片:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <div class="form-inline">
+                                                <ul class="row list-inline plupload-preview" id="p-mate_thumb">
+												
+												<li class="col-xs-3"><a href="{$row['mate_thumb']}" data-url="{$row['mate_thumb']}" target="_blank" class="thumbnail"><img src="{$row['mate_thumb']}" class="img-responsive"></a></li>
+												
+												</ul>
+                                            </div>
+                                        </div>
+                                    </div>               
+									 {/if}
+									 
+                                    <div class="form-group">
+                                        <label for="mate_status" class="control-label col-xs-12 col-sm-2">加精状态:</label>
+                                         <div class="col-xs-12 col-sm-8">
+                                            <input type="text" class="form-control" id="mate_status" name="row[mate_status]" value="{if $row['mate_status']==0}否{else}是{/if}" disabled />
+                                        </div>
+                                    </div>                                                                          
+
+                                 <div class="form-group">
+                                        <label for="user_email" class="control-label col-xs-12 col-sm-2">添加时间:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input type="user_email" class="form-control" id="user_email" name="row[user_email]" value="{:date('Y-m-d H:i:s',$row.mate_add_time)}" data-rule="required;user_email" disabled  />
+                                        </div>
+                                    </div>                                   
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {include file="public/javascript" jsname="backend/auth/user" controllername="user"  actionname="add"/}
+    </body>
+</html>

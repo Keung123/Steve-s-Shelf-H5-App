@@ -1,0 +1,127 @@
+.mui-content{
+	background: #F5F5F5 !important;
+}
+.xq_top{
+	position: relative;
+}
+.xq_top img{
+	width: 100%;
+}
+.xq_top a.mui-icon{
+	color: #FFFFFF;
+	font-size: 25px;
+	position: absolute;
+	top: 10px;
+	left: 2%;
+}
+.xq_top .zhuti{
+	position: absolute;
+	bottom: 15px;
+	left: 3%;
+	color: #FFFFFF !important; 
+}
+.xq_top .zhuti p{
+	font-size: 15px;
+	font-weight: bold;
+	color: #FFFFFF !important;
+	margin-bottom: 5px;
+}
+.xq_top .zhuti span{
+	font-size: 13px;
+}
+.xq_mid{
+	padding: 15px 4%;
+	line-height: 25px;
+	margin-bottom: 10px;
+	background-color: #FFFFFF;
+	color: #181818; 
+}
+.sucai_t{
+	line-height: 45px;
+	font-size: 16px;
+	color: #181818;
+	padding: 0px 4%;
+	border-bottom: 1px solid #e8e8e8;
+	background-color: #FFFFFF;
+}
+.sucai_t a{
+	float: right;
+	margin-left: 10px;
+}
+.str{
+	font-weight: bold;
+}
+
+/*素材*/
+/*content*/
+.find {
+	width: 94%;
+	margin: 15px 3%;
+    height: auto;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+}
+.find-list {
+	border-radius: 4px;
+	padding: 2% 2% 1% 2%;
+	margin-bottom: 2%; 
+}
+.find-list-top {
+	overflow: hidden;
+}
+.find-list-top img {
+	float: left;
+	width: 50px;
+	margin-right: 2%;
+	box-sizing: content-box;
+	margin-bottom: 2%;
+	border-radius: 50%;
+}
+.find-list-top span {
+	float: left;
+	line-height: 50px;
+	color: #181818;
+	font-size: 15px;
+}
+.find-list-top p {
+	float: right;
+	line-height: 50px;
+	font-size: 13px;
+	margin-bottom: 0;
+}
+.find-list-text {
+	-webkit-line-clamp: 20;
+}
+.find-list-text p {
+	color: #181818;
+	font-size: 14px;
+	line-height: 25px;
+}
+.find-list-imgs {
+	overflow: hidden;
+	height: auto;
+}
+.find-list-imgs img {
+	float: left;
+	width: 33.33333%;
+	padding: 2px;
+}
+.canyu{
+	width: 50%;
+	height: 40px;
+	color: #FFFFFF;
+	font-size: 16px;
+	line-height: 40px;
+	position: fixed;
+	bottom: 20px;
+	left: 25%;
+	border: 0px;
+	border-radius: 20px;
+	background-color: #D31A1A;
+}
+.canyu img{
+	width: 18px;
+	margin-right: 5px;
+}
+
+

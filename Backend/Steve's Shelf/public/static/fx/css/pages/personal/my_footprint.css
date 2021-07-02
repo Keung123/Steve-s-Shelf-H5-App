@@ -1,0 +1,103 @@
+.mui-bar span{
+	margin-top: 12px;
+}
+.menu{
+	width: 100%;
+}
+.mui-scroll-wrapper{
+	position: initial;
+}
+.mui-scroll{
+	position: initial;
+}
+.mui-radio input[type='radio']:before, .mui-checkbox input[type='checkbox']:before{
+	font-size: 22px;
+}
+.mui-radio.mui-left input[type='radio'], .mui-checkbox.mui-left input[type='checkbox']{
+	left: 3%;
+}
+.mui-radio input[type='radio']:checked:before, .mui-checkbox input[type='checkbox']:checked:before{
+	color: #D31A1A;
+}
+.box{
+	width: 10%;
+	margin-top: 40px;
+	float: left;
+	display: none;
+}
+.menu ul li{
+	width: 96%;
+	margin-left: 2%;
+	margin-right: 2%;
+	position: relative;
+	overflow: hidden;
+	border-bottom:  1px solid #E8E8E8;
+}
+.menu ul li .pic{
+	height: 110px;
+	text-align: center;
+}
+.menu ul li .pic img{
+	margin-top: 15px;
+	margin-bottom: 5px;
+	height: 80px;
+	width: 80px;
+	position: relative;
+}
+.menu ul li .pic span{
+	width: 80px;
+	display: block;
+	text-align: center;
+	position: absolute;
+	margin-top: -26px;
+	color: #fff;
+	background: #333333;
+}
+.menu ul li .content{
+	width: 62%;
+	height: 80px;
+	margin-top: 15px;
+}
+.menu ul li .content span{
+	color: #666666;
+	font-size: 13px;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	overflow: hidden;
+}
+.menu ul li .content p{
+	margin-bottom: 5px;
+	color: #666666;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp:1;
+	overflow: hidden;
+}
+.menu ul li .content label{
+	color: #D31A1A;
+}
+.footer{
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	position: fixed;
+	bottom: 0;
+	background: #fff;
+}
+.quanxuan{
+	float: left;
+}
+.mui-radio.mui-left label, .mui-checkbox.mui-left label{
+	padding-left: 30px;
+}
+.mui-radio input[type='radio'], .mui-checkbox input[type='checkbox']{
+	top:6px;
+}
+.footer .shanchu{
+	width: 80px;
+	height: 45px;
+	text-align: center;
+	color: #fff;
+	background: #D31A1A;
+}

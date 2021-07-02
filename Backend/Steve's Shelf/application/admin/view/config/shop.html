@@ -1,0 +1,766 @@
+<style>
+
+</style>
+<div class="tab-pane fade " id="shop">
+    <div class="widget-body no-padding">
+        <form id="shop-form" class="edit-form form-horizontal" role="form" data-toggle="validator" method="POST" action="{:url('admin/config/guizeadd')}"  >
+            <input type="hidden" name="key" value="shop"/>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th width="15%">
+                            变量标题
+                        </th>
+                        <th width="70%">
+                            变量值
+                        </th>
+                        <!--<th width="15%">-->
+                            <!--调用方法-->
+                        <!--</th>-->
+                    </tr>
+                </thead>
+                <tbody>
+                    <!--<tr>-->
+                        <!--<td>-->
+                            <!--一级返还比例-->
+                        <!--</td>-->
+                        <!--<td>-->
+                            <!--<div class="row">-->
+                                <!--<div class="col-sm-8 col-xs-12">-->
+                                    <!--<input type="text" name="row[return1]" value="{$config.shop.return1}" class="form-control" data-rule="" data-tip="填写一级推广员获得返还比例（%）"  />-->
+                                <!--</div>-->
+                                <!--<div class="col-sm-4">-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</td>-->
+                        <!--&lt;!&ndash;<td>&ndash;&gt;-->
+                            <!--&lt;!&ndash;{literal}{$config.shop.return1}{/literal}&ndash;&gt;-->
+                        <!--&lt;!&ndash;</td>&ndash;&gt;-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>-->
+                            <!--二级返还比例-->
+                        <!--</td>-->
+                        <!--<td>-->
+                            <!--<div class="row">-->
+                                <!--<div class="col-sm-8 col-xs-12">-->
+                                    <!--<input type="text" name="row[return2]" value="{$config.shop.return2}" class="form-control" data-rule="" data-tip="填写二级推广员获得返还比例（%）"  />-->
+                                <!--</div>-->
+                                <!--<div class="col-sm-4">-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</td>-->
+                        <!--&lt;!&ndash;<td>&ndash;&gt;-->
+                            <!--&lt;!&ndash;{literal}{$config.shop.return2}{/literal}&ndash;&gt;-->
+                        <!--&lt;!&ndash;</td>&ndash;&gt;-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>-->
+                            <!--三级返还比例-->
+                        <!--</td>-->
+                        <!--<td>-->
+                            <!--<div class="row">-->
+                                <!--<div class="col-sm-8 col-xs-12">-->
+                                    <!--<input type="text" name="row[return3]" value="{$config.shop.return3}" class="form-control" data-rule="" data-tip="填写三级推广员获得返还比例（%）"  />-->
+                                <!--</div>-->
+                                <!--<div class="col-sm-4">-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</td>-->
+                        <!--&lt;!&ndash;<td>&ndash;&gt;-->
+                            <!--&lt;!&ndash;{literal}{$config.shop.return3}{/literal}&ndash;&gt;-->
+                        <!--&lt;!&ndash;</td>&ndash;&gt;-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>-->
+                            <!--配送方式-->
+                        <!--</td>-->
+                        <!--<td>-->
+                            <!--<div class="row">-->
+                                <!--<div class="col-sm-8 col-xs-12">-->
+                                    <!--<dl class="fieldlist" rel="4" data-name="row[postType]">-->
+                                        <!--<dd>-->
+                                            <!--<ins>-->
+                                                <!--键名-->
+                                            <!--</ins>-->
+                                            <!--<ins>-->
+                                                <!--键值-->
+                                            <!--</ins>-->
+                                        <!--</dd>-->
+                                        <!--{if $config.shop.postType}-->
+                                        <!--{volist name="config.shop.postType.field" id="val"}-->
+                                        <!--<dd class="form-inline">-->
+                                            <!--<input type="text" name="row[postType][field][]" class="form-control" value="{$val}" size="10"/>-->
+                                            <!--<input type="text" name="row[postType][value][]" class="form-control" value="{$config['shop']['postType']['value'][$key]}" size="40"/>-->
+                                            <!--<span class="btn btn-sm btn-danger btn-remove">-->
+                                                <!--<i class="fa fa-times">-->
+                                                <!--</i>-->
+                                            <!--</span>-->
+                                            <!--<span class="btn btn-sm btn-primary btn-dragsort">-->
+                                                <!--<i class="fa fa-arrows">-->
+                                                <!--</i>-->
+                                            <!--</span>-->
+                                        <!--</dd>-->
+                                        <!--{/volist}-->
+                                        <!--{else}-->
+                                        <!--<dd class="form-inline">-->
+                                            <!--<input type="text" name="row[postType][field][]" class="form-control" value="" size="10"/>-->
+                                            <!--<input type="text" name="row[postType][value][]" class="form-control" value="" size="40"/>-->
+                                            <!--<span class="btn btn-sm btn-danger btn-remove">-->
+                                                <!--<i class="fa fa-times">-->
+                                                <!--</i>-->
+                                            <!--</span>-->
+                                            <!--<span class="btn btn-sm btn-primary btn-dragsort">-->
+                                                <!--<i class="fa fa-arrows">-->
+                                                <!--</i>-->
+                                            <!--</span>-->
+                                        <!--</dd>-->
+                                        <!--{/if}-->
+                                        <!--<dd>-->
+                                            <!--<a href="javascript:;" class="append btn btn-sm btn-success">-->
+                                                <!--<i class="fa fa-plus">-->
+                                                <!--</i>-->
+                                                <!--追加-->
+                                            <!--</a>-->
+                                        <!--</dd>-->
+                                    <!--</dl>-->
+                                <!--</div>-->
+                                <!--<div class="col-sm-4">-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</td>-->
+                        <!--&lt;!&ndash;<td>&ndash;&gt;-->
+                            <!--&lt;!&ndash;{literal}{$config.shop.postType}{/literal}&ndash;&gt;-->
+                        <!--&lt;!&ndash;</td>&ndash;&gt;-->
+                    <!--</tr>-->
+                    <?php $return_integral = json_decode($config['return_integral'], true);?>
+                    <tr style="display: none">
+                        <td>充值返积分开关</td>
+                        <td>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="row[return_integral][status]" {if $return_integral['status']==0}checked{/if} style="width: 20px;height: 15px;" value="0" data-type="on" />开
+                                </label>
+                                <label style="margin-left: 15px;">
+                                    <input type="radio" name="row[return_integral][status]" {if $return_integral['status']==1}checked{/if} style="width: 20px;height: 15px;" value="1" data-type="off" />关
+                                </label>
+                            </div>
+                            <!-- <input type="radio" name="row[setjifen][status]"  {if $setjifen['status']==0}checked{/if} style="width: 20px;height: 15px;" value="0" data-type="on"/>开
+                            <input type="radio" name="row[setjifen][status]" {if $setjifen['status']==1}checked{/if} style="width: 20px;height: 15px;" value="1" data-type="off"/>关
+                            <div class="col-sm-4"></div> -->
+                        </td>
+                    </tr>
+                    <tr style="display: none">
+                        <td>
+                            充值返积分比例
+                        </td>
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-8 col-xs-12">
+                                    <input type="text" name="row[return_integral][num]" value="{$return_integral.num}"/>  %
+                                </div>
+                                <div class="col-sm-4">
+                                </div>
+                            </div>
+                        </td>
+                    </tr> 
+                    <?php $setjifen = json_decode($config['setjifen'], true);?>
+                    <tr>
+                        <td>积分抵扣开关</td>
+                        <td>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="row[setjifen][status]" {if $setjifen['status']==0}checked{/if} style="width: 20px;height: 15px;" value="0" data-type="on" />开
+                                </label>
+                                <label style="margin-left: 15px;">
+                                    <input type="radio" name="row[setjifen][status]" {if $setjifen['status']==1}checked{/if} style="width: 20px;height: 15px;" value="1" data-type="off" />关
+                                </label>
+                            </div>
+                            <!-- <input type="radio" name="row[setjifen][status]"  {if $setjifen['status']==0}checked{/if} style="width: 20px;height: 15px;" value="0" data-type="on"/>开
+                            <input type="radio" name="row[setjifen][status]" {if $setjifen['status']==1}checked{/if} style="width: 20px;height: 15px;" value="1" data-type="off"/>关
+                            <div class="col-sm-4"></div> -->
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            积分兑换（1元）
+                        </td>
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-8 col-xs-12">
+                                    <input type="text" name="row[setjifen][number]" value="{$setjifen.number}" class="form-control" data-rule="" data-tip=""  />
+                                </div>
+                                <div class="col-sm-4">
+                                </div>
+                            </div>
+                        </td>
+                    </tr> 
+					<!-- alter table ht_config add `order_yinzi` varchar(255) DEFAULT NULL COMMENT '订单送元宝开关'; -->
+					<?php  $order_yinzi = json_decode($config['order_yinzi'], true);?>
+                    <tr style="display: none">
+                        <td>订单元宝赠送开关</td>
+                        <td>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="row[order_yinzi][status]" {if $order_yinzi['status']==0}checked{/if} style="width: 20px;height: 15px;" value="0" data-type="off" />开
+                                </label>
+                                <label style="margin-left: 15px;">
+                                    <input type="radio" name="row[order_yinzi][status]" {if $order_yinzi['status']==1}checked{/if} style="width: 20px;height: 15px;" value="1" data-type="on" />关
+                                </label>
+                            </div>
+                            
+                        </td>
+                    </tr>
+
+                    <tr style="display: none">
+                        <td>
+                            订单元宝赠送元宝个数
+                        </td>
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-8 col-xs-12">
+                                    <input type="text" name="row[order_yinzi][number]" value="{$order_yinzi.number}" class="form-control" data-rule="" data-tip=""  />
+                                </div>
+                                <div class="col-sm-4">
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>购物返积分</td>
+                        <td>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="row[shop][sp_ctrl]" value="1" {$config['shop']['sp_ctrl']?'checked':''} />开
+                                </label>
+                                <label style="margin-left: 15px;">
+                                    <input type="radio" name="row[shop][sp_ctrl]" value="0" {$config['shop']['sp_ctrl']?'':'checked'} />关
+                                </label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>库存预警</td>
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-8 col-xs-12">
+                                    <input type="text" name="row[warn_stock]" value="{$config.warn_stock}" class="form-control" data-rule="" data-tip=""  />
+                                </div>
+                                <div class="col-sm-4">
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <?php $evaluate_yinzi = json_decode($config[evaluate_yinzi], true);   ?>
+                    <tr style="display: none">
+                        <td>五星评价赠送开关</td>
+                        <td>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="row[evaluate_yinzi][status]" {if $evaluate_yinzi['status']==0}checked{/if} style="width: 20px;height: 15px;" value="0" data-type="on" />开
+                                </label>
+                                <label style="margin-left: 15px;">
+                                    <input type="radio" name="row[evaluate_yinzi][status]" {if $evaluate_yinzi['status']==1}checked{/if} style="width: 20px;height: 15px;" value="1" data-type="off" />关
+                                </label>
+                            </div>
+                            <!-- <input type="radio" name="row[setjifen][status]"  {if $setjifen['status']==0}checked{/if} style="width: 20px;height: 15px;" value="0" data-type="on"/>开
+                            <input type="radio" name="row[setjifen][status]" {if $setjifen['status']==1}checked{/if} style="width: 20px;height: 15px;" value="1" data-type="off"/>关
+                            <div class="col-sm-4"></div> -->
+                        </td>
+                    </tr>
+                    <tr style="display: none">
+                        <td>五星评价赠送积分|元宝</td>
+                        <td>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="row[evaluate_yinzi][type]" {if $evaluate_yinzi['type']==0}checked{/if} style="width: 20px;height: 15px;" value="0" data-type="on" />积分
+                                </label>
+                                <label style="margin-left: 15px;">
+                                    <input type="radio" name="row[evaluate_yinzi][type]" {if $evaluate_yinzi['type']==1}checked{/if} style="width: 20px;height: 15px;" value="1" data-type="off" />元宝
+                                </label>
+                            </div>
+                            <!-- <input type="radio" name="row[setjifen][status]"  {if $setjifen['status']==0}checked{/if} style="width: 20px;height: 15px;" value="0" data-type="on"/>开
+                            <input type="radio" name="row[setjifen][status]" {if $setjifen['status']==1}checked{/if} style="width: 20px;height: 15px;" value="1" data-type="off"/>关
+                            <div class="col-sm-4"></div> -->
+                        </td>
+                    </tr>
+                    <tr style="display: none">
+                        <td>
+                            五星评价返额度
+                        </td>
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-8 col-xs-12">
+                                    <input type="text" name="row[evaluate_yinzi][number]" value="{$evaluate_yinzi.number}" class="form-control" data-rule="" data-tip=""  />
+                                </div>
+                                <div class="col-sm-4">
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                   <!--  <tr>
+                        <td>
+                            预售商品押金比率（%）
+                        </td>
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-8 col-xs-12">
+                                    <input type="text" name="row[sale_ratio]" value="{$config.sale_ratio}" class="form-control" data-rule="" data-tip=""  />
+                                    <span>例如20%，商品销售价为100，首付20</span>
+                                </div>
+                                <div class="col-sm-4">
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            拼团优惠（%）
+                        </td>
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-8 col-xs-12">
+                                    <input type="text" name="row[pintuan_ratio]" value="{$config.pintuan_ratio}" class="form-control" data-rule="" data-tip=""  />
+                                    <span>例如20%，商品销售价为100，拼团价为80</span>
+                                </div>
+                                <div class="col-sm-4">
+                                </div>
+                            </div>
+                        </td>
+                    </tr> -->
+                    <tr style="display: none">
+                        <td>ios审核开关</td>
+                        <td>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="row[shop][iosshenhe]" value="1" {$config['shop']['iosshenhe']?'checked':''} />开
+                                </label>
+                                <label style="margin-left: 15px;">
+                                    <input type="radio" name="row[shop][iosshenhe]" value="0" {$config['shop']['iosshenhe']?'':'checked'} />关
+                                </label>
+                            </div>
+                        </td>
+                    </tr>
+					<?php $pick = json_decode($config['pick'], true);   ?>
+                    <tr style="display: none">
+                        <td>自提开关</td>
+                        <td>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="row[pick][status]" {if $pick['status']==0}checked{/if} style="width: 20px;height: 15px;" value="0" data-type="on" />开
+                                </label>
+                                <label style="margin-left: 15px;">
+                                    <input type="radio" name="row[pick][status]" {if $pick['status']==1}checked{/if} style="width: 20px;height: 15px;" value="1" data-type="off" />关
+                                </label>
+                            </div>
+                            
+                        </td>
+                    </tr>
+					<tr style="display: none">
+                        <td>自提备注</td>
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-8 col-xs-12">
+                                    <input type="text" name="row[pick][note]" value="{$pick.note}" class="form-control" data-rule="" data-tip=""  />
+                                </div>
+                                <div class="col-sm-4">
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+				<?php $update = json_decode($config['update'], true);  ?>
+                    <tr>
+                        <td>
+                            wgt版本号
+                        </td>
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-8 col-xs-12">
+                                    <input type="text" name="row[update][wgt]" value="{$update.wgt}" class="form-control" data-rule="" data-tip=""  />
+                                </div>
+                                <div class="col-sm-4">
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                     <tr>
+                        <td>
+                          wgt版本号
+                        </td>
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-8 col-xs-12">
+                                    <input type="text" name="row[update][apk]" value="{$update.apk}" class="form-control" data-rule="" data-tip=""  />
+                                </div>
+                                <div class="col-sm-4">
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            app版本号
+                        </td>
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-8 col-xs-12">
+                                    <input type="text" name="row[version]" value="{$config.version}" class="form-control" data-rule="" data-tip=""  />
+                                </div>
+                                <div class="col-sm-4">
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            起送价
+                        </td>
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-8 col-xs-12">
+                                    <input type="text" name="row[standard]" value="{$config.standard}" class="form-control" data-rule="" data-tip=""  />
+                                </div>
+                                <div class="col-sm-4">
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+					<tr>
+				
+						<?php $jifenduihuan = json_decode($config[jifenduihuan], true);   ?>
+                        <td>
+                            签到规则设置 
+                        </td>
+                        <td>
+						
+                            <div class="row">
+							
+                                <div class="col-sm-8 col-xs-12">
+								{volist name="jifenduihuan" id="val" key="k"}
+									<div class="jifen">
+									第
+                                    <input class="integral form-control" type="text" name="row[jifenduihuan][{$k}][start_day]" value=" {$val['start_day']}"  data-rule="" data-tip=""  />到 
+									<input class="integral form-control" type="text" name="row[jifenduihuan][{$k}][end_day]" value=" {$val['end_day']}"   data-rule="" data-tip=""  />天    &ensp; &ensp;奖励积分
+									<input class="integral form-control" type="text" name="row[jifenduihuan][{$k}][integral]" value="{$val['integral']}"   data-rule="" data-tip=""  />
+									</div>
+								  {/volist}
+                                </div>
+                                <div class="col-sm-4">
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+					<tr style="display: none">
+                        <td>
+                            兑换商城积分段
+                        </td> 
+					
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-8 col-xs-12">
+                                    <dl class="fieldlist" id="fee" rel="4" data-name="row[exchange]">
+                                        <dd>
+                                            <ins>
+                                                最低积分
+                                            </ins>
+                                            <ins>
+                                                最高积分 
+                                            </ins>
+                                        </dd>
+ 
+                                        {if $config.exchange}
+                                        <?php $exchange = json_decode($config['exchange'], true);  ?>
+										
+                                        {volist name="exchange.field" id="val"}
+                                        <dd class="form-inline">
+                                            <input  type="text" name="row[exchange][field][]" class="form-control" value="{$val}"/>
+                                            <input type="text" name="row[exchange][value][]" class="form-control" value="{$exchange['value'][$key]}" />
+                                            <span class="btn btn-sm btn-danger btn-remove">
+                                                <i class="fa fa-times">
+                                                </i>
+                                            </span>
+                                            <span class="btn btn-sm btn-primary btn-dragsort">
+                                                <i class="fa fa-arrows">
+                                                </i>
+                                            </span>
+                                        </dd>
+
+                                        {/volist}
+                                        {else}
+                                       <dd class="form-inline">
+                                            <input type="text" name="row[exchange][field]" class="form-control" value="" />
+                                            <input type="text" name="row[exchange][value]" class="form-control" value=""/>
+                                            <span class="btn btn-sm btn-danger btn-remove">
+                                                <i class="fa fa-times">
+                                                </i>
+                                            </span>
+                                            <span class="btn btn-sm btn-primary btn-dragsort">
+                                                <i class="fa fa-arrows">
+                                                </i>
+                                            </span>
+                                        </dd>
+                                        {/if} 
+
+                                        <dd>
+                                            <a href="javascript:;" class="append btn btn-sm btn-success">
+                                                <i class="fa fa-plus">
+                                                </i>
+                                                追加
+                                            </a>
+                                        </dd>
+                                    </dl>
+                                </div>
+                                <div class="col-sm-4">
+                                </div>
+                            </div>
+                        </td>
+					<!-- 	<td>
+                            调用方法
+							<dd class="form-inline">
+								<span class=" ">
+										{literal}{$config.exchange}{/literal}
+								</span>
+							</dd>
+                        </td> -->
+                    </tr>
+                    <tr>
+                        <td>
+                            满赠兑换商品
+                        </td>
+
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-8 col-xs-12">
+                                    <dl class="fieldlist" id="give" rel="0" data-name="row[full_gift]">
+                                        <dd>
+                                            <ins>
+                                                消费金额
+                                            </ins>
+                                            <ins>
+                                                赠送商品名称
+                                            </ins>
+                                        </dd>
+
+                                        {if $config.full_gift}
+
+                                        <?php $full_gift = json_decode($config['full_gift'], true);  ?>
+
+                                        {volist name="full_gift.field" id="val"}
+                                        <dd class="form-inline">
+                                            <input  type="text" name="row[full_gift][field][]" class="form-control" value="{$val}"/>
+                                            <input type="text" name="row[full_gift][value][]" class="form-control" value="{$full_gift['value'][$key]}" />
+                                            <span class="btn btn-sm btn-danger btn-remove">
+                                                <i class="fa fa-times">
+                                                </i>
+                                            </span>
+                                            <span class="btn btn-sm btn-primary btn-dragsort">
+                                                <i class="fa fa-arrows">
+                                                </i>
+                                            </span>
+                                        </dd>
+
+                                        {/volist}
+                                        {else}
+                                        <dd class="form-inline">
+                                            <input type="text" name="row[full_gift][field][]" class="form-control" value="" />
+                                            <input type="text" name="row[full_gift][value][]" class="form-control" value=""/>
+                                            <span class="btn btn-sm btn-danger btn-remove">
+                                                <i class="fa fa-times">
+                                                </i>
+                                            </span>
+                                            <span class="btn btn-sm btn-primary btn-dragsort">
+                                                <i class="fa fa-arrows">
+                                                </i>
+                                            </span>
+                                        </dd>
+                                        {/if}
+
+                                        <dd>
+                                            <a href="javascript:;" class="append btn btn-sm btn-success">
+                                                <i class="fa fa-plus">
+                                                </i>
+                                                追加
+                                            </a>
+                                        </dd>
+                                    </dl>
+                                </div>
+                                <div class="col-sm-4">
+                                </div>
+                            </div>
+                        </td>
+                        <!-- 	<td>
+                                调用方法
+                                <dd class="form-inline">
+                                    <span class=" ">
+                                            {literal}{$config.exchange}{/literal}
+                                    </span>
+                                </dd>
+                            </td> -->
+                    </tr>
+                    <tr style="display: none">
+                        <td>
+                            APP客服邮箱
+                        </td>
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-8 col-xs-12">
+                                    <input type="text" name="row[app_email]" value="{$config.app_email}" class="form-control" data-rule="" data-tip=""  />
+                                </div>
+                                <div class="col-sm-4">
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            APP客服热线
+                        </td>
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-8 col-xs-12">
+                                    <input type="text" name="row[app_tell]" value="{$config.app_tell}" class="form-control" data-rule="" data-tip=""  />
+                                </div>
+                                <div class="col-sm-4">
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            发货地址
+                        </td>
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-8 col-xs-12">
+                                    <input type="text" name="row[shop_address]" value="{$config.shop_address}" class="form-control" data-rule="" data-tip=""  />
+                                </div>
+                                <div class="col-sm-4">
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            平台手机号
+                        </td>
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-8 col-xs-12">
+                                    <input type="text" name="row[shop_phone]" value="{$config.shop_phone}" class="form-control" data-rule="" data-tip=""  />
+                                </div>
+                                <div class="col-sm-4">
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            联系我们
+                        </td>
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-8 col-xs-12">
+
+								<textarea class="form-control" name="row[call_us]"  data-rule="required" data-tip="请填写联系我们内容"  rows="5" rel="20">
+								{$config.call_us}
+								</textarea>
+
+                                </div>
+                                <div class="col-sm-4">
+                                </div>
+                            </div>
+                        </td>
+                        <!--    <td>
+                               {literal}{$config.app.notice}{/literal}
+                           </td> -->
+                    </tr>
+                    <tr>
+                        <td>
+                            公司名称
+                        </td>
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-8 col-xs-12">
+                                    <input type="text" name="row[company_name]" value="{$config.company_name}" class="form-control" data-rule="" data-tip=""  />
+                                </div>
+                                <div class="col-sm-4">
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            软件名称
+                        </td>
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-8 col-xs-12">
+                                    <input type="text" name="row[site_name]" value="{$config.site_name}" class="form-control" data-rule="" data-tip=""  />
+                                </div>
+                                <div class="col-sm-4">
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            logo
+                        </td>
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-8 col-xs-12">
+                                    <div class="form-inline">
+                                        <input id="c-picture" class="form-control" size="50" name="row[site_logo]" type="text" value="{$config.site_logo}">
+
+                                        <span><button type="button" id="plupload-picture" class="btn btn-danger plupload" data-multiple="false" data-input-id="c-picture" data-preview-id="p-picture"><i class="fa fa-upload"></i> 上传</button></span>
+
+                                        <ul class="row list-inline plupload-preview" id="p-picture"></ul>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>
+                        </td>
+                        <td>
+                            <button type="submit" class="btn btn-success btn-embossed">
+                                确定
+                            </button>
+                            <button type="reset" class="btn btn-default btn-embossed">
+                                重置
+                            </button>
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </form>
+    </div>
+</div>
+<script>
+ 
+</script>
+
+<style>
+
+.jifen{ margin-top:10px;}
+.integral{ 
+	width:10%;
+}
+</style>

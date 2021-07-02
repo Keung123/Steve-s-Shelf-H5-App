@@ -1,0 +1,102 @@
+<div class="tab-pane fade " id="express">
+    <div class="widget-body no-padding">
+        <form id="basic-form" class="edit-form form-horizontal" role="form" data-toggle="validator" method="POST" action="{:url('admin/config/index')}">
+            <input type="hidden" name="key" value="express"/>
+            <table class="table table-striped">
+                <thead>
+                     
+                </thead>
+                <tbody>
+                     <tr>
+                        <td>
+                            快递公司设置
+                        </td> 
+					
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-8 col-xs-12">
+                                    <dl class="fieldlist" rel="4" data-name="row[express]">
+                                        <dd>
+                                            <ins>
+                                                快递公司标识
+                                            </ins>
+                                            <ins>
+                                                快递公司名称 
+                                            </ins>
+                                        </dd>
+ 
+                                        {if $config.express}
+                                        <?php $express = json_decode($config['express'], true); $express =$express['express']; ?>
+										 
+                                        {volist name="express.field" id="val"}
+                                        <dd class="form-inline">
+                                            <input type="text" name="row[express][field][]" class="form-control" value="{$val}"/>
+                                            <input type="text" name="row[express][value][]" class="form-control" value="{$express['value'][$key]}" />
+                                            <span class="btn btn-sm btn-danger btn-remove">
+                                                <i class="fa fa-times">
+                                                </i>
+                                            </span>
+                                            <span class="btn btn-sm btn-primary btn-dragsort">
+                                                <i class="fa fa-arrows">
+                                                </i>
+                                            </span>
+                                        </dd>
+                                        {/volist}
+                                        {else}
+                                        <dd class="form-inline">
+                                            <input type="text" name="row[express][field]" class="form-control" value="" />
+                                            <input type="text" name="row[express][value]" class="form-control" value=""/>
+                                            <span class="btn btn-sm btn-danger btn-remove">
+                                                <i class="fa fa-times">
+                                                </i>
+                                            </span>
+                                            <span class="btn btn-sm btn-primary btn-dragsort">
+                                                <i class="fa fa-arrows">
+                                                </i>
+                                            </span>
+                                        </dd>
+                                        {/if} 
+
+                                        <dd>
+                                            <a href="javascript:;" class="append btn btn-sm btn-success">
+                                                <i class="fa fa-plus">
+                                                </i>
+                                                追加
+                                            </a>
+                                        </dd>
+                                    </dl>
+                                </div>
+                                <div class="col-sm-4">
+                                </div>
+                            </div>
+                        </td>
+					<!-- 	<td>
+                            调用方法
+							<dd class="form-inline">
+								<span class=" ">
+										{literal}{$config.express}{/literal}
+								</span>
+							</dd>
+                        </td> -->
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>
+                        </td>
+                        <td>
+                            <button type="submit" class="btn btn-success btn-embossed">
+                                确定
+                            </button>
+                            <button type="reset" class="btn btn-default btn-embossed">
+                                重置
+                            </button>
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </form>
+    </div>
+</div>

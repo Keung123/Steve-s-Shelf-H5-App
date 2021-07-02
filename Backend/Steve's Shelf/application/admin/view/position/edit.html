@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    {include file="public/head" title="广告位编辑" /}
+
+    <body class="inside-header inside-aside is-dialog">
+        <div id="main" role="main">
+            <div class="tab-content tab-addtabs">
+                <div id="content">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <section class="content-header hide">
+                                <h1>
+                                    控制台                                    <small>Control panel</small>
+                                </h1>
+                            </section>
+                            <div class="content">
+                                <form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="{:url('admin/position/edit')}">
+                                    <input type="hidden" name="id" value="{$row['id']}">
+
+                                    <div class="form-group">
+                                        <label for="c-title" class="control-label col-xs-12 col-sm-2">广告位名称:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input id="c-title" data-rule="required" class="form-control" name="row[title]" type="text" value="{$row['title']}" data-rule="required">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="c-width" class="control-label col-xs-12 col-sm-2">推荐尺寸:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input id="c-width" class="form-control" name="row[width]" type="text" value="{$row['width']}" style="width: 50px;" placeholder="宽">
+                                            *
+                                            <input id="c-height" class="form-control" name="row[height]" type="text" value="{$row['height']}" style="width: 50px;" placeholder="高">
+                                        </div>
+                                    </div>                                                                                                      
+
+
+                                    <div class="form-group layer-footer">
+                                        <label class="control-label col-xs-12 col-sm-2"></label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <button type="submit" class="btn btn-success btn-embossed disabled">确定</button>
+                                            <button type="reset" class="btn btn-default btn-embossed">重置</button>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {include file="public/javascript" jsname="backend/goods/category" controllername="category"  actionname="add"/}
+    </body>
+</html>

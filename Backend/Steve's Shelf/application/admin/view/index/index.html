@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    {include file="public/head" title="后台管理" /}
+
+    <body class="hold-transition skin-green sidebar-mini fixed" id="tabs">
+        <div class="wrapper">
+            
+            {include file="public/header" /}
+
+            <!--侧边导航-->
+            {include file="public/sider" /}
+            <!--侧边导航结束-->
+            
+            <!--内容容器-->
+            <div class="content-wrapper tab-content tab-addtabs"></div>
+            <!--内容容器结束-->
+            
+            <!--侧边控制菜单-->
+            {include file="public/control" /}
+            <!--侧边控制结束-->
+
+        </div>
+
+    {include file="public/javascript" jsname="backend/index" controllername="index"  actionname="index" /}
+    </body>
+</html>

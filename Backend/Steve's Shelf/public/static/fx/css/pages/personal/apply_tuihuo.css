@@ -1,0 +1,151 @@
+.mui-bar span{
+	margin-top: 12px;
+	font-size: 20px;
+}
+.mui-content{
+	margin-bottom: 35px;
+}
+.yuanxin{
+	width: 100%;
+	line-height: 44px;
+}
+.yuanxin span{
+	margin-left: 2%;
+}
+.yuanxin em{
+	margin-right: 2%;
+}
+.yuanxin input{
+	width: 96%;
+	margin-left: 2%;
+	margin-right: 2%;
+	margin-bottom: 0;
+	font-size: 14px;
+	border: 1px solid #e9e9e9;
+}
+.miaoshu{
+	width: 100%;
+}
+.miaoshu label{
+	height: 44px;
+	line-height: 44px;
+	margin-left: 2%;
+	display: block;
+}
+.miaoshu div{
+	width: 96%;
+	margin-left: 2%;
+	margin-right: 2%;
+	background: #f5f5f5;
+}
+.miaoshu div textarea{
+	padding: 10px;
+	font-size: 14px;
+	background: #f5f5f5;
+	border: none;
+}
+.miaoshu div .zishu{
+	height: 44px;
+	line-height: 44px;
+	text-align: right;
+	margin-right: 15px;
+	display: block;
+	color: #181818;
+}
+.shangchuan{
+	width: 100%;
+}
+.shangchuan label{
+	height: 44px;
+	line-height: 44px;
+	margin-left: 2%;
+	display: block;
+}
+.shangchuan img{
+	width: 30%;
+	margin-left: 2%;
+}
+.lianxi{
+	width: 100%;
+	margin-top: 25px;
+}
+.lianxi label{
+	width: 100%;
+	height: 44px;
+	line-height: 44px;
+	padding-left: 2%;
+	display: block;
+	color: #181818;
+	background: #f5f5f5;
+}
+.lianxi ul li{
+	width: 96%;
+	height: 45px;
+	line-height: 45px;
+	margin-left: 2%;
+	margin-right: 2%;
+	border-bottom: 1px solid #e8e8e8;
+}
+.lianxi ul li em{
+	font-style: normal;
+	color: #999999;
+}
+.tijiao{
+	width: 96%;
+	height: 45px;
+	line-height: 45px;
+	text-align: center;
+	margin: 15px 2%;
+	font-size: 15px;
+	color: #fff;
+	background: #D31A1A;
+	border-radius: 20px;
+}
+.tishi{
+	width: 96%;
+	color: #666666;
+	margin-left: 2%;
+	margin-right: 2%;
+}
+.tishi ul li{
+	font-size: 13px;   
+}
+.lianxi ul li:last-child{
+	height: 90px;
+}
+.lianxi ul li input.address{
+	width: 55%;
+	height: 35px;
+	float: right;
+	margin-top: -36px;
+	font-size: 13px;
+	padding: 0;
+	position: relative;
+	border: none;
+}	
+.box{
+	width: 80%;
+	float: right;	
+}
+.box label{
+	line-height: 26px;
+	background: #fff;
+}
+.mui-radio input[type='radio']:checked:before{
+	    content: '\e442';
+}
+.mui-radio input[type='radio']:checked:before, .mui-checkbox input[type='checkbox']:checked:before{
+	color: #D31A1A;
+}
+.mui-radio input[type='radio']:before, .mui-checkbox input[type='checkbox']:before{
+	font-size: 20px;
+}
+.mui-radio.mui-left input[type='radio'], .mui-checkbox.mui-left input[type='checkbox']{
+	left: 0;
+}
+.mui-radio.mui-left label, .mui-checkbox.mui-left label{
+	padding-left: 25px;
+}
+.mui-radio input[type='radio'], .mui-checkbox input[type='checkbox']{
+	top:13px;
+}

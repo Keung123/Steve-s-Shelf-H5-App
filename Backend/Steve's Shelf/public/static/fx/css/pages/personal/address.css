@@ -1,0 +1,154 @@
+.mui-bar-nav {
+	background: #fff;
+}
+
+.mui-bar-nav h1 {
+	color: #000 !important;
+	font-size: 16px !important;
+}
+
+.mui-bar .mui-icon {
+	color: #494949;
+}
+
+.mui-content {
+	background: #fff;
+}
+
+.mui-bar .save {
+	float: right;
+	margin-top: 12px;
+}
+
+.add_address {
+	overflow: hidden;
+	height: 50px;
+	line-height: 50px;
+}
+
+.add_address label {
+	width: 25%;
+	padding-left: 10px;
+	float: left;
+}
+
+.add_address select {
+	width: 17% !important;
+	float: left !important;
+	margin-top: 13px;
+}
+
+.add_address select:nth-of-type(2) {
+	margin-left: 12%;
+	margin-right: 9%;
+}
+
+.mui-radio.mui-left input[type='radio'],
+.mui-checkbox.mui-left input[type='checkbox'] {
+	left: 12px;
+}
+
+.mui-input-row label {
+	padding: 0;
+	padding-left: 2%!important;
+	display: inline-block;
+	width: 50%;
+}
+
+.mui-radio input[type='radio']:before,
+.mui-checkbox input[type='checkbox']:before {
+	font-size: 20px;
+}
+
+.mui-radio input[type='radio'],
+.mui-checkbox input[type='checkbox'] {
+	top: 0px;
+}
+
+.mui-radio input[type='radio']:checked:before,
+.mui-checkbox input[type='checkbox']:checked:before {
+	color: #09b674;
+}
+
+.mui-content {
+	/*height: 100%;*/
+}
+
+.mui-input-row:last-child,
+.mui-input-row label+input,
+.mui-input-row .mui-btn+input {
+	line-height: 40px;
+}
+
+.add .xxdz textarea {
+	height: 100px;
+	padding-left: 2%;
+}
+
+.add .add_address input {
+	float: right;
+	padding-right: 10px;
+	width: 75%;
+	font-size: 14px;
+	border: none;
+}
+
+.add .xxdz label {
+	line-height: 42px!important;
+}
+
+.add .add_address {
+	height: 42px;
+	line-height: 42px;
+	overflow: hidden;
+}
+
+.mui-input-row label {
+	line-height: 40px;
+}
+
+.mui-switch.mui-active:before {
+	content: '';
+}
+
+.mui-switch:before {
+	content: '';
+}
+/*按钮*/
+
+.mui-switch .mui-switch-handle {
+	width: 22px;
+	height: 22px;
+}
+
+.mui-switch {
+	margin-top: 9px;
+	height: 24px;
+}
+
+.check {
+	height: 42px;
+	line-height: 42px;
+	padding: 0 2%;
+}
+
+.mui-switch-mini.mui-active .mui-switch-handle {
+	-webkit-transform: translate(16px, 0);
+	transform: translate(22px, 0);
+}
+.add .xxdz textarea{
+	padding-left: 0;
+	background-color: inherit;
+	margin-left: 2%;
+}
+.keep{
+	width: 96%;
+	height: 44px;
+	text-align: center;
+	line-height: 44px;
+	margin: 50px 2%;
+	font-size: 15px;
+	color: #fff;
+	background: #D31A1A;
+	border-radius: 20px;
+}

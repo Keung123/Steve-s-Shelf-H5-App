@@ -1,0 +1,195 @@
+<style>
+    .api-login{
+        margin-right: 15px;
+    }
+</style>
+
+<div class="tab-pane fade active in" id="basic">
+    <div class="widget-body no-padding">
+        <form id="basic-form" class="edit-form form-horizontal" role="form" data-toggle="validator" method="POST" action="{:url('admin/config/index')}">
+            <input type="hidden" name="key" value="base"/>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th width="15%">
+                            变量标题
+                        </th>
+                        <th width="70%">
+                            变量值
+                        </th>
+                    <!--     <th width="15%">
+                            调用方法
+                        </th> -->
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        <td>
+                            站点名称  
+                        </td> 
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-8 col-xs-12">
+                                    <input type="text" name="row[title]" value="{$config.base.title}" class="form-control" data-rule="required" data-tip="请填写站点名称"  />
+                                </div>
+                                <div class="col-sm-4">
+                                </div>
+                            </div>
+                        </td>
+                      <!--   <td>
+                            {literal}{$config.base.title}{/literal}
+                        </td> -->
+                    </tr>
+                    <tr>
+                        <td>
+                            关键词
+                        </td>
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-8 col-xs-12">
+                                    <input type="text" name="row[keywords]" value="{$config.base.keywords}" class="form-control" data-rule="required" data-tip="请填写站点关键词"  />
+                                </div>
+                                <div class="col-sm-4">
+                                </div>
+                            </div>
+                        </td>
+                     <!--    <td>
+                            {literal}{$config.base.keywords}{/literal}
+                        </td> -->
+                    </tr>
+                    <tr>
+                        <td>
+                            站点描述
+                        </td>
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-8 col-xs-12">
+                                    <input type="text" name="row[description]"  value="{$config.base.description}" class="form-control" data-tip="请填写站点描述"  />
+                                </div>
+                                <div class="col-sm-4">
+                                </div>
+                            </div>
+                        </td>
+                      <!--   <td>
+                            {literal}{$config.base.description}{/literal}
+                        </td> -->
+                    </tr>
+                    <!-- 三方登录控制 -->
+                    <tr>
+                        <td>
+                            三方登录
+                        </td>
+                        <td>
+                            <div class="login-content">
+                                <span class="api-login">
+                                    <?php if(in_array('qq', $config['base']['api_login'])){ ?>
+                                        <input type="checkbox" name="row[api_login][]" value="qq" id="qq_login"  checked="checked" /><label for="qq_login">QQ</label>
+                                    <?php }else {?>
+                                        <input type="checkbox" name="row[api_login][]" value="qq" id="qq_login" /><label for="qq_login">QQ</label>
+                                    <?php }?>
+                                </span>
+                                <span class="api_login" style="margin-right: 15px;">
+                                    <?php if(in_array('weixin', $config[base][api_login])){ ?>
+                                        <input type="checkbox" name="row[api_login][]" value="weixin" id="wx_login" checked /><label for="wx_login">微信</label>
+                                    <?php }else{ ?>
+                                        <input type="checkbox" name="row[api_login][]" value="weixin" id="wx_login" /><label for="wx_login">微信</label>
+                                    <?php } ?>
+                                </span>
+                            <!--    <span class="api_login" style="margin-right: 15px;">
+                                    <?php if(in_array('sina', $config[base][api_login])){ ?>
+                                        <input type="checkbox" name="row[api_login][]" value="sina" id="sina_login" checked/><label for="sina_login">新浪</label>
+                                    <?php }else{ ?>
+                                        <input type="checkbox" name="row[api_login][]" value="sina" id="sina_login" /><label for="sina_login">新浪</label>
+                                    <?php } ?>
+                                </span>-->
+                            </div>
+                        </td>
+                      <!--   <td>
+                            {literal}{$config.base.api_login}{/literal}
+                        </td> -->
+                    </tr>
+                    <!-- 三方支付控制 -->
+                    <tr>
+                        <td>
+                            三方支付
+                        </td>
+                        <td>
+                            <div class="login-content">
+                                <span class="api-pay" style="margin-right: 15px;">
+                                    <?php if(in_array('alipay', $config[base][api_pay])){ ?>
+                                        <input type="checkbox" name="row[api_pay][]" value="alipay" id="alipay"  checked="checked" /><label for="alipay">支付宝</label>
+                                    <?php }else{ ?>
+                                        <input type="checkbox" name="row[api_pay][]" value="alipay" id="alipay" /><label for="alipay">支付宝</label>
+                                    <?php } ?>
+                                </span>
+                                <span class="api_pay" style="margin-right: 15px;">
+                                    <?php if(in_array('wxpay', $config[base][api_pay])){ ?>
+                                        <input type="checkbox" name="row[api_pay][]" value="wxpay" id="wxpay" checked /><label for="wxpay">微信支付</label>
+                                    <?php }else{ ?>
+                                        <input type="checkbox" name="row[api_pay][]" value="wxpay" id="wxpay"/><label for="wxpay">微信支付</label>
+                                    <?php } ?>
+                                </span>
+                                <!--<span class="api_pay" style="margin-right: 15px;">
+                                    <?php if(in_array('unionpay', $config[base][api_pay])){ ?>
+                                        <input type="checkbox" name="row[api_apy][]" value="unionpay" id="unionpay" checked/><label for="unionpay">银联支付</label>
+                                    <?php }else{ ?>
+                                        <input type="checkbox" name="row[api_pay][]" value="unionpay" id="unionpay" /><label for="unionpay">银联支付</label>
+                                    <?php } ?>
+                                </span>-->
+                            </div>
+                        </td>
+                       <!--  <td>
+                            {literal}{$config.base.api_pay}{/literal}
+                        </td> -->
+                    </tr>
+                    <tr>
+                        <td>
+                            android下载地址
+                        </td>
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-8 col-xs-12">
+                                    <input type="text" name="row[android_url]"  value="{$config.base.android_url}" class="form-control" data-tip="请填写android下载地址"  />
+                                </div>
+                                <div class="col-sm-4">
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            ios下载地址
+                        </td>
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-8 col-xs-12">
+                                    <input type="text" name="row[ios_url]"  value="{$config.base.ios_url}" class="form-control" data-tip="请填写ios下载地址"  />
+                                </div>
+                                <div class="col-sm-4">
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>
+                        </td>
+                        <td>
+                            <button type="submit" class="btn btn-success btn-embossed">
+                                确定
+                            </button>
+                            <button type="reset" class="btn btn-default btn-embossed">
+                                重置
+                            </button>
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </form>
+    </div>
+</div>

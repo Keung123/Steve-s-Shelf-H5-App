@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    {include file="public/head" title="会员详情" /}
+    <body class="inside-header inside-aside is-dialog">
+        <div id="main" role="main">
+            <div class="tab-content tab-addtabs">
+                <div id="content">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <section class="content-header hide">
+                                <h1>
+                                    控制台                                    <small>Control panel</small>
+                                </h1>
+                            </section>
+                            <div class="content">
+                                <form id="edit-form" class="form-horizontal form-ajax" role="form" data-toggle="validator" method="POST" action="{:url('admin/user/edit')}">
+                                        <input name="user_id" value="{$row['user_id']}" type="hidden" >
+                                    <div class="form-group">
+                                        <label for="user_truename" class="control-label col-xs-12 col-sm-2">用户昵称:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input type="text" class="form-control" id="username" name="row[user_name]" value="{$row['user_name']}" data-rule="required;name"  readonly />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="c-user_avat" class="control-label col-xs-12 col-sm-2">用户头像:</label>
+                                       <div class="col-xs-12 col-sm-8">
+												<div class="form-inline">
+													
+													<ul class="row list-inline plupload-preview">
+														<!-- <img id="goodsimg"> -->
+														<li class="col-xs-3">
+															<img class="img-responsive" id="goodsimg" style="width:150px; height:100px;" src="{$row['user_avat']}"> 
+														 </li>
+													</ul>
+												</div>
+										</div>
+                                    </div>                                    
+
+                                    <div class="form-group">
+                                        <label for="user_mobile" class="control-label col-xs-12 col-sm-2">手机号码:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input type="text" class="form-control" id="user_mobile" name="row[user_mobile]" value="{$row['user_mobile']}" readonly />
+                                        </div>
+                                    </div>  
+                                    <div class="form-group">
+                                        <label for="user_name" class="control-label col-xs-12 col-sm-2">真实姓名:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input type="text" class="form-control" id="user_truename" name="row[user_truename]" value="{$row['user_truename']}" data-rule="required" readonly />
+                                        </div>
+                                    </div> 
+									<div class="form-group">
+                                        <label for="user_name" class="control-label col-xs-12 col-sm-2">身份证号:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input type="text" class="form-control" id="user_id_no" name="row[user_id_no]" value="{$row['user_id_no']}" data-rule="required" readonly />
+                                        </div>
+                                    </div>
+									<div class="form-group">
+                                        <label for="user_account" class="control-label col-xs-12 col-sm-2">账户余额:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input type="user_account" class="form-control" id="user_account" name="row[user_account]" value="{$row['user_account']}" data-rule="required;user_account" readonly />
+                                            <a href="{:url('admin/user/getUserAccountLog',['user_id'=>$row['user_id'],'type'=>1])}" target="_parent"  class="btn-yinzi">查看详情</a>
+                                        </div>
+                                    </div>
+									<div class="form-group">
+                                        <label for="user_account" class="control-label col-xs-12 col-sm-2">会员积分:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input type="user_points" class="form-control" id="user_points" name="row[user_points]" value="{$row['user_points']}" readonly  />
+                                        </div>
+                                    </div>
+									<div class="form-group" style="display: none">
+                                        <label for="user_account" class="control-label col-xs-12 col-sm-2">会员元宝个数:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input type="yin_amount" class="form-control" id="yin_amount" name="row[yin_amount]" value="{$row['yin_amount']}" readonly />
+											<a href="{:url('admin/user/getUserWing',['user_id'=>$row['user_id']])}" target="_parent"  class="btn-yinzi">查看详情</a>
+                                        </div>
+                                    </div>
+									<div class="form-group" style="display: none">
+                                        <label for="user_account" class="control-label col-xs-12 col-sm-2">充值卡余额:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input type="user_card" class="form-control" id="user_card" name="row[user_card]" value="{$row['user_card']}" readonly  />
+											<a href="{:url('admin/user/getUserCard',['user_id'=>$row['user_id']])}"  class="btn-yinzi" target="_parent" >查看详情</a>
+                                        </div>
+                                    </div>
+									<div class="form-group" style="display: none">
+                                        <label for="user_account" class="control-label col-xs-12 col-sm-2"> 优惠券个数:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input type="coupon" class="form-control" id="coupon" name="row[coupon]" value="{$row['coupon']}"readonly  />
+											<a href="{:url('admin/user/getUserCoupon',['user_id'=>$row['user_id']])}"  target="_parent"  class="btn-yinzi">查看详情</a>
+                                        </div>
+                                    </div>
+									<div class="form-group"  style="display: none">
+                                        <label for="user_name" class="control-label col-xs-12 col-sm-2">生日:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input type="text" class="form-control" id="user_name"   value="{$row['user_birth']}" readonly  />
+                                        </div>
+                                    </div> 
+									<div class="form-group"  style="display: none">
+                                        <label for="user_name" class="control-label col-xs-12 col-sm-2">爱好:</label>
+                                        <div class="col-xs-12 col-sm-8" style="align:left">
+											<textarea class="form-control" readonly style="text-align:left">
+											{$row['user_hobby']}
+											</textarea>
+                                          
+                                        </div>
+                                    </div> 
+									<div class="form-group" style="display: none">
+                                        <label for="user_name" class="control-label col-xs-12 col-sm-2">个人签名:</label>
+                                        <div class="col-xs-12 col-sm-8">
+											<textarea class="form-control"readonly  >
+											{$row['user_sign']}
+											</textarea>
+                                          
+                                        </div>
+                                    </div> 
+
+									<div class="form-group" style="display: none">
+                                        <label for="user_name" class="control-label col-xs-12 col-sm-2">QQ:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input type="text" class="form-control" id="user_name" name="row[user_name]" value="{$row['user_qq']}" data-rule="required"readonly />
+                                       </div>
+                                    </div>
+									<div class="form-group" style="display: none">
+                                        <label for="user_name" class="control-label col-xs-12 col-sm-2">微信:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input type="text" class="form-control" id="user_name" name="row[user_name]" value="{$row['user_wx']}" data-rule="required"readonly />
+                                       </div>
+                                    </div>
+									<div class="form-group" style="display: none">
+                                        <label for="user_name" class="control-label col-xs-12 col-sm-2">会员邮箱:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input type="text" class="form-control" id="user_name" name="row[user_name]" value="{$row['user_email']}" data-rule="required" readonly />
+                                       </div>
+                                    </div>
+									<div class="form-group">
+                                        <label for="user_name" class="control-label col-xs-12 col-sm-2">注册时间:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input type="text" class="form-control" id="user_name" name="row[user_name]" value="{:date('Y-m-d H:i:s',$row['user_reg_time'])}" data-rule="required" readonly />
+                                       </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="user_sex" class="control-label col-xs-12 col-sm-2">性别:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <label for="row[user_sex]-normal"><input id="row[user_sex]-normal" {if $row['user_sex']=='1'}checked="checked"{/if} name="row[user_sex]" type="radio" value="1" readonly > 男</label> 
+                                            <label for="row[user_sex]-hidden"><input id="row[user_sex]-hidden" {if $row['user_sex']=='2'}checked="checked"{/if} name="row[user_sex]" type="radio" value="2"readonly > 女</label>
+                                             <label for="row[user_sex]-hidden"><input id="row[user_sex]-hidden" {if $row['user_sex']=='0'}checked="checked"{/if} name="row[user_sex]" type="radio" value="0"readonly > 保密</label>
+                                        </div>
+                                    </div>                                                                          
+
+									<div class="form-group">
+                                        <label for="user_email" class="control-label col-xs-12 col-sm-2">Email:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input type="user_email" class="form-control" id="user_email" name="row[user_email]" value="{$row['user_email']}" data-rule="required;user_email" readonly />
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {include file="public/javascript" jsname="backend/auth/user" controllername="user"  actionname="add"/}
+    </body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    {include file="public/head" title="添加会员" /}
+    <body class="inside-header inside-aside is-dialog">
+        <div id="main" role="main">
+            <div class="tab-content tab-addtabs">
+                <div id="content">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <section class="content-header hide">
+                                <h1>
+                                    控制台                                    <small>Control panel</small>
+                                </h1>
+                            </section>
+                            <div class="content">
+                                <form id="edit-form" class="form-horizontal form-ajax" role="form" data-toggle="validator" method="POST" action="{:url('admin/admin/add')}">
+
+                                    <div class="form-group">
+                                        <label for="c-pid" class="control-label col-xs-12 col-sm-2">用户组:</label>
+                                        <div class="col-xs-12 col-sm-8">
+
+                                            <select  id="c-flag" data-rule="required" class="form-control selectpicker" name="row[group_id]" onchange="typeChange();">
+                                                {volist name="group" id="v"}
+                                                <option value="{$v.group_id}"  >{$v.group_name}</option>
+                                                {/volist}
+                                            </select>
+
+                                        </div>
+                                    </div>
+									
+									<div class="form-group" id="gongying">
+                                        <label for="brandid" class="control-label col-xs-12 col-sm-2">选择供应商:</label>
+                                        <div class="col-xs-12 col-sm-8">
+
+                                            <select  id="supplier" data-rule="" class="form-control" name=" ">
+                                                {if condition="$supplier"}
+                                                {volist name="supplier" id="v"}
+                                                <option value="{$v.id}" >{$v.supplier_title}</option>
+                                                {/volist}
+                                                {else/}
+                                                <option value="">暂无供应商</option>
+                                                {/if}
+                                            </select>
+                                        </div>
+                                    </div>
+									<div class="form-group" id="kefu">
+                                        <label for="brandid" class="control-label col-xs-12 col-sm-2">选择对应客服:</label>
+                                        <div class="col-xs-12 col-sm-8">
+
+                                            <select  id="kf_id" data-rule="" class="form-control" name=" ">
+                                                {if condition="$kefu"}
+                                                {volist name="kefu" id="v"}
+                                                <option value="{$v.kefu_id}" >{$v.kefu_name}</option>
+                                                {/volist}
+                                                {else/}
+                                                <option value="">暂无客服</option>
+                                                {/if}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group" id="kefus">
+                                        <label for="brandid" class="control-label col-xs-12 col-sm-2">选择对应用户:</label>
+                                        <div class="col-xs-12 col-sm-8">
+
+                                            <select  id="user_id" data-rule="" class="form-control" name="row[u_id]">
+											   <option value="0"  > 暂不选择用户</option>
+                                                {if condition="$user"}
+                                                {volist name="$user" id="v"}
+                                                <option value="{$v.user_id}"  >{$v.user_name}</option>
+                                                {/volist}
+                                                {else/}
+                                                <option value="">暂无客服</option>
+                                                {/if}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="admin_name" class="control-label col-xs-12 col-sm-2">账号:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input type="text" class="form-control" id="admin_name" name="row[admin_name]" data-rule="required;username" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="c-avatar" class="control-label col-xs-12 col-sm-2">用户头像:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <div class="form-inline">
+                                                <input id="c-avatar" class="form-control" size="50" name="row[avatar]" value="__STATIC__/assets/img/avatar.png" type="text" value="">
+
+                                                <span><button type="button" id="plupload-avatar" class="btn btn-danger plupload" data-multiple="false" data-input-id="c-avatar" data-preview-id="p-avatar"><i class="fa fa-upload"></i> 上传</button></span>
+
+<!--                                                 <span><button type="button" id="fachoose-image" class="btn btn-primary fachoose" data-multiple="false" data-input-id="c-image"><i class="fa fa-list-ul"></i> 选择</button></span> -->
+                                                
+                                                <ul class="row list-inline plupload-preview" id="p-avatar"></ul>
+                                            </div>
+                                        </div>
+                                    </div>                                                                  
+
+                                    <div class="form-group">
+                                        <label for="nickname" class="control-label col-xs-12 col-sm-2">用户名:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input type="text" class="form-control" id="nickname" name="row[nickname]" data-rule="required;nickname"/>
+                                        </div>
+                                    </div>                             
+
+                                  <div class="form-group">
+                                        <label for="mobile" class="control-label col-xs-12 col-sm-2">手机号码:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input type="text" class="form-control" id="mobile" name="row[mobile]" data-rule="mobile" />
+                                        </div>
+                                    </div>  
+
+                                    <div class="form-group">
+                                        <label for="email" class="control-label col-xs-12 col-sm-2">Email:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input type="email" class="form-control" id="email" name="row[email]" data-rule="email" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="qq" class="control-label col-xs-12 col-sm-2">QQ:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input type="qq" class="form-control" id="qq" name="row[qq]" />
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label for="password" class="control-label col-xs-12 col-sm-2">密码:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input type="password" class="form-control" id="password" name="row[password]" value="" data-rule="required;password" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="content" class="control-label col-xs-12 col-sm-2">状态:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <label for="row[status]-normal"><input id="row[status]-normal" checked="checked" name="row[status]" type="radio" value="normal"> 正常</label> 
+                                            <label for="row[status]-hidden"><input id="row[status]-hidden" name="row[status]" type="radio" value="normal"> 隐藏</label>        
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group hidden layer-footer">
+                                        <label class="control-label col-xs-12 col-sm-2"></label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <button type="submit" class="btn btn-success btn-embossed disabled">确定</button>
+                                            <button type="reset" class="btn btn-default btn-embossed">重置</button>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {include file="public/javascript" jsname="backend/admin/index" controllername="index"  actionname="add"/}
+    </body>
+ <script type="text/javascript">
+	window.onload = typeChange();
+ 
+	function typeChange(){
+ 
+ 
+	var countrySelect = document.getElementById('c-flag');//获取select的dom
+	var index = countrySelect.selectedIndex;
+	var gongying = document.getElementById('gongying');
+	var supplier = document.getElementById('supplier');
+	
+	var kefu = document.getElementById('kefu');
+	var kefus = document.getElementById('kefus');
+	var kf_id = document.getElementById('kf_id');
+		if(countrySelect.options[index].value == 3){
+			  gongying.style.display="block";			  
+			  supplier.setAttribute('name','row[supplier_id]');
+			  kefu.style.display="none";  					  
+			  kefus.style.display="none";  					  
+			  kf_id.setAttribute('name','');			  
+
+		}else if(countrySelect.options[index].value == 9){
+			  gongying.style.display="none";  					  
+			  supplier.setAttribute('name','');		
+			  kefu.style.display="block";			  
+			  kefus.style.display="block";			  
+			  kf_id.setAttribute('name','row[kf_id]');				  
+		}else {
+			  kefu.style.display="none";  						  
+			  kefus.style.display="none";  						  
+			  kf_id.setAttribute('name','');	
+			  gongying.style.display="none";  					  
+			  supplier.setAttribute('name','');	
+		} 
+
+
+	}
+	 
+</script>   
+</html>

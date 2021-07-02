@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>地址管理</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="__STATIC__/fx/css/base/mui.css" rel="stylesheet" />
+		<link href="__STATIC__/fx/css/base/base.css" rel="stylesheet" />
+		<link href="__STATIC__/fx/iconfont/iconfont.css" rel="stylesheet" />
+		<link href="__STATIC__/fx/css/pages/personal/my_address.css" rel="stylesheet" />
+	</head>
+	<style type="text/css">
+		.menu ul li .bottom .bottom_left em{
+			padding-right: 8px;
+			font-size: 18px;
+		}
+		.menu ul li .top span.moren{
+			font-size: 11px;
+			width: 40px;
+			height: 18px;
+			line-height: 16px;
+		}
+	</style>
+	<body>  
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">地址管理</h1>
+		</header>
+		<div class="mui-content">
+			<div class="menu">
+				<ul>
+					
+					<!--<li>
+						<div class="top">
+							<div class="user_name">
+								<span class="name">张三丰</span>
+								<label>180****1234</label>
+								<span class="moren">默认</span>
+								<p>河南省郑州市二七区大学路华城国际中心</p>
+							</div>
+						</div>
+						<div class="bottom">
+							<div class="bottom_left mui-radio mui-pull-left">
+								<em class="iconfont icon-dizhi1"></em>
+								<!--<input type="radio"  />
+								<span>默认地址</span>
+							</div>
+							<div class="bottom_right mui-pull-right">
+								<label class="bianji">
+									<em class="iconfont icon-bianji"></em>
+									<span>编辑</span>
+								</label>
+								<label class="shanchu">
+									<em class="iconfont icon-delete"></em>
+									<span>删除</span>
+								</label>
+							</div>
+						</div>
+					</li>
+					
+			
+					<li>
+						<div class="top">
+							<div class="user_name">
+								<span class="name">张三丰</span>
+								<label>180****1234</label>
+								<p>河南省郑州市二七区大学路华城国际中心</p>
+							</div>
+						</div>
+						<div class="bottom">
+							<div class="bottom_left mui-radio mui-pull-left">
+								<input type="radio"  />
+								<span>默认地址</span>
+							</div>
+							<div class="bottom_right mui-pull-right">
+								<label class="bianji">
+									<em class="iconfont icon-bianji"></em>
+									<span>编辑</span>
+								</label>
+								<label class="shanchu">
+									<em class="iconfont icon-delete"></em>
+									<span>编辑</span>
+								</label>
+							</div>
+						</div>
+					</li>-->
+				</ul>
+			</div>		
+			<div class="add_address">+添加新收货人</div>
+		</div>	
+	</body>
+	<script src="__STATIC__/fx/js/base/mui.js"></script>
+	<script src="__STATIC__/fx/js/base/castapp.js"></script>
+	<script src="__STATIC__/fx/js/base/jquery-3.2.1.min.js"></script>
+	<script src="__STATIC__/fx/js/base/hetao.js"></script>
+	<!--<script src="__STATIC__/fx/js/base/VConsole.js" type="text/javascript" charset="utf-8"></script>-->
+	<script type="text/javascript">
+		mui.init();
+		ca.init();
+		var user_id= "{$uid}";
+		var token= "{$token}";
+		ca.receiveNotice('add_address',function(){
+			console.log('新增地址通知到了');
+			address();
+		})
+		mui.plusReady(function(){plus.nativeUI.showWaiting();});
+		
+		//地址列表
+		function address(){
+			var obj={};
+			obj.uid=user_id;
+			obj.token=token;
+			ca.get({
+				url:hetao.url+'User/userAddr',
+				data:obj,
+				succFn:function(data){
+					var res=JSON.parse(data);
+					console.log(res);
+					var data=res.data;
+					var str='';
+					var moren='';
+					var moren1='';
+					if(res.status==1){
+						for(var i in data){
+							if(data[i].is_default==1){
+								moren='inline-block';
+								moren1='none';
+							}else{
+								moren='none';
+								moren1='inline-block';
+							}
+							str+='<li address_id="'+data[i].addr_id+'">'
+								+'<div class="top">'
+									+'<div class="user_name">'
+										+'<span class="name">'+data[i].addr_receiver+'</span>'
+										+'<label>'+data[i].addr_phone+'</label>'
+										+'<span class="moren" style="display:'+moren+';">默认</span>'
+										+'<p>' + res.data[i].province + res.data[i].city + res.data[i].district + data[i].addr_cont+'</p>'
+									+'</div>'
+								+'</div>'
+								+'<div class="bottom">'
+									+'<div class="bottom_left mui-radio mui-pull-left">'
+										+'<em class="iconfont icon-dizhi1" style="display:'+moren+';"></em>'
+										+'<input type="radio" style="display:'+moren1+';"/>'
+										+'<span>默认地址</span>'
+									+'</div>'
+									+'<div class="bottom_right mui-pull-right">'
+										+'<label class="bianji">'
+											+'<em class="iconfont icon-bianji"></em>'
+											+'<span>编辑</span>'
+										+'</label>'
+										+'<label class="shanchu">'
+											+'<em class="iconfont icon-delete"></em>'
+											+'<span>删除</span>'
+										+'</label>'
+									+'</div>'
+								+'</div>'
+							str+='</li>'
+						}
+						$('.menu ul').html(str);
+						if(data.length == 0){
+							$('.menu ul').html('<p class="mark">您还没有添加地址哦</p>');
+							$('.mui-content').css('height','100%');
+							$('.menu').css('height','100%');
+						}
+					}else{
+						$('.menu ul').html('<p class="mark">您还没有添加地址哦</p>');
+						$('.mui-content').css('height','100%');
+						$('.menu').css('height','100%');
+					}
+					mui.plusReady(function(){plus.nativeUI.closeWaiting();})
+				}
+			})
+		}
+		address();
+		
+		
+		
+		
+		
+		
+		
+		
+		//编辑收货地址
+		$('.menu').on('tap','.bianji',function(){
+			var id=$(this).parents('li').attr('address_id');
+			console.log(id);
+            window.location.href = hetao.url3+"/Api/Fx/edit_address/address_id/"+id;
+			// ca.newInterface({
+			// 	url:'edit_address.html?id='+id,
+			// 	id:'edit_address.html'
+			// })
+		});
+		
+		//新增收货地址
+		$('.add_address').click(function(){
+            window.location.href = hetao.url3+"/Api/Fx/add_address/uid/"+user_id+"/token/"+ token;
+			// ca.newInterface({
+			// 	url:'add_address.html',
+			// 	id:'add_address.html'
+			// })
+		});
+		//设为默认地址
+		$('.menu').on('tap','input',function(){
+		    //alert(11111);
+			var addrid=$(this).parents('li').attr('address_id');
+			console.log(addrid);
+			var obj={};
+			obj.uid=user_id;
+			obj.token=token;
+			obj.addrid=addrid;
+			console.log(obj);
+			ca.get({
+				url:hetao.url+'User/setDefault',
+				data:obj,
+				succFn:function(data){
+					var res=JSON.parse(data);
+					console.log(res);
+					if(res.status==1){
+						ca.prompt('地址修改默认成功');
+						address();
+						var arr=['../car/write_order.html'];
+						ca.sendNotice(arr,'dizhi',{});
+					}
+				}
+			})
+		});
+
+
+        //设为默认地址
+        $('.menu').on('tap','.top',function(){
+            //alert(11111);
+            var addrid=$(this).parents('li').attr('address_id');
+            console.log(addrid);
+            var obj={};
+            obj.uid=user_id;
+            obj.token=token;
+            obj.addrid=addrid;
+            console.log(obj);
+            ca.get({
+                url:hetao.url+'User/setDefault',
+                data:obj,
+                succFn:function(data){
+                    var res=JSON.parse(data);
+                    console.log(res);
+                    if(res.status==1){
+                        ca.prompt('地址修改默认成功');
+                        address();
+                        setTimeout(function () {
+                           // mui.back();
+                            window.location.href = hetao.url3+"/Api/Fx/write_order";
+                        },300)
+                    }
+                }
+            })
+        });
+
+
+
+
+
+		
+		//删除收货地址
+		$('.menu').on('tap','.shanchu',function(){
+			var addrid=$(this).parents('li').attr('address_id');
+			
+			var obj={};
+			obj.uid=user_id;
+			obj.token=token;
+			obj.addrid=addrid;
+			console.log(obj);
+			ca.get({
+				url:hetao.url+'User/addrDel',
+				data:obj,
+				succFn:function(data){
+					var res=JSON.parse(data);
+					console.log(res);
+					if(res.status==1){
+						ca.prompt('地址已删除');
+						address();
+						var arr=['../car/write_order.html'];
+						ca.sendNotice(arr,'dizhi',{});
+					}
+				}
+			})
+		});
+        var scrollTop;
+        $(window).scroll(function(){
+            console.log("下拉刷新");
+            scrollTop = $(this).scrollTop();
+			shuaxin();
+        });
+ 		function shuaxin() {
+            if (scrollTop < 0 ) {
+                location.reload();
+            }
+        }
+
+	</script>	
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>新增地址</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="__STATIC__/fx/css/base/muiedit.css">
+		<link rel="stylesheet" href="__STATIC__/fx/css/base/base.css">
+		<link rel="stylesheet" href="__STATIC__/fx/css/base/style.css">
+		<link rel="stylesheet" type="text/css" href="__STATIC__/fx/css/base/mui.picker.css" />
+		<link rel="stylesheet" type="text/css" href="__STATIC__/fx/css/base/mui.poppicker.css" />
+		<link href="__STATIC__/fx/css/pages/personal/address.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">新增收货人</h1>
+		</header>
+		<div class="mui-content">
+			<div class="add">
+				<ul>
+					<li class="shouhuo">
+						<label>姓名</label>
+						<input type="text" name="" value="" placeholder="请输入收货人姓名" id="shouhuo" />
+					</li>
+					<li class="mobile">
+						<label>手机号码</label>
+						<input type="number" name="" value="" placeholder="请填写手机号码" id="phone" />
+					</li>
+					<li class="mobile">
+						<label>邮政编码</label>
+						<input type="number" name="" value="" placeholder="请输入邮政编码" id="youbian" />
+					</li>
+					<li class="add_address" id='showCityPicker3'>
+						<label>所在区域</label>
+						<input type="text" name="" placeholder="请选择所在省份、城市、区县" value="" id='cityResult3' / onblur="this.blur()">  
+					</li>
+					<li class="xxdz">
+						<label>详细地址</label>
+						<textarea name="" rows="7" cols="" placeholder="街道、楼牌号等详细地址" id="detail_address"></textarea>
+					</li>
+				</ul>
+			</div>
+			<div class="check">
+				<label>设为默认地址</label>
+				<div class="mui-switch mui-switch-mini  mui-pull-right">
+					<div class="mui-switch-handle"></div>
+				</div>
+			</div>
+			<div class="keep">保存</div>
+		</div>
+	</body>
+
+</html>
+<script src="__STATIC__/fx/js/base/mui.js"></script>
+<script type="text/javascript" src="__STATIC__/fx/js/base/hetao.js"></script>
+<script src="__STATIC__/fx/js/base/castapp.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="__STATIC__/fx/js/base/jquery-3.2.1.min.js"></script>
+<script src="__STATIC__/fx/js/base/city.data-3.js" type="text/javascript" charset="utf-8"></script>
+<script src="__STATIC__/fx/js/base/mui.picker.js" type="text/javascript" charset="utf-8"></script>
+<script src="__STATIC__/fx/js/base/mui.poppicker.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	mui.init();
+	ca.init();
+    var user_id= "{$uid}";
+    var token= "{$token}";
+	//提交
+	$(".keep").click(function() {
+		var is_default;
+		var radio = $('.mui-switch').hasClass('mui-active');
+		if(radio == true) {
+			is_default = 1;
+		} else {
+			is_default = 0;
+		}
+
+		var consignee = $("#shouhuo").val();
+		var mobile = $("#phone").val();
+		var postno = $("#youbian").val();
+//		var quyu = $('#cityResult3').val();
+		if($('#showCityPicker3').attr('num')) {
+			var value = $('#showCityPicker3').attr('num').split(',');
+			console.log(value)
+			var province = value[0];
+			var city = value[1];
+			var district = value[2];
+		}
+		var cont = $("textarea").val();
+		if(consignee == "") {
+			ca.prompt('收货人不能为空');
+			return;
+		}
+		if(!(/^1[3|4|5|7|8][0-9]{9}$/.test(mobile))) {
+			ca.prompt('手机号格式不正确');
+			return;
+		}
+		if($('#cityResult3').val() == '') {
+			mui.toast('请选择所属区域');
+			return;
+		}
+		if(cont == "") {
+			ca.prompt('请输入详细地址');
+			return;
+		}
+
+		var act = {};
+		act.receiver = consignee;
+		act.phone = mobile;
+		act.postno = postno;
+		act.province = province;
+		act.city = city;
+		act.district = district;
+		act.cont = cont;
+		act.is_default = is_default;
+		act.uid = user_id;
+		act.token = token;
+		console.log(act);
+		$.ajax({
+			type: "get",
+			url: hetao.url + 'User/addrEdit',
+			data: act,
+			dataType: "json",
+			success: function(res) {
+				console.log(res);
+				if(res.status == 1) {
+					ca.prompt('地址添加成功');
+                    window.location.href = hetao.url3+"/Api/Fx/my_address";
+					// var arr = ['personal/my_address.html','../car/write_order.html','../personal/my_address.html'];
+					// ca.sendNotice(arr,'add_address',{});
+					// setTimeout(function() {
+					// 	ca.closeCurrentInterface();
+					// },300)
+				} else {
+					ca.prompt('地址添加失败');
+				}
+			}
+		});
+	});
+	
+	(function($, doc) {
+		$.init();
+		$.ready(function() {
+			/**
+			 * 获取对象属性的值
+			 * 主要用于过滤三级联动中，可能出现的最低级的数据不存在的情况，实际开发中需要注意这一点；
+			 * @param {Object} obj 对象
+			 * @param {String} param 属性名
+			 */
+			var _getParam = function(obj, param) {
+				return obj[param] || '';
+			};
+			//					//级联示例
+			var cityPicker3 = new $.PopPicker({
+				layer: 3
+			});
+			cityPicker3.setData(cityData3);
+			var showCityPickerButton = doc.getElementById('showCityPicker3');
+			var cityResult3 = doc.getElementById('cityResult3');
+			showCityPickerButton.addEventListener('tap', function(event) {
+				console.log('1')
+				cityPicker3.show(function(items) {
+					console.log(items);
+					cityResult3.value = _getParam(items[0], 'text') + " " + _getParam(items[1], 'text') + " " + _getParam(items[2], 'text');
+
+					showCityPickerButton.setAttribute('num', _getParam(items[0], 'value') + "," + _getParam(items[1], 'value') + "," + _getParam(items[2], 'value'))
+					//返回 false 可以阻止选择框的关闭
+					//return false;
+				});
+			}, false);
+		});
+	})(mui, document);
+</script>

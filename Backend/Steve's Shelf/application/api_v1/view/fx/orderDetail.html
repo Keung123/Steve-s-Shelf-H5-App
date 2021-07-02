@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>订单详情</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="__STATIC__/fx/css/base/mui.picker.css" rel="stylesheet" />
+		<link href="__STATIC__/fx/css/base/mui.poppicker.css" rel="stylesheet" />
+		<link href="__STATIC__/fx/css/base/base.css" rel="stylesheet" />	
+		<link href="__STATIC__/fx/iconfont/iconfont.css" rel="stylesheet" />
+		<link href="__STATIC__/fx/css/pages/personal/order_details.css" rel="stylesheet" />
+		<link href="__STATIC__/fx/css/base/mui.css" rel="stylesheet" />
+		<link href="__STATIC__/fx/css/base/base.css" rel="stylesheet" />
+		<link href="__STATIC__/fx/iconfont/iconfont.css" rel="stylesheet" />
+	</head>
+	<style>
+		.top {
+			padding: 35px 5px 0;
+			height: 50px;
+			line-height: 50px;
+			color: #fff;
+			background: #D31A1A;
+		}
+
+		#timer {
+			display: block; 
+			float: right; 
+			padding-right: 15px;
+		}
+		[v-cloak]{
+			display: none;
+		}
+	</style>
+	<body>  
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">订单详情</h1>
+		</header>
+		<div class="mui-content" id="payment" v-if="ctrl" v-cloak>
+			<div class="top" >
+				<div v-if="this.isTime">
+					<span id="timer"></span>
+					<img src="__STATIC__/fx/img/status_fukuan.png">
+					<span class="waiting">等待付款</span>
+				</div>
+				<div v-else>
+					<img src="__STATIC__/fx/img/status_guanbi.png">
+					<span>交易关闭</span>
+				</div>
+			</div>
+
+			<div class="base_bottom"></div>
+			<div class="address">
+				<div class="tubiao" style="background: #fff;">
+					<em class="iconfont icon-dizhi"></em>
+				</div>
+			<div class="shouhuo mui-pull-right" style="background: #fff;">
+					<span>{{addr_receiver}}</span>
+					<label class="mui-pull-right">{{addr_phone}}</label>
+					<p>{{addr_area + addr_cont}}</p>
+				</div>
+			</div>
+			<div class="base_bottom"></div>
+			<div class="shop" style="background: #fff;" @click="toGoods()">
+				<div class="pic" og_goods_id="this.goods.og_goods_id" og_acti_id="this.goods.og_acti_id">
+					<img :src="goods.og_goods_thumb"/>
+					<div class="mui-pull-right">
+						<span>{{goods.og_goods_name}}</span>
+						<label>规格：{{goods.og_goods_spec_val}}</label>
+						<p>
+							<em>¥{{goods.og_goods_price}}</em>
+							<i class="mui-pull-right">x{{goods.og_goods_num}}</i>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="base_bottom"></div>
+			<div class="shop_total shop_heji" style="background: #fff;">
+				<ul>  
+					<li>     
+						<span>商品合计</span>
+						<label>¥{{order_all_price}}</label>
+					</li>
+					<li>
+						<span>运费</span>
+						<label>¥{{order_freight}}</label>
+					</li>
+					<li>
+						<span>优惠券</span>
+						<label>¥{{c_coupon_price}}</label>
+					</li>
+					<li>
+						<span>元宝</span>
+						<label>¥{{yin_amount}}</label>
+					</li>
+					<li>
+						<span>充值卡</span>
+						<label>¥{{card_price}}</label>
+					</li>
+					<li>
+						<span>积分抵扣</span>
+						<label>¥{{order_pay_points}}</label>
+					</li>
+					<li>
+						<span>活动优惠</span>
+						<label>-¥{{discount_price}}</label>
+					</li>
+				</ul>
+			</div>
+			<div class="base_bottom"></div>
+			<div class="shop_total fapiao" style="background: #fff;">
+				<ul>  
+					<li>     
+						<span>发票类型</span>
+						<label>不需要发票</label>
+					</li>  
+				</ul>
+			</div>
+			<div class="base_bottom"></div>
+			<div class="shop_total order_xx" style="background: #fff;">
+				<ul>  
+					<li>     
+						<span>订单编号</span>
+						<em class="mui-pull-right" @click="copy()">复制</em>
+						<label>{{order_no}}</label>	
+					</li>                    
+					<li>   
+						<span>提交时间</span>
+						<label>{{order_create_time}}</label>
+					</li>
+				</ul>
+			</div>
+				<div class="base_bottom"></div>
+			<div v-if="this.isTime" class="money" style="background: #fff;">
+				<label>应付金额：<em>¥{{order_pay_price}}</em></label>	
+				<span class="fukuan" @click="fukuan()">立即付款</span>
+				<span class="quixao" @click="cancle()">取消订单</span>
+			</div>
+			<div v-else class="money" style="background: #fff;">
+				<span class="quixao" @click="toGoods()">再次购买</span>
+			</div>
+		</div>	
+	</body>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+	<script src="__STATIC__/fx/js/base/castapp.js"></script>
+	<script src="__STATIC__/fx/js/base/mui.js"></script>
+	<script src="__STATIC__/fx/js/base/jquery-3.2.1.min.js"></script>
+
+	<script>
+	 $(function(){
+        timer = setInterval(function(){
+            vm.CountDown();
+        }, 1000);
+    })
+		mui.init();
+    	ca.init();
+		var vm = new Vue({
+			el: "#payment",
+			data: {
+				addr_receiver: "",
+				addr_phone: "",
+				addr_area: "",
+				addr_cont: "",
+				goods: {
+					og_goods_id: "",
+					og_acti_id: "",
+					og_goods_thumb: "",
+					og_goods_name: "",
+					og_goods_spec_val: "",
+					og_goods_price: "",
+					og_goods_num: ""
+				},
+				order_all_price: "", // 商品合计
+				order_freight: "", // 运费
+				c_coupon_price: "", // 优惠券
+				yin_amount: "", // 元宝
+				card_price: "", // 充值卡
+				order_pay_points: "", // 积分抵扣
+				discount_price: "", // 活动优惠
+				order_create_time: "",
+				order_pay_price: "",
+				order_pay_time: "",
+				order_no:'',
+				obj: {
+					uid: "{$uid}",
+					token: "{$token}",
+					orderid: "{$order_id}",
+				},
+				isTime: true,
+				time_left: 0,
+				ctrl:true,
+				ajax_lock:false,
+				
+			},
+			created:function(){
+				this.getData();
+			},
+			methods: {
+				CountDown:function(){
+		            if (this.time_left > 0) {
+		                this.dealTime(this.time_left);
+		                --this.time_left;
+		            } else{
+		                clearInterval(timer);
+		                this.isTime = false;
+		                // $('.waiting').html('交易关闭');
+		            }
+		        },
+		        dealTime:function(num){
+		            minutes = Math.floor(num / 60);
+		            seconds = Math.floor(num % 60);
+		            function toDouble(n) {
+		                return n < 10 ? '0' + n : n;
+		            }
+		            var msg = '剩余: '+toDouble(minutes)+':'+toDouble(seconds);
+		            $('#timer').html(msg);
+		        },
+				getData:function(){
+					var self = this
+					ca.get({
+						// url:hetao.url+'order/orderCancle',
+						url:"{:url('order/orderDetails')}",
+						data:this.obj,
+						succFn:function(data){
+							var res=JSON.parse(data);
+							if(res.status==1){
+								self.addr_receiver = res.data.addr_receiver
+								self.addr_phone = res.data.addr_phone
+								self.addr_area = res.data.addr_area
+								self.addr_cont = res.data.addr_cont
+								self.goods = res.data.goods[0]
+								self.order_all_price = res.data.order_all_price
+								self.order_freight = res.data.order_freight
+								self.c_coupon_price = res.data.order_freight
+								self.yin_amount = res.data.yin_amount
+								self.card_price = res.data.card_price
+								self.order_pay_points = res.data.order_pay_points
+								self.discount_price = res.data.discount_price
+								self.order_create_time = res.data.order_create_time
+								self.order_pay_price = res.data.order_pay_price
+								self.order_pay_time = res.data.order_pay_time
+								self.order_no = res.data.order_no
+								// var dateT = +new Date();
+								var date = new Date(res.data.order_create_time);
+								var createDate = Math.floor(date.getTime()/1000);
+								var nowDate = +new Date();
+								nowDate = Math.floor(nowDate/1000);
+								if((nowDate-createDate)<1200){
+									self.time_left = 1200 - (nowDate-createDate);
+								}else{
+									self.time_left = 0
+								}
+								vm.CountDown();
+							}else{
+								self.ctrl = false
+							}
+						}
+					})
+				},
+				//跳转商品详情页
+				toGoods:function() {
+					window.location.href = hetao.url3+"/Api/Fx/goodsDetail?goodsid="+vm.goods.og_goods_id;
+				},
+		
+				//取消订单
+				cancle:function(){
+		            if(this.ajax_lock){
+		                return false;
+		            }
+		            ca.confirm({
+		                title:'提示',
+		                content:'确认是否取消订单',
+		                callback:function(data){
+		                    if(data){
+		                        //取消订单
+		                        vm.qx_order();
+		                    }
+		                }
+		            })
+		        },
+		        qx_order:function(){
+		            vm.ajax_lock = true;
+		            ca.get({
+		                url:"{:url('order/orderCancle')}",
+		                data:vm.obj,
+		                succFn:function(data){
+		                    var res=JSON.parse(data);
+		                    if(res.status==1){
+		                        ca.prompt('订单已取消');
+		                        clearInterval(timer);
+		                        vm.isTime = false;
+		                    }else{
+		                        vm.ajax_lock = false;
+		                        ca.prompt(res.msg);
+		                    }
+		                }
+		            })
+		        },
+				
+				// 立即付款
+				fukuan:function() {
+					window.location.href = hetao.url3+"/Api/Fx/zhifu_order?order_id="+vm.obj.orderid;
+				}
+			}
+		})
+	</script>
+	
+		
+</html>

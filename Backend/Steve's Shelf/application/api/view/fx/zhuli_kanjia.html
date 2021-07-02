@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>助力砍价</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="__STATIC__/fx/css/base/mui.css" rel="stylesheet" />
+		<link href="__STATIC__/fx/css/base/base.css" rel="stylesheet" />
+		<link href="__STATIC__/fx/iconfont/iconfont.css" rel="stylesheet" />
+	</head>
+	<style>
+		.menu{
+			width: 100%;
+			background: #F5F5F5;
+			border: 1px solid #F5F5F5;
+		}
+		.menu .content{
+			width: 94%;
+			margin-left: 3%;
+			margin-right: 3%;
+			background: #fff;
+		}
+		.menu .content .pic{
+			width: 100%;
+			text-align: center;
+			margin-top: 30px;
+		}
+		.menu .content .pic img{
+			height: 50px;
+			width: 50px;
+			border-radius: 50%;
+			margin-top: -15px;
+			margin-bottom: 5px;
+		}
+		.menu .content .pic p{
+			font-size: 12px;
+			color: #181818;
+			margin-bottom: 5px;
+		}
+		.menu .content .shop{
+			width: 98%;
+			margin-left: 1%;
+			margin-right: 1%;
+			overflow: hidden;
+			border: 1px solid #E8E8E8;
+		}
+		.menu .content .shop img{
+			width: 30%;
+			height: 105px;
+			margin-top: 12px;
+			margin-bottom: 12px;
+			float: left;
+		}
+		.menu .content .shop .shop_content{
+			width: 70%;
+			margin-top: 25px;
+			float: right;
+		}
+		.menu .content .shop .shop_content span.shop_xx{
+			width: 100%;
+			display: block;
+			display: -webkit-box;
+			-webkit-box-orient: vertical;
+			-webkit-line-clamp: 2;
+			overflow: hidden;
+		}
+		.menu .content .shop .shop_content p{
+			margin: 0;
+			font-size: 12px;
+			color: #999;
+		}
+		.menu .content .shop .shop_content .thunm span{
+			color: #D31A1A;
+		}
+		.money{
+			width: 96%;
+			margin-left: 2%;
+			margin-right: 2%;
+			margin-top: 15px;
+			padding-bottom: 15px;
+		}
+		.money span{
+			color: #181818;
+		}
+		.money label{
+			color: #D31A1A;
+		}
+		.yaoqing{
+			width: 100%;
+			padding: 12px 0;
+			text-align: center;
+		}
+		.yaoqing span{
+			width: 35%;
+			height: 30px;
+			text-align: center;
+			line-height: 30px;
+			display: inline-block;
+			color: #fff;
+			background: #D31A1A;
+			border-radius: 15px;
+		}
+		.yaoqing span:first-child{
+			margin-left: 10%;
+			margin-right: 10%;
+		}
+		.kanjia_xx{
+			width: 100%;
+		}
+		.kanjia_xx .top{
+			width: 100%;
+			height: 50px;
+			line-height: 50px;
+			text-align: center;
+		}
+		.kanjia_xx ul li{
+			width: 96%;
+			height: 65px;
+			margin-left: 2%;
+			margin-right: 2%;
+			border-top: 1px solid #eeeeee;
+		}
+		.kanjia_xx ul li img{
+			width: 45px;
+			height: 45px;
+			margin-top: 10px;
+			margin-right: 8px;
+			border-radius: 50%;
+		}
+		.kanjia_xx ul li .username{
+			width: 70%;
+			margin-top: 10px;
+		}
+		.kanjia_xx ul li .username p{
+			margin: 0;
+			font-size: 13px;
+			color: #181818;
+		}
+		.kanjia_xx ul li .kaodiao{
+			margin-top: -35px;
+			color: #D31A1A;
+		}
+		.zhedang{
+			width: 100%;
+			height: 100%;
+			bottom: 0;
+			position: absolute;
+			background: #2a2a2a;
+			background-color: rgba(0,0,0,0.4);
+			z-index: 99;
+		}
+		.sex_choice{
+			width: 100%;
+			text-align: center;
+			position: absolute;
+			bottom: 0;
+			background: #fff;
+			z-index: 9999999;	
+			border: 1px solid #d7d7d7;
+		}
+		.sex_choice div.fenxiang{
+			width: 80%;
+			margin-left: 10%;
+			margin-right: 10%;
+		}
+		.sex_choice div h4{
+			height: 45px;
+			line-height: 45px;
+			font-size: 15px;
+			font-weight: normal;
+			color: #181818;
+		}
+		.sex_choice ul li{
+			float: left;
+		}
+		.sex_choice ul li{
+			width: 33.33%;
+			border:none;
+			font-size: 13px;
+		}
+		.sex_choice ul li img{
+			height: 35px;
+			margin-bottom: 5px;
+		}
+		.sex_choice ul li p{
+			color: #181818;
+			margin-bottom: 15px;
+		}
+		.sex_choice div.quxiao{
+			width: 100%;
+			height: 55px;
+			line-height: 55px;
+			clear: both;
+			border-top: 1px solid #e8e8e8;
+		}
+		.mark{
+			padding: 20vw 0;
+		}
+	</style>
+	<body>  
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">助力砍价</h1>
+		</header>
+		<div class="mui-content">
+			<div class="menu">
+				<div class="content">
+					<!--<div class="pic">
+						<img src="__STATIC__/fx/__STATIC__/fx/images/001.png"/>
+						<p>花开花落</p>
+						<span>我发现一件好货，一起来砍价吧！</span>
+					</div>
+					<div class="shop">
+						<img src="__STATIC__/fx/__STATIC__/fx/images/020.png" />
+						<div class="shop_content">
+							<span class="shop_xx">奥妙 洗衣液 16斤超值除菌除螨套装(3kg×2+1kg×2奥妙 洗衣液 16斤超值除菌除螨套装(3kg×2+1kg×2)</span>
+							<div class="thunm">
+								<p>原价¥199</p>
+								<span>砍后价¥89.9</span>
+							</div>
+						</div>
+					</div>
+					<div class="money">
+						<span>现价：¥174.2</span>
+						<div>
+							已砍<label>124.8元</label>，还能继续砍<label>84.3元</label>
+						</div>
+					</div>-->
+				</div>
+				<div class="yaoqing">
+					<span class="share">帮好友砍价</span>
+					<!--<span>立即购买</span>-->
+				</div>
+			</div>
+			<div class="kanjia_xx">
+				<div class="top">砍价帮</div>
+				<ul>
+					<!--<li>
+						<img src="__STATIC__/fx/__STATIC__/fx/images/001.png" class="mui-pull-left" />
+						<div class="username">
+							<span>斯巴达</span> 
+							<p>2018-05-22</p>
+						</div>
+						<div class="mui-pull-right kaodiao">砍掉100</div>
+					</li>
+					<li>
+						<img src="__STATIC__/fx/__STATIC__/fx/images/001.png" class="mui-pull-left" />
+						<div class="username">
+							<span>斯巴达</span> 
+							<p>2018-05-22</p>
+						</div>
+						<div class="mui-pull-right kaodiao">砍掉100</div>
+					</li>-->
+				</ul>
+			</div>
+		</div>	
+	</body>
+	<script src="__STATIC__/fx/js/base/mui.js"></script>
+	<script src="__STATIC__/fx/js/base/castapp.js"></script>
+	<script src="__STATIC__/fx/js/base/jquery-3.2.1.min.js"></script>
+	<script src="__STATIC__/fx/js/base/hetao.js"></script>
+	<script type="text/javascript">
+		mui.init();
+		ca.init();
+		var user_id = "{$uid}";
+		var token = "{$token}";
+		var bargain_id = "{$bargain_id}";
+		var kaikan_id = "{$kaikan_id}";
+		
+		
+
+		function kanjia(){
+			var obj={};
+			obj.uid=user_id;
+			obj.token=token;
+			obj.bargain_id=kaikan_id;// 根据开砍 id 获取数据
+			console.log(obj);
+			ca.get({
+				url:hetao.url+'Activity/bargainInfo',
+				data:obj,
+				succFn:function(data){
+					var res=JSON.parse(data);
+					console.log(res);
+					var str='';
+					var kan_str='';
+					var user_avat;
+					var list=res.data.list;
+					if(res.status==1){
+						if(!res.data.user_avat){
+							user_avat='__STATIC__/fx/__STATIC__/fx/img/hetao.png';
+						}else if(res.data.user_avat.indexOf('http')!=-1){
+							user_avat=res.data.user_avat;
+						}else if(res.data.user_avat){
+							user_avat=hetao.url2+res.data.user_avat;
+						}
+						str+='<div class="pic">'
+							+'<img src="'+user_avat+'" />'
+							+'<p>'+res.data.user_name+'</p>'
+							+'<span>我发现一件好货，一起来砍价吧！</span>'
+						str+='</div>'
+						str+='<div class="shop">'
+							+'<img src="'+hetao.url2+''+res.data.picture+'" />'
+							+'<div class="shop_content">'
+								+'<span class="shop_xx">'+res.data.goods_name+'</span>'
+								+'<div class="thunm">'
+									+'<p>原价¥'+res.data.price+'</p>'
+									+'<span>砍后价¥'+res.data.end_price+'</span>'
+								+'</div>'
+							+'</div>'
+						str+='</div>'
+						str+='<div class="money">'
+							+'<span>现价：¥'+res.data.now_price+'</span>'
+							+'<div>';
+						var continue_price = res.data.continue_price;
+						if (parseFloat(continue_price) <= 0) {
+                            str+= '已砍<label>'+res.data.has_price+'元</label>，砍价已完成';
+                            $('.share').css('background', '#ccc');
+						} else {
+                            str+= '已砍<label>'+res.data.has_price+'元</label>，还能继续砍<label>'+res.data.continue_price+'元</label>';
+                        }
+						str+= '</div>';
+						str+='</div>';
+						$('.content').html(str);
+						var head_img;
+						if(list.length!=0){
+							//$('.share').html('继续邀请好友');
+							for(var i in list){
+								if(list[i].head_img.indexOf('http')!=-1){
+									head_img=list[i].head_img;
+								}else if(list[i].head_img){
+									head_img=hetao.url2+list[i].head_img;
+								}else{
+									head_img='__STATIC__/fx/img/hetao.png';
+								}
+							
+							
+								kan_str+='<li>'
+									+'<img src="'+head_img+'" class="mui-pull-left" />'
+									+'<div class="username">'
+										+'<span>'+list[i].nick_name+'</span>'
+										+'<p>'+list[i].join_time+'</p>'
+									+'</div>'
+									+'<div class="mui-pull-right kaodiao">砍掉'+list[i].dis_price+'</div>'
+								kan_str+='</li>'
+							}	
+							$('.kanjia_xx ul').html(kan_str);
+						}else{
+							//$('.share').html('邀请好友');
+							$('.kanjia_xx ul').html('<p class="mark">还没有好友帮您砍价</p>').css({'background':'#fff','height':'100%'});
+						}	
+					}
+				}
+			})
+		}
+		kanjia();
+		
+		
+		//邀请好友
+		$('.share').click(function(){
+
+			if(parseInt(user_id)){
+				var obj={};
+				obj.uid=user_id;
+				obj.token=token;
+				obj.id=kaikan_id;
+				obj.bargain_id=bargain_id;
+				console.log(obj);
+				ca.get({
+					url:hetao.url+'Activity/joinBargain',
+					data:obj,
+					succFn:function(data){
+						var res=JSON.parse(data);
+						console.log(res);
+						if(res.status==1){
+							ca.prompt('帮忙砍价成功');
+							kanjia();
+						}else{
+							ca.prompt(res.msg);
+						}
+					}
+				})
+			}else{
+                var yaoqingma = "{$yaoqingma}";
+                window.location.href = hetao.url3+"/Api/Fx/zhuli_kanjia?bargain_id="+bargain_id+"&yaoqingma="+yaoqingma+"&type=ysorpt&kaikan_id="+kaikan_id;
+			}
+		});
+//		
+//		$('.quxiao').click(function(){
+//			$('.zhedang').css('display','none');
+//		});
+		
+		
+		function plusReady() {
+			tuijian = localStorage.getItem('tuijian')
+			phone_tjr = localStorage.getItem('user_name')
+		
+			function updateSerivces() {
+				plus.share.getServices(function(s) {
+					shares = {};
+					for(var i in s) {
+						var t = s[i];
+						shares[t.id] = t;
+					}
+				}, function(e) {
+					console.log('获取分享服务列表失败：' + e.message);
+				});
+			}
+		
+			updateSerivces();
+			//	var img_pic;
+			var share_weixin_2 = ca.className("weixin");
+			ca.click(share_weixin_2[0], function() {
+				console.log(33333333);
+				//img_pic=$('#fenxiang_pic').attr('src');
+				var share = shares["weixin"];
+		
+				if(share.authenticated) {
+					shareMessage_1(share, "WXSceneSession");
+				} else {
+					share.authorize(function() {
+						shareMessage_1(share, "WXSceneSession");
+					}, function(e) {
+						console.log("认证授权失败：" + e.code + " - " + e.message);
+					});
+				}
+			});
+		
+			$('.qq_fenxiang').click(function() {
+				console.log(32222222);
+				//img_pic=$('#fenxiang_pic').attr('src');
+				var share = shares["qq"];
+				if(share.authenticated) {
+					shareMessage_1(share, 'qq');
+				} else {
+					share.authorize(function() {
+						shareMessage_1(share, 'qq');
+					}, function(e) {
+						console.log("认证授权失败：" + e.code + " - " + e.message);
+					});
+				}
+			});
+		
+			//	$('.penyouquan').click(function(){
+			//		console.log(32222222);
+			//		//img_pic=$('#fenxiang_pic').attr('src');
+			//		var share = shares["weixin"];			
+			//		if (share.authenticated) {
+			//			shareMessage_1(share,'WXSceneTimeline');
+			//		} else {
+			//			share.authorize(function() {
+			//				shareMessage_1(share,'WXSceneTimeline');
+			//			}, function(e) {
+			//				console.log("认证授权失败：" + e.code + " - " + e.message);
+			//			});
+			//		}		  
+			//	});  
+		
+			function shareMessage_1(share, ex) {
+				//var tuijian=localStorage.getItem('tuijian');
+				var msg = {
+					extra: {
+						scene: ex
+					}
+				};
+				if(msg.extra.scene == "WXSceneSession" || msg.extra.scene == "WXSceneTimeline" ){
+					msg.type = "web";
+				}
+				msg.href = hetao.url3+"/api/fx/goods_details?user_id=" + user_id+'&'+token+'&'+bargain_id;
+				msg.title = '合陶';
+				msg.content = $('.text_overflow').html();
+				msg.thumbs = [window.location.origin + "/uploads/default/hetao.png"];
+				//msg.pictures=img_pic;
+				console.log(msg.content);
+				console.log(msg.thumbs);
+				console.log(msg.href);
+				//console.log(msg.pictures);
+				share.send(msg, function() {
+					$('.zhezhao-fenxiang').css('display', 'none');
+					console.log("分享到\"" + share.description + "\"成功！ ");
+		
+				}, function(e) {
+					console.log("分享到\"" + share.description + "\"失败: " + e.code + " - " + e.message);
+				});
+			}
+		}
+		if(window.plus) {
+			plusReady();
+		} else {
+			document.addEventListener('plusready', plusReady, false);
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</script>	
+</html>

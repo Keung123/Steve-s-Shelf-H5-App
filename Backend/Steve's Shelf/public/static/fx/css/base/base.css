@@ -1,0 +1,351 @@
+ /*
+ **
+ * *
+ * * * web重置样式表  h
+ * *
+ **
+ * #                                                   #
+ * #                       _oo0oo_                     #
+ * #                      o8888888o                    #
+ * #                      88" . "88                    #
+ * #                      (| -_- |)                    #
+ * #                      0\  =  /0                    #
+ * #                    ___/`---'\___                  #
+ * #                  .' \\|     |# '.                 #
+ * #                 / \\|||  :  |||# \                #
+ * #                / _||||| -:- |||||- \              #
+ * #               |   | \\\  -  #/ |   |              #
+ * #               | \_|  ''\---/''  |_/ |             #
+ * #               \  .-\__  '-'  ___/-. /             #
+ * #             ___'. .'  /--.--\  `. .'___           #
+ * #          ."" '<  `.___\_<|>_/___.' >' "".         #
+ * #         | | :  `- \`.;`\ _ /`;.`/ - ` : | |       #
+ * #         \  \ `_.   \_ __\ /__ _/   .-` /  /       #
+ * #     =====`-.____`.___ \_____/___.-`___.-'=====    #
+ * #                       `=---='                     #
+ * #     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~   #
+ * #                                                   #
+ * #               佛祖保佑         永无BUG              	   #
+ * #                                                   #
+ */
+ /*公共样式*/
+ /* list elements 列表元素 */
+
+ *,
+ dl,
+ dt,
+ dd,
+ ul,
+ ol,
+ li,
+ a,
+ address,
+ img,
+ /* text formatting elements 文本格式元素 */
+
+ pre,
+ small,
+ b,
+ i,
+ em,
+ /* form elements 表单元素 */
+
+ fieldset,
+ lengend,
+ button,
+ input,
+ textarea,
+ form,
+ label,
+ /* table elements 表格元素 */
+
+ table,
+ caption,
+ tbody,
+ tfoot,
+ thead,
+ tr,
+ th,
+ td,
+ article,
+ footer,
+ header,
+ nav,
+ section,
+ audio,
+ video html,
+ body,
+ div {
+ 	padding: 0;
+ 	margin: 0;
+ 	/*设置盒模型*/
+ 	box-sizing: border-box;
+ 	/*去除移动端特有的点击高亮效果*/
+ 	-webkit-tap-highlight-color: transparent;
+ }
+
+ body, html{
+	    font-family: "微软雅黑",sans-serif;
+	    font-size: 14px;
+	    /*移动端开发，去掉手机右侧滚动条*/
+	   	height:100%;
+		overflow:hidden;
+		overflow-y: scroll;
+		max-width: 640px;
+		margin: 0 auto;
+		background-color: #fff !important;
+    }
+
+ a,
+ a:hover {
+ 	color: #666;
+ 	text-decoration: none;
+ }
+
+ i,
+ em {
+ 	font-style: normal;
+ }
+
+ li,
+ ul {
+ 	list-style: none;
+ }
+
+ input {
+ 	// 1.清除文本框获取焦点时默认的边框阴影
+ 	outline: none;
+ 	/*2.去除边框*/
+ 	border: none;
+ 	/*3.添加边框*/
+ 	border: 1px solid #ccc;
+ }
+ /*解决在苹果手机上input颜色显示与border-radius显示不正常问题*/
+
+ input[type=button],
+ input[type=reset],
+ input[type=submit],
+ input[type=file],
+ button {
+ 	cursor: pointer;
+ 	-webkit-appearance: none;
+ }
+ /*以下两种都可以用于清除浮动*/
+ /*这一种可以在需要清除浮动的下面用空标签*/
+
+ .clearfloat {
+ 	clear: both;
+ }
+ /*这一种需要在浮动元素的父元素上使用，当然这一种也可以用于溢出部分隐藏等*/
+
+ .clearfix {
+ 	overflow: hidden;
+ }
+ /*给表头表体重设边框*/
+
+ table th,
+ table td {
+ 	border: solid 1px #ccc;
+ }
+ /*解决以下三种在点击的瞬间出现虚线边框的问题*/
+
+ a:focus {
+ 	outline: none;
+ }
+
+ button:focus {
+ 	outline: none;
+ }
+
+ input:focus {
+ 	outline: none;
+ }
+
+ img {
+ 	vertical-align: middle;
+ }
+ /*去掉表格默认边框,内塌陷等*/
+
+ table {
+ 	border: none;
+ 	cellspacing: 0;
+ 	cellpadding: 0;
+ }
+ /*给表头表体重设边框*/
+
+ table th,
+ table td {
+ 	border: solid 1px #ccc;
+ }
+ /*图片定高、不定高如何水平垂直居中*/
+ /*下面的类给图片的父元素加上即可*/
+
+ .parent_pic {
+ 	display: table-cell;
+ 	text-align: center;
+ 	vertical-align: middle;
+ }
+ /*解决多行定高|不定高|定宽|不定宽水平垂直居中|一行多列水平垂直居中*/
+ /*父元素加这个类*/
+
+ .parent_box {
+ 	/*也可设置固定宽高*/
+ 	display: table-cell;
+ 	text-align: center;
+ 	vertical-align: middle;
+ }
+ /*子元素加这个类*/
+
+ .parent_box_child {
+ 	display: inline-block;
+ }
+ /*不知道自身与父元素宽高且也不知道父元素下到底多少个子元素时,实现水平垂直居中*/
+ /*父元素需要加的类*/
+
+ .parent_total {
+ 	position: relative;
+ }
+ /*子元素需要加的类*/
+
+ .child_con {
+ 	position: absolute;
+ 	top: 50%;
+ 	left: 50%;
+ 	transform: translate(-50%, -50%);
+ }
+ /*单行元素 溢出省略并显示省略号 但必须是块级元素才有效*/
+
+ .text_overflow {
+ 	display: -webkit-box !important;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+ }
+/* 多行文本  溢出省略并显示省略号 */
+
+.text_line{
+	 /*必须结合的属性 ，将对象作为弹性伸缩盒子模型显示 。*/
+    display: -webkit-box;
+     /*必须结合的属性 ，设置或检索伸缩盒对象的子元素的排列方式 。*/
+    -webkit-box-orient: vertical;
+    /*限制在一个块元素显示的文本的行数。*/
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+
+ /*多行文本需要强制换行*/
+
+ .txet_wrap {
+ 	white-space: wrap;
+ 	/*中文需要强制换行*/
+ 	word-wrap: break-word;
+ 	/*以英文单词作为换行依据*/
+ 	word-break: break-all;
+ 	/*以英文字母作为换行依据*/
+ }
+ /*给元素添加模糊效果*/
+
+ .blur_effet {
+ 	-webkit-filter: blur(3px);
+ 	-moz-filter: blur(3px);
+ 	-o-filter: blur(3px);
+ 	-ms-filter: blur(3px);
+ 	filter: blur(3px);
+ }
+ /*2.添加新的样式*/
+
+ .f_left {
+ 	float: left;
+ }
+
+ .f_right {
+ 	float: right;
+ }
+
+ .m_left10 {
+ 	margin-left: 10px;
+ }
+
+ .m_right10 {
+ 	margin-right: 10px;
+ }
+
+ .m_top10 {
+ 	margin-top: 10px;
+ }
+ /*公共样式*/
+
+ .mui-bar {
+ 	-webkit-box-shadow: inherit;
+ 	box-shadow: inherit;
+ 	border-bottom: 1px solid #e8e8e8;
+ 	background-color: #fff;
+ }
+
+ a, a:hover {
+    color: #181818;
+    text-decoration: none;
+}
+
+ .mui-bar .mui-title {
+ 	font-size: 16px;
+ 	color: #181818;
+ }
+
+ a.back {
+ 	font-size: 14px;
+ 	text-align: left;
+ 	line-height: 44px;
+ }
+
+ .mui-bar-nav {
+ 	-webkit-box-shadow: inherit;
+ 	box-shadow: inherit;
+ }
+
+ .display-none {
+ 	display: none!important;
+ }
+
+ .display-block {
+ 	display: block;
+ }
+ .mui-content {
+ 	background-color: #fff !important;
+ }
+
+.mui-picker{
+	background-color: #fff !important;
+}
+.mui-dtpicker-title h5{
+	background-color: #fff !important;
+}
+.mui-dtpicker, .mui-poppicker{
+	background-color: #fff !important;
+}
+input[type='submit'], .mui-btn-primary, .mui-btn-blue{
+	background-color:#D31A1A;
+	border: none;
+}
+ .dz{
+ 	display: none;
+ }
+.display-flex{
+	display: -webkit-box;  /* 老版本语法: Safari, iOS, Android browser, older WebKit browsers. */
+    display: -moz-box;     /* 老版本语法: Firefox (buggy) */
+    display: -ms-flexbox;  /* 混合版本语法: IE 10 */
+    display: -webkit-flex; /* 新版本语法: Chrome 21+ */
+    display: flex;         /* 新版本语法: Opera 12.1, Firefox 22+ */
+}
+.flex{
+	    -webkit-box-flex: 1   /* OLD - iOS 6-, Safari 3.1-6 */  
+    -moz-box-flex: 1;     /* OLD - Firefox 19- */              
+    -webkit-flex: 1;      /* Chrome */  
+    -ms-flex: 1           /* IE 10 */  
+    flex: 1;              /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+.mark{
+	padding: 40vw 0;
+	text-align: center;
+	font-size: 13px;
+}

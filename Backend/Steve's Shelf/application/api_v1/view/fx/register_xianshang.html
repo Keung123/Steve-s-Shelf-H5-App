@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>注册</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="__STATIC__/fx/css/base/mui.css" rel="stylesheet" />
+		<link href="__STATIC__/fx/css/base/base.css" rel="stylesheet" />
+		<link href="__STATIC__/fx/iconfont/iconfont.css" rel="stylesheet" />
+		<link href="__STATIC__/fx/css/pages/personal/register.css" rel="stylesheet" />
+	</head>
+	<style>
+		.liebiao ul li p{
+			font-size: 12px;
+			color: #D31A1A;
+			margin-bottom: 0;
+		}
+		.liebiao ul li input.qre_password{
+			margin-top: 0;
+		}
+	</style>
+	<body>  
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		</header>
+		<div class="mui-content">
+			<div class="top">
+				<h3>注册</h3>
+				<span>注册成为合陶家用户</span>
+			</div>
+			<div class="liebiao">
+				<ul>
+					<li>
+						<input type="text" class="phone" placeholder="手机号码" oninput="functionName()" />
+					</li>
+					<li>
+						<input type="text" class="code" placeholder="短信验证码" oninput="functionName()" />
+						<span class="mui-pull-right huoqu_code">获取验证码</span>
+					</li>
+					<li>
+						<input type="password" class="password" placeholder="设置密码" oninput="functionName()" style="position: relative;" />
+					</li>
+					<li>
+						<p>设置的密码不得小于八位，且必须包含数字和字母</p>
+						<input type="password" class="qre_password" placeholder="确认密码" oninput="functionName()" style="position: relative;" />
+					</li>
+					<li>
+						<input type="text" class="yaoqing" placeholder="邀请码" oninput="functionName()" style="position: relative;" />
+						<!--<span class="mui-pull-right huoqu_yaoqing">获取邀请码</span>-->
+					</li>
+				</ul>
+			</div>
+			<div class="footer-li">
+	    		<div class="mui-input-row mui-checkbox mui-left">
+	    		  <label></label>
+	    		  <input name="checkbox1" value="1" type="checkbox" checked="checked" >
+	    		</div>
+	    		<div class="tongyi">
+	    			<span>已阅读并同意</span>
+	    			<span class="xieyi">《用户服务协议》</span>
+	    		</div>	
+	    	</div>
+		    <div class="zhuce">
+		    	<span>注册</span>
+		    </div>
+		</div>	
+	</body>
+	<script src="__STATIC__/fx/js/base/mui.js"></script>
+	<script src="__STATIC__/fx/js/base/castapp.js"></script>
+	<script src="__STATIC__/fx/js/base/jquery-3.2.1.min.js"></script>
+	<script src="__STATIC__/fx/js/base/hetao.js"></script>
+	<script type="text/javascript">
+		mui.init();
+		ca.init();
+		var yaoqingma=window.location.search.split('=')[1];
+		console.log(yaoqingma);
+		$('.yaoqing').val(yaoqingma);
+		
+		function functionName(){	
+			var phone=$('.phone').val();
+			var password=$('.password').val();
+			var yaoqing=$('.yaoqing').val();
+			var code=$('.code').val();
+			console.log(password);
+			if(phone){
+				if(code){
+					if(password){
+						if(yaoqing){
+							$('.zhuce span').css('background','#D31A1A');
+						}else{
+							$('.zhuce span').css('background','#cccccc');
+						}
+					}else{
+						$('.zhuce span').css('background','#cccccc');
+					}
+				}else{
+					$('.zhuce span').css('background','#cccccc');
+				}	
+			}else{
+				$('.zhuce span').css('background','#cccccc');
+			}
+		}
+		
+		//获取邀请码
+		$('.huoqu_yaoqing').click(function(){
+			ca.get({
+				url:hetao.url+'store/getRandCode',
+				succFn:function(data){
+					var res=JSON.parse(data);
+					console.log(res);
+					if(res.status==1){
+						$('.yaoqing').val(res.data.invite_code);
+					}
+				}
+			})
+		});
+		
+		
+		
+		
+		
+		
+		var code_huoqu;
+		var phone_zhuce;
+		var code;
+		var mark = 1;
+		var num = 0;
+		var obj = {};	
+		/*验证码*/
+		$(".huoqu_code").click(function() {
+			if(num>0){
+				ca.prompt('验证码发送中，请勿重复点击');
+				return;
+			}else{
+				phone_zhuce=$(".phone").val();
+				if(!(/^1[3-9][0-9]{9}$/.test(phone_zhuce))){ 
+		     		 ca.prompt('手机号格式不正确');
+		     		 return;
+				 }
+				obj.mobile = phone_zhuce;
+				obj.type = 1;
+				console.log(obj);
+				$.ajax({
+					type: "post",
+					url: hetao.url + 'User/getCode',
+					data: obj,
+					dataType: "JSON",
+					success: function(res) {
+						console.log(1111111111);
+						console.log(res);
+						if(res.status == 1) {
+							ca.prompt("请求成功");
+								if(mark) {	
+									mark = 0;
+									var interval;
+									num = 60;
+									$(".huoqu_code").html("重新发送(60)秒");
+									interval = setInterval(function() {
+										num--;
+										$(".huoqu_code").html("重新发送(" + num + ")秒");
+										if(num <= 0) {
+											mark = 1;
+											$(".huoqu_code").html("重新获取验证码");
+										}
+									}, 1000);
+								}
+							code_huoqu = res.data;
+							console.log(code_huoqu);
+						}else{
+							ca.prompt(res.msg)
+						}
+					}
+				})
+			}	
+		});
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		$('.footer-li input').click(function(){
+			var index=$(this).val();
+			console.log(index);
+			
+			if(index==1){
+				$(this).val(2);
+			}else{
+				$(this).val(1);
+			}
+		});
+		
+		
+		
+		$('.zhuce span').click(function(){			
+			var phone=$(".phone").val();
+			var code=$('.code').val();
+			var password=$('.password').val();
+			var qre_password=$('.qre_password').val();
+			var yaoqing=$('.yaoqing').val();
+			var tongyi=$('.footer-li input').val();
+			
+			console.log(tongyi);
+			console.log(code_huoqu);
+			if(!(/^1[3-9][0-9]{9}$/.test(phone))){ 
+	     		 ca.prompt('手机号格式不正确');
+	     		 return;
+			 }
+			if(phone!=phone_zhuce){
+				ca.prompt('两次的手机号不一致');
+				return;
+			}
+			if(code!=code_huoqu){
+				ca.prompt('您输入的验证码不正确');
+				return;
+			}
+			var pwd_reg = /^[A-Za-z0-9]{8,20}$/;
+			if(!(pwd_reg.test(password))) {
+				mui.toast("密码不符合规则，请重新输入!");
+				return;
+			}
+			if(qre_password!=password){
+				mui.toast("您两次输入的密码不一致，请重新输入!");
+				return;
+			}
+			if(!yaoqing){
+				ca.prompt('请填写邀请人的邀请码');
+				return;
+			}
+			if(tongyi==2){
+				ca.prompt('请同意用户服务协议');
+				return;
+			}
+			obj.mobile=phone;
+			obj.code=code;
+			obj.pwd=password;
+			obj.invite_code=yaoqing;
+			console.log(obj);
+			ca.post({
+				url:hetao.url+'User/register',
+				data:obj,
+				succFn:function(data){
+					var res=JSON.parse(data);
+					console.log(res);
+					if(res.status==1){
+						ca.prompt('恭喜您注册成功');
+						localStorage.setItem('login_id',res.data.uid);
+						localStorage.setItem('login_token',res.data.token);
+						ca.closeCurrentInterface();
+//						setTimeout(function(){
+//							window.location.href='http://juangou.tainongnongzi.com/public/erweima/xianshang/shop-libao.html?goods_id='+goods_id+'&'+bag_id+'&'+yaoqingma+'&'+res.data.uid+'&'+res.data.token;
+//						},100); 
+					}else{
+						ca.prompt(res.msg);
+					}            
+				}
+			})		
+		});
+		
+		$('.xieyi').click(function(){
+			window.location.href=hetao.url3+'/Api/Fx/user_protocol';
+		});
+	</script>	
+</html>

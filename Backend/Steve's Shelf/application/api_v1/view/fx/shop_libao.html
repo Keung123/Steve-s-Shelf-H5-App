@@ -1,0 +1,247 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>合陶家开店大礼包</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<!--引入样式-->
+		<link rel="stylesheet" type="text/css" href="__STATIC__/fx/css/base/mui.min.css"/>
+		<link rel="stylesheet" type="text/css" href="__STATIC__/fx/css/base/base.css"/>
+	</head>
+	<style>
+		html,body{
+			height: auto;
+		}
+		.title{
+			width: 100%;
+		}
+		.title img{
+			width: 100%;
+		}
+		.shop_sp{
+			width: 100%;
+			overflow: hidden;
+			padding-bottom: 100px
+		}
+		.shop_sp label{
+			height: 45px;
+			text-align: center;
+			line-height: 45px;
+			display: block;
+		}
+		.shop_sp ul li{
+			width: 50%;
+			text-align: center;
+			float: left;
+			margin-bottom: 15px;
+		}
+		.shop_sp ul li img{
+			width: 80%;
+		}
+		.shop_sp ul li p{
+			/*height: 45px;*/
+			margin-bottom: 0;
+			display: -webkit-box !important;
+		    -webkit-box-orient: vertical;
+		    -webkit-line-clamp: 2;
+		    overflow: hidden;
+		    color: #181818;
+		}
+		.shop_sp ul li span{
+			font-size: 13px;
+			color: #D31A1A;
+		}
+		.shop_sp ul li span em{
+			font-size: 16px;
+		}
+		.chakan{
+			width: 90%;
+			height: 30px;
+			margin-left: 5%;
+			margin-bottom: 25px;
+			text-align: center;
+			line-height: 30px;
+			color: #D31A1A;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+		}
+		.shop_pic{
+			width: 96%;
+			margin-left: 2%;
+		}
+		.shop_pic ul li{
+			width: 100%;
+		}
+		.shop_pic ul li img{
+			width: 100%;
+		}
+		.share{
+        	width: 96%;
+        	height: 45px;
+        	text-align: center;
+        	line-height: 45px;
+        	margin: 0 2%;
+	    	font-size: 15px;
+	    	color: #fff;
+	    	background: #D31A1A;
+	    	border-radius: 22px;
+    	    position: fixed;
+			bottom: 15px;
+        }
+	</style>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">成为合陶家店主</h1>
+		</header>
+		<div class="mui-content">
+			<div class="title">
+				
+			</div>
+		    <div class="shop_sp">
+		    	<label>开店专属礼包</label>
+		    	<ul>
+		    		<!--<li>
+		    			<img src="__STATIC__/fx/images/001.png" />
+		    			<p>ishi撒旦教</p>
+		    			<span>¥<em>398</em></span>
+		    		</li>
+		    		<li>
+		    			<img src="__STATIC__/fx/images/001.png" />
+		    			<p>ishi撒旦教</p>
+		    			<span>¥<em>398</em></span>
+		    		</li>
+		    		<li>
+		    			<img src="__STATIC__/fx/images/001.png" />
+		    			<p>ishi撒旦教</p>
+		    			<span>¥<em>398</em></span>
+		    		</li>
+		    		<li>
+		    			<img src="__STATIC__/fx/images/001.png" />
+		    			<p>ishi撒旦教</p>
+		    			<span>¥<em>398</em></span>
+		    		</li>-->
+		    	</ul>
+		    </div>
+		    <!--<div class="chakan">查看更多超值礼包</div>-->
+		    <!--<div class="shop_pic">
+		    	<ul>
+		    		<li><img src="__STATIC__/fx/images/001.png" /></li>
+		    	</ul>
+		    </div>-->
+		    <div class="share">一键开店</div>
+		</div>
+	</body>
+		<!--引入js文件-->
+		<script src="__STATIC__/fx/js/base/mui.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__STATIC__/fx/js/base/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__STATIC__/fx/js/base/castapp.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__STATIC__/fx/js/base/hetao.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			mui.init();
+			ca.init();
+			var user_id = "{$user_id}";
+			var yaoqingma = "{$yaoqingma}";
+			var login_id = "{$uid}";
+			var login_token = "{$token}";
+			function GetRequest() {		
+				var url = location.search; //获取url中"?"符后的字串  
+				var theRequest = new Object();
+				if(url.indexOf("?") != -1) {
+					var str = url.substr(1);
+					console.log(str)
+					strs = str.split("&");
+					console.log(strs)
+					yaoqingma=strs[1];
+					login_id=strs[2];
+					if(login_id.indexOf('from')!=-1){
+						login_id='';
+					}else{
+						login_id=login_id;
+					}
+					login_token=strs[3];
+					console.log(yaoqingma);
+					console.log(login_id);
+					console.log(login_token);
+					for(var i = 0; i < strs.length; i++) {
+						theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+					}
+					user_id = theRequest.user_id;	
+					console.log(user_id)
+					//alert(mask)
+				}
+				return theRequest;
+			}
+			// GetRequest();
+			
+			//背景图
+			function beijing(){
+				var obj={};
+				obj.type='open',
+				ca.get({
+					url:hetao.url+'Index/getAdver',
+					data:obj,
+					succFn:function(data){
+						var res=JSON.parse(data);
+						console.log(res);
+						if(res.status==1){
+							$('.title').html('<img src="'+hetao.url2+''+res.data[0].image+'"  />');
+							//$('.shop_pic ul li').html('<img src="'+hetao.url2+''+res.data[1].image+'"  />');
+						}
+					}
+				})
+			}
+			beijing();
+		
+			
+			
+			
+			
+			
+			
+			
+			
+			//商品列表
+			function libao(){
+				ca.post({
+					url:hetao.url+'index/getLibao',
+					succFn:function(data){
+						var res=JSON.parse(data);
+						console.log(res);
+						var str='';
+						if(res.status==1){
+							var list =res.data;
+							for(var i in list){
+								str+='<li goods_id="'+list[i].goods_id+'">'
+									+'<img src="'+hetao.url2+''+list[i].picture+'" />'
+									+'<p>'+list[i].goods_name+'</p>'
+									+'<span>¥<em>'+list[i].price+'</em></span>'
+								str+='</li>'
+							}
+							$('.shop_sp ul').html(str);
+						}
+					}
+				})
+			}
+			libao()
+			$('.shop_sp').on('tap','li',function(){
+				var goods_id=$(this).attr('goods_id');
+				// window.location.href='http://juangou.tainongnongzi.com/public/erweima/xianshang/share_shop_gengduo.html?yaoqingma='+yaoqingma+'&'+goods_id+'&'+user_id;
+				window.location.href= hetao.url3+"/Api/fx/share_shop_gengduo?yaoqingma="+yaoqingma+"&goods_id="+goods_id+"&user_id="+user_id;
+			});
+			
+			
+			var jiage='';
+			$('.chakan').click(function(){
+				// window.location.href='http://juangou.tainongnongzi.com/public/erweima/xianshang/share_shop_gengduo.html?yaoqingma='+yaoqingma+'&'+jiage+'&'+user_id;
+                window.location.href= hetao.url3+"/Api/fx/share_shop_gengduo?yaoqingma="+yaoqingma+"&jiage="+jiage+"&user_id="+user_id;
+			});
+			
+			$('.share').click(function(){
+				// window.location.href='http://juangou.tainongnongzi.com/public/erweima/xianshang/share_shop_gengduo.html?yaoqingma='+yaoqingma+'&'+jiage+'&'+user_id;
+                window.location.href= hetao.url3+"/Api/fx/share_shop_gengduo?yaoqingma="+yaoqingma+"&jiage="+jiage+"&user_id="+user_id;
+			});
+			
+		</script>
+</html>

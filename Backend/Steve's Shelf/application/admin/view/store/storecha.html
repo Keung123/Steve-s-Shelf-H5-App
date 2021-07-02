@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+{include file="public/head" title="店铺详情" /}
+<style>
+    .footer{
+        width:800px;
+        height: 40px;
+        margin:0 auto;
+        background-color: gainsboro;
+        border:1px;
+        border-color:grey;
+    }
+    h4{
+        margin-top:10px;
+        display: inline-block;
+        width: 750px;
+    }
+</style>
+<body class="inside-header inside-aside is-dialog">
+<div id="main" role="main">
+    <div class="tab-content tab-addtabs">
+        <div id="content">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <section class="content-header hide">
+                        <h1>
+                            控制台                                    <small>Control panel</small>
+                        </h1>
+                    </section>
+                    <div class="content">
+                        <form id="edit-form" class="form-horizontal form-ajax" role="form" data-toggle="validator" method="POST" action="{:url('admin/topic/add')}" enctype = "multipart/form-data">
+                            <div class="form-group footer">
+                                <h4 align="center">基本信息</h4>
+                            </div>
+                            <div class="form-group"style="border: 1px;margin-top: 30px">
+                                <label for="c-invoice_user" class="control-label col-xs-12 col-sm-2">店铺门店照片:</label>
+                                <div class="form-inline" style="display:inline-block ">
+                                    <img src="{$row['s_thumb']?:'/uploads/default/hetao.png'}" style="width: 80px;height: 75px;margin-left: 16px;">
+                                </div>
+                            </div>
+                            <div class="form-group"style="border: 1px;">
+                                <label for="c-invoice_user" class="control-label col-xs-12 col-sm-2">店铺头像:</label>
+                                <div class="form-inline" style="display:inline-block ">
+                                    <img src="{$row['s_logo']?:'/uploads/default/hetao.png'}" style="width: 80px;height: 75px;margin-left: 16px;border-radius:40px;">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="c-order_create_time" class="control-label col-xs-12 col-sm-2">店铺名称:</label>
+                                <div class="col-xs-12 col-sm-8" style="margin-top:7px;">
+                                    <span>{$row['s_name']}</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="c-order_create_time" class="control-label col-xs-12 col-sm-2">用户名:</label>
+                                <div class="col-xs-12 col-sm-8" style="margin-top:7px;">
+                                    <span>{$row['user_name']}</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="c-order_create_time" class="control-label col-xs-12 col-sm-2">店铺等级:</label>
+                                <div class="col-xs-12 col-sm-8" style="margin-top:7px;">
+                                    <span>{$row['s_grade']}</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="c-order_create_time" class="control-label col-xs-12 col-sm-2">开店时间:</label>
+                                <div class="col-xs-12 col-sm-8" style="margin-top:7px;">
+                                    <span>{$row['s_comm_time']}</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="c-order_create_time" class="control-label col-xs-12 col-sm-2">手机号码:</label>
+                                <div class="col-xs-12 col-sm-8" style="margin-top:7px;">
+                                    <span>{$row['user_mobile']}</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="c-order_create_time" class="control-label col-xs-12 col-sm-2">邀请码:</label>
+                                <div class="col-xs-12 col-sm-8" style="margin-top:7px;">
+                                    <span>{$row['s_invite_code']}</span>
+                                </div>
+                            </div>
+                            <div class="form-group footer">
+                                <h4 align="center">店铺销售额:¥&nbsp;{$saleroom.total}</h4>
+                            </div>
+                            <div class="form-group" style="margin-top: 30px;">
+                                <div class="col-xs-5 col-sm-4">
+                                    <a href="{:url('admin/store/selfShop',['s_id'=>$row['s_id']])}" >
+                                        <h5 align="center" style="color:red;" >¥&nbsp;{$saleroom.my_total}</h5>
+                                        <h5 align="center" >自己购物</h5>
+                                    </a>
+                                </div>
+                                <div class="col-xs-5 col-sm-4" >
+                                    <a href="{:url('admin/store/childShop',['s_id'=>$row['s_id']])}">
+                                        <h5 align="center" style="color:red;">¥&nbsp;{$saleroom.child_seller_total}</h5>
+                                        <h5 align="center" >子店铺销售</h5>
+                                    </a>
+                                </div>
+                                <div class="col-xs-5 col-sm-4">
+                                    <a href="{:url('admin/store/childVip',['s_id'=>$row['s_id']])}">
+                                        <h5 align="center" style="color:red;">¥&nbsp;{$saleroom.child_vip_total}</h5>
+                                        <h5 align="center" >子vip购物</h5>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="form-group footer">
+                                <h4 align="center">店铺总收入:¥&nbsp;{$store_total.total}</h4>
+                            </div>
+                            <div class="form-group" style="margin-top: 30px;">
+                                <div class="col-xs-5 col-sm-4">
+                                    <a href="{:url('admin/store/saleGain',['s_id'=>$row['s_id']])}">
+                                        <h5 align="center" style="color:red;">¥&nbsp;{$store_total.sale_total}</h5>
+                                        <h5 align="center" >销售利润</h5>
+                                    </a>
+                                </div>
+                                <div class="col-xs-5 col-sm-4" >
+                                    <a href="{:url('admin/store/teamReward',['s_id'=>$row['s_id']])}">
+                                        <h5 align="center" style="color:red;">¥&nbsp;{$store_total.team_total}</h5>
+                                        <h5 align="center" >团队奖励</h5>
+                                    </a>
+                                </div>
+                                <div class="col-xs-5 col-sm-4">
+                                    <a href="{:url('admin/store/perforReward',['s_id'=>$row['s_id']])}">
+                                        <h5 align="center" style="color:red;">¥&nbsp;{$store_total.perfor_total}</h5>
+                                        <h5 align="center" >业绩奖励</h5>
+                                    </a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+    // 更改layer标题
+    var oIframe = $(window.parent.document).find('iframe');
+    var oTitle = oIframe.parents('.layui-layer-content').siblings('.layui-layer-title');
+    oTitle.text(window.document.title).css('text-align', 'center'); 
+</script>
+</html>

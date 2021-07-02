@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>合陶家开店大礼包</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="__STATIC__/fx/css/base/mui.css" rel="stylesheet" />
+		<link href="__STATIC__/fx/css/base/base.css" rel="stylesheet" />
+		<link href="__STATIC__/fx/iconfont/iconfont.css" rel="stylesheet" />
+		<link href="__STATIC__/fx/css/base/mui.picker.css" type="text/css" rel="stylesheet" />
+		<link href="__STATIC__/fx/css/base/mui.picker.min.css" type="text/css" rel="stylesheet" />
+		<link href="__STATIC__/fx/css/base/mui.poppicker.css" type="text/css" rel="stylesheet" />
+		<link href="__STATIC__/fx/css/base/swiper.min.css" rel="stylesheet" />
+	</head>
+	<style>
+		html,body{
+			height: auto;
+		}
+		.menu{
+			width: 96%;
+			margin: 2%;
+		}
+		.swiper-container {
+			width: 100%;
+			height: 300px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		.swiper-slide {
+			/* text-align: center;*/
+			border: 1px solid #ccc;
+			/*background-size: cover;
+            background-position: center;*/
+		}
+		.active{
+			border: 1px solid #D31A1A;
+		}
+		.swiper-slide p{
+			display: -webkit-box !important;
+			-webkit-box-orient: vertical;
+			-webkit-line-clamp: 1;
+			overflow: hidden;
+		}
+		.central{
+			width: 100%;
+		}
+		.central .problem{
+			width: 100%;
+			height: 45px;
+			line-height: 45px;
+			text-align: center;
+		}
+		.central .problem img{
+			width: 20%;
+		}
+		.central .problem span{
+			margin-left: 8px;
+			margin-right: 8px;
+			color: #D31A1A;
+		}
+		.central ul li{
+			width: 96%;
+			margin: 10px 2%;
+			position: relative;
+		}
+		.central ul li img{
+			width: 57px;
+			height: 57px;
+			margin-right: 2%;
+		}
+		.central ul li div{
+			width: 82%;
+			margin-top: -50px;
+			margin-left: 65px;
+			position: absolute;
+		}
+		.central ul li div span{
+			font-size: 14px;
+			color: #181818;
+			display: inline-block;
+		}
+		.central ul li div p{
+			font-size: 13px;
+			color: #959595;
+		}
+		.share{
+			width: 96%;
+			height: 45px;
+			text-align: center;
+			line-height: 45px;
+			margin: 0 2%;
+			font-size: 15px;
+			color: #fff;
+			background: #D31A1A;
+			border-radius: 22px;
+			position: fixed;
+			bottom: 15px;
+		}
+		.swiper-container1 .swiper-slide {
+			width: 30%;
+		}
+		.swiper-container1 .swiper-slide img{
+			width: 100%;
+			padding: 10px;
+		}
+		.zhedang{
+			width: 100%;
+			height: 100%;
+			bottom: 0;
+			position: fixed;
+			background: #2a2a2a;
+			background-color: rgba(0,0,0,0.4);
+			z-index: 99;
+		}
+		.zhedang_fenxiang{
+			width: 100%;
+			height: 100%;
+			bottom: 0;
+			position: absolute;
+			background: #2a2a2a;
+			background-color: rgba(0,0,0,0.4);
+			z-index: 99;
+		}
+		.sex_choice{
+			width: 100%;
+			text-align: center;
+			position: absolute;
+			bottom: 0;
+			background: #fff;
+			z-index: 9999999;
+			border: 1px solid #d7d7d7;
+		}
+		.sex_choice div.fenxiang{
+			width: 80%;
+			margin-left: 10%;
+			margin-right: 10%;
+		}
+		.sex_choice div h4{
+			height: 45px;
+			line-height: 45px;
+			font-size: 15px;
+			font-weight: normal;
+			color: #181818;
+		}
+		.sex_choice ul li{
+			float: left;
+		}
+		.sex_choice ul li{
+			width: 33.33%;
+			border:none;
+			font-size: 13px;
+		}
+		.sex_choice ul li img{
+			height: 54px;
+			margin-bottom: 5px;
+		}
+		.sex_choice ul li p{
+			color: #181818;
+			margin-bottom: 15px;
+		}
+		.sex_choice div.quxiao{
+			width: 100%;
+			height: 55px;
+			line-height: 55px;
+			clear: both;
+			border-top: 1px solid #e8e8e8;
+		}
+		.sex_choice div.quxiao_fengxiang{
+			width: 100%;
+			height: 55px;
+			line-height: 55px;
+			clear: both;
+			border-top: 1px solid #e8e8e8;
+		}
+		.central ul li img{
+			width: 50px;
+			height: 50px;
+		}
+		.pic{
+			width: 100%;
+			position: fixed;
+		}
+		.shop{
+			width: 100%;
+		}
+		.shop .shop_xx{
+			width: 100%;
+			margin-top: 25px;
+			text-align: center;
+			padding-bottom: 25px;
+			margin-bottom: 8px;
+			border-bottom: 5px solid #E8E8E8;
+		}
+		.shop .shop_xx img{
+			width: 40%;
+			margin-bottom: 15px;
+		}
+		.shop .shop_xx p{
+			color: #D31A1A;
+			font-size: 13px;
+			margin-bottom: 5px;
+		}
+		.shop .shop_xx p em{
+			font-size: 16px;
+		}
+		.shop .shop_xx span{
+			display: block;
+			color: #181818;
+		}
+		.shop .shop_xx label{
+			width: 100%;
+			font-size: 13px;
+			color: #666;
+
+		}
+		.shop_pic{
+			width: 100%;
+		}
+		.shop_pic ul li img{
+			width: 100%;
+		}
+	</style>
+
+	<body>  
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">合陶家开店大礼包</h1>
+		</header>
+		<div class="mui-content">
+			<div class="menu">
+				<div class="swiper-container1">
+					<div class="swiper-wrapper">
+						<!--<div class="swiper-slide active">
+							<img src="../../images/001.png" />
+							<p>dfesfasdassdfsdfsfsdw</p>
+						</div>
+						<div class="swiper-slide">
+							<img src="../../images/002.png" />
+							<p>dfesfasdassdfsdfsfsdw</p>
+						</div>
+						<div class="swiper-slide">
+							<img src="../../images/003.png" />
+							<p>dfesfasdassdfsdfsfsdw</p>
+						</div>
+						<div class="swiper-slide">
+							<img src="../../images/004.png" />
+							<p>dfesfasdassdfsdfsfsdw</p>
+						</div>
+						<div class="swiper-slide">
+							<img src="../../images/004.png" />
+							<p>dfesfasdassdfsdfsfsdw</p>
+						</div>-->
+					</div> 
+				</div>
+			</div>
+			<div class="shop">
+				<!--<div class="shop_xx">
+					<img src="../../images/004.png" />
+					<p>¥<em>395</em></p>
+					<span>技术的开发接口附近为空</span>
+					<label>库存3469件</label>
+				</div>
+				<div class="shop_pic">
+					<ul>
+						<li><img src="../../images/004.png" /></li>
+						<li><img src="../../images/004.png" /></li>
+						<li><img src="../../images/004.png" /></li>
+						<li><img src="../../images/004.png" /></li>
+						<li><img src="../../images/004.png" /></li>
+					</ul>
+				</div>-->
+			</div>
+			
+			
+			<div class="share">立即领取</div>
+		</div>			
+	</body>
+	<script src="__STATIC__/fx/js/base/mui.js"></script>
+	<script src="__STATIC__/fx/js/base/castapp.js"></script>
+	<script src="__STATIC__/fx/js/base/jquery-3.2.1.min.js"></script>
+	<script src="__STATIC__/fx/js/base/mui.picker.js"></script>
+	<script src="__STATIC__/fx/js/base/mui.picker.min.js"></script>
+	<script src="__STATIC__/fx/js/base/mui.poppicker.js"></script>
+	<script src="__STATIC__/fx/js/base/city.data-3.js"></script>
+	<script src="__STATIC__/fx/js/base/webviewGroup.js"></script>
+	<script src="__STATIC__/fx/js/base/swiper.min.js"></script>
+	<script src="__STATIC__/fx/js/base/hetao.js"></script>
+	<script type="text/javascript">
+		mui.init();
+		ca.init();
+		//alert(1111111111);
+        // 判断是否是 微信 游览器
+        var ua = navigator.userAgent.toLowerCase();
+        if (ua.match(/MicroMessenger/i) == "micromessenger") {
+
+        } else {
+            $('.share').css('display', 'none');
+		}
+		var goods_id = "{$goods_id}";
+		//mui.plusReady(function(){plus.nativeUI.showWaiting();});
+		var user_id = "{$user_id}";
+		var yaoqingma = "{$yaoqingma}";
+		var login_id = "{$uid}";
+		var login_token = "{$token}";
+        var login_type;
+        login_type = "{$is_seller}";
+		function GetRequest() {		
+			var url = location.search; //获取url中"?"符后的字串  
+			var theRequest = new Object();
+			if(url.indexOf("?") != -1) {
+				var str = url.substr(1);
+				console.log(str)
+				strs = str.split("&");
+				console.log(strs);
+				if(strs.length==3){
+					yaoqingma=strs[0].split('=')[1];
+					goods_id=strs[1];
+					user_id = strs[2];
+					console.log(yaoqingma);
+					console.log(goods_id);
+					console.log(user_id);
+				}else{
+					goods_id=strs[1];
+					yaoqingma=strs[2];
+					login_id=strs[3];
+					console.log(login_id);
+					if(login_id.indexOf('from')!=-1){
+						login_id='';
+					}else{
+						login_id=login_id;
+					}
+					login_token=strs[4];
+					console.log(yaoqingma);
+					console.log(login_id);
+					console.log(login_token);
+					for(var i = 0; i < strs.length; i++) {
+						theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+					}
+					user_id = theRequest.user_id;	
+					console.log(user_id)
+					//alert(user_id)
+				}
+				
+				
+			}
+			return theRequest;
+		}
+		// GetRequest();
+		//alert(user_id);
+		//alert(shop_id)
+		function libao(){
+			ca.post({
+				url:hetao.url+'index/getLibao',
+				succFn:function(data){
+					var res=JSON.parse(data);
+					console.log(res);
+					var data=res.data;
+					var str='';
+					var str1='';
+					var yangshi;
+					//alert(res.status);
+					if(res.status==1){
+						// goods_id=res.data.goods_id;
+//						$('.pic img').attr('src',hetao.url2+data.images[0]);
+						for(var i in data){
+							if(goods_id){
+								if(goods_id==data[i].goods_id){
+									yangshi='active';
+								}else{
+									yangshi='';
+								}
+							}else{
+								if(i==0){
+									yangshi='active';
+								}else{
+									yangshi='';
+								}
+							}
+							str+='<div class="swiper-slide '+yangshi+'" goods_id="'+data[i].goods_id+'"><img src="'+hetao.url2+''+data[i].picture+'" /><p>'+data[i].goods_name+'</p></div>'
+						}
+						setTimeout(function(){
+							//shar();
+							var swiper = new Swiper('.swiper-container1', {
+								//loop:true,
+								slidesPerView: 'auto',
+								spaceBetween: 6,
+								freeMode: true,
+								// observer:true,//修改swiper自己或子元素时，自动初始化swiper
+								// observeParents:true,//修改swiper的父元素时，自动初始化swiper
+							});
+						},500)		
+						$('.swiper-container1 .swiper-wrapper').html(str);
+						//mui.plusReady(function(){plus.nativeUI.closeWaiting();}) 
+						suoyin();
+						//$('.gallery-thumbs .swiper-wrapper').html(str1);
+					}
+				}
+			})
+		}
+		libao();
+		
+		var swiper = new Swiper('.swiper-container1', {
+			//loop:true,
+			slidesPerView: 'auto',
+			spaceBetween: 6,
+			freeMode: true,
+			observer:true,//修改swiper自己或子元素时，自动初始化swiper
+			observeParents:true,//修改swiper的父元素时，自动初始化swiper
+		});
+		
+		//获取轮播图的索引
+		swiper.on('slideChangeTransitionEnd', function () {
+			rc_id = $('.swiper-wrapper .swiper-slide-active').find('img').attr("src");
+			$('.pic img').attr('src',rc_id);
+			console.log(rc_id); 
+		});
+		 
+		
+		function suoyin(){
+			console.log(222222222);
+			$('.swiper-wrapper div').each(function(){
+				var index=$(this).attr('class');
+				var att_id=$(this).find('img').attr("src");
+				console.log(index); 
+				console.log(att_id);
+				if(index.indexOf('active')!=-1){
+					goods_id=$(this).attr('goods_id');
+					shop_xx();
+				}	
+			});
+		}
+		var sku_id;
+		function shop_xx(){
+			var obj={};
+			obj.goods_id=goods_id;
+			console.log(obj);
+			ca.get({
+				url:hetao.url+'index/getLibaoInfo',
+				data:obj,
+				succFn:function(data){
+					var res=JSON.parse(data);
+					var list=res.data;
+					console.log(res);
+					var str='';
+					if(res.status==1){
+						sku_id=list.sku_id;
+						console.log(sku_id);
+						str+='<div class="shop_xx">'
+							+'<img src="'+hetao.url2+''+list.picture+'" />'
+							+'<p>¥<em>'+list.price+'</em></p>'
+							+'<span>'+list.goods_name+'</span>'
+							+'<label>库存'+list.stock+'件</label>'
+						str+='</div>'
+						str+='<div class="shop_pic">'
+							str+='<ul>'
+								for(var j in list.description){
+									str+='<li><img src="'+hetao.url2+''+list.description[j]+'" /></li>'
+								}
+							str+='</ul>'
+						str+='</div>'
+						$('.shop').html(str);
+					}	
+				}
+			})
+		}
+		$('.swiper-container1 .swiper-wrapper').on('tap','.swiper-slide',function(){
+			goods_id=$(this).attr('goods_id');
+			//alert(goods_id);
+			$(this).addClass('active').siblings().removeClass('active');
+			shop_xx();
+		})
+		
+		
+		
+		
+		
+		
+		
+		// var login_id='';
+		// var login_token='';
+		
+	
+		
+		// $('.share').click(function(){
+		// 		console.log(22222222);
+		// 		//console.log();
+		// 		//alert(login_id);
+		// 		// login_id=localStorage.getItem('login_id');
+		// 		// login_token=localStorage.getItem('login_token');
+		// 		//alert(login_id);
+		// 		if(login_id){
+		// 			var obj={};
+		// 			//alert(login_id)
+		// 			obj.uid=login_id;
+		// 			obj.token=login_token;
+		// 			obj.goods_id=goods_id;
+		// 			obj.share_uid=user_id;
+		// 			obj.sku_id=sku_id;
+		// 			console.log(obj);
+		// 			//alert(JSON.stringify(obj));
+		// 			console.log(hetao.url+'cart /giftBag');
+		// 			ca.post({
+		// 				url:hetao.url+'cart/giftBag',
+		// 				data:obj,
+		// 				succFn:function(data){
+		// 					var res=JSON.parse(data);
+		// 					console.log(res);
+		// 					//alert(JSON.stringify(res));
+		// 					//alert(res.status);
+		// 					if(res.status==1){
+		// 						ca.prompt('恭喜您领取大礼包成功，请去APP中查看');
+		// 						localStorage.removeItem('login_id');
+		// 						localStorage.removeItem('login_token');
+		// 						ca.confirm({
+		// 							title:'提示',
+		// 							content:'是否下载APP',
+		// 							callback:function(data){
+		// 								if(data){
+		// 									setTimeout(function(){
+		// 										window.location.href='http://juangou.tainongnongzi.com/public/erweima/url.html';
+		// 									},100);
+		// 								}
+		// 							}
+		// 						});
+		// 					}else if(res.status==0){
+		// 						ca.prompt(res.msg);
+		// 					}else{
+		// 						ca.prompt('您的参数错误');
+		// 					}
+		// 				}
+		// 			})
+		// 		}else{
+		// 			setTimeout(function(){
+		// 				window.location.href='http://juangou.tainongnongzi.com/public/erweima/xianshang/login.html?yaoqingma='+yaoqingma;
+		// 			},100);
+		// 		}
+		// 	});
+        $('.share').click(function(){
+            if (login_type == 1) {
+                ca.prompt('您已经是店主，请勿重复购买店主大礼包');
+                return false;
+            }
+            console.log(goods_id);
+            console.log(sku_id);
+            localStorage.setItem('num', 1);
+            window.location.href= hetao.url3+"/Api/fx/write_order?goodsid="+goods_id+"&sku_id="+sku_id+"&order_type=zengsong&type=weixin&yaoqingma="+yaoqingma+"&user_id="+user_id;
+            // ca.newInterface({
+            //     url: '../car/write_order.html?goods_id=' + goods_id + '&' + sku_id + '&' + 'zengsong',
+            //     id: '../car/write_order.html'
+            // })
+        });
+
+	</script>	
+</html>

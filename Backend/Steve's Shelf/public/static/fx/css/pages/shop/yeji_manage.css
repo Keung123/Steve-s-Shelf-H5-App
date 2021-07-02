@@ -1,0 +1,86 @@
+.time{
+	width: 100%;
+	height: 45px;
+	line-height: 45px;
+	color: #191919;
+	border-bottom: 1px solid #E8E8E8;
+}
+.time span{
+	margin-left: 2%;
+	font-size: 14px;
+}
+.time label{
+	margin-right: 2%;
+	margin-top: -4px;
+}
+.time label em{
+	font-size: 20px;
+}
+.liebiao{
+	width: 100%;
+}
+.liebiao ul li{
+	width: 96%;
+	margin-left: 2%;
+	margin-right: 2%;
+	position: relative;
+	border-bottom: 1px solid #e8e8e8;
+}
+.liebiao ul li img{
+	height: 60px;
+	margin-top: 12px;
+	margin-bottom: 12px;
+	border-radius: 50%;
+}
+.liebiao ul li .thunm{
+	width: 72%;
+	height: 45px;
+	line-height: 22px;
+	margin-top: -67px;
+	margin-left: 75px;
+	position: absolute;
+}
+.liebiao ul li .thunm .username{
+	margin-bottom: 5px;
+}
+.liebiao ul li .thunm .username span{
+	margin-right: 5px;
+	color: #181818;
+}
+.liebiao ul li .thunm .username em{
+	color: #181818;
+}
+.liebiao ul li .thunm .username label{
+	width: 65px;
+	height: 20px;
+	text-align: center;
+	line-height: 20px;
+	display: inline-block;
+	color: #fff;	
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+	border-bottom-right-radius: 4px;
+}
+.liebiao ul li .thunm .username label.active{
+	background: #6a78fa;
+}
+.liebiao ul li .thunm .username label.active1{
+	background: #f29400;
+}
+.liebiao ul li .thunm .username label.active2{
+	background: #f23f00;
+}
+
+.liebiao ul li .thunm .shop span{
+	color: #999999;
+	position: absolute;
+}
+.liebiao ul li .thunm .shop em{
+	color: #999999;
+}
+.mui-scroll-wrapper{
+	position: initial;
+}
+.mui-scroll{
+	position: initial;
+}

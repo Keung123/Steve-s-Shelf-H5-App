@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    {include file="public/head" title="会员编辑" /}
+    <body class="inside-header inside-aside is-dialog">
+        <div id="main" role="main">
+            <div class="tab-content tab-addtabs">
+                <div id="content">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <section class="content-header hide">
+                                <h1>
+                                    控制台                                    <small>Control panel</small>
+                                </h1>
+                            </section>
+                            <div class="content">
+                                <form id="edit-form" class="form-horizontal form-ajax" role="form" data-toggle="validator" method="POST" action="{:url('admin/user/userGive')}">
+                                        <input name="user_id" value="{$row['user_id']}" type="hidden" >
+                                    <div class="form-group">
+                                        <label for="user_truename" class="control-label col-xs-12 col-sm-2">用户名:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input type="text" class="form-control" id="username" name="row[user_truename]" value="{$row['user_truename']}"  readonly />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-12 col-sm-2">用户头像:</label>
+                                       <div class="col-xs-12 col-sm-8">
+												<div class="form-inline">
+													
+													<ul class="row list-inline plupload-preview">
+														<!-- <img id="goodsimg"> -->
+														<li class="col-xs-3">
+															<img class="img-responsive" id="goodsimg" style="width:150px; height:100px;" src="{$row['user_avat']}"> 
+														 </li>
+													</ul>
+												</div>
+										</div>
+                                    </div>                                    
+
+                                    <div class="form-group">
+                                        <label for="user_mobile" class="control-label col-xs-12 col-sm-2">手机号码:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input type="text" class="form-control" id="user_mobile" name="row[user_mobile]" value="{$row['user_mobile']}" readonly />
+                                        </div>
+                                    </div>  
+
+                                    <div class="form-group">
+                                        <label for="user_name" class="control-label col-xs-12 col-sm-2">昵称:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input type="text" class="form-control" id="user_name" name="row[user_name]" value="{$row['user_name']}"  readonly />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="user_name" class="control-label col-xs-12 col-sm-2">真实姓名:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input type="text" class="form-control" id="user_truename" name="row[user_truename]" value="{$row['user_truename']}"   readonly />
+                                        </div>
+                                    </div>                                                             
+									<div class="form-group">
+                                        <label class="control-label col-xs-12 col-sm-2">奖品类型:</label>
+										<div class="col-xs-12 col-sm-8" >
+										 <label><input    type="radio" name="row[type]" checked value="1" onclick="typeChange()"/> 
+										 元宝 </label>
+										 <label><input   type="radio" name="row[type]" value="2"  onclick="typeChange()"/> 优惠券 </label>
+										 <label><input   type="radio" name="row[type]" value="3"  onclick="typeChange()" /> 充值卡 </label>
+											 
+										</div>
+                                    </div>
+									
+									<div class="form-group" id="yinzi">
+                                        <label class="control-label col-xs-12 col-sm-2"> 元宝值:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input id="yin_amount" name="row[yin_amount]"  value=""  class="form-control"   type="text"  >
+                                        </div>
+                                    </div> 
+									<div class="form-group" id="yinzis">
+                                        <label for="c-price_reduce" class="control-label col-xs-12 col-sm-2"> 有效天数:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input id="yin_valid_time" name="row[yin_valid_time]"  value=""  class="form-control"   type="text"  >
+                                        </div>
+                                    </div> 
+									  <div class="form-group" id="coupon">
+                                        <label for="c-pid" class="control-label col-xs-12 col-sm-2">优惠券:</label>
+                                        <div class="col-xs-12 col-sm-8">
+
+                                            <select  id="coupon_id"   class="form-control selectpicker" name="row[coupon_id]">
+                                                {volist name="coupon_list" id="v"}
+                                                <option value="{$v.coupon_id}">{:str_repeat($v['level'])}{$v.coupon_title}</option>
+                                                {/volist}
+                                            </select>
+                                        </div>
+                                    </div> 
+									<div class="form-group" id="card_list">
+                                        <label for="c-pid" class="control-label col-xs-12 col-sm-2">充值卡:</label>
+                                        <div class="col-xs-12 col-sm-8">
+
+                                            <select  id="card_t_id"  class="form-control selectpicker" name="row[card_t_id]">
+                                                {volist name="card_list" id="v"}
+                                                <option value="{$v.rc_id}">|—{:str_repeat('—',$v['level'])}{$v.rc_title}</option>
+                                                {/volist}
+                                            </select>
+                                        </div>
+                                    </div>
+ 
+									<div class="form-group" id="yin_desc">
+                                        <label for="user_name" class="control-label col-xs-12 col-sm-2">赠送说明:</label>
+                                        <div class="col-xs-15 col-sm-8" style="align:left">
+											<textarea  id="yin_descs" class="form-control" name="row[yin_desc]"    style="text-align:left">
+										 
+											</textarea>
+                                          
+                                        </div>
+                                    </div> 
+                                     
+                                    <div class="form-group hidden layer-footer">
+                                        <label class="control-label col-xs-12 col-sm-2"></label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <button type="submit" class="btn btn-success btn-embossed disabled">确定</button>
+                                            <button type="reset" class="btn btn-default btn-embossed">重置</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		
+<script type="text/javascript">
+	window.onload = typeChange();
+	//select的onchange调用函数
+	function typeChange(){
+	var countrySelect = document.getElementsByName('row[type]');//获取select的dom
+	 
+	var yinzi = document.getElementById('yinzi');//元宝
+	var yinzis = document.getElementById('yinzis');//元宝
+	var coupon = document.getElementById('coupon');//优惠券
+	var card_list = document.getElementById('card_list');//充值卡
+	var yin_desc = document.getElementById('yin_desc');//充值卡
+	
+	
+	var yin_valid_time = document.getElementById('yin_valid_time');// 
+	var yin_amount = document.getElementById('yin_amount');// 元宝值
+	var yin_descs = document.getElementById('yin_descs');// 元宝值
+	 
+		if(countrySelect[0].checked == true){
+			  yinzi.style.display="block";
+			  yinzis.style.display="block";
+			  yin_desc.style.display="block";
+			  coupon.style.display="none";
+			  card_list.style.display="none";
+			  yin_valid_time.setAttribute('data-rule','required');	
+			  yin_amount.setAttribute('data-rule','required');	
+			  yin_descs.setAttribute('data-rule','required');	
+			  			 
+		}else if(countrySelect[1].checked == true){
+			  yinzi.style.display="none";
+			  yinzis.style.display="none";
+			  yin_desc.style.display="none";
+			  coupon.style.display="block";
+			  card_list.style.display="none";
+			  yin_valid_time.setAttribute('data-rule','checked');	
+			  yin_amount.setAttribute('data-rule','checked');	
+			  yin_descs.setAttribute('data-rule','checked');	
+ 		}else if(countrySelect[2].checked == true){
+			  yinzi.style.display="none";
+			  yinzis.style.display="none";
+			  yin_desc.style.display="none";
+			  coupon.style.display="none";
+			  card_list.style.display="block";	
+			  yin_valid_time.setAttribute('data-rule','checked');	
+			  yin_amount.setAttribute('data-rule','checked');	
+			  yin_descs.setAttribute('data-rule','checked');	
+		} else{
+			  yinzi.style.display="block";
+			  yinzis.style.display="block";
+			  yin_desc.style.display="block";
+			  coupon.style.display="none";
+			  card_list.style.display="none";
+			  yin_valid_time.setAttribute('data-rule','checked');	
+			  yin_amount.setAttribute('data-rule','checked');	
+			  yin_descs.setAttribute('data-rule','checked');	
+		}
+
+	}
+</script>  
+        {include file="public/javascript" jsname="backend/auth/user" controllername="user"  actionname="add"/}
+    </body>
+</html>

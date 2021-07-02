@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+{include file="public/head" title="返现详情" /}
+
+<body class="inside-header inside-aside is-dialog">
+<div id="main" role="main">
+    <div class="tab-content tab-addtabs">
+        <div id="content">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <section class="content-header hide">
+                        <h1>
+                            控制台                                    <small>Control panel</small>
+                        </h1>
+                    </section>
+
+                    <div class="content">
+                        <form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+                            <div class="form-group">
+                                <label for="c-order_no" class="control-label col-xs-12 col-sm-2">订单编号:</label>
+                                <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+
+                                    <span>{$row['order_no']}</span><br>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="c-og_goods_price" class="control-label col-xs-12 col-sm-2">订单总额:</label>
+                                <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+
+                                    <span>{$row['order_all_price']}</span><br>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="c-og_goods_price" class="control-label col-xs-12 col-sm-2">订单实际支付金额:</label>
+                                <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+
+                                    <span>{$row['order_pay_price']}</span><br>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="c-invoice_com" class="control-label col-xs-12 col-sm-2">操作人员昵称:</label>
+                                <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+                                    <span>{$row['nickname']}</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="c-order_freight" class="control-label col-xs-12 col-sm-2">操作人员备注姓名:</label>
+                                <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+
+                                    <span>{$row['remark']}</span><br>
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="c-order_coupon_id" class="control-label col-xs-12 col-sm-2">返现总额:</label>
+                                <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+
+                                    <span>{$row['cash']}</span><br>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="c-order_prom_amount" class="control-label col-xs-12 col-sm-2">返现时间:</label>
+                                <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+                                    <span>{$row['createtime']}</span><br>
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="c-order_create_time" class="control-label col-xs-12 col-sm-2">返现会员昵称:</label>
+                                <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+                                    <span>{$row['user_name']}</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="c-order_create_time" class="control-label col-xs-12 col-sm-2">返现会员电话:</label>
+                                <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+                                    <span>{$row['user_mobile']}</span>
+                                </div>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var index_url="{:url('admin/sales/index',['order_status'=>$order_status, 'order_no' => $order_no, 'og_goods_name' => $og_goods_name, 'phone' => $phone, 'order_create_time' => $order_create_time,'start_time'=>$start_time,'end_time'=>$end_time])}";
+    var add_url="{:url('admin/goods/add')}";
+    var edit_url="{:url('admin/order/post')}";
+    var invoice_url="{:url('admin/order/invoice')}";
+    var del_url="{:url('admin/order/close')}";
+    var multi_url="{:url('admin/goods/multi')}";
+    var edit_pay_url = "{:url('admin/order/editpay')}";
+    var editaddr_url = "{:url('admin/sales/editCash')}";
+    var invoice_url = "{:url('admin/order/invoice')}";
+    var logistic_url = "{:url('admin/order/logistic')}";
+    var particulars_url = "{:url('admin/order/particulars')}";
+    var editdetails_url = "{:url('admin/sales/getDetails')}";
+</script>
+{include file="public/javascript" jsname="backend/sales/index" controllername="sales"  actionname=""/}
+</body>
+</html>

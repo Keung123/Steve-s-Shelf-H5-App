@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>订单打印</title>
+    <style>
+        html, body{margin: 0;padding: 0;width: 100%;}
+        .page{width: 100%;height: 100%;box-sizing: border-box;padding: 0 10px;}
+        .page-head-title{text-align: center;font-size: 24px;}
+        .page-head-info{display: flex;justify-content: space-between;margin-top: 10px;}
+        .page-head-info-user{margin-top: 0px;display: flex;}
+        .page-head-info-customer{display: flex;justify-content: space-between;margin-top: 0px;}
+        .page-head-info-customer>span>span:nth-child(2){margin-left: 300px;}
+        .page-head-info-user span:nth-child(2){width: 20%;}
+        .page-head-info-user span:nth-child(3){width: 25%;}
+        /* .page-head-info span    {flex: 1;} */
+        .table{margin-top: 5px;}
+        .table td{font-size: 14px;text-align: center;padding: 2px 0;}
+        .page-body table tr:last-child td{border-bottom: 1px solid #000;}
+        .page-body table tr td{border-top: 1px solid #000;border-left: 1px solid #000;}
+        .page-body table tr td:last-child{border-right: 1px solid #000;}
+        .page-foot{margin-top: 5px;display: flex;}
+        .page-foot>span{flex: 1;}
+        .no-top-border tr td{border-top: none !important;}
+        .text-right{text-align: right;}
+        .text-center{text-align: center;}
+        span{font-size: 14px}
+        .text-right td{font-size: 14px;padding: 2px 0;}
+        body::-webkit-scrollbar {display: none;}
+    </style>
+</head>
+
+<body>
+    <div class="page" id="app">
+        <div class="page-head">
+            <h1 class="page-head-title">胡乱购商城</h1>
+            <div class="page-head-info">
+                <span style="width: 40%">客户名称: &nbsp;<span>{if condition="$order.shop_name neq ''"}{$order['shop_name']}{else/}{$order['user_name']}{/if}</span></span>
+                <span style="width: 30%">单据编号: &nbsp;{$order['order_no']}</span>
+                <span style="width: 30%">录单日期: &nbsp;{$order['order_create_time']}</span>
+            </div>
+            <div class="page-head-info-customer">
+                <span style="width: 40%">业务员: &nbsp;{$order['sender_name']}</span>
+                <span style="width: 60%">客户地址: &nbsp;{$order['address']}</span>
+            </div>
+            <div class="page-head-info-user">
+                <span style="width: 40%">联系人: &nbsp;{$order['consigee']}</span>
+                <span style="width: 60%">联系电话: &nbsp;{$order['phone']}</span>
+            </div>
+        </div>
+        <div class="page-body">
+            <table class="table" width="100%" border="0" cellspacing="0" cellpadding="5">
+                <tr class="text-center">
+                    <td width="3%">序</td>
+                    <td width="15%">条码</td>
+                    <td width="35%">商品全名</td>
+                    <td width="16%">规格</td>
+                    <td width="6%">数量</td>
+                    <td width="6%">单位</td>
+                    <td width="6%">单价</td>
+                    <td width="6%">金额</td>
+                    <td width="20%">备注</td>
+                </tr>
+                {volist name='order_goods' id='id' key='k'}
+                <tr>
+                    <td class="text-center">{$k}</td>
+                    <td>{$id.goods_numbers}</td>
+                    <td style="font-size: 14px">{$id.og_goods_name}</td>
+                    <td>{$id.og_goods_spec_val}</td>
+                    <td>{$id.og_goods_num}</td>
+                    <td>{$id.unit}</td>
+                    <td>{$id.og_goods_price}</td>
+                    <td>{$id.og_goods_pay_price}</td>
+                    <td></td>
+                    {/volist}
+                </tr>
+            </table>
+            <table class="no-top-border" width="100%" border="0" cellspacing="0" cellpadding="5">
+                <tr class="text-right">
+                    <td width=""style="padding-right:10px;">付款方式</td>
+                    <td width="10%" style="text-align: center">{$order['order_pay_code']}</td>
+                    <td width="10%" style="text-align: center">赠品</td>
+                    <td width="40%" style="text-align: center">{$order['order_gift']}</td>
+                    <td width="10%" style="text-align: center">收款金额</td>
+                    <td width="10%" style="text-align: center">{$order['order_pay_price']}</td>
+                    <td width="10%" style="text-align: center">元</td>
+                </tr>
+            </table>
+            <!-- <table class="no-top-border" width="100%" border="0" cellspacing="0" cellpadding="5">
+                <tr class="text-right">
+                    <td width="">收款金额</td>
+                    <td width="9%">{$order['order_pay_price']}</td>
+                    <td width="9%">元</td>
+                </tr>
+            </table> -->
+        </div>
+        <div class="page-foot">
+            <span>地址: &nbsp;{$order['shop_address']}</span>
+            <span>电话: &nbsp;{$order['app_tell']}&nbsp;&nbsp;&nbsp; {$order['shop_phone']}&nbsp;&nbsp;&nbsp;</span>
+        </div>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</html>

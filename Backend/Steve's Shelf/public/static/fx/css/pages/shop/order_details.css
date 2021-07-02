@@ -1,0 +1,167 @@
+.base_bottom{
+	width: 100%;
+	height: 8px;
+	clear: both;
+	background: #f5f5f5;
+}
+.top{
+	width: 100%;
+	position: relative;
+}
+.top img.beijing{
+	width: 100%;
+}
+.top div{
+	width: 100%;
+	margin-top: -11%;
+	position: absolute;
+	color: #fff;
+}
+.top div img{
+	width: 5%;
+	margin-left: 2%;
+}
+.top div label{
+	margin-right: 2%;
+}
+.ganxie{
+	width: 100%;
+	height: 55px;
+	line-height: 55px;
+}
+.ganxie img{
+	height: 45px;
+	border-radius: 50%;
+	margin-right: 8px;
+}
+.ganxie label{
+	margin-right: 2%;
+	color: #666;
+}
+
+.address{
+	width: 100%;
+	
+}
+.address .tubiao{
+	width: 15%;
+	height: 75px;
+	line-height: 75px;
+	text-align: center;
+	float: left;
+	color: #999999;
+}
+.address .shouhuo{
+	width: 83%;
+	height: 75px;
+	margin-right: 2%;
+	color: #181818;
+}
+.address .shouhuo span{
+	margin-top: 15px;
+	display: inline-block;
+}
+.address .shouhuo label{
+	margin-top: 15px;
+	display: inline-block;
+}
+.address .shouhuo p{
+	font-size: 12px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	color: #666666;
+}
+.shop{
+	width: 100%;
+}
+.shop .pic{
+	width: 96%;
+	margin-left: 2%;
+	margin-right: 2%;
+	padding-top: 8px;
+	padding-bottom: 8px;
+}
+.shop .pic img{
+	height: 82px;
+}
+.shop .pic div{
+	width: 71%;
+}
+.shop .pic div span{
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	overflow: hidden;
+	color: #181818;
+}
+.shop .pic div label{
+	display: block;
+	font-size: 13px;
+	color: #666666;
+}
+.shop .pic div p{
+	font-style: normal;
+	color: #666;
+}
+.shop .pic div p em{
+	color: #d93b30;
+}
+.shop_total{
+	width: 100%;
+}
+.shop_total ul li{
+	width: 96%;
+	height: 35px;
+	line-height: 35px;
+	margin-left: 2%;
+	margin-right: 2%;
+	color: #181818;
+}
+.shop_total ul li label{
+	float: right;
+	color: #666666;
+}
+.shop_total ul li em{
+	width: 50px;
+	height: 20px;
+	text-align: center;
+	line-height: 20px;
+	margin-top: 7.5px;
+	margin-left: 5px;
+	display: inline-block;
+	border: 1px solid #666;
+	border-radius: 20px;
+}
+.money{
+	width: 100%;
+	height: 45px;
+	margin-top: 7.5px;
+	margin-bottom: 7.5px;
+	font-size: 0;
+}
+.money label{
+	margin-left: 2%;
+	font-size: 14px;
+}
+.money label em{
+	color: #D31A1A;
+}
+.money span{
+	width: 22%;
+	text-align: center;
+	height: 25px;
+	line-height: 25px;
+	font-size: 14px;
+	margin-right: 2%;
+	float: right;
+	display: inline-block;
+	color: #666;
+	border: 1px solid #666;
+	border-radius: 20px;
+}
+.money span.fukuan{
+	background: #D31A1A;
+	border: none;
+	color: #fff;
+}

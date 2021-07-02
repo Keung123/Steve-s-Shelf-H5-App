@@ -1,0 +1,157 @@
+.mui-scroll-wrapper{
+	position: initial;
+}
+.mui-scroll{
+	position: initial;
+}
+.pic{
+	width: 100%;
+}
+.pic img{
+	width: 100%;
+}
+
+.like{
+	background-color: #f5f5f5;
+    padding: 0 2%;
+    padding-bottom: 3%;
+}
+.like .like-list{
+	width: 100%;
+}
+.like ul{
+	overflow: hidden;
+}
+.like ul.shuangpai li{
+	width: 49%;
+	background-color: #fff;
+	border-radius: 4px;
+	/*padding: 2% 0;*/
+	float: left;
+	margin-bottom: 8px;
+}
+
+.like ul.shuangpai  li:nth-child(odd){margin-right: 1%;}
+.like ul.shuangpai  li:nth-child(even){margin-left: 1%;}
+.like ul.shuangpai  li img{
+	width: 100%;
+}
+.like ul.shuangpai  li p{
+	color: #181818;
+    font-size: 14px;
+    margin-bottom: 0;
+    height: 37px;
+    line-height: 18px;
+   	display: -webkit-box !important;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	overflow: hidden;
+    padding: 0 2%;
+    margin-top: 4px;
+    display: inline-block;
+}
+.like ul.shuangpai  li p em{
+	background-color: #d31a1a;
+	color: #fff;
+	font-size: 9px;
+	padding: 0 3px;
+	border-radius: 2px;
+	margin-right: 2%;
+	height: 14px;
+	line-height: 14px;
+	display: inline-block;
+	border: 1px solid #d31a1a;
+}
+.like ul.shuangpai  li>em{
+	font-size: 10px;
+	color: #666666;
+    padding: 0 2%;
+   margin-top: 8px;
+    display: block;
+   line-height: 14px;
+}
+.like-list-price{
+	height: 30px;
+	line-height: 16px;
+}
+.like-list-price span{
+	font-size: 14px;
+	margin-left: 5px;
+	padding-right: 4%;
+}
+.like-list-price label{
+	color: #666666;
+	font-size: 12px;
+	letter-spacing: 0px;
+	font-weight: normal;
+	font-stretch: normal;
+}
+.like-list-price del{
+	color: #666666;
+	font-size: 14px;
+	letter-spacing: 0px;
+	font-weight: normal;
+	font-stretch: normal;
+}
+.dz span{
+	color: #181818;
+	font-size: 14px;
+}
+.dz i{
+	font-size: 12px;
+}
+/*guess like end*/
+.like ul.danpai{
+	margin-bottom: 8px;
+	background: #fff;
+}
+
+.like ul.danpai li{
+	overflow: hidden;
+	background: #fff;
+	border-bottom: 1px solid #e8e8e8;
+}
+.like ul.danpai li:last-child{
+	border: none;
+}
+.like ul.danpai li img {
+	width: 100%;
+}
+.like ul.danpai li p{
+	padding: 5px;
+	line-height: 15px;
+	margin-bottom: 0; 
+	color: #181818;
+}
+.like ul.danpai li p em{
+	padding: 2px 5px;
+	display: inline-block;
+	color: #fff;
+	background: #D31A1A;
+}
+.like ul.danpai li em{
+	padding: 5px;
+}
+.like ul.danpai li .content .pintaun{
+	width: 62px;
+	height: 30px;
+	line-height: 30px;
+}
+.like ul.danpai li .content .shengyu p del{
+	padding-left: 4%;
+	font-size: 12px;
+}
+.like ul.danpai li .content .shengyu p label{
+	margin-right: 10px;
+}
+.like ul.danpai li .content .shengyu p span{
+	font-size: 14px;
+	color: #D31A1A;
+}
+
+.like ul.danpai li .content .shengyu{
+	margin-top: 0;
+}
+.like ul.danpai li .content .pintaun{
+	margin-top: 8px;
+}

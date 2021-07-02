@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    {include file="public/head" title="团队奖励" /}
+    <style type="text/css">
+        .columns{
+            display: none;
+        }
+        .fixed-table-pagination{
+            display: none;
+        }
+        .reward-tab{
+            height: 30px;
+            background: rgba(232, 237, 240, 0.5);
+        }
+        .reward-tab ul{
+            list-style: none;
+            padding-left: 0px;
+            width: 100%;
+            height: 30px;
+            border: 1px lightgray solid;
+            overflow: hidden;
+        }
+        .reward-tab ul li{
+            width: 100px;
+            height: 30px;
+            line-height: 30px;
+            font-size: 16px;
+            float: left;
+            text-align: center;
+            cursor: pointer;
+        }
+        .reward-tab .active{
+            background: rgb(255, 255, 255);
+            height: 100%;
+        }
+        #table2{
+            width: 80%;
+            margin: 35px auto;
+            text-align: center;
+        }
+        #table2 tr th{
+            text-align: center;
+        }
+    </style>
+    <body class="inside-header inside-aside ">
+        <div id="main" role="main">
+            <div class="tab-content tab-addtabs">
+                <div id="content">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="content">                                
+                                <div class="panel panel-default panel-intro">
+                                    <div class="panel-body">                                            
+                                        <div class="reward-tab">
+                                            <ul>
+                                                <li class="active" data-tab="one">提成奖励</li>
+                                                <li data-tab="two">月度奖励</li>
+                                            </ul>
+                                        </div>
+                                        <!-- 提成奖励 -->
+                                        <div id="myTabContent" class="tab-content">
+                                            <div class="tab-pane fade active in" id="one">
+                                                <div class="widget-body no-padding">
+                                                    <div id="toolbar" class="toolbar">              
+                                                        <form class="form-inline form-commonsearch nice-validator n-default" action="" novalidate="novalidate">
+                                                            <fieldset>
+                                                                 <!-- <a href="javascript:history.go(-1);" class="btn btn-primary btn-refresh"><i class="fa fa-reply"></i> </a> -->
+                                                                <div class="form-group" style="margin-left: 20px;">
+                                                                    <input type="text" class="form-control" name="start_time" value="{$start_time}" placeholder="起始时间" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" autocomplete="off" autocomplete="off">&nbsp;至&nbsp;
+                                                                    <input type="text" class="form-control" name="end_time" value="{$end_time}" placeholder="结束时间" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" autocomplete="off">
+                                                                </div>
+                                                                <input type="hidden" name="s_id" value="{$s_id}">
+                                                                <div class="form-group" style="margin-left:20px;">
+                                                                    <div class="col-sm-12 text-center">
+                                                                        <button type="submit" class="btn btn-success">搜索</button>
+                                                                    </div>
+                                                                </div>
+                                                            </fieldset>
+                                                        </form>
+                                                    </div>
+                                                    <table id="table" class="table table-striped table-bordered table-hover" width="100%"></table>
+                                                    <div class="prices">
+                                                        <p id="sku" style="margin-top: 10px">
+                                                            <span class="price">（说明：返利比例指商品本身设置的赚的提成，提成比例是本店主根据订单提成的比例）</span>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- 月度奖励 -->
+                                            <div class="tab-pane fade active in" id="two" style="display: none;">
+                                                <div class="widget-body no-padding">
+                                                    <table id="table2" class="table table-striped table-bordered table-hover">
+                                                        <tr>
+                                                            <th>序号</th>
+                                                            <th>发放时间</th>
+                                                            <th>奖励金额</th>
+                                                            <th>是否发放</th>
+                                                            <th>操作</th>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       <script type="text/javascript">
+            var index_url = "{:url('admin/store/teamReward',['start_time'=>$start_time,'end_time'=>$end_time, 's_id' => $s_id])}";
+            var oTab = $('.reward-tab');
+            var oType = 'one';
+            oTab.children('ul').children('li').on('click', function(){
+                $(this).addClass('active').siblings('li').removeClass('active');
+                var oDiv = oType = $(this).data('tab');
+                $('#myTabContent').children('#'+oDiv).show().siblings().hide();
+                if(oType == 'two'){
+                    $.ajax({
+                        url : "{:url('admin/store/teamReward')}",
+                        type : 'post',
+                        dataType : 'json',
+                        async : false,
+                        data : {type:oType, s_id :"{$s_id}"},
+                        success : function(data){
+                            if(oType == 'two' && $('#table2').find('tr').length == 1){
+                                var oTr = '';                        
+                                if(data.rows.length){
+                                    var i = 1;
+                                    for(var k in data.rows){
+                                        oTr += '<tr><td>'+i+'</td>';
+                                        oTr += '<td>'+data.rows[k].reward_time+'</td>';
+                                        oTr += '<td>'+data.rows[k].reward_num+'</td>';
+                                        oTr += '<td>'+(data.rows[k].reward_stat == 0 ? '否' : '是')+'</td>';
+                                        oTr += '<td>详情</td></tr>';
+                                        i++;
+                                    }
+                                }
+                                else{
+                                    oTr += '<tfoot><tr><td colspan="5">没有找到匹配的记录</td></tr></tfoot>';
+                                }
+                                $(oTr).appendTo($('#table2'));
+                                return;
+                            }            
+                            // $('#table2').load('public/javascript.html', function(){
+                            // });  
+                        },
+                        error: function(){
+                            layer.msg('网络错误');
+                        }
+                    });
+                }
+            });
+        </script>
+        {include file="public/javascript" jsname="backend/store/teamreward" controllername="store" actionname="index"/}
+    </body>
+</html>

@@ -1,0 +1,287 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>发现</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<!--引入样式-->
+		<link rel="stylesheet" type="text/css" href="__STATIC__/fx/css/base/mui.min.css"/>
+		<link rel="stylesheet" type="text/css" href="__STATIC__/fx/css/base/base.css"/>
+		<link rel="stylesheet" href="__STATIC__/fx/css/base/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="__STATIC__/fx/css/pages/find/find.css"/>
+		<link rel="stylesheet" type="text/css" href="__STATIC__/fx/css/pages/find/find-detail.css"/>
+	</head>
+	<style>
+		html,body{
+				height: 100%;
+			}
+			.mui-content{
+				height: 100%;
+			}
+			.mui-preview-header{
+				bottom: 0;
+				right: 2%;
+				top: auto;
+				left: auto;
+			}
+			.mui-preview-header .mui-preview-indicator{
+				float: right;
+				font-size: 14px;
+				width: 50px;
+			}
+			/*.shiping{
+				width: 100%;
+			}
+			.shiping video{
+				width: 100%;
+				height: 200px;
+			}*/
+			.find{
+				padding-bottom: 50px;
+			}
+			
+			.find-list-text p{
+			    color: #181818;
+			    font-size: 14px;
+			    line-height: 22px;
+			   /* display: initial;*/
+			    -webkit-box-orient: initial;
+			    -webkit-line-clamp: initial;
+			    overflow: initial;
+			}
+	</style>
+	<body>
+		<!--header-->
+		<!--<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">发现</h1> 
+		</header>-->
+		<!--header end-->
+		<!--content-->
+		<div class="mui-content" id="">
+			<!--list-->
+			<div class="find">
+				<!--<div class="find-list">
+					<div class="find-list-top">
+						<img src="__STATIC__/fx/imgs/sourec.png"/>
+						<span>世事繁华</span>
+						<p>2018-07-09 &nbsp;&nbsp;&nbsp;18:54 </p>
+					</div>
+					<div class="find-list-text text_line">
+						<p>合陶APP是一款移动电商社群营销平台。合陶通过打通社群生活与购物消费之间的关系，实现电商和定位粉丝群的紧密结合。在合陶APP上，你可以利用自己的碎片时间，整合周边所有资源，引导身边朋友圈理性消费，共同实现创业梦想!</p>
+					</div>
+					<div class="find-list-imgs">
+						<img src="__STATIC__/fx/imgs/sourec1.png" data-preview-src="" data-preview-group="1" />
+						<img src="__STATIC__/fx/imgs/sourec2.png" data-preview-src="" data-preview-group="1" />
+						<img src="__STATIC__/fx/imgs/sourec3.png" data-preview-src="" data-preview-group="1" />
+						<img src="__STATIC__/fx/imgs/sourec4.png" data-preview-src="" data-preview-group="1" />
+						<img src="__STATIC__/fx/imgs/sourec5.png" data-preview-src="" data-preview-group="1" />
+						<img src="__STATIC__/fx/imgs/sourec6.png" data-preview-src="" data-preview-group="1" />
+					</div>
+					<div class="find-list-goods">
+						<img src="__STATIC__/fx/imgs/sourec5.png"/>
+						<div class="find-list-goods-right">
+							<p class="text_line">UR2018夏季新品女装修身V领…UR2018夏季新品女装修身V领…</p>
+							<span class="dz">¥299</span>
+							<i class="dz">赚¥15.00</i>
+							<span class="vip">¥299</span>
+							<i class="vip">会员价¥199</i> 
+						</div>
+					</div>			
+				</div>-->
+			</div> 
+		</div>
+		<!--content end-->
+		<!--引入js文件-->
+		
+		<script src="__STATIC__/fx/js/base/mui.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__STATIC__/fx/js/base/castapp.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__STATIC__/fx/js/base/jquery-3.2.1.min.js"></script>
+		<script src="__STATIC__/fx/js/base/hetao.js"></script>
+		<!--引入预览图片js-->
+		<script src="__STATIC__/fx/js/find/mui.zoom.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__STATIC__/fx/js/find/mui.previewimage.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+//			mui.init({
+//				pullRefresh: {
+//					container: '#pullrefresh',
+//					down: {
+//						style:"circle",
+//						callback: pulldownRefresh
+//					}   
+//				}
+//			}); 
+			mui.init();
+			mui.previewImage();  
+			ca.init();
+			var user_id=localStorage.getItem('user_id');
+			var token=localStorage.getItem('token');
+			
+			var find_id;
+			var type;
+			var yaoqingma;
+			function GetRequest() {		
+				var url = location.search; //获取url中"?"符后的字串  
+				var theRequest = new Object();
+				if(url.indexOf("?") != -1) {
+					var str = url.substr(1);
+					console.log(str)
+					strs = str.split("&");
+					type = strs[1];	
+					yaoqingma = strs[2];	
+					console.log(yaoqingma);
+					for(var i = 0; i < strs.length; i++) {
+						theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+						
+					}
+					//console.log(theRequest);
+					find_id = theRequest.m_id;	
+					
+					console.log(find_id);
+					console.log(type);
+				}
+				return theRequest;
+			}
+			GetRequest();
+			console.log(find_id);
+			function find_detail(){
+				if(!user_id){
+					user_id='';
+					token='';
+				}
+				var obj={};
+				obj.uid=user_id;
+				obj.token=token;
+				obj.mateid=find_id;
+				console.log(obj);
+				ca.get({
+					url:hetao.url+'User/mateInfo',
+					data:obj,
+					succFn:function(data){
+						var res=JSON.parse(data);
+						console.log(res);
+						var data=res.data;
+						var str='';
+						var user_avat;
+						var zhuan;//店主赚的钱
+						var mate_video;
+						var show_jiage;
+						if(res.status==1){
+							if(data!=null){
+								if(!data.user_avat){
+									user_avat='__STATIC__/fx/__STATIC__/fx/img/hetao.png';
+									
+								}else if(data.user_avat.indexOf('http')!=-1){
+									console.log(data.user_avat)
+									user_avat=data.user_avat;
+								}else{
+									user_avat=hetao.url2+data.user_avat;
+								}
+								if(data.favorite==1){
+									$('.coll em').css('color','#D31A1A');
+									$('.coll span').css('color','#D31A1A');
+								}else{
+									$('.coll em').css('color','#fff');
+									$('.coll span').css('color','#fff');
+								}
+								if(data.mate_video){
+									mate_video='block';
+								}else{
+									mate_video='none';
+								}
+								var shipin_img;
+								if(data.mate_thumb){
+									shipin_img=data.mate_thumb[0];
+								}else{
+									shipin_img="__STATIC__/fx/img/dianpu.png";
+								}
+								if(data.show_price=='0.00'){
+									show_jiage="none";
+								}else{
+									show_jiage="inline-block";
+								}
+//								if(login_type==1){
+//									dz='inline-block';
+//									vip='none';
+//									//alert('店主');
+//								}else{
+//									dz='none';
+//									vip='inline-block';
+//									//alert('VIP');
+//								}
+								
+								//获取店主赚多少
+								str+='<div class="find-list" favorite="'+data.favorite+'" m_id="'+data.m_id+'" goods_id="'+data.goods_id+'">'
+									+'<div class="find-list-top">'
+										+'<img src="'+user_avat+'"/>'
+										+'<span>'+data.user_name+'</span>'
+										+'<p>'+data.mate_add_time+'</p>'
+									+'</div>'
+									+'<div class="find-list-text">'
+										+''+data.mate_content+''
+									+'</div>'
+									str+='<div class="find-list-imgs">'
+										for(var i in data.mate_thumb){
+											if(data.mate_thumb[i].indexOf('http')!=-1){
+												mate_thumb1=data.mate_thumb[i];
+												mate_thumb=data.mate_thumb[i]+'?imageView2/1/w/200/h/200/q/75|imageslim';
+											}else{
+												mate_thumb1=hetao.url2+data.mate_thumb[i];
+												mate_thumb=hetao.url2+data.mate_thumb[i]+'?imageView2/1/w/200/h/200/q/75|imageslim';
+											}
+											if(data.mate_thumb){
+												str+='<img src="'+mate_thumb+'" data-preview-src="'+mate_thumb1+'" data-preview-group="1" />'
+											}	
+										}
+									str+='</div>'
+									str+='<div class="shiping"  style="display:'+mate_video+'">'
+										str+='<video src="'+data.mate_video+'" style="max-width:100%;height:200px;"  controls="controls" poster="'+data.mate_video+'?vframe/jpg/offset/0'+'" preload="auto"></video>'
+									str+='</div>'
+									
+									+'<div class="find-list-goods" prom_id="'+data.prom_id+'" prom_type="'+data.prom_type+'" goods_id="'+data.goods_id+'">'
+										+'<img src="'+hetao.url2+''+data.picture+'"/>'
+										+'<div class="find-list-goods-right">'
+											+'<p class="text_line">'+data.goods_name+'</p>'
+											+'<span>¥'+data.price+'</span>'
+											//+'<i class="dz" style="display:'+show_dianzhu+';">赚¥'+data.dianzhu_price+'</i>'
+											//+'<span class="vip" style="display:'+vip+';">¥'+data.price+'</span>'
+											+'<del style="display:'+show_jiage+';">¥'+data.show_price+'</del>'
+										+'</div>'
+									+'</div>'
+								str+='</div>'
+								$('.find').html(str);
+							}else{
+								$('.collect').css('display','none');
+								console.log(111);
+							}
+						}
+					}
+				})
+			}
+			find_detail();
+			
+			
+			$('.find').on('tap','.find-list-goods',function(){
+				var goods_id=$(this).attr('goods_id');
+				var prom_type=$(this).attr('prom_type');
+//				console.log(goods_id);
+//				console.log(prom_type);
+//				console.log(type);
+				window.location.href=hetao.url3+"/api/Fx/goodsDetail?goodsid=" + goods_id+'&acti_id='+prom_type+'&type='+type+'&yaoqingma='+yaoqingma;
+			});
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		</script>
+	</body>
+
+</html>

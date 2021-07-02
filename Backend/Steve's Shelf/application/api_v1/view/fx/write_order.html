@@ -1,0 +1,2242 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>填写订单</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="__STATIC__/fx/css/base/mui.css" rel="stylesheet" />
+		<link href="__STATIC__/fx/css/base/base.css" rel="stylesheet" />
+		<link href="__STATIC__/fx/iconfont/iconfont.css" rel="stylesheet" />
+		<link href="__STATIC__/fx/css/pages/car/write_order.css" rel="stylesheet" />
+	</head>
+	<style>
+		.my_address{
+			height: auto;
+		}
+		.zhedang{
+			width: 100%;
+			height: 100%;
+			bottom: 0;
+			position: absolute;
+			background: #2a2a2a;
+			background-color: rgba(0,0,0,0.4);
+			z-index: 99;
+		}
+		.invoice{
+			width: 100%;
+			position: absolute;
+			bottom: 0;
+			background: #fff;
+		}
+		.invoice_external{
+			width: 96%;
+			margin-left: 2%;
+			margin-right: 2%;
+		}
+		.invoice_top{
+			height: 45px;
+			line-height: 45px;
+			color: #181818;
+			border-bottom: 1px solid #F5F5F5;
+		}
+		.invoice_top label{
+			color: #666;
+		}
+		.invoice_top em{
+			margin-left: 20px;
+			font-size: 18px;
+			color: #999;
+		}
+		.invoice_leixing{
+			margin-bottom: 15px;
+		}
+		.invoice_leixing h5{
+			height: 40px;
+			line-height: 40px;
+			color: #181818;
+			
+		}
+		.invoice_leixing span{
+			width: 80px;
+			height: 30px;
+			text-align: center;
+			line-height: 30px;
+			margin-right: 20px;
+			display: inline-block;
+			color: #666;
+			border: 1px solid #999999;
+			border-radius: 20px;
+		}
+		.invoice_leixing span.active{
+			color: #D31A1A;
+			border: 1px solid #D31A1A;
+		}
+		.company_xinxi input{
+			font-size: 14px;
+			color: #666;
+			background: #f0f0f0;
+			border: none;
+			border-radius: 4px;
+		}
+		.my_xinxi h5{
+			color: #181818;
+			margin-bottom: 15px;
+		}
+		.my_xinxi div{
+			margin-bottom: 15px;
+			color: #666666;
+		}
+		.my_xinxi label{
+			margin-right: 8px;
+		}
+		.my_xinxi em{
+			font-size: 13px;
+			color: #666;
+		}
+		.invoice_btn{
+			height: 45px;
+			text-align: center;
+			line-height: 45px;
+			margin-top: 15px;
+			margin-bottom: 30px;
+			font-size: 15px;
+			color: #fff;
+			background: #D31A1A;
+			border-radius: 20px;
+		}
+		.menu_zhong ul li:nth-last-child(1){
+			border-bottom: none;
+		}
+		.tijiao span p{
+			font-size: 12px;
+		}
+		.beizhu{
+			font-size: 12px;
+		}
+		.iconfont{
+			color: #666666;
+			font-weight: 600;
+		}
+
+		.mui-content {
+			background-color: #fff !important;
+			height: 100%;
+			position: relative;
+		}
+		.tijiao {
+			width: 100%;
+			position: fixed;
+			bottom: 0;
+			background: #fff;
+		}
+	</style>
+	<body>  
+		<!--<header class="mui-bar mui-bar-nav">-->
+		    <!--<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>-->
+		    <!--<h1 class="mui-title">填写订单</h1>-->
+		<!--</header>-->
+		<div class="mui-content">
+			<div class="address dizhi">
+				<em class="iconfont icon-dizhi"></em>
+				<span>填写我的收货地址</span>
+				<label class="iconfont icon-aui-icon-right mui-pull-right"></label>
+			</div>
+			<div class="my_address dizhi" style="display: none;">
+				<!--<span>张三</span>
+				<label>13526795475</label>
+				<em class="iconfont icon-aui-icon-right mui-pull-right"></em>
+				<p>河南省郑州市二七区华城国际1317室</p>		-->
+			</div>
+			<div class="base_bottom"></div>
+			<div class="shop">
+				<!--<div class="pic">
+					<img src="../../images/001.png" />
+					<div class="mui-pull-right">
+						<span>Guerlain臻彩宝石唇膏臻彩宝石唇膏臻彩 宝石唇膏臻彩宝石唇膏臻彩宝石唇膏臻彩 宝石唇膏</span>
+						<label>规格：红色/39</label>
+						<p>
+							<em>¥100.00</em>
+							<i class="mui-pull-right">x1</i>
+						</p>
+					</div>
+				</div>
+				<div class="pic">
+					<img src="../../images/001.png" />
+					<div class="mui-pull-right">
+						<span>Guerlain臻彩宝石唇膏臻彩宝石唇膏臻彩 宝石唇膏臻彩宝石唇膏臻彩宝石唇膏臻彩 宝石唇膏</span>
+						<label>规格：红色/39</label>
+						<p>
+							<em>¥100.00</em>
+							<i class="mui-pull-right">x1</i>
+						</p>
+					</div>
+				</div>-->
+			</div>
+			<p class="beizhu">备注：不接受指定快递，特殊需求请联系卖家</p>
+			<div class="menu_zhong">
+				<ul>
+					<li class="huodong" style="display: none;">
+						<span>活动</span>
+						<label class="mui-pull-right"><a></a><em>  </em></label>
+					</li>
+
+					<li class="coupon">
+						<span>优惠券</span>
+						<label class="mui-pull-right"><a>暂无可用</a><em class="iconfont icon-aui-icon-right"></em></label>
+					</li>
+					<li class="coupon_yuanbao">
+						<span>元宝</span>
+						<label class="mui-pull-right"><a>暂无可用</a><em class="iconfont icon-aui-icon-right"></em></label>
+					</li>
+					<li class="coupon_ka">
+						<span>充值卡</span>
+						<label class="mui-pull-right"><a>暂无可用</a><em class="iconfont icon-aui-icon-right"></em></label>
+					</li>
+					<li style="display: none;">
+						<span>积分</span>
+						<label class="mui-pull-right">
+							<i>使用200积分可抵扣¥2.00</i>
+							<div class="check">
+								<div class="mui-switch mui-switch-mini mui-active">
+									<div class="mui-switch-handle"></div>
+								</div>
+							</div>
+							<em class="iconfont icon-aui-icon-right"></em>
+						</label>
+					</li>
+					<!--<li class="fapiao">-->
+						<!--<span>发票</span>-->
+						<!--<label class="mui-pull-right"><a>不开发票</a><em class="iconfont icon-aui-icon-right"></em></label>-->
+					<!--</li>-->
+				</ul>
+			</div>
+			<div class="base_bottom"></div>
+			<div class="shop_xinxi">
+				<ul>
+					<!--<li>
+						<span>商品金额</span>
+						<label class="mui-pull-right">¥200.00</label>
+					</li>
+					<li>
+						<span>运费</span>
+						<label class="mui-pull-right">¥0.00</label>
+					</li>
+					<li style="display: none;">
+						<span>积分抵扣</span>
+						<label class="mui-pull-right">-¥2.00</label>
+					</li>
+					<li>
+						<span>总金额</span>
+						<label class="mui-pull-right">¥198.00</label>
+					</li>-->
+				</ul>
+			</div>
+			<div class="base_bottom"></div>
+			<div class="tijiao">
+				<span>
+					<!--<strong></strong>-->
+					<em>总金额：<i></i></em>
+					<p>（运费：¥0.00）</p>
+				</span>
+				<label>提交订单</label>
+			</div>
+			<div class="zhedang" style="display: none;">
+				<div class="invoice">
+					<div class="invoice_external">
+						<div class="invoice_top">
+							<span>发票</span>
+							<em class="iconfont icon-guanbi mui-pull-right"></em>
+							<label class="mui-pull-right">发票须知</label>
+						</div>
+						<div class="invoice_leixing">
+							<h5>发票类型</h5>
+							<div class="invoice_type">
+								<span class="active" invoice_need='0'>不开发票</span>
+								<span invoice_need='1'>普通发票</span>
+							</div>
+							<h5>发票抬头</h5>
+							<div class="invoice_rise">
+								<span>个人</span>
+								<span>公司</span>
+							</div>
+						</div>
+						<div class="company_xinxi" style="display: none;">
+							<input type="text" class="invoice_com" placeholder="公司名称" />
+							<input type="text" class="invoice_com_tax" placeholder="纳税人识别号" />
+						</div>
+						<div class="my_xinxi">
+							<h5>发票收件人信息</h5>
+							<div>
+								<span style="display: none;">请去添加自己的收货地址</span>
+								<ul>
+									<li>收件人姓名：张三丰</li>
+									<li>收件人电话：13200000000 </li>
+									<li>收件人地址：河南省郑州市二七区</li>
+								</ul>
+							</div>
+							<label>发票内容</label><em>商品明细</em>
+						</div>
+						<div class="invoice_btn">确认提交</div>
+					</div>
+				</div>
+			</div>
+			
+			
+			
+		</div>	
+	</body>
+	<script src="__STATIC__/fx/js/base/mui.js"></script>
+	<script src="__STATIC__/fx/js/base/castapp.js"></script>
+	<script src="__STATIC__/fx/js/base/jquery-3.2.1.min.js"></script>
+	<script src="__STATIC__/fx/js/base/hetao.js"></script>
+	<script src="__STATIC__/fx/js/car/pintuan_write.js"></script>
+	<script type="text/javascript">
+		mui.init({beforeback:function(){
+				localStorage.removeItem('coupon_id');
+				localStorage.removeItem('coupon_money');
+				
+				localStorage.removeItem('coupon_ka_id');
+				localStorage.removeItem('coupon_ka_money');
+				
+				localStorage.removeItem('coupon_yuanbao_id');
+				localStorage.removeItem('coupon_yuanbao_money');	
+			}
+			
+		});
+		ca.init();
+		var user_id="{$uid}";
+		var token="{$token}";
+        var num="{$num}";
+        var goods_id="{$goodsid}";
+        var sku_id="{$sku_id}";
+        var type="{$type}";
+        var active_id="{$active_id}";
+        var act_id = "{$act_id}";
+        console.log(user_id, token, num, goods_id,sku_id,type,active_id,2222222);
+        //优惠券
+        var coupon_id=localStorage.getItem('coupon_id');
+        var coupon_money=localStorage.getItem('coupon_money');
+
+        //充值卡
+        var coupon_ka_id=localStorage.getItem('coupon_ka_id');
+        var coupon_ka_money=localStorage.getItem('coupon_ka_money') ? localStorage.getItem('coupon_ka_money') : 0;
+        // alert(coupon_ka_money)
+        //元宝
+        var coupon_yuanbao_id=localStorage.getItem('coupon_yuanbao_id');
+		var coupon_yuanbao_money=localStorage.getItem('coupon_yuanbao_money');
+		
+		
+		ca.receiveNotice('add_address',function(){
+			if(type=='liji'){
+				order_write();
+			}else if(type== 'jifen'){
+				jifen_write();
+			}else if(type== 'yushou'){
+				yushou_write();
+			}else if(type== 'pintuan'){
+				pintuan_write();
+			}else if(type== 'huodong'){
+				huodong_write();
+			}else if(type== 'shop'){
+				shop_write();
+			}else if(type== 'zengsong'){
+				zengsong_write();
+			}else{
+				car_write();
+			}
+		})
+		ca.receiveNotice('dizhi',function(){
+			if(type=='liji'){
+				order_write();
+			}else if(type== 'jifen'){
+				jifen_write();
+			}else if(type== 'yushou'){
+				yushou_write();
+			}else if(type== 'pintuan'){
+				pintuan_write();
+			}else if(type== 'huodong'){
+				huodong_write();
+			}else if(type== 'shop'){
+				shop_write();
+			}else if(type== 'zengsong'){
+				zengsong_write();
+			}else{
+				car_write();
+			}
+		})
+		ca.receiveNotice('youhui',function(){
+
+			//alert(coupon_ka_money)
+			console.log(coupon_ka_money);
+			console.log('充值卡通知到了');
+			
+			console.log(coupon_yuanbao_money);
+			//alert(coupon_yuanbao_money)
+			console.log('元宝通知到了');
+			
+			console.log(coupon_money);
+			console.log('优惠券通知到了');
+			if(type=='liji'){
+				console.log(coupon_money);
+				order_write();
+			}else if(type== 'jifen'){
+				jifen_write();
+			}else if(type== 'yushou'){
+				console.log('yushoutongzhi')
+				yushou_write();
+			}else if(type== 'pintuan'){
+				pintuan_write();
+			}else if(type== 'huodong'){
+				huodong_write();
+			}else if(type== 'shop'){
+				shop_write();
+			}else if(type== 'zengsong'){
+				zengsong_write();
+			}else{
+				car_write();
+			}
+		})
+
+		if(type=='liji'){
+            $('.menu_zhong').css('display','block');
+			order_write();
+		}else if(type== 'jifen'){
+            $('.menu_zhong').css('display','block');
+			jifen_write();
+		}else if(type== 'yushou'){
+            $('.menu_zhong').css('display','block');
+			yushou_write();
+		}else if(type== 'pintuan'){
+            $('.menu_zhong').css('display','block');
+			pintuan_write();
+		}else if(type== 'huodong'){
+            $('.menu_zhong').css('display','block');
+			huodong_write();
+		}else if(type== 'shop'){
+            $('.menu_zhong').css('display','block');
+			shop_write();
+		}else if(type== 'zengsong'){
+            $('.menu_zhong').css('display','none');
+			zengsong_write();
+		}
+		
+		
+		var shop_jia;
+		var freight;
+		//立即购买
+		function order_write(){
+			var obj={};
+			if(!active_id){
+				active_id='';
+			}else{
+				active_id=active_id;
+			}
+			obj.uid=user_id;
+			obj.token=token;
+			obj.goodsid=goods_id;
+			obj.prom_id=active_id;
+			obj.skuid=sku_id;
+			obj.num=num;
+			console.log(obj);
+			ca.get({
+				url:hetao.url+'goods/buyNow',
+				data:obj,
+				succFn:function(data){
+					var res=JSON.parse(data);
+					console.log(res);
+					//console.log(JSON.stringify(res));
+					var addr=res.data.addr;//个人地址信息
+					var address='';
+					var my_xinxi='';
+					var goods=res.data.goods;//商品信息
+					var shop='';
+					var coupon=res.data.coupon;//优惠券信息
+					var shop_jiage='';
+					if(res.status==1){
+						
+						console.log(goods.sku);
+						//个人地址信息
+						if(!addr){
+							$('.address').css('display','block');
+							$('.my_address').css('display','none');
+							$('.my_xinxi span').css('display','block');
+							$('.my_xinxi ul').css('display','none');
+						}else{
+							$('.my_address').css('display','block');
+							$('.address').css('display','none');
+							$('.my_xinxi span').css('display','none');
+							$('.my_xinxi ul').css('display','block');
+							
+							address+='<span addr_id="'+addr.addr_id+'">'+addr.addr_receiver+'</span>'
+							+'<label>'+addr.addr_phone+'</label>'
+							+'<em class="iconfont icon-aui-icon-right mui-pull-right"></em>'
+							+'<p>'+addr.addr_area+''+addr.addr_cont+'</p>'	
+							
+							
+							my_xinxi+='<li>收件人姓名：'+addr.addr_receiver+'</li>'
+							+'<li>收件人电话：'+addr.addr_phone+' </li>'
+							+'<li>收件人地址：'+addr.addr_area+''+addr.addr_cont+'</li>'
+							
+							$('.my_xinxi ul').html(my_xinxi);
+							$('.my_address').html(address);
+						}
+						//商品信息
+						shop+='<div class="pic">'
+							+'<img src="'+hetao.url2+''+goods.picture+'" />'
+							+'<div class="mui-pull-right">'
+							+'<span>'+goods.goods_name+'</span>'
+							+'<label>规格：'+goods.sku+'</label>'
+							+'<p>'
+							+'<em>¥'+goods.price+'</em>'
+							+'<i class="mui-pull-right">x'+num+'</i>'
+							+'</p>'
+							+'</div>'
+						shop+='</div>'	
+						$('.shop').html(shop);
+						shop_jia=goods.price*num;
+						
+						
+						//判断是否有优惠券
+						if(res.data.coupon==0){
+							$('.coupon a').html('暂无可用');
+						}else{
+							$('.coupon a').html('选择优惠券');
+						}
+						//判断是否有充值卡
+						if(res.data.rc==0){
+							$('.coupon_ka a').html('暂无可用');
+						}else{
+							$('.coupon_ka a').html('选择充值卡');
+						}
+						
+						//判断是否有元宝
+						if(res.data.yz==0){
+							$('.coupon_yuanbao a').html('暂无可用');
+						}else{
+							$('.coupon_yuanbao a').html('选择元宝');
+						}
+						
+						console.log('选择优惠券');
+						console.log(coupon_money);
+						console.log('选择优惠券');
+						var zong_jia=parseInt(shop_jia)+parseInt(goods.freight);
+						
+						if(coupon_money){
+							$('.coupon a').html('减'+coupon_money);
+							zong_jia=zong_jia-parseInt(coupon_money);
+							if(zong_jia<0){
+								zong_jia=0;
+							}else{
+								zong_jia=zong_jia;
+							}
+						}else{
+							zong_jia=zong_jia;
+							console.log(zong_jia);
+						} 
+						
+						//alert(coupon_ka_money);
+						//判断充值卡
+						if(coupon_ka_money){
+							$('.coupon_ka a').html('减'+coupon_ka_money);
+							
+							zong_jia=zong_jia-parseInt(coupon_ka_money);
+							alert(zong_jia);
+							if(zong_jia<0){
+								zong_jia=0;
+							}else{
+								zong_jia=zong_jia;
+							}
+						}else{
+							zong_jia=zong_jia;
+							console.log(zong_jia);
+						} 
+						
+						//判断元宝
+						//alert(coupon_yuanbao_money);
+						if(coupon_yuanbao_money){
+							//alert(coupon_yuanbao_money)
+							$('.coupon_yuanbao a').html('减'+coupon_yuanbao_money);
+							zong_jia=zong_jia-parseInt(coupon_yuanbao_money);
+							if(zong_jia<0){
+								zong_jia=0;
+							}else{
+								zong_jia=zong_jia;
+							}
+						}else{
+							zong_jia=zong_jia;
+							console.log(zong_jia);
+						} 
+						//alert(zong_jia)
+						
+						freight=goods.freight;
+						//商品价格
+						shop_jiage+='<ul>'
+							+'<li>'
+								+'<span>商品金额</span>'
+								+'<label class="mui-pull-right">¥'+shop_jia+'</label>'
+							+'</li>'
+							+'<li>'
+								+'<span>运费</span>'
+								+'<label class="mui-pull-right">¥'+goods.freight+'</label>'
+							+'</li>'
+							+'<li style="display: none;">'
+								+'<span>积分抵扣</span>'
+								+'<label class="mui-pull-right">-¥2.00</label>'
+							+'</li>'
+							
+							+'<li>'
+								+'<span>店铺优惠</span>'
+								+'<label class="mui-pull-right shop_youhui">¥'+res.data.youhui+'</label>'
+							+'</li>'
+							+'<li>'
+								+'<span>总金额</span>'
+								+'<label class="mui-pull-right">¥'+zong_jia+'</label>'
+							+'</li>'
+						shop_jiage+='</ul>'
+						
+						$('.shop_xinxi').html(shop_jiage);
+						//alert(zong_jia)
+						$('.tijiao span i').html('¥'+zong_jia);	
+						
+						$('.tijiao p').html('（运费：¥'+goods.freight+'）');	
+						
+					}else if(res.status==-3){
+						ca.prompt(res.msg);
+						setTimeout(function(){
+							ca.closeCurrentInterface();
+						})
+					}
+				}
+			})
+		}
+		
+		//赠送店铺
+		function zengsong_write(){
+			var obj={};
+			if(!active_id){
+				active_id='';
+			}else{
+				active_id=active_id;
+			}
+			obj.uid=user_id;
+			obj.token=token;
+			obj.goodsid=goods_id;
+			obj.prom_id=active_id;
+			obj.skuid=sku_id;
+			obj.num=num;
+			console.log(obj);
+			ca.get({
+				url:hetao.url+'goods/buyNow',
+				data:obj,
+				succFn:function(data){
+					var res=JSON.parse(data);
+					console.log(res);
+					//console.log(JSON.stringify(res));
+					var addr=res.data.addr;//个人地址信息
+					var address='';
+					var my_xinxi='';
+					var goods=res.data.goods;//商品信息
+					var shop='';
+					var coupon=res.data.coupon;//优惠券信息
+					var shop_jiage='';
+					if(res.status==1){
+						
+						console.log(goods.sku);
+						//个人地址信息
+						if(!addr){
+							$('.address').css('display','block');
+							$('.my_address').css('display','none');
+							$('.my_xinxi span').css('display','block');
+							$('.my_xinxi ul').css('display','none');
+						}else{
+							$('.my_address').css('display','block');
+							$('.address').css('display','none');
+							$('.my_xinxi span').css('display','none');
+							$('.my_xinxi ul').css('display','block');
+							
+							address+='<span addr_id="'+addr.addr_id+'">'+addr.addr_receiver+'</span>'
+							+'<label>'+addr.addr_phone+'</label>'
+							+'<em class="iconfont icon-aui-icon-right mui-pull-right"></em>'
+							+'<p>'+addr.addr_area+''+addr.addr_cont+'</p>'	
+							
+							
+							my_xinxi+='<li>收件人姓名：'+addr.addr_receiver+'</li>'
+							+'<li>收件人电话：'+addr.addr_phone+' </li>'
+							+'<li>收件人地址：'+addr.addr_area+''+addr.addr_cont+'</li>'
+							
+							$('.my_xinxi ul').html(my_xinxi);
+							$('.my_address').html(address);
+						}
+						//商品信息
+						shop+='<div class="pic">'
+							+'<img src="'+hetao.url2+''+goods.picture+'" />'
+							+'<div class="mui-pull-right">'
+							+'<span>'+goods.goods_name+'</span>'
+							+'<label>规格：'+goods.sku+'</label>'
+							+'<p>'
+							+'<em>¥'+goods.price+'</em>'
+							+'<i class="mui-pull-right">x'+num+'</i>'
+							+'</p>'
+							+'</div>'
+						shop+='</div>'	
+						$('.shop').html(shop);
+						shop_jia=goods.price*num;
+						
+						
+						//判断是否有优惠券
+						if(res.data.coupon==0){
+							$('.coupon a').html('暂无可用');
+						}else{
+							$('.coupon a').html('选择优惠券');
+						}
+						//判断是否有充值卡
+						if(res.data.rc==0){
+							$('.coupon_ka a').html('暂无可用');
+						}else{
+							$('.coupon_ka a').html('选择充值卡');
+						}
+						
+						//判断是否有元宝
+						if(res.data.yz==0){
+							$('.coupon_yuanbao a').html('暂无可用');
+						}else{
+							$('.coupon_yuanbao a').html('选择元宝');
+						}
+						
+						console.log('选择优惠券');
+						console.log(coupon_money);
+						console.log('选择优惠券');
+						var zong_jia=parseInt(shop_jia)+parseInt(goods.freight);
+						
+						// if(coupon_money){
+						// 	$('.coupon a').html('减'+coupon_money);
+						// 	zong_jia=zong_jia-parseInt(coupon_money);
+						// 	if(zong_jia<0){
+						// 		zong_jia=0;
+						// 	}else{
+						// 		zong_jia=zong_jia;
+						// 	}
+						// }else{
+						// 	zong_jia=zong_jia;
+						// 	console.log(zong_jia);
+						// }
+						//
+						// //alert(coupon_ka_money);
+						// //判断充值卡
+						// if(coupon_ka_money){
+						// 	$('.coupon_ka a').html('减'+coupon_ka_money);
+						//
+						// 	zong_jia=zong_jia-parseInt(coupon_ka_money);
+						// 	alert(zong_jia);
+						// 	if(zong_jia<0){
+						// 		zong_jia=0;
+						// 	}else{
+						// 		zong_jia=zong_jia;
+						// 	}
+						// }else{
+						// 	zong_jia=zong_jia;
+						// 	console.log(zong_jia);
+						// }
+						//
+						// //判断元宝
+						// //alert(coupon_yuanbao_money);
+						// if(coupon_yuanbao_money){
+						// 	//alert(coupon_yuanbao_money)
+						// 	$('.coupon_yuanbao a').html('减'+coupon_yuanbao_money);
+						// 	zong_jia=zong_jia-parseInt(coupon_yuanbao_money);
+						// 	if(zong_jia<0){
+						// 		zong_jia=0;
+						// 	}else{
+						// 		zong_jia=zong_jia;
+						// 	}
+						// }else{
+						// 	zong_jia=zong_jia;
+						// 	console.log(zong_jia);
+						// }
+						//alert(zong_jia)
+						
+						freight=goods.freight;
+						//商品价格
+						shop_jiage+='<ul>'
+							+'<li>'
+								+'<span>商品金额</span>'
+								+'<label class="mui-pull-right">¥'+shop_jia+'</label>'
+							+'</li>'
+							+'<li>'
+								+'<span>运费</span>'
+								+'<label class="mui-pull-right">¥'+goods.freight+'</label>'
+							+'</li>'
+							+'<li style="display: none;">'
+								+'<span>积分抵扣</span>'
+								+'<label class="mui-pull-right">-¥2.00</label>'
+							+'</li>'
+							
+							+'<li>'
+								+'<span>店铺优惠</span>'
+								+'<label class="mui-pull-right shop_youhui">¥'+res.data.youhui+'</label>'
+							+'</li>'
+							+'<li>'
+								+'<span>总金额</span>'
+								+'<label class="mui-pull-right">¥'+zong_jia+'</label>'
+							+'</li>'
+						shop_jiage+='</ul>'
+						
+						$('.shop_xinxi').html(shop_jiage);
+						//alert(zong_jia)
+						$('.tijiao span i').html('¥'+zong_jia);	
+						
+						$('.tijiao p').html('（运费：¥'+goods.freight+'）');	
+						
+					}else if(res.status==-3){
+						ca.prompt(res.msg);
+						setTimeout(function(){
+							ca.closeCurrentInterface();
+						})
+					}
+				}
+			})
+		}
+		
+		//购物车购买
+//
+		
+		//积分购买
+		function jifen_write(){
+			var obj={};
+			obj.user_id=user_id;
+			obj.sku_id=sku_id;
+			obj.token=token;
+			obj.goods_id=goods_id;
+			obj.number=num; 
+			console.log(obj);
+			ca.post({
+				url:hetao.url+'Integral/rightNow',
+				data:obj,
+				succFn:function(data){
+					var res=JSON.parse(data);
+					var data=res.data;
+					console.log(res);
+					var addr=res.data.address;//个人地址信息
+					var address='';
+					var my_xinxi='';
+					var goods=res.data.goods_info;//商品信息
+					var shop='';
+					var coupon=res.data.coupon;//优惠券信息
+					var shop_jiage='';
+					if(res.status==1){
+						//个人地址信息
+						if(!addr){
+							$('.address').css('display','block');
+							$('.my_address').css('display','none');
+							$('.my_xinxi span').css('display','block');
+							$('.my_xinxi ul').css('display','none');
+						}else{
+							$('.my_address').css('display','block');
+							$('.address').css('display','none');
+							$('.my_xinxi span').css('display','none');
+							$('.my_xinxi ul').css('display','block');
+							
+							address+='<span addr_id="'+addr.addr_id+'">'+addr.addr_receiver+'</span>'
+							+'<label>'+addr.addr_phone+'</label>'
+							+'<em class="iconfont icon-aui-icon-right mui-pull-right"></em>'
+							+'<p>'+addr.addr_area+''+addr.addr_cont+'</p>'	
+							
+							
+							my_xinxi+='<li>收件人姓名：'+addr.addr_receiver+'</li>'
+							+'<li>收件人电话：'+addr.addr_phone+' </li>'
+							+'<li>收件人地址：'+addr.addr_area+''+addr.addr_cont+'</li>'
+							
+							$('.my_xinxi ul').html(my_xinxi);
+							$('.my_address').html(address);
+						}
+						//商品信息
+						shop+='<div class="pic">'
+							+'<img src="'+hetao.url2+''+goods.picture+'" />'
+							+'<div class="mui-pull-right">'
+							+'<span>'+goods.goods_name+'</span>'
+							+'<label>规格：'+goods.spec_value+'</label>'
+							+'<p>'
+							+'<em>'+goods.exchange_integral+'</em>'
+							+'<i class="mui-pull-right">x'+goods.goods_number+'</i>'
+							+'</p>'
+							+'</div>'
+						shop+='</div>'	
+						$('.shop').html(shop);
+//						console.log(goods.exchange_integral*num)
+						shop_jia=goods.exchange_integral*goods.goods_number;
+//						
+//						
+////						//判断是否有优惠券
+//						if(res.data.is_coupon==0){
+//							$('.coupon a').html('暂无可用');
+//						}else{
+//							$('.coupon a').html('选择优惠券');
+//						}
+						$('.coupon').hide();
+						$('.coupon_ka').hide();
+						$('.coupon_yuanbao').hide();
+						var zong_jia;
+						//商品价格
+						shop_jiage+='<ul>'
+							+'<li>'
+								+'<span>商品金额</span>'
+								+'<label class="mui-pull-right">'+goods.exchange_integral+'积分</label>'
+							+'</li>'
+							+'<li>'
+								+'<span>运费</span>';
+								if(goods.freight == 0.00){
+									shop_jiage+='<label class="mui-pull-right">免运费</label>';
+								}else{
+									shop_jiage+='<label class="mui-pull-right">¥'+goods.freight+'</label>';
+								}
+								
+							shop_jiage+='</li>'
+							+'<li>'
+								+'<span>店铺优惠</span>'
+								+'<label class="mui-pull-right shop_youhui">¥'+data.youhui+'</label>'
+							+'</li>'
+							+'<li>'
+								+'<span>总积分 </span>'
+								+'<label class="mui-pull-right">'+goods.total_integral+'积分</label>' 
+							+'</li>'+
+							'</ul>'
+						
+						$('.shop_xinxi').html(shop_jiage);
+						
+						$('.tijiao span em').html('总积分<i> '+goods.total_integral+'积分</>');	
+						if(goods.freight == 00){
+							$('.tijiao p').html('（运费：免运费)');	
+						}else{
+							$('.tijiao p').html('（运费：¥'+goods.freight+'）');	
+						}
+						
+					}
+				}
+			})
+		}
+		
+		//预售购买
+		function yushou_write(){
+			console.log('优惠通知到了')
+			var obj={};
+			obj.user_id=user_id;
+			obj.sku_id=sku_id;
+			obj.token=token;
+			obj.act_id=act_id;
+			obj.number=num; 
+			console.log(obj);
+			ca.post({
+				url:hetao.url+'Activity/nowBooked',
+				data:obj,
+				succFn:function(data){
+					var res=JSON.parse(data);
+					var data=res.data;
+					console.log(res);
+					var addr=res.data.address;//个人地址信息
+					var address='';
+					var my_xinxi='';
+					var goods=res.data.goods_info;//商品信息
+					var shop='';
+					var coupon=res.data.coupon;//优惠券信息
+					var shop_jiage='';
+					if(res.status==1){
+						console.log(11111);
+						//个人地址信息
+						if(!addr){
+							$('.address').css('display','block');
+							$('.my_address').css('display','none');
+							$('.my_xinxi span').css('display','block');
+							$('.my_xinxi ul').css('display','none');
+						}else{
+							$('.my_address').css('display','block');
+							$('.address').css('display','none');
+							$('.my_xinxi span').css('display','none');
+							$('.my_xinxi ul').css('display','block');
+							
+							address+='<span addr_id="'+addr.addr_id+'">'+addr.addr_receiver+'</span>'
+							+'<label>'+addr.addr_phone+'</label>'
+							+'<em class="iconfont icon-aui-icon-right mui-pull-right"></em>'
+							+'<p>'+addr.addr_area+''+addr.addr_cont+'</p>'	
+							
+							
+							my_xinxi+='<li>收件人姓名：'+addr.addr_receiver+'</li>'
+							+'<li>收件人电话：'+addr.addr_phone+' </li>'
+							+'<li>收件人地址：'+addr.addr_area+''+addr.addr_cont+'</li>'
+							
+							$('.my_xinxi ul').html(my_xinxi);
+							$('.my_address').html(address);
+						}
+						//商品信息
+						shop+='<div class="pic">'
+							+'<img src="'+hetao.url2+''+goods.picture+'" />'
+							+'<div class="mui-pull-right">'
+							+'<span>'+goods.goods_name+'</span>'
+							+'<label>规格：'+goods.spec_value+'</label>'
+							+'<p>'
+							+'<em>'+goods.pay_money+'</em>'
+							+'<i class="mui-pull-right">x'+goods.goods_number+'</i>'
+							+'</p>'
+							+'</div>'
+						shop+='</div>'	
+						$('.shop').html(shop);
+//						console.log(goods.exchange_integral*num)
+						shop_jia=goods.pay_money*goods.goods_number;
+						freight=goods.yunfei;
+						console.log(shop_jia);
+						
+//						
+//						
+////						//判断是否有优惠券
+						if(res.data.is_coupon==0){
+							$('.coupon a').html('暂无可用');
+						}else{
+							$('.coupon a').html('选择优惠券');
+						}
+						
+						//判断是否有充值卡
+						if(res.data.rc==0){
+							$('.coupon_ka a').html('暂无可用');
+						}else{
+							$('.coupon_ka a').html('选择充值卡');
+						}
+						
+						//判断是否有元宝
+						if(res.data.yz==0){
+							$('.coupon_yuanbao a').html('暂无可用');
+						}else{
+							$('.coupon_yuanbao a').html('选择元宝');
+						}
+						
+						
+//						$('.coupon').hide();
+						var zong_jia=parseFloat(goods.pay_money)+parseFloat(goods.yunfei);
+						//alert(zong_jia);
+						//判断优惠券
+						if(coupon_money){
+							$('.coupon a').html('减'+coupon_money);
+							zong_jia=zong_jia-parseFloat(coupon_money);
+							console.log(zong_jia);
+							if(zong_jia<0){
+								zong_jia=0;
+							}else{
+								zong_jia=zong_jia;
+							}
+						}else{
+							console.log(shop_jia);
+							zong_jia=zong_jia;
+							
+						} 
+						
+						
+						//判断充值卡
+						if(coupon_ka_money){
+							$('.coupon_ka a').html('减'+coupon_ka_money);
+							
+							zong_jia=zong_jia-parseInt(coupon_ka_money);
+							//alert(zong_jia);
+							if(zong_jia<0){
+								zong_jia=0;
+							}else{
+								zong_jia=zong_jia;
+							}
+						}else{
+							zong_jia=zong_jia;
+							console.log(zong_jia);
+						} 
+						
+						//判断元宝
+						//alert(coupon_yuanbao_money);
+						if(coupon_yuanbao_money){
+							//alert(coupon_yuanbao_money)
+							$('.coupon_yuanbao a').html('减'+coupon_yuanbao_money);
+							zong_jia=zong_jia-parseInt(coupon_yuanbao_money);
+							//alert(zong_jia);
+							if(zong_jia<0){
+								zong_jia=0;
+							}else{
+								zong_jia=zong_jia;
+							}
+						}else{
+							zong_jia=zong_jia;
+							console.log(zong_jia);
+						}
+						//商品价格
+						shop_jiage+='<ul>'
+							+'<li>'
+								+'<span>商品金额</span>'
+								+'<label class="mui-pull-right">'+goods.deposit+'</label>'
+							+'</li>'
+							+'<li>'
+								+'<span>运费</span>';
+								if(goods.yunfei == 0.00){
+									shop_jiage+='<label class="mui-pull-right">免运费</label>';
+								}else{
+									shop_jiage+='<label class="mui-pull-right">¥'+goods.yunfei+'</label>';
+								}
+								
+							shop_jiage+='</li>'
+//							+'<li>'
+//								+'<span>店铺优惠</span>'
+//								+'<label class="mui-pull-right shop_youhui">¥'+goods.yunhui+'</label>'
+//							+'</li>'
+							+'<li>'
+								+'<span>总额</span>'
+								+'<label class="mui-pull-right">'+zong_jia+'</label>' 
+							+'</li>'+
+							'</ul>'
+						
+						$('.shop_xinxi').html(shop_jiage);
+
+						$('.tijiao span em').html('总额<i>¥'+zong_jia+'</>');	
+						if(goods.yunfei == 00){
+							$('.tijiao p').html('（运费：免运费)');	
+						}else{
+							$('.tijiao p').html('（运费：¥'+goods.yunfei+'）');	
+						}
+						
+					}
+				}
+			})
+		}
+		
+		
+		
+
+		//拼团
+        //拼团
+        function pintuan_write(){
+            console.log('拼团填写订单');
+            var num=localStorage.getItem('num');
+            var obj={};
+            if(!active_id){
+                active_id='';
+            }else{
+
+                active_id=active_id;
+            }
+            obj.uid=user_id;
+            obj.token=token;
+            obj.goodsid=goods_id;
+
+
+            obj.prom_id=active_id;
+            obj.skuid=sku_id;
+            console.log(obj);
+            ca.get({
+                url:hetao.url+'goods/buyNow',
+                data:obj,
+                succFn:function(data){
+                    var res=JSON.parse(data);
+                    console.log(res);
+                    var addr=res.data.addr;//个人地址信息
+                    var address='';
+                    var my_xinxi='';
+                    var goods=res.data.goods;//商品信息
+                    var shop='';
+                    var coupon=res.data.coupon;//优惠券信息
+                    var shop_jiage='';
+                    if(res.status==1){
+
+                        console.log(goods.sku);
+                        //个人地址信息
+                        if(!addr){
+                            $('.address').css('display','block');
+                            $('.my_address').css('display','none');
+                            $('.my_xinxi span').css('display','block');
+                            $('.my_xinxi ul').css('display','none');
+                            address+='<span addr_id=""></span>'
+                            $('.my_address').html(address);
+                        }else{
+                            $('.my_address').css('display','block');
+                            $('.address').css('display','none');
+                            $('.my_xinxi span').css('display','none');
+                            $('.my_xinxi ul').css('display','block');
+
+                            address+='<span addr_id="'+addr.addr_id+'">'+addr.addr_receiver+'</span>'
+                                +'<label>'+addr.addr_phone+'</label>'
+                                +'<em class="iconfont icon-aui-icon-right mui-pull-right"></em>'
+                                +'<p>'+addr.addr_area+''+addr.addr_cont+'</p>'
+
+
+                            my_xinxi+='<li>收件人姓名：'+addr.addr_receiver+'</li>'
+                                +'<li>收件人电话：'+addr.addr_phone+' </li>'
+                                +'<li>收件人地址：'+addr.addr_area+''+addr.addr_cont+'</li>'
+
+                            $('.my_xinxi ul').html(my_xinxi);
+                            $('.my_address').html(address);
+                        }
+                        //商品信息
+                        shop+='<div class="pic">'
+                            +'<img src="'+hetao.url2+''+goods.picture+'" />'
+                            +'<div class="mui-pull-right">'
+                            +'<span>'+goods.goods_name+'</span>'
+                            +'<label>规格：'+goods.sku+'</label>'
+                            +'<p>'
+                            +'<em>¥'+goods.yuanjia+'</em>'
+                            +'<i class="mui-pull-right">x'+num+'</i>'
+                            +'</p>'
+                            +'</div>'
+                        shop+='</div>'
+                        $('.shop').html(shop);
+                        shop_jia=goods.yuanjia*num;
+
+
+                        //判断是否有优惠券
+                        if(res.data.coupon==0){
+                            $('.coupon a').html('暂无可用');
+                        }else{
+                            $('.coupon a').html('选择优惠券');
+                        }
+                        //判断是否有充值卡
+                        if(res.data.rc==0){
+                            $('.coupon_ka a').html('暂无可用');
+                        }else{
+                            $('.coupon_ka a').html('选择充值卡');
+                        }
+
+                        //判断是否有元宝
+                        if(res.data.yz==0){
+                            $('.coupon_yuanbao a').html('暂无可用');
+                        }else{
+                            $('.coupon_yuanbao a').html('选择元宝');
+                        }
+
+
+                        console.log('选择优惠券');
+                        console.log(coupon_money);
+                        console.log('选择优惠券');
+                        var zong_jia=parseFloat(goods.active_price)+parseFloat(goods.freight);
+                        console.log(goods.active_price+'dfsdfdsfsd');
+                        console.log(goods.freight+'dfsdfdsfsd');
+                        console.log(zong_jia+'dfsdfdsfsd');
+                        if(coupon_money){
+                            $('.coupon a').html('减'+coupon_money);
+                            zong_jia=zong_jia-parseFloat(coupon_money);
+                            if(zong_jia<0){
+                                zong_jia=0;
+                            }else{
+                                zong_jia=zong_jia;
+                            }
+                        }else{
+                            zong_jia=zong_jia;
+                        }
+                        //alert(coupon_ka_money);
+                        //判断充值卡
+                        if(coupon_ka_money){
+                            $('.coupon_ka a').html('减'+coupon_ka_money);
+
+                            zong_jia=zong_jia-parseInt(coupon_ka_money);
+                            //alert(zong_jia);
+                            if(zong_jia<0){
+                                zong_jia=0;
+                            }else{
+                                zong_jia=zong_jia;
+                            }
+                        }else{
+                            zong_jia=zong_jia;
+                            console.log(zong_jia);
+                        }
+
+                        //判断元宝
+                        //alert(coupon_yuanbao_money);
+                        if(coupon_yuanbao_money){
+                            //alert(coupon_yuanbao_money)
+                            $('.coupon_yuanbao a').html('减'+coupon_yuanbao_money);
+                            zong_jia=zong_jia-parseInt(coupon_yuanbao_money);
+                            if(zong_jia<0){
+                                zong_jia=0;
+                            }else{
+                                zong_jia=zong_jia;
+                            }
+                        }else{
+                            zong_jia=zong_jia;
+                            console.log(zong_jia);
+                        }
+
+                        freight=goods.freight;
+                        //console.log(data);
+                        //商品价格
+                        shop_jiage+='<ul>'
+                            +'<li>'
+                            +'<span>商品金额</span>'
+                            +'<label class="mui-pull-right">¥'+shop_jia+'</label>'
+                            +'</li>'
+                            +'<li>'
+                            +'<span>运费</span>'
+                            +'<label class="mui-pull-right">¥'+goods.freight+'</label>'
+                            +'</li>'
+                            +'<li style="display: none;">'
+                            +'<span>积分抵扣</span>'
+                            +'<label class="mui-pull-right">-¥2.00</label>'
+                            +'</li>'
+                            +'<li>'
+                            +'<span>店铺优惠</span>'
+                            +'<label class="mui-pull-right shop_youhui">¥'+res.data.youhui+'</label>'
+                            +'</li>'
+                            +'<li>'
+                            +'<span>总金额</span>'
+                            +'<label class="mui-pull-right">¥'+zong_jia+'</label>'
+                            +'</li>'
+                        shop_jiage+='</ul>'
+
+                        $('.shop_xinxi').html(shop_jiage);
+
+                        $('.tijiao span i').html('¥'+zong_jia);
+                        if(res.data.active_info.active_type_name){
+                            $('.huodong').css('display','block');
+                            $('.huodong a').html(res.data.active_info.active_type_name);
+                        }
+                        $('.tijiao p').html('（运费：¥'+goods.freight+'）');
+
+                    }
+                }
+            })
+        }
+		
+		//其他所有活动
+		function huodong_write(){
+			var obj={};
+			if(!active_id){
+				active_id='';
+			}else{
+				active_id=active_id;
+			}
+			obj.uid=user_id;
+			obj.token=token;
+			obj.goodsid=goods_id;
+			obj.prom_id=active_id;
+			obj.skuid=sku_id;
+			obj.num=num;
+			console.log(obj);
+			ca.get({
+				url:hetao.url+'goods/buyNow',
+				data:obj,
+				succFn:function(data){
+					var res=JSON.parse(data);
+					console.log(res);
+					//console.log(JSON.stringify(res));
+					var addr=res.data.addr;//个人地址信息
+					var address='';
+					var my_xinxi='';
+					var goods=res.data.goods;//商品信息
+					var shop='';
+					var coupon=res.data.coupon;//优惠券信息
+					var shop_jiage='';
+					if(res.status==1){
+
+						//个人地址信息
+						if(!addr){
+							$('.address').css('display','block');
+							$('.my_address').css('display','none');
+							$('.my_xinxi span').css('display','block');
+							$('.my_xinxi ul').css('display','none');
+						}else{
+							$('.my_address').css('display','block');
+							$('.address').css('display','none');
+							$('.my_xinxi span').css('display','none');
+							$('.my_xinxi ul').css('display','block');
+							
+							address+='<span addr_id="'+addr.addr_id+'">'+addr.addr_receiver+'</span>'
+							+'<label>'+addr.addr_phone+'</label>'
+							+'<em class="iconfont icon-aui-icon-right mui-pull-right"></em>'
+							+'<p>'+addr.addr_area+''+addr.addr_cont+'</p>'	
+							
+							
+							my_xinxi+='<li>收件人姓名：'+addr.addr_receiver+'</li>'
+							+'<li>收件人电话：'+addr.addr_phone+' </li>'
+							+'<li>收件人地址：'+addr.addr_area+''+addr.addr_cont+'</li>'
+							
+							$('.my_xinxi ul').html(my_xinxi);
+							$('.my_address').html(address);
+						}
+						//商品信息
+						shop+='<div class="pic">'
+							+'<img src="'+hetao.url2+''+goods.picture+'" />'
+							+'<div class="mui-pull-right">'
+							+'<span>'+goods.goods_name+'</span>'
+							+'<label>规格：'+goods.sku+'</label>'
+							+'<p>'
+							+'<em>¥'+goods.yuanjia+'</em>'
+							+'<i class="mui-pull-right">x'+num+'</i>'
+							+'</p>'
+							+'</div>'
+						shop+='</div>'	
+						$('.shop').html(shop);
+						shop_jia=goods.yuanjia*num;
+						
+						
+						//判断是否有优惠券
+						if(res.data.coupon==0){
+							$('.coupon a').html('暂无可用');
+						}else{
+							$('.coupon a').html('选择优惠券');
+						}
+						
+						//判断是否有充值卡
+						if(res.data.rc==0){
+							$('.coupon_ka a').html('暂无可用');
+						}else{
+							$('.coupon_ka a').html('选择充值卡');
+						}
+						
+						//判断是否有元宝
+						if(res.data.yz==0){
+							$('.coupon_yuanbao a').html('暂无可用');
+						}else{
+							$('.coupon_yuanbao a').html('选择元宝');
+						}
+						console.log('选择优惠券');
+						console.log(coupon_money);
+						console.log('选择优惠券');
+						var zong_jia=parseFloat(res.data.total_price)+parseFloat(goods.freight);
+						if(coupon_money){
+							$('.coupon a').html('减'+coupon_money);
+							zong_jia=zong_jia-parseFloat(coupon_money);
+							if(zong_jia<0){
+								zong_jia=0;
+							}else{
+								zong_jia=zong_jia;
+							}
+						}else{
+							zong_jia=zong_jia;
+							console.log(zong_jia);
+						} 
+						
+						//判断充值卡
+						if(coupon_ka_money){
+							$('.coupon_ka a').html('减'+coupon_ka_money);
+							
+							zong_jia=zong_jia-parseInt(coupon_ka_money);
+							//alert(zong_jia);
+							if(zong_jia<0){
+								zong_jia=0;
+							}else{
+								zong_jia=zong_jia;
+							}
+						}else{
+							zong_jia=zong_jia;
+							console.log(zong_jia);
+						} 
+						
+						//判断元宝
+						//alert(coupon_yuanbao_money);
+						if(coupon_yuanbao_money){
+							//alert(coupon_yuanbao_money)
+							$('.coupon_yuanbao a').html('减'+coupon_yuanbao_money);
+							zong_jia=zong_jia-parseInt(coupon_yuanbao_money);
+							if(zong_jia<0){
+								zong_jia=0;
+							}else{
+								zong_jia=zong_jia;
+							}
+						}else{
+							zong_jia=zong_jia;
+							console.log(zong_jia);
+						}
+						
+						
+						
+						
+						
+						freight=goods.freight;
+						//商品价格
+						shop_jiage+='<ul>'
+							+'<li>'
+								+'<span>商品金额</span>'
+								+'<label class="mui-pull-right">¥'+shop_jia+'</label>'
+							+'</li>'
+							+'<li>'
+								+'<span>运费</span>'
+								+'<label class="mui-pull-right">¥'+goods.freight+'</label>'
+							+'</li>'
+							+'<li style="display: none;">'
+								+'<span>积分抵扣</span>'
+								+'<label class="mui-pull-right">-¥2.00</label>'
+							+'</li>'
+							+'<li>'
+								+'<span>店铺优惠</span>'
+								+'<label class="mui-pull-right shop_youhui">¥'+res.data.youhui+'</label>'
+							+'</li>'
+							+'<li>'
+								+'<span>总金额</span>'
+								+'<label class="mui-pull-right">¥'+zong_jia+'</label>'
+							+'</li>'
+						shop_jiage+='</ul>'
+						
+						$('.shop_xinxi').html(shop_jiage);
+						
+						$('.tijiao span i').html('¥'+zong_jia);
+                        if(res.data.active_info.active_type_name){
+                            $('.huodong').css('display','block');
+                            $('.huodong a').html(res.data.active_info.active_type_name);
+                        }
+						$('.tijiao p').html('（运费：¥'+goods.freight+'）');	
+						
+					}else if(res.status==-3){
+						ca.prompt(res.msg);
+						setTimeout(function(){
+							ca.closeCurrentInterface();
+						},500)
+					}
+				}
+			})
+		}
+		
+		
+		//店主页面
+		function shop_write(){
+			var obj={};
+			obj.uid=user_id;
+			obj.token=token;
+			obj.goodsid=goods_id;
+			obj.s_id=active_id;
+			obj.skuid=sku_id;
+			obj.num=num;
+			console.log(obj);
+			ca.get({
+				url:hetao.url+'goods/buyNow',
+				data:obj,
+				succFn:function(data){
+					var res=JSON.parse(data);
+					console.log(res);
+					console.log(JSON.stringify(res));
+					var addr=res.data.addr;//个人地址信息
+					var address='';
+					var my_xinxi='';
+					var goods=res.data.goods;//商品信息
+					var shop='';
+					var coupon=res.data.coupon;//优惠券信息
+					var shop_jiage='';
+					if(res.status==1){
+						
+						console.log(goods.sku);
+						//个人地址信息
+						if(!addr){
+							$('.address').css('display','block');
+							$('.my_address').css('display','none');
+							$('.my_xinxi span').css('display','block');
+							$('.my_xinxi ul').css('display','none');
+						}else{
+							$('.my_address').css('display','block');
+							$('.address').css('display','none');
+							$('.my_xinxi span').css('display','none');
+							$('.my_xinxi ul').css('display','block');
+							
+							address+='<span addr_id="'+addr.addr_id+'">'+addr.addr_receiver+'</span>'
+							+'<label>'+addr.addr_phone+'</label>'
+							+'<em class="iconfont icon-aui-icon-right mui-pull-right"></em>'
+							+'<p>'+addr.addr_area+''+addr.addr_cont+'</p>'	
+							
+							
+							my_xinxi+='<li>收件人姓名：'+addr.addr_receiver+'</li>'
+							+'<li>收件人电话：'+addr.addr_phone+' </li>'
+							+'<li>收件人地址：'+addr.addr_area+''+addr.addr_cont+'</li>'
+							
+							$('.my_xinxi ul').html(my_xinxi);
+							$('.my_address').html(address);
+						}
+						//商品信息
+						shop+='<div class="pic">'
+							+'<img src="'+hetao.url2+''+goods.picture+'" />'
+							+'<div class="mui-pull-right">'
+							+'<span>'+goods.goods_name+'</span>'
+							+'<label>规格：'+goods.sku+'</label>'
+							+'<p>'
+							+'<em>¥'+goods.price+'</em>'
+							+'<i class="mui-pull-right">x'+num+'</i>'
+							+'</p>'
+							+'</div>'
+						shop+='</div>'	
+						$('.shop').html(shop);
+						shop_jia=goods.price*num;
+						
+						
+						//判断是否有优惠券
+						if(res.data.coupon==0){
+							$('.coupon a').html('暂无可用');
+						}else{
+							$('.coupon a').html('选择优惠券');
+						}
+						console.log('选择优惠券');
+						console.log(coupon_money);
+						console.log('选择优惠券');
+						var zong_jia;
+						if(coupon_money){
+							$('.coupon a').html('减'+coupon_money);
+							zong_jia=parseInt(shop_jia)+parseInt(goods.freight)-parseInt(coupon_money);
+							if(zong_jia<0){
+								zong_jia=0;
+							}else{
+								zong_jia=zong_jia;
+							}
+						}else{
+							zong_jia=parseInt(shop_jia)+parseInt(goods.freight);
+							console.log(zong_jia);
+						} 
+						
+						freight=goods.freight;
+						//商品价格
+						shop_jiage+='<ul>'
+							+'<li>'
+								+'<span>商品金额</span>'
+								+'<label class="mui-pull-right">¥'+shop_jia+'</label>'
+							+'</li>'
+							+'<li>'
+								+'<span>运费</span>'
+								+'<label class="mui-pull-right">¥'+goods.freight+'</label>'
+							+'</li>'
+							+'<li style="display: none;">'
+								+'<span>积分抵扣</span>'
+								+'<label class="mui-pull-right">-¥2.00</label>'
+							+'</li>'
+							+'<li>'
+								+'<span>店铺优惠</span>'
+								+'<label class="mui-pull-right shop_youhui">¥'+data.youhui+'</label>'
+							+'</li>'
+							+'<li>'
+								+'<span>总金额</span>'
+								+'<label class="mui-pull-right">¥'+zong_jia+'</label>'
+							+'</li>'
+						shop_jiage+='</ul>'
+						
+						$('.shop_xinxi').html(shop_jiage);
+						
+						$('.tijiao span i').html('¥'+zong_jia);	
+						
+						$('.tijiao p').html('（运费：¥'+goods.freight+'）');	
+						
+					}
+				}
+			})
+		}
+		
+		
+		
+		
+		
+		
+		
+		//发票判断
+		var invoice_need=0;
+		var invoice_header=1;//个人还是公司
+		var invoice_com='';//公司名称
+		var invoice_com_tax='';//税号
+		
+		
+		$('.invoice_btn').click(function(){
+			//判断需不需要发票
+			if(invoice_need==0){
+				invoice_header='';
+				$('.fapiao label a').html('不开发票');
+			}else if(!invoice_header){
+				invoice_header=1;
+			}else{
+				invoice_header=invoice_header;
+			}
+			if(invoice_header==1){
+				console.log('个人发票');
+				$('.fapiao label a').html('个人发票');
+			}else if(invoice_header==2){
+				console.log('公司发票');
+				$('.fapiao label a').html('公司发票');
+			}
+			invoice_com=$('.invoice_com').val();
+			invoice_com_tax=$('.invoice_com_tax').val();
+			console.log(invoice_need);
+			console.log(invoice_header);
+			console.log(invoice_com);
+			console.log(invoice_com_tax);	
+			$('.zhedang').css('display','none');
+		});
+
+		function tongzhi(){
+							var addr_id=$('.my_address span').attr('addr_id');
+							var pay_price=$('.tijiao span i').html().split('¥')[1];	//实际提交价格
+							if (type != 'yushou') {
+                                var shop_youhui=$('.shop_youhui').html().split('¥')[1];	//优惠价格
+							}
+
+							console.log(shop_youhui);
+
+							if(invoice_need==1 && invoice_header==2){
+								if(!invoice_com){
+									ca.prompt('请填写公司名称');
+									return;
+								}
+								if(!invoice_com_tax){
+									ca.prompt('请填写发票税号');
+									return;
+								}
+							}
+							if(invoice_need==0){
+								invoice_header='';
+							}
+							if(!addr_id){
+								ca.prompt('请填写收货地址');
+								return;
+							}
+							if(!coupon_id){
+								coupon_id='';
+							}
+							var obj={};
+							var obj_car={};
+							console.log(obj);
+							//liji 是直接购买的
+							//jifen 积分购买
+							//else 是购物车过来的
+							if(type=='liji'){
+								obj.uid=user_id;
+								obj.token=token;
+								obj.goods_id=goods_id;
+								obj.sku_id=sku_id;
+								obj.goods_num=num;
+								obj.addr_id=addr_id;
+								obj.youhui=shop_youhui;
+								obj.points=0;
+								obj.coupon_id=coupon_id;//优惠券id
+								obj.rc_id=coupon_ka_id;//充值id
+								obj.yz_id=coupon_yuanbao_id;//元宝id
+								obj.rc_amount=coupon_ka_money;//元宝id
+
+								obj.invoice_need=invoice_need;//是否需要发票
+								obj.invoice_header=invoice_header;//公司、个人
+								obj.invoice_com=invoice_com;//公司名称
+								obj.invoice_com_tax=invoice_com_tax;//税号
+
+								obj.all_price=shop_jia;//总价
+								obj.pay_price=pay_price;//实际提交价格
+								obj.freight=freight;//运费
+								//alert(coupon_ka_id)
+								console.log(JSON.stringify(obj));
+									//alert(111)
+								ca.get({
+									url:hetao.url+'order/orderCreate',
+									data:obj,
+									succFn:function(data){
+										var res=JSON.parse(data);
+										console.log(res);
+										//alert(111)
+										if(res.status==1){
+											ca.prompt('订单提交成功');
+											localStorage.removeItem('coupon_id');
+											localStorage.removeItem('coupon_money');
+
+											localStorage.removeItem('coupon_ka_id');
+											localStorage.removeItem('coupon_ka_money');
+
+											localStorage.removeItem('coupon_yuanbao_id');
+											localStorage.removeItem('coupon_yuanbao_money');
+											var order_id=res.data.order_id;
+											var pay_price=res.data.pay_price;
+											var user_account=res.data.user_account;
+											var arr=['personal/my_order.html','pages/car.html','car_discount.html','index/index-page.html'];
+                                            window.location.href = hetao.url3+"/Api/Fx/zhifu_order/order_id/"+order_id;
+											ca.sendNotice(arr,'order',{});
+											// ca.newInterface({
+											// 	url:'zhifu_order.html?order_id='+order_id,
+											// 	id:'zhifu_order.html'
+											// })
+										}else if(res.status==2){
+                                            //有未付款的大礼包订单
+                                            ca.confirm({
+                                                title:'提示',
+                                                content:'您有待付款订单，是否前去查看',
+                                                callback:function(data){
+                                                    if(data){
+                                                        window.location.href = hetao.url3+"/Api/Fx/pendingOrder?order_id="+res.data.order_id;
+                                                    }
+                                                }
+                                            });
+                                        }else{
+											ca.prompt(res.msg);
+										}
+									}
+								})
+							}else if(type=='zengsong'){
+								//赠送店铺
+
+								var giving_id=localStorage.getItem('giving_id');
+                                if (!giving_id) {
+                                    giving_id = 0;
+                                }
+								obj.uid=user_id;
+								obj.token=token;
+								obj.goods_id=goods_id;
+								obj.sku_id=sku_id;
+								obj.goods_num=num;
+								obj.addr_id=addr_id;
+								obj.youhui=shop_youhui;
+								obj.points=0;
+								obj.coupon_id=coupon_id;//优惠券id
+								obj.rc_id=coupon_ka_id;//充值id
+								obj.yz_id=coupon_yuanbao_id;//元宝id
+								obj.rc_amount=coupon_ka_money;//元宝id
+
+								obj.invoice_need=invoice_need;//是否需要发票
+								obj.invoice_header=invoice_header;//公司、个人
+								obj.invoice_com=invoice_com;//公司名称
+								obj.invoice_com_tax=invoice_com_tax;//税号
+
+								obj.all_price=shop_jia;//总价
+								obj.pay_price=pay_price;//实际提交价格
+								obj.freight=freight;//运费
+								obj.giving_id=giving_id;//赠送id或手机号
+                                obj.order_status= 'libao';// 礼包
+								//alert(coupon_ka_id)
+								console.log(obj);
+									//alert(111)
+								ca.get({
+									url:hetao.url+'order/orderCreate',
+									data:obj,
+									succFn:function(data){
+										var res=JSON.parse(data);
+										console.log(res);
+										//alert(111)
+										if(res.status==1){
+											ca.prompt('订单提交成功');
+											localStorage.removeItem('coupon_id');
+											localStorage.removeItem('coupon_money');
+											localStorage.removeItem('giving_id');
+											localStorage.removeItem('coupon_ka_id');
+											localStorage.removeItem('coupon_ka_money');
+
+											localStorage.removeItem('coupon_yuanbao_id');
+											localStorage.removeItem('coupon_yuanbao_money');
+											var order_id=res.data.order_id;
+											// var pay_price=res.data.pay_price;
+											// var user_account=res.data.user_account;
+											// var arr=['personal/my_order.html','pages/car.html','car_discount.html','index/index-page.html'];
+											// ca.sendNotice(arr,'order',{});
+                                            window.location.href = hetao.url3+"/Api/Fx/zhifu_order/order_id/"+order_id;
+											// ca.newInterface({
+											// 	url:'zhifu_order.html?order_id='+order_id,
+											// 	id:'zhifu_order.html'
+											// })
+                                        } else if(res.status==2) {
+                                            //有未付款的大礼包订单
+                                            ca.confirm({
+                                                title:'提示',
+                                                content:'您有待付款订单，是否前去查看',
+                                                callback:function(data){
+                                                    if(data){
+                                                        window.location.href = hetao.url3+"/Api/Fx/pending_order?order_id="+res.data.order_id;
+                                                    }
+                                                }
+                                            });
+                                        } else {
+											ca.prompt(res.msg);
+										}
+									}
+								})
+							}else if(type == 'jifen'){
+								//积分兑换
+								obj.user_id=user_id;
+								obj.token=token;
+								obj.goods_id=goods_id;
+								obj.sku_id=sku_id;
+								obj.number=num;
+								obj.address_id=addr_id;
+								obj.youhui=shop_youhui;
+								obj.is_invoice=invoice_need;//是否需要发票
+								obj.invoice_header=invoice_header;//公司、个人
+								obj.invoice_com=invoice_com;//公司名称
+								obj.invoice_com_tax=invoice_com_tax;//税号
+								console.log(obj);
+								ca.post({
+									url:hetao.url+'Integral/addOrder',
+									data:obj,
+									succFn:function(data){
+										var res=JSON.parse(data);
+										console.log(res);
+										if(res.status==0){
+											ca.prompt('恭喜您,已兑换成功');
+											localStorage.removeItem('coupon_id');
+											localStorage.removeItem('coupon_money');
+
+											var order_id=res.data.order_id;
+											var pay_price=res.data.pay_price;
+											var user_account=res.data.user_account;
+
+											//兑换成功 通知积分商城
+											var arr=['duihuan-shangcheng.html','index/index-page.html'];
+											ca.sendNotice(arr,'jifen',{});
+											setTimeout(function(){
+												//兑换成功  关闭指定页面
+                                                window.location.href = hetao.url3+"/Api/Fx/zhifu_success/order_id/"+order_id;
+												// ca.newInterface({
+												// 	url:'zhifu_success.html?order_id='+order_id,
+												// 	id:'zhifu_success.html'
+												// })
+
+											},1000)
+										}else{
+											ca.prompt('积分兑换失败');
+										}
+									}
+								})
+							}else if(type == 'yushou'){
+								var pay_price=$('.tijiao span i').html().split('¥')[1];	//实际提交价格
+								console.log(pay_price)
+								//预售购买
+								obj.uid=user_id;
+								obj.token=token;
+								obj.goods_id=goods_id;
+								obj.sku_id=sku_id;
+
+								obj.goods_num=num;
+								obj.addr_id=addr_id;
+								obj.points=0;
+								obj.youhui=shop_youhui;
+								obj.coupon_id=coupon_id;//优惠券id
+								obj.invoice_need=invoice_need;//是否需要发票
+								obj.invoice_header=invoice_header;//公司、个人
+								obj.invoice_com=invoice_com;//公司名称
+								obj.invoice_com_tax=invoice_com_tax;//税号
+
+								obj.all_price=shop_jia;//总价
+								obj.pay_price=pay_price;//实际提交价格
+								obj.freight=freight;//运费
+
+								obj.acti_type='presale';//预售方式
+								obj.acti_id=active_id;
+                                obj.yushouid=act_id;
+								console.log(obj);
+								ca.post({
+									url:hetao.url+'order/orderCreate',
+									data:obj,
+									succFn:function(data){
+										var res=JSON.parse(data);
+										console.log(res);
+										if(res.status==1){
+											ca.prompt('订单提交成功');
+											localStorage.removeItem('coupon_id');
+											localStorage.removeItem('coupon_money');
+
+											var order_id=res.data.order_id;
+											var pay_price=res.data.pay_price;
+											var user_account=res.data.user_account;
+											var arr=['personal/my_order.html','pages/car.html','car_discount.html','index/index-page.html'];
+											ca.sendNotice(arr,'order',{});
+                                            window.location.href = hetao.url3+"/Api/Fx/zhifu_order/order_id/"+order_id;
+											// ca.newInterface({
+											// 	url:'zhifu_order.html?order_id='+order_id,
+											// 	id:'zhifu_order.html'
+											// })
+										}else{
+											ca.prompt(res.msg);
+										}
+									}
+								})
+							}else if(type=='huodong'){
+								obj.uid=user_id;
+								obj.token=token;
+								obj.goods_id=goods_id;
+								obj.sku_id=sku_id;
+								obj.goods_num=num;
+								obj.addr_id=addr_id;
+								obj.points=0;
+								obj.youhui=shop_youhui;
+								obj.coupon_id=coupon_id;//优惠券id
+								obj.invoice_need=invoice_need;//是否需要发票
+								obj.invoice_header=invoice_header;//公司、个人
+								obj.invoice_com=invoice_com;//公司名称
+								obj.invoice_com_tax=invoice_com_tax;//税号
+
+								obj.all_price=shop_jia;//总价
+								obj.pay_price=pay_price;//实际提交价格
+								obj.freight=freight;//运费
+								obj.acti_id=active_id;
+								console.log(obj);
+								//return;
+								ca.get({
+									url:hetao.url+'order/orderCreate',
+									data:obj,
+									succFn:function(data){
+										var res=JSON.parse(data);
+										console.log(res);
+										if(res.status==1){
+											ca.prompt('订单提交成功');
+											localStorage.removeItem('coupon_id');
+											localStorage.removeItem('coupon_money');
+
+											var order_id=res.data.order_id;
+											var pay_price=res.data.pay_price;
+											var user_account=res.data.user_account;
+											var arr=['personal/my_order.html','pages/car.html','car_discount.html','index/index-page.html'];
+											ca.sendNotice(arr,'order',{});
+                                            window.location.href = hetao.url3+"/Api/Fx/zhifu_order/order_id/"+order_id;
+											// ca.newInterface({
+											// 	url:'zhifu_order.html?order_id='+order_id,
+											// 	id:'zhifu_order.html'
+											// })
+										}else{
+											ca.prompt(res.msg);
+										}
+									}
+								})
+							}else if(type=='pintuan'){
+								obj.uid=user_id;
+								obj.token=token;
+								obj.goods_id=goods_id;
+								obj.sku_id=sku_id;
+								obj.goods_num=num;
+								obj.addr_id=addr_id;
+								obj.points=0;
+								obj.youhui=shop_youhui;
+								obj.coupon_id=coupon_id;//优惠券id
+								obj.invoice_need=invoice_need;//是否需要发票
+								obj.invoice_header=invoice_header;//公司、个人
+								obj.invoice_com=invoice_com;//公司名称
+								obj.invoice_com_tax=invoice_com_tax;//税号
+
+								obj.all_price=shop_jia;//总价
+								obj.pay_price=pay_price;//实际提交价格
+								obj.freight=freight;//运费
+								obj.acti_id=active_id;
+								console.log(obj);
+								ca.get({
+									url:hetao.url+'order/orderCreate',
+									data:obj,
+									succFn:function(data){
+										var res=JSON.parse(data);
+										console.log(res);
+										if(res.status==1){
+											ca.prompt('订单提交成功');
+											localStorage.removeItem('coupon_id');
+											localStorage.removeItem('coupon_money');
+
+											var order_id=res.data.order_id;
+											var pay_price=res.data.pay_price;
+											var user_account=res.data.user_account;
+											var arr=['personal/my_order.html','pages/car.html','car_discount.html','index/index-page.html'];
+											ca.sendNotice(arr,'order',{});
+                                            window.location.href = hetao.url3+"/Api/Fx/zhifu_order/order_id/"+order_id;
+											// ca.newInterface({
+											// 	url:'zhifu_order.html?order_id='+order_id,
+											// 	id:'zhifu_order.html'
+											// })
+										}else{
+											ca.prompt(res.msg);
+										}
+									}
+								})
+							}else if(type=='shop'){
+								obj.uid=user_id;
+								obj.token=token;
+								obj.goods_id=goods_id;
+								obj.sku_id=sku_id;
+								obj.goods_num=num;
+								obj.addr_id=addr_id;
+								obj.points=0;
+								obj.youhui=shop_youhui;
+								obj.coupon_id=coupon_id;//优惠券id
+								obj.invoice_need=invoice_need;//是否需要发票
+								obj.invoice_header=invoice_header;//公司、个人
+								obj.invoice_com=invoice_com;//公司名称
+								obj.invoice_com_tax=invoice_com_tax;//税号
+
+								obj.all_price=shop_jia;//总价
+								obj.pay_price=pay_price;//实际提交价格
+								obj.freight=freight;//运费
+								obj.s_id=active_id;//店主id
+								console.log(obj);
+								ca.get({
+									url:hetao.url+'order/orderCreate',
+									data:obj,
+									succFn:function(data){
+										var res=JSON.parse(data);
+										console.log(res);
+										if(res.status==1){
+											ca.prompt('订单提交成功');
+											localStorage.removeItem('coupon_id');
+											localStorage.removeItem('coupon_money');
+
+											var order_id=res.data.order_id;
+											var pay_price=res.data.pay_price;
+											var user_account=res.data.user_account;
+											var arr=['personal/my_order.html','pages/car.html','car_discount.html','index/index-page.html'];
+											ca.sendNotice(arr,'order',{});
+                                            window.location.href = hetao.url3+"/Api/Fx/zhifu_order/order_id/"+order_id;
+											// ca.newInterface({
+											// 	url:'zhifu_order.html?order_id='+order_id,
+											// 	id:'zhifu_order.html'
+											// })
+										}else{
+											ca.prompt(res.msg);
+										}
+									}
+								})
+							}else{
+								if(!coupon_id){
+									coupon_id='';
+								}else{
+									coupon_id=coupon_id;
+								}
+								obj_car.uid=user_id;
+								obj_car.token=token;
+								obj_car.cart_ids=cart_ids;
+								obj_car.addr_id=addr_id;
+								obj_car.coupon_id=coupon_id;//优惠券id
+								obj_car.need_invoice=invoice_need;//是否需要发票
+								obj_car.invoice_header=invoice_header;//公司、个人
+								obj_car.invoice_com=invoice_com;//公司名称
+								obj_car.invoice_com_tax=invoice_com_tax;//税号
+								obj_car.points=0;
+								obj.youhui=shop_youhui;
+								console.log(obj_car);
+								ca.get({
+									url:hetao.url+'cart/setOrder',
+									data:obj_car,
+									succFn:function(data){
+										var res=JSON.parse(data);
+										console.log(res);
+										if(res.status==1){
+											ca.prompt('订单提交成功');
+											localStorage.removeItem('coupon_id');
+											localStorage.removeItem('coupon_money');
+
+											var order_id=res.data.order_id;
+											var arr=['personal/my_order.html','pages/car.html','car_discount.html','index/index-page.html'];
+											ca.sendNotice(arr,'order',{});
+                                            window.location.href = hetao.url3+"/Api/Fx/zhifu_order/order_id/"+order_id;
+											// ca.newInterface({
+											// 	url:'zhifu_order.html?order_id='+order_id,
+											// 	id:'zhifu_order.html'
+											// })
+											//ca.closeCurrentInterface();
+										}else{
+											ca.prompt(res.msg);
+										}
+									}
+								});
+							}
+
+
+		}
+		//tongzhi();
+		
+		
+		$('.tijiao label').click(function(){
+			tongzhi();
+		});
+		
+		
+		//更换地址
+		$('.dizhi').click(function(){
+            var param_str = user_id+"/token/"+token+"/goodsid/"+goods_id+"/active_id/"+active_id+"/num/"+num+"/sku_id/"+sku_id+"/type/"+type;
+            window.location.href = hetao.url3+"/Api/Fx/my_address/uid/"+param_str;
+            // ca.newInterface({
+            //     url:'../personal/my_address.html',
+            //     id:'../personal/my_address.html'
+            // })
+		});
+		//优惠券
+		$('.coupon').click(function(){
+
+            var zongjia=$('.tijiao span i').html().split('¥')[1];
+            var param_str = user_id+"/token/"+token+"/goodsid/"+goods_id+"/active_id/"+active_id+"/num/"+num+"/sku_id/"+sku_id+"/type/"+type;
+            window.location.href = hetao.url3+"/Api/Fx/car_discount/zongjia/"+zongjia+"/uid/"+param_str;
+            // ca.newInterface({
+            //     url:'car_discount.html?zongjia='+zongjia+'&'+goods_id+'&'+sku_id,
+            //     id:'car_discount.html'
+            // })
+		});
+		
+		
+		//元宝
+		$('.coupon_yuanbao').click(function(){
+            console.log(goods_id);
+            console.log(sku_id)
+            var zongjia=$('.tijiao span i').html().split('¥')[1];
+            var param_str = user_id+"/token/"+token+"/goodsid/"+goods_id+"/active_id/"+active_id+"/num/"+num+"/sku_id/"+sku_id+"/type/"+type;
+            window.location.href = hetao.url3+"/Api/Fx/car_yuanbao/zongjia/"+zongjia+"/uid/"+param_str;
+            // ca.newInterface({
+            //     url:'car_yuanbao.html?zongjia='+zongjia+'&'+goods_id+'&'+sku_id,
+            //     id:'car_yuanbao.html'
+            // })
+		});
+		
+		
+		//充值卡
+		$('.coupon_ka').click(function(){
+            console.log(goods_id);
+            console.log(sku_id)
+            var zongjia=$('.tijiao span i').html().split('¥')[1];
+            var couponmoney = Number(coupon_ka_money)
+                zongjia = Number(zongjia) + couponmoney
+            var param_str = user_id+"/token/"+token+"/goodsid/"+goods_id+"/active_id/"+active_id+"/num/"+num+"/sku_id/"+sku_id+"/type/"+type;
+            window.location.href = hetao.url3+"/Api/Fx/car_ka/zongjia/"+zongjia+"/uid/"+param_str;
+            // ca.newInterface({
+            //     url:'car_ka.html?zongjia='+zongjia+'&'+goods_id+'&'+sku_id,
+            //     id:'car_ka.html'
+            // })
+		});
+		
+		
+		
+		
+		
+		
+		//发票显示
+		$('.fapiao').click(function(){
+			$('.zhedang').css('display','block');
+		});
+		//发票隐藏
+		$('.icon-guanbi').click(function(){
+			$('.zhedang').css('display','none');
+		});
+		
+		//发票内部切换
+		$('.invoice_type').on('tap','span',function(){
+			$(this).addClass('active').siblings().removeClass('active');
+			var index=$(this).html();
+			console.log(index);
+			if(index=='不开发票'){
+				invoice_need=0;
+				$('.invoice_rise span').removeClass('active');
+				$('.company_xinxi').css('display','none');
+			}else{
+				invoice_need=1;
+				$('.invoice_rise span:nth-child(1)').addClass('active');
+			}
+		});
+		
+		$('.invoice_rise').on('tap','span',function(){
+			var fapiao=$('.invoice_type span:nth-child(2)').attr('class');
+			console.log(fapiao);
+			if(fapiao=='active'){
+				$(this).addClass('active').siblings().removeClass('active');
+				var index=$(this).html();
+				if(index=='个人'){
+					invoice_header=1;
+					$('.company_xinxi').css('display','none');
+				}else{
+					invoice_header=2;
+					$('.company_xinxi').css('display','block');
+				}
+			}
+			
+		});
+		
+		
+		//发票须知
+		$('.invoice_top label').click(function(){
+			ca.newInterface({
+				url:'invoice_xuzhi.html',
+				id:'invoice_xuzhi.html'
+			})
+		});
+        var scrollTop;
+        $(window).scroll(function(){
+            console.log("下拉刷新");
+            scrollTop = $(this).scrollTop();
+            shuaxin();
+        });
+        function shuaxin() {
+            if (scrollTop < 0 ) {
+                location.reload();
+            }
+        }
+
+	</script>	
+</html>

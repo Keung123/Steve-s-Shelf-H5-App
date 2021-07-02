@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    {include file="public/head" title="添加物流信息" /}
+
+    <body class="inside-header inside-aside is-dialog">
+        <div id="main" role="main">
+            <div class="tab-content tab-addtabs">
+                <div id="content">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <section class="content-header hide">
+                                <h1>
+                                    控制台                                    <small>Control panel</small>
+                                </h1>
+                            </section>
+
+                            <div class="content">
+                                <form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="{:url('admin/order/editaddr')}">
+
+                                    <input type="hidden" name="order_id" value="{$row['order_id']}">
+									
+									
+									
+									
+                                    <div class="form-group">
+                                        <label for="c-invoice_com" class="control-label col-xs-12 col-sm-2">收货人:</label>
+                                        <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+                                            <span>{$row['addr_receiver']}</span>
+                                        </div>
+                                    </div> 
+									<div class="form-group">
+                                       <label for="c-invoice_com" class="control-label col-xs-12 col-sm-2">收货人地址省:</label>
+                                        <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+										 <select  id="pro_name" data-rule="required" class="form-control selectpicker" name="row[pro_name]">
+											{volist name="addlist" id="v"}
+											<option value="{$v.region_id}" {if $row['pro_name']==$v.region_id}selected{/if}>{$v.region_name}</option>
+											{/volist}
+                                            </select>
+                                        </div>
+                                    </div>
+									<div class="form-group">
+                                        <label for="c-invoice_com" class="control-label col-xs-12 col-sm-2">收货人地址市:</label>
+                                        <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+											<select  id="city_name" data-rule="required" class="form-control" name="row[city_name]">
+												{volist name="$citylist" id="v"}
+												<option value="{$v.region_id}" {if $row['city_name']==$v.region_id}selected{/if}>{$v.region_name}</option>
+												{/volist}
+                                            </select>
+                                        </div>
+                                    </div>
+									<div class="form-group">
+                                        <label for="c-invoice_com" class="control-label col-xs-12 col-sm-2">收货人地址区（县）:</label>
+                                        <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+											<select  id="area" data-rule="required" class="form-control" name="row[area]">
+                                                	{volist name="$arealist" id="v"}
+												<option value="{$v.region_id}" {if $row['area']==$v.region_id}selected{/if}>{$v.region_name}</option>
+												{/volist}
+                                            </select>
+                                        </div>
+                                    </div>
+									<div class="form-group">
+                                        <label for="c-invoice_com" class="control-label col-xs-12 col-sm-2">收货人详细地址:</label>
+                                        <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+											<input id="c-goods_name" class="form-control" name="row[address]" type="text" value="{$row['address']}" data-rule="required">
+                                        </div>
+                                    </div>
+									<div class="form-group">
+                                        <label for="c-invoice_com" class="control-label col-xs-12 col-sm-2">收货人电话:</label>
+                                        <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+                                            <span>{$row['addr_phone']}</span>
+                                        </div>
+                                    </div>
+									 {volist name="$row['order_goods']" id="v"}
+                                    <div class="form-group">
+                                        <label for="c-invoice_header" class="control-label col-xs-12 col-sm-2">商品名称:</label>
+                                        <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+                                            <span>{$v['og_goods_name']} 【{$v['og_goods_spec_val']} X{$v['og_goods_num']}】 </span>
+                                        </div>
+                                    </div>
+									 <div class="form-group">
+											<label for="c-user_avat" class="control-label col-xs-12 col-sm-2"> 商品主图:</label>
+											<div class="col-xs-12 col-sm-8">
+												<div class="form-inline">
+													<ul class="row list-inline plupload-preview" id="p-mate_thumb">
+													
+													<li class="col-xs-3"><a href="{$v['picture']}" data-url="" target="_blank" class="thumbnail"><img src="{$v['picture']}" class="img-responsive"></a></li>
+													
+													</ul>
+												</div>
+											</div>
+										</div>
+			  
+									 
+									{/volist}
+									<!--<div class="form-group">
+                                        <label for="c-order_freight" class="control-label col-xs-12 col-sm-2">订单运费:</label>
+                                        <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+
+                                            <span>{$row['order_freight']}</span><br>
+
+                                        </div>
+                                    </div>
+									<div class="form-group">
+                                        <label for="c-order_coupon_id" class="control-label col-xs-12 col-sm-2">优惠券:</label>
+                                        <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+
+                                            <span>{$row['order_coupon_id']}</span><br>
+
+                                        </div>
+                                    </div>
+								 
+									<div class="form-group">
+                                        <label for="c-order_prom_amount" class="control-label col-xs-12 col-sm-2">活动优惠:</label>
+                                        <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+                                            <span>{$row['order_prom_amount']}</span><br>
+
+                                        </div>
+                                    </div>-->
+									<div class="form-group">
+                                        <label for="c-order_create_time" class="control-label col-xs-12 col-sm-2">积分抵扣金额:</label>
+                                        <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+                                            <span>{$row['order_pay_points']}</span>
+                                        </div>
+                                    </div>
+									<!--<div class="form-group">
+                                        <label for="c-order_create_time" class="control-label col-xs-12 col-sm-2">元宝抵扣金额:</label>
+                                        <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+                                            <span>{$row['yin_amount']}</span>
+                                        </div>
+                                    </div>
+									<div class="form-group">
+                                        <label for="c-order_create_time" class="control-label col-xs-12 col-sm-2">充值卡抵扣金额:</label>
+                                        <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+                                            <span>{$row['card_price']}</span>
+                                        </div>
+                                    </div>
+ 
+									<div class="form-group">
+                                        <label for="c-need_invoice" class="control-label col-xs-12 col-sm-2">是否要发票:</label>
+                                        <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+
+                                            <span>{$row['need_invoice']}</span><br>
+
+                                        </div>
+                                    </div>
+									{if condition="$row['need_invoice'] neq '是'"} 
+									<div class="form-group">
+                                        <label for="c-invoice_type" class="control-label col-xs-12 col-sm-2">发票类型:</label>
+                                        <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+
+                                            <span>{$row['invoice_type']}</span><br>
+
+                                        </div>
+                                    </div>
+									{/if}-->
+									<div class="form-group">
+                                        <label for="c-order_no" class="control-label col-xs-12 col-sm-2">订单编号:</label>
+                                        <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+
+                                            <span>{$row['order_no']}</span><br>
+
+                                        </div>
+                                    </div>
+									 
+									<div class="form-group">
+                                        <label for="c-og_goods_price" class="control-label col-xs-12 col-sm-2">订单总额:</label>
+                                        <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+
+                                            <span>{$row['order_pay_price']}</span><br>
+
+                                        </div>
+                                    </div>
+									<div class="form-group">
+                                        <label for="c-og_goods_price" class="control-label col-xs-12 col-sm-2">订单实际支付金额:</label>
+                                        <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+
+                                            <span>{$row['order_pay_price']}</span><br>
+
+                                        </div>
+                                    </div>
+									<!-- <div class="form-group">
+                                        <label for="c-og_goods_price" class="control-label col-xs-12 col-sm-2">订单支付价格:</label>
+                                        <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+
+                                            <span>{$row['og_goods_pay_price']}</span><br>
+
+                                        </div>
+                                    </div> -->
+									
+									<div class="form-group">
+                                        <label for="c-og_goods_price" class="control-label col-xs-12 col-sm-2">订单状态:</label>
+                                        <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+
+                                            <span>{$row['order_status']}</span><br>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="c-order_create_time" class="control-label col-xs-12 col-sm-2">提交时间:</label>
+                                        <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+                                            <span>{:date('Y-m-d H:i:s',$row['order_create_time'])}</span>
+                                        </div>
+                                    </div>
+								 
+								 
+									 <div class="form-group">
+                                        <label for="c-order_create_time" class="control-label col-xs-12 col-sm-2">支付时间:</label>
+                                        <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+                                            <span>{$row['order_pay_time']}</span>
+                                        </div>
+                                    </div>
+									<div class="form-group">
+                                        <label for="c-order_create_time" class="control-label col-xs-12 col-sm-2">支付方式:</label>
+                                        <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+                                            <span>{$row['order_pay_code']}</span>
+                                        </div>
+                                    </div>
+									
+									<div class="form-group layer-footer">
+                                        <label class="control-label col-xs-12 col-sm-2"></label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <button type="submit" class="btn btn-success btn-embossed disabled">确定</button>
+                                            <button type="reset" class="btn btn-default btn-embossed">重置</button>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            var index_url="{:url('admin/order/index',['order_status'=>$order_status])}";
+            var add_url="{:url('admin/goods/add')}";
+            var edit_url="{:url('admin/order/post')}";
+            var del_url="{:url('admin/order/close')}";
+            var multi_url="{:url('admin/goods/multi')}";
+            var addr_url="{:url('admin/order/getaddrs')}";
+        </script>
+        {include file="public/javascript" jsname="backend/order/index" controllername="order"  actionname="add"/}
+    </body>
+</html>

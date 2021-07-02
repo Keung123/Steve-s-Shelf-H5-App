@@ -1,0 +1,102 @@
+		.menu{
+			width: 100%;
+		}
+		.menu textarea{
+			width: 96%;
+			height: 150px;
+			margin-left: 2%;
+			margin-right: 2%;
+			margin-top: 10px;
+			padding: 10px;
+			font-size: 14px;
+			color: #999999;
+			background: #f5f5f5;
+			border: none;
+		}
+		.shangchuan{
+			width: 100%;
+			overflow: hidden;
+		}
+		.shangchuan ul li{
+			width: 31%;
+			margin-top: 15px;
+			margin-left: 2%;
+			float: left;
+			/*border: 1px solid red;*/
+		}
+		.shangchuan ul li img{
+			width: 100%;
+		}	
+		.xz_shop{
+			width: 100%;
+			margin-top: 15px;
+		}
+		.xz_shop span{
+			width: 100px;
+			height: 40px;
+			margin-left: 2%;
+			text-align: center; 
+			line-height: 40px;
+			display: inline-block;
+			color: #fff;
+			background: #d31a1a;	
+			border-radius: 8px;
+		}
+		.xz_shop label{
+			width: 100px;
+			height: 40px;
+			margin-right: 2%;
+			text-align: center; 
+			line-height: 40px;
+			display: inline-block;
+			color: #fff;
+			background: #d31a1a;	
+			border-radius: 8px;
+		}
+		.shop{
+			width: 100%;
+			height: 80px;
+			margin-top: 15px;
+			background: #f7f7f7;
+		}
+		.shop img{
+			height: 60px;
+			margin-top: 10px;
+			margin-left: 2%;
+		}
+		.shop div{
+			width: 74%;
+			margin-top: 11px;
+			margin-right: 2%;
+		}
+		.shop div span{
+			height: 24px;
+			display: block;
+			overflow: hidden;
+			color: #181818;
+		}
+		.shop div p{
+			color: #666666;
+		}
+		.fabu{
+			width: 100%;
+		}
+		.fabu span{
+			width: 96%;
+			height: 40px;
+			text-align: center;
+			line-height: 40px;
+			margin: 30px 2%;
+			display: block;
+			color: #fff;
+			background: #D31A1A;
+			border-radius: 20px;
+		}
+		.file{
+			/*border: 1px solid red;*/
+		}
+		.file video{
+			width: 33%;
+			margin-top: 15px;
+			margin-left: 2%;
+		}

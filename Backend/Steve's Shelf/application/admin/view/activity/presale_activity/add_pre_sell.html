@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<script type="text/javascript" src="__STATIC__/assets/js/laydate/laydate.js"></script>
+<script type="text/javascript" src="__STATIC__/assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="__STATIC__/assets/js/layer/layer.min.js"></script>
+<html lang="zh-cn">
+    {include file="public/head" title="商品添加" /}
+    <style type="text/css">
+    #sku .html table.skuTable{font-size:14px;color:#333;border-width:1px;border-color:#ddd;border-collapse:collapse}
+    #sku .html table.skuTable th{border-width:1px;padding:5px 10px;border-style:solid;border-color:#ddd;color:#666;background-color:#ededed}
+    #sku .html table.skuTable td{border-width:1px;padding:5px 10px;border-style:solid;border-color:#ddd;background-color:#fff;color:#666;widows:auto;text-align:center}
+    .SKU_LIST{display: inline;}.SKU_LIST span{margin-left: 10px}
+    </style>
+    <body class="inside-header inside-aside is-dialog">
+        <div id="main" role="main">
+            <div class="tab-content tab-addtabs">
+                <div id="content">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <section class="content-header hide">
+                                <h1>
+                                    控制台                                    <small>Control panel</small>
+                                </h1>
+                            </section>
+                            <div class="content">
+                                <form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="{:url('admin/activity.presale_activity/handelActivity')}">
+                                    <input type="hidden" name="row[act_id]" value="{$row['act_id']}">
+                                    <input type="hidden" name="row[act]"  value="add"/>
+                                    <div class="form-group">
+                                        <label for="c-pid" class="control-label col-xs-12 col-sm-2">栏目选择分类查询:</label>
+                                        <div class="col-xs-12 col-sm-8">
+
+                                            <select  id="category" data-rule="required" class="form-control selectpicker" >
+                                                {volist name="category" id="v"}
+                                                <option value="{$v.category_id}">|—{:str_repeat('—',$v['level'])}{$v.category_name}</option>
+                                                {/volist}
+                                            </select>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="c-category_er" class="control-label col-xs-12 col-sm-2">栏目选择:</label>
+                                        <div class="col-xs-5 col-sm-8">
+                                            <select  id="category_er" data-rule="required" class="form-control selectpicker" >
+
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="c-goods_name" class="control-label col-xs-12 col-sm-2">商品名称:</label>
+                                        <div class="col-xs-12 col-sm-8" >
+                                            <select name="row[goods_id]" id="goods_name" class="form-control">
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="c-goods_stock" class="control-label col-xs-12 col-sm-2">库存:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input id="c-goods_stock" data-rule="required" class="form-control" type="text" value="" readonly>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" name="row[goods_name]" value="" id="goodsname">
+                                    <div class="form-group">
+                                        <label for="c-goods_price" class="control-label col-xs-12 col-sm-2">商品价格:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input id="c-goods_price" data-rule="required" class="form-control" name="row[price]"  type="text" value="" readonly>
+                                        </div>
+                                    </div>
+									
+                                   
+                                     
+									<div class="form-group">
+                                        <label for="c-deposit" class="control-label col-xs-12 col-sm-2">定金:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input id="c-deposit" data-rule="required" class="form-control" onpaste="this.value=this.value.replace(/[^\d.]/g,'')" onkeyup="this.value=this.value.replace(/[^\d.]/g,'')" name="row[deposit]" value="{$row['deposit']}" type="text" {if condition="$isEdit eq 1"}disabled{/if}>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="c-deposit_use" class="control-label col-xs-12 col-sm-2">定金抵用金额:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input id="c-deposit_use" data-rule="required" class="form-control" name="row[deposit_use]" value="{$row['deposit_use']}" onpaste="this.value=this.value.replace(/[^\d.]/g,'')" onkeyup="this.value=this.value.replace(/[^\d.]/g,'')" type="text" {if condition="$isEdit eq 1"}disabled{/if}>
+                                        </div>
+                                    </div>
+                                    <!--<div class="form-group">-->
+                                        <!--<label for="c-price" class="control-label col-xs-12 col-sm-2">售价:</label>-->
+                                        <!--<div class="col-xs-12 col-sm-8">-->
+                                            <!--<input id="c-price" data-rule="required" class="form-control" name="row[price]" value="{$row['price']}" onpaste="this.value=this.value.replace(/[^\d.]/g,'')" onkeyup="this.value=this.value.replace(/[^\d.]/g,'')" type="text" {if condition="$isEdit eq 1"}disabled{/if}>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                   <div class="form-group">
+                                        <label for="c-total_goods" class="control-label col-xs-12 col-sm-2">预售库存:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input id="c-total_goods" data-rule="required" class="form-control" name="row[total_goods]"  type="number" value="">
+                                        </div>
+                                    </div>
+                                   <!--  <div class="form-group">
+                                        <label for="c-start_time" class="control-label col-xs-12 col-sm-2">尾款支付开始时间:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input id="c-start_time" data-rule="required" class="form-control" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" name="row[start_time]" value="{$row['start_time']}" type="text" {if condition="$isEdit eq 1"}disabled{/if}>
+                                        </div>
+                                    </div>
+                                     -->
+                                    <div class="form-group">
+                                        <label for="c-is_end" class="control-label col-xs-12 col-sm-2">状态:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <label for="row[is_end]-normal"><input id="row[is_end]-normal" checked="checked" name="row[is_end]" type="radio" value="0">  正常</label>
+                                            <label for="row[is_end]-hidden"><input id="row[is_end]-hidden" name="row[is_end]" type="radio" value="1"> 删除</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group layer-footer">
+                                        <label class="control-label col-xs-12 col-sm-2"></label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <button type="submit" class="btn btn-success btn-embossed disabled">确定</button>
+                                            <button type="reset" class="btn btn-default btn-embossed">重置</button>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		<script type="text/javascript">
+        var attribute_url="{:url('goods/attributeInfo')}";
+        var getcatebrand_url="{:url('goods/getCatebrand')}";
+        var getGoodsInfo_url="{:url('goods/getGoodsInfo')}";
+        var getGoodsName="{:url('goods/getGoodsName')}";
+        var getSecondName="{:url('goods/getSecondName')}";
+        </script>
+        {include file="public/javascript" jsname="backend/activity/pre_sell_list" controllername="index"  actionname="add"/}
+   </body>
+</html>

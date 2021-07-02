@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>支付成功</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="__STATIC__/fx/css/base/mui.css" rel="stylesheet" />
+		<link href="__STATIC__/fx/css/base/base.css" rel="stylesheet" />
+		<link href="__STATIC__/fx/iconfont/iconfont.css" rel="stylesheet" />
+	</head>
+	<style>
+		.menu{
+			width: 100%;
+			text-align: center;
+		}
+		.menu img{
+			width: 18%;
+			margin: 35px 0;
+		}
+		.menu p{
+			color: #666666;
+		}
+		.menu span{
+			margin: 5px 0;
+			display: block;
+			color: #181818;
+		}
+		.menu label{
+			width: 24%;
+			height: 30px;
+			text-align: center;
+			line-height: 30px;
+			margin-left: 6%;
+			margin-right: 6%;
+			margin-top: 25px;
+			display: inline-block;
+			color: #18;
+			border: 1px solid #666;
+			border-radius: 20px;
+		}
+	</style>
+	<body>  
+		<header class="mui-bar mui-bar-nav">
+		    <h1 class="mui-title">支付成功</h1>
+		</header>
+		<div class="mui-content">
+			<div class="menu">
+				<img src="__STATIC__/fx/img/dui.png" />
+				<p>订单支付成功</p>
+				<span class="pay"></span>
+				<span class="money"></span>
+				<label class="order">下载APP</label>
+			</div>
+		</div>	
+	</body>
+	<script src="__STATIC__/fx/js/base/mui.js"></script>
+	<script src="__STATIC__/fx/js/base/castapp.js"></script>
+	<script src="__STATIC__/fx/js/base/jquery-3.2.1.min.js"></script>
+	<script src="__STATIC__/fx/js/base/hetao.js"></script>
+	<script type="text/javascript">
+
+		$('.order').click(function(){
+            window.location.href=hetao.url3+'/erweima/url.html';
+		});
+		
+	</script>	
+</html>

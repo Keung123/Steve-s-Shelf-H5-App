@@ -1,0 +1,96 @@
+.mui-content{
+	height: 100%;
+}
+/*领券中心*/
+.ticket{
+	margin-top: 8px;
+}
+.tickert-tab{
+	background-color: #fff;
+}
+.tickert-tab ul{
+	padding: 0 2%;
+	overflow: hidden;
+}
+.tickert-tab li{
+	width: 33.333%;
+	text-align: center;
+	line-height: 44px;
+	float: left;
+	background-color: #fff;
+}
+.tickert-tab li span{
+	color: #666666;
+	font-size: 14px;
+	display: inline-block;
+	width: 90%;
+	margin: 0 5%;
+}
+
+.tickert-tab li span.t-color{
+	color: #d31a1a;
+	border-bottom: 2px solid #d31a1a;
+}
+/*领券列表*/
+.ticket-list{
+	display: none;
+	padding: 0 2%;
+}
+.ticket-list li{
+	background: url(../../../img/ticket-bg.png) no-repeat;
+	background-size: 100% 102%;
+	overflow: hidden;
+	height: 86px;
+}
+.ticket-list-left{
+    width: 73%;
+    overflow: hidden;
+    padding: 10px 2%;
+}
+.ticket-list-left img{
+	width: 60px;
+	float: left;
+	margin-left: 3%;
+}
+.ticket-list-left-title{
+	float: left;
+	padding-left: 3%;
+    width: 67%;
+}
+.ticket-list-left-title span{
+	font-size: 13px;
+	color: #181818;
+	line-height: 30px;
+}
+.ticket-list-left-title p{
+	margin-bottom: 0;
+	margin-top: 8px;
+	font-size: 12px;
+	color: #666666;
+}
+.ticket-list-right{
+	width: 27%;
+	text-align: center;
+	padding: 10px 2%;
+}
+.price{
+	color: #d31a1a;
+	font-size: 40px;
+	padding-top: 10px;
+	font-weight: bold;
+	transform: scale(0.5);
+} 
+.get{
+	background-image: linear-gradient(-90deg, 
+		#ed541c 0%, 
+		#ed492b 50%, 
+		#ed3b3b 100%);
+	border-radius: 10px;
+	width: 80%;
+	color: #fff;
+	margin: 0 10%;
+	font-size: 12px;
+	line-height: 20px;
+	height: 20px;
+	margin-top: 6px;	
+}

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    {include file="public/head" title="系统设置" /}
+
+    <body class="inside-header inside-aside ">
+        <div id="main" role="main">
+            <div class="tab-content tab-addtabs">
+                <div id="content">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <section class="content-header hide">
+                                <h1>
+                                    控制台                                    <small>Control panel</small>
+                                </h1>
+                            </section>
+                            <!-- RIBBON -->
+                            <div id="ribbon">
+                                <ol class="breadcrumb pull-left">
+                                   <li><a href="{:url('admin/index/dashboard')}" class="addtabsit"><i class="fa fa-dashboard"></i> 控制台</a></li>
+                                </ol>
+                                <ol class="breadcrumb pull-right">
+                                    <li><a href="javascript:;" data-url="general">常规管理</a></li>
+                                    <li><a href="javascript:;" data-url="general/config">系统配置</a></li>
+                                </ol>
+                            </div>
+                            <!-- END RIBBON -->
+                            <div class="content">
+                                <style type="text/css">
+                                    @media (max-width: 375px) {
+                                        .edit-form tr td input{width:100%;}
+                                        .edit-form tr th:first-child,.edit-form tr td:first-child{
+                                            width:20%;
+                                        }
+                                        .edit-form tr th:last-child,.edit-form tr td:last-child{
+                                            display: none;
+                                        }
+                                    }
+                                </style>
+                                <div class="panel panel-default panel-intro">
+                                    <div class="panel-heading">
+                                        <ul class="nav nav-tabs">
+                                            <li class="active"><a href="#basic" data-toggle="tab">基础配置</a></li>
+
+                                            <li class=""><a href="#shop" data-toggle="tab">商城配置</a></li>
+
+                                            <li class="" style=""><a href="#sms" data-toggle="tab">短信配置</a></li>
+
+                                            <li class="" style=""><a href="#app" data-toggle="tab">APP配置</a></li>
+
+                                            <li class="" style=""><a href="#apipay" data-toggle="tab">支付配置</a></li>
+											
+											<li class="" style=""><a href="#express" data-toggle="tab">快递配置</a></li>
+
+                                             <li class="" style=""><a href="#guize" data-toggle="tab">规则内容配置</a></li>
+
+                                            <li class=""><a href="#commission" data-toggle="tab">返利设置</a></li>                         
+                                        </ul>
+                                    </div>
+
+                                    <div class="panel-body">
+                                        <div id="myTabContent" class="tab-content">
+                                        {include file="config/basic"/}
+
+                                        {include file="config/shop"/}
+
+                                        {include file="config/sms"/}
+
+                                        {include file="config/app"/}
+
+                                        {include file="config/apipay"/}
+										
+                                        {include file="config/express"/}
+										
+                                        {include file="config/guize"/}
+ 
+										{include file="config/commission"}
+                                        
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>     
+        {include file="public/javascript" jsname="backend/config/index" controllername="config"  actionname="index"/}
+    </body>
+</html>

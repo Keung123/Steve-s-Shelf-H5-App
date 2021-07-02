@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    {include file="public/head" title="角色添加" /}
+    <body class="inside-header inside-aside is-dialog">
+        <div id="main" role="main">
+            <div class="tab-content tab-addtabs">
+                <div id="content">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <section class="content-header hide">
+                                <h1>
+                                    控制台                                    <small>Control panel</small>
+                                </h1>
+                            </section>
+							<div id="ribbon">
+                                <ol class="breadcrumb pull-left">
+                                   <li><a href="{:url('admin/index/dashboard')}" class="addtabsit"><i class="fa fa-dashboard"></i> 控制台</a></li>
+                                </ol>
+                                <ol class="breadcrumb pull-right">
+                                    <li><a href="javascript:;" data-url="auth/admin"> 权限列表</a></li>
+                                </ol>
+                            </div>
+                            <div class="content">
+
+								<form name="form1" id="form1" method="post" onSubmit="return false" class="form-horizontal" enctype="multipart/form-data">
+
+									<input type="hidden" name="id" value="{$rules_info.id}"/>
+
+									<div class="form-group">
+
+										<label class="col-sm-2 control-label">角色名</label>
+
+										<div class="col-sm-4">
+
+											<input type="text" class="form-control" name="title" value="{$rules_info.title}" />
+
+										</div>
+
+										<label class="col-sm-2 control-label"></label>
+
+									</div>
+
+									{volist name="rules_list" id="rules" }
+
+									<div class="form-group">
+										<label class="col-sm-2 control-label">{$rules.title}</label>
+										<input value="{$rules.id}" name="rules_name"  cka="mod-{$rules.id}" type="checkbox">全部
+										<div class="col-sm-10">
+											{volist name="rules.rules_name" id="val"}
+												<label class="checkbox-inline">
+
+													<input type="checkbox" name="rules_name" ck="mod-{$rules.id}" value="{$val.id}" <?php if(in_array($val['id'],$rules_info['rules'])){ ?>checked<?php } ?> >{$val.title}
+
+												</label>
+											{/volist}
+										</div>
+									</div>
+									{/volist}
+
+
+
+									<div class="hr-line-dashed"></div>
+
+
+
+									<div class="form-group">
+
+										<div class="col-sm-4 col-sm-offset-2">
+
+											<input class="btn btn-primary" type="submit" value="保存内容"/>
+
+										</div>
+
+									</div>
+
+								</form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		<script type="text/javascript" src="__STATIC__/assets/js/jquery.min.js"></script>
+		<script src="__STATIC__/assets/js/validate/jquery.validate.min.js"></script>
+		<script src="__STATIC__/assets/js/layer/layer.min.js"></script>
+		<script>
+			//全部选择
+            function choosebox(o){
+                var vt = $(o).is(':checked');
+                if(vt){
+                    $('input[type=checkbox]').prop('checked',vt);
+                }else{
+                    $('input[type=checkbox]').removeAttr('checked');
+                }
+            }
+            //单条选择
+            $(document).ready(function(){
+                $(":checkbox[cka]").click(function(){
+                    var $cks = $(":checkbox[ck='"+$(this).attr("cka")+"']");
+                    if($(this).is(':checked')){
+                        $cks.each(function(){$(this).prop("checked",true);});
+                    }else{
+                        $cks.each(function(){$(this).removeAttr('checked');});
+                    }
+                });
+            });
+            $(document).ready(function(){
+
+                $('#form1').validate({
+
+                    rules : {
+
+                        title:{
+
+                            required:true,
+
+                        }
+
+                    },
+
+                    messages : {
+
+                        title:{
+
+                            required :'请输入角色名'
+
+                        }
+
+                    },
+
+                    errorPlacement: function(error, element){
+
+                        error.appendTo(element.parent().next());
+
+                    },
+
+                    invalidHandler : function(){
+
+                        return false;
+
+                    },
+
+                    submitHandler : function(){
+
+                        rules_id=[];
+
+                        $("input[name=rules_name]").each(function(){
+
+                            if($(this).is(":checked")){
+
+                                rules_id.push($(this).val());
+
+                            }
+
+                        });
+
+                        if(rules_id==""){
+
+                            layer.msg("请选择权限管理菜单");
+
+                            return false;
+
+                        }
+
+                        title=$("input[name=title]").val();
+
+                        id=$("input[name=id]").val();
+
+
+
+                        $.ajax({
+
+                            url:"{:url('Auth/addRules')}",
+
+                            type:'post',
+
+                            data:"title="+title+"&rules="+rules_id+"&id="+id,
+
+                            success:function(msg){
+
+                                if(msg.status==1){
+
+                                    layer.alert(msg.info);
+
+                                    window.location.href="{:url('Auth/rulesList')}";
+
+                                }else{
+
+                                    layer.alert(msg.info);
+
+                                }
+
+                            }
+
+                        });
+
+                    }
+
+                });
+
+            });
+
+		</script>
+    </body>
+</html>

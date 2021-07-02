@@ -1,0 +1,108 @@
+<div class="tab-pane fade " id="apipay">
+    <div class="widget-body no-padding">
+        <form id="basic-form" class="edit-form form-horizontal" role="form" data-toggle="validator" method="POST" action="{:url('admin/config/index')}">
+            <input type="hidden" name="key" value="apipay"/>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th width="15%">
+                            变量标题
+                        </th>
+                        <th width="70%">
+                            变量值
+                        </th>
+                      <!--   <th width="15%">
+                            调用方法
+                        </th> -->
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            支付宝账号
+                        </td>
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-8 col-xs-12">
+                                    <input type="text" name="row[ali_user]" value="{$config[apipay][ali_user]}" class="form-control" data-tip="请填写支付宝账号，通常为邮箱地址"  />
+                                </div>
+                                <div class="col-sm-4">
+                                </div>
+                            </div>
+                        </td>
+                      <!--   <td>
+                            {literal}{$config.apipay.ali_user}{/literal}
+                        </td> -->
+                    </tr>
+                    <tr>
+                        <td>
+                            APP_ID
+                        </td>
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-8 col-xs-12">
+                                    <input type="text" name="row[ali_appid]" value="{$config.apipay.ali_appid}" class="form-control" data-tip="应用APPID"  />
+                                </div>
+                                <div class="col-sm-4">
+                                </div>
+                            </div>
+                        </td>
+                        <!-- <td>
+                            {literal}{$config.apipay.ali_appid}{/literal}
+                        </td> -->
+                    </tr>
+                    <tr>
+                        <td>
+                            公钥内容
+                        </td>
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-8 col-xs-12">
+                                    <textarea name="row[ali_publickey]" class="form-control" data-rule="" rows="5" data-tip="支付宝公钥" >{$config.apipay.ali_publickey}</textarea>
+                                </div>
+                                <div class="col-sm-4">
+                                </div>
+                            </div>
+                        </td>
+                       <!--  <td>
+                            {literal}{$config.apipay.ali_publickey}{/literal}
+                        </td> -->
+                    </tr>
+                    <tr>
+                        <td>
+                            私钥内容
+                        </td>
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-8 col-xs-12">
+                                    <textarea name="row[ali_privatekey]" class="form-control" data-rule="" rows="5" data-tip="生成密钥时获取的私钥字符串" >{$config.apipay.ali_privatekey}</textarea>
+                                </div>
+                                <div class="col-sm-4">
+                                </div>
+                            </div>
+                        </td>
+                      <!--   <td>
+                            {literal}{$config.apipay.ali_privatekey}{/literal}
+                        </td> -->
+                    </tr>                    
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>
+                        </td>
+                        <td>
+                            <button type="submit" class="btn btn-success btn-embossed">
+                                确定
+                            </button>
+                            <button type="reset" class="btn btn-default btn-embossed">
+                                重置
+                            </button>
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </form>
+    </div>
+</div>

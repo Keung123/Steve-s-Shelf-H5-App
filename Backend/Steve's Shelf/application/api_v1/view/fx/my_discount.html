@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>我的优惠券</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="__STATIC__/fx/css/base/mui.css" rel="stylesheet" />
+		<link href="__STATIC__/fx/css/base/base.css" rel="stylesheet" />
+		<link href="__STATIC__/fx/iconfont/iconfont.css" rel="stylesheet" />
+		<link href="__STATIC__/fx/css/pages/personal/my_discount.css" rel="stylesheet" />
+	</head>
+	<style>
+		.discount{
+			width: 96%;
+			margin-top: 10px;
+			
+			margin-left: 2%;
+			
+		}
+		.discount li{
+			width: 100%;
+			margin-bottom: 10px;
+			overflow: hidden;
+			background: #fff;
+			border-radius: 4px;
+		}
+		.discount li .menu{
+			width: 96%;
+			margin-left: 2%;
+			padding-bottom: 15px;
+			overflow: hidden;
+			border-bottom: 1px dashed #dadada;
+		}
+		.discount li .shop_sp{
+			width: 96%;
+			margin-left: 2%;
+			font-size: 12px;
+			color: #737373;
+			background: #f7f7f7;
+		}
+		
+		.discount li .money{
+			width: 18%;
+			margin-top: 35px;
+			text-align: center;
+			float: left;
+			
+		}
+		.discount li .money label{
+			font-size: 26px;
+			color: #D31A1A;
+		}
+		.discount li .money p{
+			width: 90%;
+			margin-left: 5%;
+			margin-top: 10px;
+			font-size: 12px;
+			color: #383838;
+			border: 1px solid #b3b3b3;
+		}
+		
+		.discount li .shijian{
+			width: 62%;
+			margin-top: 15px;
+			margin-left: 19%;
+			
+		}
+		.discount li .shijian span{
+			font-size: 16px;
+			color: #191919;
+		}
+		.discount li .shijian p{
+			margin: 5px 0;
+			font-size: 12px;
+			color: #666666;
+		}
+		.discount li .shijian label{
+			font-size: 12px;
+			color: #666666;
+		}
+		.discount li .shijian div{
+			color: #666666;
+		}
+		.discount li .shijian div i{
+			
+		}
+		.discount li .shijian div em{
+			width: 20px;
+			height: 20px;
+			text-align: center;
+			line-height: 22px;
+			margin-left: 5px;
+			display: inline-block;
+			transform: rotate(-90deg);
+			color: #fff;
+			border-radius: 10px;
+			background: #d1d1d1;
+			
+		}
+		.discount li .shop{
+			width: 19%;
+			margin-top: -60px;
+			text-align: center;
+			height: 30px;
+			line-height: 30px;
+			float: right;
+			font-size: 12px;
+			color: #D31A1A;
+			border: 1px solid #D31A1A;
+			border-radius: 5px;
+		}
+		.share{
+			height: 45px;
+			line-height: 45px;
+			float: right;
+		}
+	</style>
+	<body>  
+		<header class="mui-bar mui-bar-nav">
+		   <!-- <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>-->
+		    <h1 class="mui-title">我的优惠券</h1>
+		</header>
+		<div class="mui-content">
+			<ul class="discount">
+				<!--<li>
+					<div class="menu">
+						<div class="money">
+							<label>85</label><em>元</em>
+							<p>仅剩3天</p>
+						</div>
+						<div class="shijian">
+							<span>9月末大促全场通用券</span>
+							<p>满250可用</p>
+							<label>18/09/30 0:00-18/09/30 23:59</label>
+							<div><i>全场通用</i><em class="iconfont icon-icon-test2"></em></div>
+						</div>
+						<div class="shop">立即购买</div>
+					</div>
+					<div class="shop_sp">合陶礼包、品牌专柜礼包、手机电脑、相机、大家电、旅游、黄金珠宝、汽车、保险、体验、未来小七等不可用</div>
+					<div class="share">转增好友<em class="iconfont icon-icon-test2"></em></div>
+				</li>-->
+			</ul>
+			<!--<div class="liuyan">
+				<span>留言</span>
+				<input class="mui-pull-right" type="text" placeholder="请输入您的留言"/>
+			</div>-->
+			<div class="fasong">领取优惠券</div>
+		</div>	
+	</body>
+	<script src="__STATIC__/fx/js/base/mui.js"></script>
+	<script src="__STATIC__/fx/js/base/castapp.js"></script>
+	<script src="__STATIC__/fx/js/base/jquery-3.2.1.min.js"></script>
+	<script src="__STATIC__/fx/js/base/hetao.js"></script>
+	<script type="text/javascript">
+		mui.init();
+		ca.init();
+		var c_id = "{$c_id}";
+		var liuyan_val = "{$liuyan_val}";
+		var to_uid = "{$to_uid}";
+		
+		//获取优惠券信息
+		function yohui(){
+			var obj={};
+			obj.c_id=c_id;
+			console.log(obj);
+			ca.get({
+				url:hetao.url+'User/CouponInfo',
+				data:obj,
+				succFn:function(data){
+					var res=JSON.parse(data);
+					console.log(res);
+					var data=res.data;
+					var str='';
+					if(res.status==1){
+						str+='<li c_id="">'
+							+'<div class="menu">'
+								+'<div class="money">'
+									+'<label>'+data.c_coupon_price+'</label><em>元</em>'
+									+'<p>仅剩'+data.day+'天</p>'
+								+'</div>'
+								+'<div class="shijian">'
+									+'<span>'+data.c_coupon_title+'</span>'
+									+'<p>满'+data.c_coupon_buy_price+'可用</p>'
+									+'<label>'+data.add_time+'-'+data.coupon_aval_time+'</label>'
+									+'<div><i>'+data.c_coupon_title+'</i></div>'
+								+'</div>'
+//								+'<div class="shop">立即购买</div>'
+							+'</div>'
+//							+'<div class="shop_sp" style="display:none">5454545等不可用</div>'
+						str+='</li>'
+						$('.discount').html(str);
+					}else{
+						ca.prompt(res.msg);
+					}
+				}
+			})
+		}
+		 yohui();
+		
+		//style="display:'+xuanze+'"
+		var login_id;
+		var login_token;
+		
+		
+		
+		$('.fasong').click(function(){
+            login_id = "{$uid}";
+			login_token= "{$token}";
+			console.log(login_id);
+			if(parseInt(login_id)){
+				var obj={};
+				obj.uid=login_id;
+				obj.token=login_token;
+				obj.c_id=c_id;
+				obj.to_uid=to_uid;
+				console.log(obj,2122222222);
+				ca.get({
+					url:hetao.url+'user/receiveCoupon',
+					data:obj,
+					succFn:function(data){
+						var res=JSON.parse(data);
+						console.log(res);
+						if(res.stauts==1){
+							ca.prompt('恭喜您领取成功');
+							var c_id=res.data;
+							window.location.href=hetao.url3+'/Api/Fx/fenxiang_hou.html?c_id='+c_id;
+						}else{
+							ca.prompt(res.msg);
+						}
+					}    
+				})
+			}else{
+				window.location.href=hetao.url3+'/Api/Fx/my_discount.html?c_id='+c_id+'&user_id='+to_uid+'&liuyan_val='+liuyan_val+'&type=ysorpt';
+			}	
+		});
+	</script>	
+</html>

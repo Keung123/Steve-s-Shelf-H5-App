@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    {include file="public/head" title="会员编辑" /}
+    <body class="inside-header inside-aside is-dialog">
+        <div id="main" role="main">
+            <div class="tab-content tab-addtabs">
+                <div id="content">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <section class="content-header hide">
+                                <h1>
+                                    控制台                                    <small>Control panel</small>
+                                </h1>
+                            </section>
+                            <div class="content">
+                                <form id="edit-form" class="form-horizontal form-ajax" role="form" data-toggle="validator" method="POST" action="{:url('admin/user/edit')}">
+                                        <input name="user_id" value="{$row['user_id']}" type="hidden" >
+                                    <div class="form-group">
+                                        <label for="user_name" class="control-label col-xs-12 col-sm-2">用户昵称:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input type="text" class="form-control" id="username" name="row[user_name]" value="{$row['user_name']}" data-rule="required;name" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="c-user_avat" class="control-label col-xs-12 col-sm-2">用户头像:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <div class="form-inline">
+                                                <input id="c-user_avat" class="form-control" size="50" name="row[user_avat]" value="{$row['user_avat']}" type="text" value="">
+
+                                                <span><button type="button" id="plupload-user_avat" class="btn btn-danger plupload" data-multiple="false" data-input-id="c-user_avat" data-preview-id="p-user_avat"><i class="fa fa-upload"></i> 上传</button></span>
+
+<!--                                                 <span><button type="button" id="fachoose-image" class="btn btn-primary fachoose" data-multiple="false" data-input-id="c-image"><i class="fa fa-list-ul"></i> 选择</button></span> -->
+                                                
+                                                <ul class="row list-inline plupload-preview" id="p-user_avat"></ul>
+                                            </div>
+                                        </div>
+                                    </div>                                    
+
+                                    <div class="form-group">
+                                        <label for="user_mobile" class="control-label col-xs-12 col-sm-2">手机号码:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input type="text" class="form-control" id="user_mobile" name="row[user_mobile]" value="{$row['user_mobile']}" />
+                                        </div>
+                                    </div>  
+
+                                    <div class="form-group">
+                                        <label for="user_name" class="control-label col-xs-12 col-sm-2">真实姓名:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input type="text" class="form-control" id="user_name" name="row[user_truename]" value="{$row['user_truename']}" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="user_sex" class="control-label col-xs-12 col-sm-2">性别:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <label for="row[user_sex]-normal"><input id="row[user_sex]-normal" {if $row['user_sex']=='1'}checked="checked"{/if} name="row[user_sex]" type="radio" value="1"> 男</label> 
+                                            <label for="row[user_sex]-hidden"><input id="row[user_sex]-hidden" {if $row['user_sex']=='2'}checked="checked"{/if} name="row[user_sex]" type="radio" value="2"> 女</label>
+                                             <label for="row[user_sex]-hidden"><input id="row[user_sex]-hidden" {if $row['user_sex']=='0'}checked="checked"{/if} name="row[user_sex]" type="radio" value="0"> 保密</label>
+                                        </div>
+                                    </div>                                                                          
+
+                                 <div class="form-group">
+                                        <label for="user_email" class="control-label col-xs-12 col-sm-2">Email:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input type="user_email" class="form-control" id="user_email" name="row[user_email]" value="{$row['user_email']}" data-rule="user_email" />
+                                        </div>
+                                    </div>
+ 
+                                    <div class="form-group">
+                                        <label for="user_pwd" class="control-label col-xs-12 col-sm-2">密码:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input type="user_pwd" class="form-control" id="user_pwd" name="row[user_pwd]" placeholder="请输入密码(6~12位)" value="" />
+                                        </div>
+                                    </div>
+                                    <!--<div class="form-group">-->
+                                        <!--<label for="user_shop_name" class="control-label col-xs-12 col-sm-2">店铺名称:</label>-->
+                                        <!--<div class="col-xs-12 col-sm-8">-->
+                                            <!--<input type="text" class="form-control" id="shop_name" name="row[shop_name]" placeholder="请输入店铺名称" value="{$row['shop_name']}" />-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+
+                                    <!--<div class="form-group">-->
+                                        <!--<label for="user_shop_name" class="control-label col-xs-12 col-sm-2">账户余额:</label>-->
+                                        <!--<div class="col-xs-12 col-sm-8">-->
+                                            <!--<input type="text" class="form-control" id="user_account" name="row[user_account]" placeholder="请输入账户余额" value="{$row['user_account']}" />-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-12 col-sm-2"></label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <!--<a href="{:url('admin/user/relationshipChange',['user_id'=>$row['user_id']])}"><span class="btn  btn-info">关系变更</span></a>-->
+                                            <button type="submit" class="btn btn-success btn-embossed ">确定</button>
+                                            <button type="reset" class="btn btn-default btn-embossed">重置</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {include file="public/javascript" jsname="backend/auth/user" controllername="user"  actionname="add"/}
+    </body>
+</html>

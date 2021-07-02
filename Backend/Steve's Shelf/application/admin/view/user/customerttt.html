@@ -1,0 +1,443 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0076)http://www.17sucai.com/preview/1/2016-05-08/web%E5%BE%AE%E4%BF%A1/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <meta http-equiv="refresh" content="30"> 
+    <title> 聊天客服</title>
+    <style>
+        *, *:before, *:after {
+            box-sizing: border-box;
+        }
+        body, html {
+            height: 130%;
+			width:100%;
+            overflow: hidden;
+        }
+        body, ul {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+			 
+            color: #4d4d4d;
+            font: 14px/1.4em 'Helvetica Neue', Helvetica, 'Microsoft Yahei', Arial, sans-serif;
+            background: #f5f5f5 url('dist/images/bg.jpg') no-repeat center;
+            background-size: cover;
+            font-smoothing: antialiased;
+        }
+        ul {
+            list-style: none;
+        }
+        #chat {
+            
+			margin:50px 0px 0px 40px;
+            width: 80%;
+            height: 50%;
+        }
+        .m-list li a{
+            color: #d31a3a;
+        }
+        .m-list li.cl{
+            background: #d31a3a !important;
+            color: #fff;
+        }
+        .m-list li.cl a{
+            color: #fff;
+        }
+        .fasong{
+            width: 80px;
+            height: 35px;
+            text-align: center;
+            line-height: 35px;
+            left:78%;
+			top:-20%;
+            position: relative;
+            margin-top: -60px;
+            background: #d31a3a;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+        }
+        .fa_biaoqing{
+            left:75%;
+            top:-18%;
+            position: relative;
+            margin-top: -38px;
+            color: #fff;
+        }
+        .shang_pic{
+            left:79%;
+            /*top:-15%;*/
+            position: absolute;
+            margin-top: -38px;
+            color: #fff;
+        }
+        input.shang_pic1{
+            width: 24px;
+            height: 24px;
+            left:75%;
+            top:-15%;
+            position: relative;
+            margin-top: -60px;
+            color: #fff;
+            background: red;
+            z-index: 2222;
+            overflow: hidden;
+            opacity: 0;
+        }
+
+        .face_img{
+            padding: 10px;
+            background-color: #F3F3F3;
+        }
+        .face_img ul li{
+            display: inline-block;
+            padding: 2px;
+        }
+
+    </style>
+    <style type="text/css">#chat{overflow:hidden;border-radius:3px}#chat .main,#chat .sidebar{height:100%}#chat .sidebar{float:left;width:200px;color:#f4f4f4;background-color:#2e3238}#chat .main{position:relative;overflow:hidden;background-color:#eee}#chat .m-text{position:absolute;width:100%;bottom:0;left:0}#chat .m-message{height:calc(100% - 10pc)}</style><style type="text/css">.m-card{padding:9pt;border-bottom:1px solid #24272c}.m-card footer{margin-top:10px}.m-card .avatar,.m-card .name{vertical-align:middle}.m-card .avatar{border-radius:2px}.m-card .name{display:inline-block;margin:0 0 0 15px;font-size:1pc}.m-card .search{padding:0 10px;width:100%;font-size:9pt;color:#fff;height:30px;line-height:30px;border:1px solid #3a3a3a;border-radius:4px;outline:0;background-color:#26292e}</style><style type="text/css">.m-list li{padding:9pt 15px;border-bottom:1px solid #292c33;cursor:pointer;-webkit-transition:background-color .1s;transition:background-color .1s}.m-list li:hover{background-color:hsla(0,0%,100%,.03)}.m-list li.active{background-color:hsla(0,0%,100%,.1);position:relative;}.m-list .avatar,.m-list .name{vertical-align:middle}.m-list .avatar{border-radius:2px}.m-list .name{display:inline-block;margin:0 0 0 15px}</style><style type="text/css">.m-text{height:10pc;border-top:1px solid #ddd;position: absolute; width:100%;}.m-text textarea{padding:10px;height:100%;width:100%;border:none;outline:0;font-family:Micrsofot Yahei;resize:none}</style><style type="text/css">.m-message{padding:10px 15px;overflow-y:scroll}.m-message li{margin-bottom:15px}.m-message .time{margin:7px 0;text-align:center}.m-message .time>span{display:inline-block;padding:0 18px;font-size:9pt;color:#fff;border-radius:2px;background-color:#dcdcdc}.m-message .avatar{float:left;margin:0 10px 0 0;border-radius:3px}.m-message .text{display:inline-block;position:relative;padding:0 10px;max-width:calc(100% - 40px);min-height:30px;line-height:2.5;font-size:9pt;text-align:left;word-break:break-all;background-color:#fafafa;border-radius:4px}.m-message .text:before{content:" ";position:absolute;top:9px;right:100%;border:6px solid transparent;border-right-color:#fafafa}.m-message .self{text-align:right}.m-message .self .avatar{float:right;margin:0 0 0 10px}.m-message .self .text{background-color:#b2e281}.m-message .self .text:before{right:inherit;left:100%;border-right-color:transparent;border-left-color:#b2e281}
+	.m-list ul a.show{color:#fff;} 
+	.news{background:#fff; color:#f00;line-height:20px; width:20px; border-radius:50%; position:absolute; right:10px; top:0px; display:inline-block; text-align:center;}
+	
+	
+	</style></head>
+<body>
+
+<div id="chat">
+    <div class="sidebar">
+        <div class="m-card">
+            <header>
+                <img class="avatar" width="40" height="40" alt="Coffce" src="{$row.kefu_avat}">
+                <p class="name">{$row.kefu_name}</p>
+            </header>
+            <!--<footer>-->
+                <!--<input class="search" placeholder="search user...">-->
+            <!--</footer>-->
+        </div><!--v-component-->
+		
+        <div class="m-list" style="height:80%; overflow:auto;">
+ 
+            <ul>
+			{volist name="lists" id="v"}
+			 <a class="show" href="{:url('user/customer',['user_id'=>$v.u.user_id, 'kefu_id' => $row.kefu_id])}" style="display:block; width:100%; height:100%;">
+                {if condition="$v.u.user_id eq $user_id"}
+				
+                <li class="active cl">
+                {else/}
+                <li class="active">
+                {/if}
+				 
+                    <input type="hidden" value="{$v.u.user_id}" name="user_id"/>
+                   
+						<img class="avatar" width="30" height="30" src="{$v.u.user_avat}" >
+                        <p class="name">{$v.u.user_name}</p>
+						{if condition="$v.u.number"}
+						<p class="news" style="">{$v.u.number}</p>
+						{/if}
+				
+
+                </li>
+					</a>
+            {/volist}
+        </ul>
+        </div>
+		
+		<!--v-component--></div>
+    <div class="main"><div class="m-message" id="m-message">
+        <ul id="showMesList"><!--v-for-start-->
+            {volist name="readList" id="v"}
+                {if condition="$v['uid'] eq $row['user_id']"}
+                    <li><!-- <p class="time"><span>17:49</span></p> -->
+						<div class="main self">
+							<img class="avatar" style="float:right;" width="30" height="30" src="{$v.u.user_avat}">
+							<div class="text">{$v.content}</div>
+						</div>
+					</li>
+                 {else}
+                    <li><!-- <p class="time">
+                <span>16:11</span></p> -->
+                        <div class="main">
+                            <img class="avatar" width="30" height="30" src="{$v.u.user_avat}">
+                            <div class="text">
+                                {$v.content}
+                            </div>
+                        </div>
+                    </li>
+                {/if}
+            {/volist}
+            <!--v-for-end--></ul></div><!--v-component-->
+        <div class="m-text">
+            <div class="face_img" style="display: none">
+                <ul>
+                    <li><img src="/faces_img/face1.gif" ></li>
+                    <li><img src="/faces_img/face2.gif" ></li>
+                    <li><img src="/faces_img/face3.gif" ></li>
+                    <li><img src="/faces_img/face4.gif" ></li>
+                    <li><img src="/faces_img/face5.gif" ></li>
+                    <li><img src="/faces_img/face6.gif" ></li>
+                    <li><img src="/faces_img/face7.gif" ></li>
+                    <li><img src="/faces_img/face8.gif" ></li>
+                    <li><img src="/faces_img/face9.gif" ></li>
+                    <li><img src="/faces_img/face10.gif" ></li>
+                    <li><img src="/faces_img/face11.gif" ></li>
+                    <li><img src="/faces_img/face12.gif" ></li>
+                    <li><img src="/faces_img/face13.gif" ></li>
+                    <li><img src="/faces_img/face14.gif" ></li>
+                    <li><img src="/faces_img/face15.gif" ></li>
+                    <li><img src="/faces_img/face16.gif" ></li>
+                    <li><img src="/faces_img/face17.gif" ></li>
+                    <li><img src="/faces_img/face18.gif" ></li>
+                    <li><img src="/faces_img/face19.gif" ></li>
+                    <li><img src="/faces_img/face20.gif" ></li>
+                    <li><img src="/faces_img/face21.gif" ></li>
+                    <li><img src="/faces_img/face22.gif" ></li>
+                    <li><img src="/faces_img/face23.gif" ></li>
+                    <li><img src="/faces_img/face24.gif" ></li>
+                    <li><img src="/faces_img/face25.gif" ></li>
+                    <li><img src="/faces_img/face25.gif" ></li>
+                    <li><img src="/faces_img/face27.gif" ></li>
+                    <li><img src="/faces_img/face28.gif" ></li>
+                    <li><img src="/faces_img/face29.gif" ></li>
+                    <li><img src="/faces_img/face30.gif" ></li>
+                    <li><img src="/faces_img/face31.gif" ></li>
+                    <li><img src="/faces_img/face32.gif" ></li>
+                    <li><img src="/faces_img/face33.gif" ></li>
+                    <li><img src="/faces_img/face34.gif" ></li>
+                    <li><img src="/faces_img/face35.gif" ></li>
+                    <li><img src="/faces_img/face36.gif" ></li>
+                    <li><img src="/faces_img/face37.gif" ></li>
+                    <li><img src="/faces_img/face38.gif" ></li>
+                    <li><img src="/faces_img/face39.gif" ></li>
+                    <li><img src="/faces_img/face40.gif" ></li>
+                    <li><img src="/faces_img/face41.gif" ></li>
+                    <li><img src="/faces_img/face42.gif" ></li>
+                    <li><img src="/faces_img/face43.gif" ></li>
+                    <li><img src="/faces_img/face44.gif" ></li>
+                    <li><img src="/faces_img/face45.gif" ></li>
+                    <li><img src="/faces_img/face46.gif" ></li>
+                    <li><img src="/faces_img/face47.gif" ></li>
+                    <li><img src="/faces_img/face48.gif" ></li>
+                    <li><img src="/faces_img/face49.gif" ></li>
+                    <li><img src="/faces_img/face50.gif" ></li>
+                    <li><img src="/faces_img/face51.gif" ></li>
+                    <li><img src="/faces_img/face52.gif" ></li>
+                    <li><img src="/faces_img/face53.gif" ></li>
+                    <li><img src="/faces_img/face54.gif" ></li>
+                    <li><img src="/faces_img/face55.gif" ></li>
+                    <li><img src="/faces_img/face56.gif" ></li>
+                </ul>
+            </div>
+
+            <textarea placeholder="按 Enter 发送" id="contents" onkeydown="keySend(event);"></textarea>
+            <img src="/faces_img/face1.png" class="fa_biaoqing" alt=""/>
+            <input type="file" class="shang_pic1" id="upfile" name="uploadkey">
+            <img src="/faces_img/send.png" class="shang_pic" alt=""/>
+            <button class="fasong">发送</button>
+        </div><!--v-component-->
+    </div>
+</div>
+<script src="__STATIC__/assets/js/html5/jquery.min.js"></script>
+<script src="__STATIC__/assets/js/layer/layer.min.js"></script>
+ <!--<script src="__PUBLIC__/admin/html5/vue.js"></script>-->
+ <!--<script src="__PUBLIC__/admin/html5/main.js"></script>-->
+
+<script>
+
+    function keySend(event) {
+        <!-- console.log(event); -->
+        <!-- if (event.ctrlKey && event.keyCode == 13) { -->
+        if (event.keyCode == 13) {
+	
+            //进行ajax提交
+            var content=$("#contents").val();
+            if(content==''){
+                 layer.msg("发送内容不能为空"); 
+				 return false;
+            }
+         var touid = $(".cl").find("input").val();
+       console.log(touid);
+		var kf_id = "<?php echo $row['kefu_id']; ?>";
+		var avat = "<?php echo $row['kefu_avat']; ?>";
+		  console.log(kf_id);	
+        $.ajax({
+            'type':'post',
+            'url':"{:url('user/sendMeg')}",
+            'data':{content:content,touid:touid,type:1,kf_id:kf_id},
+                'dataType':'JSON',
+                'success':function(dat){
+                    if(dat.code==0){
+                        var htmls='<li><div class="main self">\
+			<img class="avatar" style="float:right;" width="30" height="30" src="'+avat+'">\
+			<div class="text">'+content+'</div>\
+			</div></li>';
+                        $("#contents").val("");
+						console.log(dat)
+                        $("#showMesList").append(htmls);
+                        add();
+                    }
+                }
+            })
+        }
+    }
+
+    $('.fasong').click(function(){
+        //进行ajax提交
+        var content=$("#contents").val();
+        if(content==''){
+            layer.msg("发送内容不能为空");
+			return false;
+        }
+        var touid = $(".cl").find("input").val();
+      //  alert(touid);
+		var kf_id = "<?php echo $row['kefu_id']; ?>";
+		var avat = "<?php echo $row['kefu_avat']; ?>";
+
+        $.ajax({
+            'type':'post',
+            'url':"{:url('user/sendMeg')}",
+            'data':{content:content,touid:touid,type:1,kf_id:kf_id},
+            'dataType':'JSON',
+            'success':function(dat){
+				console.log(dat);
+                if(dat.code==0){
+
+                    var htmls='<li><div class="main self">\
+			<img class="avatar" style="float:right;" width="30" height="30" src="'+avat+'">\
+			<div class="text">'+content+'</div>\
+			</div></li>';
+                    $("#contents").val("");
+                    $("#showMesList").append(htmls);
+                    add();
+                }
+            }
+        })
+    });
+
+
+    function add(){
+        var now = new Date();
+        var div = document.getElementById('m-message');
+        // div.innerHTML = div.innerHTML + 'time_' + now.getTime() + '<br />';
+        div.scrollTop = div.scrollHeight;
+    }
+    add();
+
+
+
+    $('.fa_biaoqing').click(function () {
+        $('.face_img').css('display','block');
+    })
+
+
+    $('.face_img').on('click','li',function (){
+        var content=$(this).find('img').attr('src');
+        var url = "http://hetao2.zztczg.cn";
+        //进行ajax提交
+ var contents='../../'+content;
+        var touid = $(".cl").find("input").val();
+        //  alert(touid);
+        var kf_id = "<?php echo $row['kefu_id']; ?>";
+        var avat = "<?php echo $row['kefu_avat']; ?>";
+
+        $.ajax({
+            'type':'post',
+            'url':"{:url('user/sendMeg')}",
+            'data':{content:contents,touid:touid,type:4,kf_id:kf_id},
+            'dataType':'JSON',
+            'success':function(dat){
+                console.log(dat);
+                if(dat.code==0){
+                    content=url + content;
+                    var htmls='<li><div class="main self">\
+			<img class="avatar" style="float:right;" width="30" height="30" src="'+avat+'">\
+			<img src="'+content+'" >\
+			</div></li>';
+                    $("#contents").val("");
+                    $("#showMesList").append(htmls);
+                    $('.face_img').css('display','none');
+                    add();
+                }
+            }
+        })
+    });
+    function songimg(content) {
+        // var url = "http://hetao2.zztczg.cn";
+        //进行ajax提交
+        // var content=url + img;
+        var touid = $(".cl").find("input").val();
+        //  alert(touid);
+        var kf_id = "<?php echo $row['kefu_id']; ?>";
+        var avat = "<?php echo $row['kefu_avat']; ?>";
+
+        $.ajax({
+            'type':'post',
+            'url':"{:url('user/sendMeg')}",
+            'data':{content:content,touid:touid,type:2,kf_id:kf_id},
+            'dataType':'JSON',
+            'success':function(dat){
+                console.log(dat);
+                if(dat.code==0){
+
+                    var htmls='<li><div class="main self">\
+			<img class="avatar" style="float:right;" width="30" height="30" src="'+avat+'">\
+			<img src="'+content+'" >\
+			</div></li>';
+                    $("#contents").val("");
+                    $("#showMesList").append(htmls);
+                    $('.face_img').css('display','none');
+                    add();
+                }
+            }
+        })
+    }
+
+    //③创建fileLoad方法用来上传文件
+    function fileLoad(ele){
+        //④创建一个formData对象
+        var formData = new FormData();
+        //⑤获取传入元素的val
+        var name = $(ele).val();
+        //⑥获取files
+        var files = $(ele)[0].files[0];
+        //⑦将name 和 files 添加到formData中，键值对形式
+        formData.append("uploadkey", 1);
+        formData.append("uploadkey", $("#upfile").get(0).files[0]);
+        $.ajax({
+            url: window.location.origin + "/api/Niuyun/videoUp",
+            type: 'POST',
+            data: formData,
+            processData: false,// ⑧告诉jQuery不要去处理发送的数据
+            contentType: false, // ⑨告诉jQuery不要去设置Content-Type请求头
+            beforeSend: function () {
+                //⑩发送之前的动作
+                // alert("我还没开始发送呢");
+            },
+            success: function (res) {
+                //11成功后的动作
+                // alert("成功啦");
+                songimg(res.data.img);
+            }
+            ,
+            error : function (responseStr) {
+                //12出错后的动作
+                alert("出错啦");
+            }
+        });
+    }
+    $(function () {
+        var $input =  $(".shang_pic1");
+        // ①为input设定change事件
+        $input.change(function () {
+            //    ②如果value不为空，调用文件加载方法
+            if($(this).val() != ""){
+                fileLoad(this);
+            }
+        })
+    })
+
+
+
+</script>
+
+
+</body></html>

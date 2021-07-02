@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+{include file="public/head" title="ACI生成器" /}
+
+<body class="inside-header inside-aside ">
+<div id="main" role="main">
+    <div class="tab-content tab-addtabs">
+        <div id="content">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <section class="content-header hide">
+                        <h1>
+                            控制台                                    <small>Control panel</small>
+                        </h1>
+                    </section>
+                  
+                    <!-- END RIBBON -->
+                    <div class="content">
+                        <form action="" method="post" role="form" data-toggle="validator" class="form-horizontal">
+                            <div class="form-group">
+                                <label for="c-name" class="control-label col-xs-12 col-sm-2">模块中文名称:</label>
+                                <div class="col-xs-12 col-sm-8">
+                                    <input id="c-name"  data-rule="required" class="form-control" name="name" type="text" value="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="c-author" class="control-label col-xs-12 col-sm-2">模块作者:</label>
+                                <div class="col-xs-12 col-sm-8">
+                                    <input id="c-author"  data-rule="required" class="form-control" name="author" type="text" value="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="c-controller" class="control-label col-xs-12 col-sm-2">控制器英文名称:</label>
+                                <div class="col-xs-12 col-sm-8">
+                                    <input id="c-controller" data-rule="required" class="form-control" name="controller" type="text" value="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label  class="control-label col-xs-12 col-sm-2">方法列表:</label>
+                                <div class="col-xs-12 col-sm-8">
+                                    <label for="" class="checkbox-inline">
+                                        <input type="checkbox" name="actions[index]" value="1">列表
+                                    </label>
+                                    <label for="" class="checkbox-inline">
+                                        <input type="checkbox" name="actions[add]" value="1">新增
+                                    </label>
+                                    <label for="" class="checkbox-inline">
+                                        <input type="checkbox" name="actions[edit]" value="1">编辑
+                                    </label>
+                                    <label for="" class="checkbox-inline">
+                                        <input type="checkbox" name="actions[delete]" value="1">删除
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="c-path" class="control-label col-xs-12 col-sm-2">模块安装路径:</label>
+                                <div class="col-xs-12 col-sm-8">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">Application/</span>
+                                        <input id="c-path" data-rule="required" class="form-control" name="path" type="text" value="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="c-jspath" class="control-label col-xs-12 col-sm-2">js安装路径:</label>
+                                <div class="col-xs-12 col-sm-8">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">assets/js/backend/</span>
+                                        <input id="c-jspath" data-rule="required" class="form-control" name="jspath" type="text" value="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="c-parent" class="control-label col-xs-12 col-sm-2">继承控制器:</label>
+                                <div class="col-xs-12 col-sm-8">
+                                    <select name="parent" id="c-parent" class="form-control">
+                                        <option value="0">Controller</option>
+                                        <option value="1">Admin_Controller</option>
+                                        <option value="2">Api_Controller</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="c-pageSize" class="control-label col-xs-12 col-sm-2">分页大小:</label>
+                                <div class="col-xs-12 col-sm-8">
+                                    <input id="c-pageSize" data-rule="required" class="form-control" name="pageSize" type="text" value="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="c-micon" class="control-label col-xs-12 col-sm-2">图标:</label>
+                                <div class="col-xs-12 col-sm-8">
+                                    <input id="c-micon" data-rule="required" class="form-control" name="micon" type="text" value="">
+                                </div>
+                            </div>
+                            <div class="form-group layer-footer">
+                                <label class="control-label col-xs-12 col-sm-2"></label>
+                                <div class="col-xs-12 col-sm-8">
+                                    <button type="submit" class="btn btn-success btn-embossed disabled">下一步</button>
+                                    <button type="reset" class="btn btn-default btn-embossed">重置</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var index_url="{:url('admin/custom/index')}";
+    var add_url="{:url('admin/custom/addModule')}";
+    var edit_url="{:url('admin/custom/edit')}";
+    var del_url="{:url('admin/custom/delete')}";
+</script>
+{include file="public/javascript" jsname="backend/custom/index" controllername="index"  actionname="add"/}
+</body>
+</html>

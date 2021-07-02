@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    {include file="public/head" title="测试" /}
+
+    <body class="inside-header inside-aside ">
+        <div id="main" role="main">
+            <div class="tab-content tab-addtabs">
+                <div id="content">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <section class="content-header hide">
+                                <h1>
+                                    控制台                                    <small>Control panel</small>
+                                </h1>
+                            </section>
+                            <!-- RIBBON -->
+                            <div id="ribbon">
+                                <ol class="breadcrumb pull-left">
+                                   <li><a href="{:url('admin/index/dashboard')}" class="addtabsit"><i class="fa fa-dashboard"></i> 控制台</a></li>
+                                </ol>
+                                <ol class="breadcrumb pull-right">
+                                    <li><a href="javascript:;" data-url="category">商品列表</a></li>
+                                </ol>
+                            </div>
+                            <!-- END RIBBON -->
+                            <div class="content">
+                                <div class="panel panel-default panel-intro">
+
+                                    <div class="panel-body">
+                                        <div id="myTabContent" class="tab-content">
+                                            <div class="tab-pane fade active in" id="one">
+                                                <div class="widget-body no-padding">
+                                                    <div id="toolbar" class="toolbar">
+                                                        <a href="javascript:;" class="btn btn-primary btn-refresh"><i class="fa fa-refresh"></i> </a>
+                                                        <a href="javascript:;" class="btn btn-success btn-add" data-width="1200px"><i class="fa fa-plus"></i> 添加</a>
+                                                        <a href="javascript:;" class="btn btn-danger btn-del btn-disabled disabled" ><i class="fa fa-trash"></i> 删除</a>
+                                                        <div class="dropdown btn-group">
+                                                            <a class="btn btn-primary btn-more dropdown-toggle btn-disabled disabled" data-toggle="dropdown"><i class="fa fa-cog"></i> 更多</a>
+                                                            <ul class="dropdown-menu text-left" role="menu">
+                                                                <li><a class="btn btn-link btn-multi btn-disabled disabled" href="javascript:;" data-action="status" data-params="0"><i class="fa fa-eye"></i> 上架</a></li>
+                                                                <li><a class="btn btn-link btn-multi btn-disabled disabled" href="javascript:;" data-action="status" data-params="1"><i class="fa fa-eye-slash"></i> 下架</a></li>
+                                                            </ul>
+                                                        </div>
+                                                        <a href="javascript:;" class="btn btn-success btn-setbiaoqian" id="biaoqian" data-width="1000px"> 设置标签</a>
+
+
+														  <form class="form-inline form-commonsearch nice-validator n-default" action=" " novalidate="novalidate">
+															<fieldset>
+  
+															<div class="form-group" style="margin:5px">
+                                                                    <input type="text" class="form-control" name="goods_numbers"  value="{$goods_numbers}" placeholder="商品编号" ></div>
+                                                                <div class="form-group" style="margin:5px">
+                                                                    <input type="text" class="form-control" name="goods_name" value="{$goods_name}" placeholder="商品名称"></div> <div class="form-group" style="margin:5px">
+                                                                    <!--<input type="text" class="form-control" name="supplier_title" value="{$supplier_title}" placeholder="供应商名称"></div>-->
+																	<div class="form-group" style="margin:5px">
+                                                                    <input type="text" class="form-control" name="category_name" value="{$category_name}" placeholder="分类名称"></div>
+                                                                <div class="form-group" style="margin:5px">
+                                                                    <select name="status" class="form-control"  id="">
+                                                                        <option value="all" {if $status == 'all'}selected{/if} >全部</option>
+                                                                        <option value="0" {if $status === '0'}selected{/if}  >上架状态</option>
+                                                                        <option value="1" {if $status == 1}selected{/if}>下架状态</option>
+                                                                    </select>
+      
+                                                                </div>
+															  <div class="form-group" style="margin:5px">
+																<div class="col-sm-12 text-center">
+																	<button type="submit" class="btn btn-success">搜索</button>
+																  </div>
+																</fieldset>
+															  </form>
+                                                    </div>
+                                                    <table id="table" class="table table-striped table-bordered table-hover" width="100%">
+                                                    </table>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+        var index_url="{:url('admin/goods/index',['goods_name'=>$goods_name, 'goods_numbers'=>$goods_numbers,'category_name'=>$category_name,'supplier_title'=>$supplier_title,'status'=>$status])}";
+        var add_url="{:url('admin/goods/add')}";
+        var edit_url="{:url('admin/goods/edit')}";
+        var del_url="{:url('admin/goods/delete')}";
+        var multi_url="{:url('admin/goods/multi')}";
+        var show_url="{:url('admin/goods/goodsShow')}";
+        $("#biaoqian").click(function(){
+            Backend.api.open('/index.php/admin/goods/editbiaoqian', __('设置标签'));
+        });
+        </script>
+       {include file="public/javascript" jsname="backend/goods/index" controllername="index"  actionname="index"/}
+    </body>
+</html>

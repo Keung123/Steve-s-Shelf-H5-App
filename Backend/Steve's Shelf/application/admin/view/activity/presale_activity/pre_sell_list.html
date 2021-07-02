@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+{include file="public/head" title="预售商品管理" /}
+<body class="inside-header inside-aside ">
+<div id="main" role="main">
+    <div class="tab-content tab-addtabs">
+        <div id="content">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <section class="content-header hide">
+                        <h1>
+                            控制台                                    <small>Control panel</small>
+                        </h1>
+                    </section>
+                    <!-- RIBBON -->
+                    <div id="ribbon">
+                        <ol class="breadcrumb pull-left">
+                           <li><a href="{:url('admin/index/dashboard')}" class="addtabsit"><i class="fa fa-dashboard"></i> 控制台</a></li>
+                        </ol>
+                        <ol class="breadcrumb pull-right">
+                            <li><a href="javascript:;" data-url="category">预售商品列表</a></li>
+                        </ol>
+                    </div>
+                    <!-- END RIBBON -->
+                    <div class="content">
+                        <div class="panel panel-default panel-intro">
+
+                            <div class="panel-body">
+                                <div id="myTabContent" class="tab-content">
+                                    <div class="tab-pane fade active in" id="one">
+                                        <div class="widget-body no-padding">
+										<div id="toolbar" class="toolbar">
+													<a href="javascript:;" class="btn btn-primary btn-refresh"><i class="fa fa-refresh"></i> </a> 
+													<a href="javascript:;" class="btn btn-success btn-add" data-width="1000px"><i class="fa fa-plus"></i> 添加</a>
+													<a href="javascript:;" class="btn btn-danger btn-del btn-disabled disabled" ><i class="fa fa-trash"></i> 删除</a> 
+													<form class="form-inline form-commonsearch nice-validator n-default" action="" novalidate="novalidate">
+                                                            <fieldset>
+																	<div class="form-group" style="margin:5px">
+                                                                    <input type="text" class="form-control" name="goods_name"   value="{$goods_name}" placeholder="商品名称" ></div>	 
+                                                                <div class="form-group" style="margin:5px">
+                                                                    <div class="col-sm-12 text-center">
+                                                                        <button type="submit" class="btn btn-success">搜索</button>
+
+                                                                    </div>
+                                                                </div>
+                                                            </fieldset>
+                                                        </form>
+												</div>
+                                            <table id="table" class="table table-striped table-bordered table-hover" width="100%">
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+     var index_url="{:url('activity.presale_activity/pre_sell_list',['goods_name'=>$goods_name])}";
+     var add_url="{:url('activity.presale_activity/add_pre_sell')}";
+     var edit_url="{:url('activity.presale_activity/edit_pre_sell')}";
+     var del_url="{:url('activity.presale_activity/del_pre_sell')}";
+    var multi_url="{:url('content/multi')}";
+</script>
+{include file="public/javascript" jsname="backend/activity/pre_sell_list" controllername="activity"  actionname="pre_sell_list"/}
+</body>
+</html>

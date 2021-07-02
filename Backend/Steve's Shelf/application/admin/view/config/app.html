@@ -1,0 +1,95 @@
+<div class="tab-pane fade " id="app">
+    <div class="widget-body no-padding">
+        <form id="basic-form" class="edit-form form-horizontal" role="form" data-toggle="validator" method="POST" action="{:url('admin/config/index')}">
+            <input type="hidden" name="key" value="app"/>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th width="15%">
+                            变量标题
+                        </th>
+                        <th width="70%">
+                            变量值
+                        </th>
+                      <!--   <th width="15%">
+                            调用方法
+                        </th> -->
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            最新版本
+                        </td>
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-8 col-xs-12">
+                                    <input type="text" name="row[version]" value="{$config.app.version}" class="form-control" data-rule="required" data-tip="请填写app最新版本号"  />
+                                </div>
+                                <div class="col-sm-4">
+                                </div>
+                            </div>
+                        </td>
+                     <!--    <td>
+                            {literal}{$config.app.version}{/literal}
+                        </td> -->
+                    </tr>
+                    <tr>
+                        <td>
+                            下载地址
+                        </td>
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-8 col-xs-12">
+                                    <input type="text" name="row[download]" value="{$config.app.download}" class="form-control" data-rule="required" data-tip="请填写app下载地址"  />
+                                </div>
+                                <div class="col-sm-4">
+                                </div>
+                            </div>
+                        </td>
+                     <!--    <td>
+                            {literal}{$config.app.download}{/literal}
+                        </td> -->
+                    </tr> 
+					<tr>
+                        <td>
+                            登录推送内容
+                        </td>
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-8 col-xs-12">
+								 
+								<textarea class="form-control" name="row[notice]"  data-rule="required" data-tip="请填写推送内容"  rows="5" rel="20">
+								{$config.app.notice}
+								</textarea>
+                                  
+                                </div>
+                                <div class="col-sm-4">
+                                </div>
+                            </div>
+                        </td>
+                     <!--    <td>
+                            {literal}{$config.app.notice}{/literal}
+                        </td> -->
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>
+                        </td>
+                        <td>
+                            <button type="submit" class="btn btn-success btn-embossed">
+                                确定
+                            </button>
+                            <button type="reset" class="btn btn-default btn-embossed">
+                                重置
+                            </button>
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,174 @@
+	<!doctype html>
+	<html class="no-js">
+
+		<head>
+			<meta charset="utf-8">
+			<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+			<title>Steve 星球</title>
+		</head>
+		<style>
+			.wxtip {
+				background: rgba(0, 0, 0, 0.8);
+				text-align: center;
+				position: fixed;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				z-index: 998;
+				display: none;
+			}
+			
+			.wxtip-icon {
+				width: 52px;
+				height: 67px;
+				background: url(weixin-tip.png) no-repeat;
+				display: block;
+				position: absolute;
+				right: 20px;
+				top: 20px;
+			}
+			
+			.wxtip-txt {
+				color: #fff;
+				font-size: 16px;
+				line-height: 1.5;
+			}
+			
+			html,
+			body {
+				height: 100%;
+				overflow: hidden;
+				padding: 0;
+				margin: 0 auto;
+			}
+			
+			body {
+				max-width: 750px;
+				overflow: hidden;
+				margin: 0 auto;
+				text-align: center;
+			}
+			
+			.down_box {
+				position: absolute;
+				top: 70% !important;
+				text-align: center;
+				width: 98%;
+				left: 1%;
+			}
+			
+			.down_box a {
+				display: block;
+				width: 42%;
+				margin: 0 4%;
+				float: left;
+				position: relative;
+				padding-bottom: 11%;
+				background: #E3211F;
+				border-radius: 30px;
+			}
+			
+			.down_box a img {
+				display: block;
+				position: absolute;
+				height: 24px;
+				width: 24px;
+				top: 50%;
+				margin-top: -12px;
+				left: 18px;
+			}
+			
+			.down_box a p {
+				display: block;
+				position: absolute;
+				height: 20px;
+				font-size: 15px;
+				line-height: 20px;
+				top: 50%;
+				margin-top: -10px;
+				left: 60px;
+				color: #fff;
+			}
+			
+			@media only screen and (min-width: 100px) and (max-width: 360px) {
+				.down_box a p {
+					font-size: 13px;
+					left: 48px;
+				}
+				.down_box a img {
+					left: 14px;
+				}
+			}
+			.yqm{text-align: center;font-size: 16px;color: #000;font-weight: bold;width: 200px;    position: absolute;top: 48%;left: 50%;margin-left: -100px;}
+			.yqm span{font-size: 16px;color: #000;font-weight: bold;}
+		</style>
+
+		<body style="position: relative;">
+			<img src="/static/index/img/icon.png" alt="" style="position: absolute; top:18%;width: 150px;left: 50%;margin-left: -75px">
+			<h2 style="position: absolute; top:35%;width: 150px;left: 50%;margin-left: -75px">Steve 星球</h2>
+			<h4 style="position: absolute; top:40%;width: 80%;left: 10%;">留学海外最实用的经验和咨讯分享, 忙碌生活中不可错过的甄选精品好物, 在这里发现和分享你的所爱!</h4>
+			<div class="down_box" style="color: aquamarine;">
+		
+				<!-- <a href="{$config.base.android_url}" >
+					<img src="/static/index/img/android_icon.png" />
+					<p>安卓端下载</p>
+				</a>
+				<a href="{$config.base.ios_url}" >
+					<img src="/static/index/img/android_icon.png" />
+					<p>IOS端下载</p>
+				</a> -->
+
+				<a>
+					<img src="/static/index/img/android_icon.png" />
+					<p>安卓端下载</p>
+				</a>
+				<a>
+					<img src="/static/index/img/ios_icon.png" />
+					<p>IOS端下载</p>
+				</a>
+		
+			</div>
+			
+		<!--<div class="down_box" style="top:80%!important">
+			<a href="javascript:alert('暂未开放~')" id="JdownApp2">
+					<img src="uploads/images/ios_icon.png" />
+					<p>商户端下载</p>
+				</a>
+				<a href="http://wisdom.zhengdazikaowang.net/wisdom_shop.apk" id="JdownApp">
+					<img src="uploads/images/android_icon.png" />
+					<p>商户端下载</p>
+				</a>
+			</div>-->
+
+			<div class="wxtip" id="JweixinTip">
+				<p class="wxtip-txt"><img src="/static/index/img/weixin-tip.png" style="width: 100%"></p>
+			</div>
+
+			<script type="text/javascript" src="/static/index/js/jquery-2.1.1.min.js"></script>
+			<script>
+				
+				$(function() {
+					var u = navigator.userAgent,
+						app = navigator.appVersion;
+					var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1;
+					var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+					// 这里是安卓浏览器
+					if(isAndroid) {
+						//window.location.href = ''; // 跳安卓端下载地址
+					}
+					// 这里是iOS浏览器
+					if(isIOS) {
+						// window.location.href = ''; // 跳AppStore下载地址
+					}
+					var ua = navigator.userAgent;
+					var isWeixin = !!/MicroMessenger/i.test(ua);
+					if(isWeixin) {
+						document.getElementById('JweixinTip').style.display = 'block';
+					}
+
+				})
+			</script>
+		</body>
+
+	</html>

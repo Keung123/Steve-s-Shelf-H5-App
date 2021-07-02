@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>绑定手机号</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="__STATIC__/fx/css/base/mui.css" rel="stylesheet" />
+		<link href="__STATIC__/fx/css/base/base.css" rel="stylesheet" />
+		<link href="__STATIC__/fx/iconfont/iconfont.css" rel="stylesheet" />
+		<link href="__STATIC__/fx/css/pages/personal/register.css" rel="stylesheet" />
+	</head>
+	<body>  
+		<header class="mui-bar mui-bar-nav">
+		    <!--<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>-->
+		    <h1 class="mui-title">绑定手机号</h1>
+		</header>
+		<div class="mui-content">
+			<div class="liebiao">
+				<ul>
+					<li>
+						<input type="text" class="phone" placeholder="手机号码" oninput="functionName()" />
+					</li>
+					<li>
+						<input type="text" class="code" placeholder="短信验证码" oninput="functionName()" />
+						<span class="mui-pull-right huoqu_code">获取验证码</span>
+					</li>
+					<!--<li>-->
+						<!--<input type="password" class="password" placeholder="设置登录密码" oninput="functionName()" style="position: relative;" />-->
+					<!--</li>-->
+					<!--<li>-->
+						<!--<input type="password" class="qr_password" placeholder="确认登录密码" oninput="functionName()" style="position: relative;" />-->
+					<!--</li>-->
+					<li class="yaoqing_ma" style="display: none;">
+						<input type="text" class="yaoqing" placeholder="邀请码" oninput="functionName()" value="{$yaoqingma}" style="position: relative;display: none" />
+					</li>
+				</ul>
+			</div>
+			<!--<div class="footer-li">
+	    		<div class="mui-input-row mui-checkbox mui-left">
+	    		  <label></label>
+	    		  <input name="checkbox1" value="1" type="checkbox" checked="checked" >
+	    		</div>
+	    		<div class="tongyi">
+	    			<span>已阅读并同意</span>
+	    			<span class="xieyi">《用户服务协议》</span>
+	    		</div>		
+	    	</div>-->
+		    <div class="zhuce">
+		    	<span>绑定</span>
+		    </div>
+		</div>	
+	</body>
+	<script src="__STATIC__/fx/js/base/mui.js"></script>
+	<script src="__STATIC__/fx/js/base/castapp.js"></script>
+	<script src="__STATIC__/fx/js/base/jquery-3.2.1.min.js"></script>
+	<script src="__STATIC__/fx/js/base/hetao.js"></script>
+	<script type="text/javascript">
+		mui.init();
+		ca.init();
+        var user_id= "{$uid}";
+        var token= "{$token}";
+        var goodsid = "{$goodsid}";
+        var sku_id = "{$sku_id}";
+        var act_id = "{$act_id}";
+        var bargain_id = "{$bargain_id}";
+        var kaikan_id = "{$kaikan_id}";
+        var type = "{$type}";
+        var c_id = "{$c_id}";
+        var to_uid = "{$user_id}";
+        var liuyan_val = "{$liuyan_val}";
+        var yaoqingma = "{$yaoqingma}";
+        var result_type = "{$result_type}";
+        var order_type = "{$order_type}";
+        var yin_id = "{$yin_id}";
+        var share_uid = "{$share_uid}";
+        if (yaoqingma) {
+            $('.yaoqing').attr('disabled', true);
+		}
+		function functionName(){	
+			var phone=$('.phone').val();
+			// var password=$('.password').val();
+			var yaoqing=$('.yaoqing').val();
+			var code=$('.code').val();
+			// var qr_password=$('.qr_password').val();
+			// console.log(password);
+			if(phone){
+				if(code){
+					// if(password){
+					// 	if(qr_password){
+							$('.zhuce span').css('background','#D31A1A');
+					// 	}else{
+					// 		$('.zhuce span').css('background','#cccccc');
+					// 	}
+					// }else{
+					// 	$('.zhuce span').css('background','#cccccc');
+					// }
+				}else{
+					$('.zhuce span').css('background','#cccccc');
+				}	
+			}else{
+				$('.zhuce span').css('background','#cccccc');
+			}
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		var code_huoqu;
+		var phone_zhuce;
+		var code;
+		var yaoqing_type;
+		var mark = 1;
+		var num = 0;
+		var obj = {};	
+		/*验证码*/
+		$(".huoqu_code").click(function() {
+			if(num>0){
+				ca.prompt('验证码发送中，请勿重复点击');
+				return;
+			}else{
+				phone_zhuce=$(".phone").val();
+				if(!(/^1[3-9][0-9]{9}$/.test(phone_zhuce))){ 
+		     		 ca.prompt('手机号格式不正确');
+		     		 return;
+				 }
+				obj.mobile = phone_zhuce;
+				obj.type = 3;
+				console.log(obj);
+				$.ajax({
+					type: "post",
+					url: hetao.url + 'User/getCode',
+					data: obj,
+					dataType: "JSON",
+					success: function(res) {
+						console.log(1111111111);
+						console.log(JSON.stringify(res));
+						if(res.status == 1) {
+							yaoqing_type=res.type;
+							if(res.type==1){
+								$('.yaoqing_ma').css('display','none');
+							}else{
+								// $('.yaoqing_ma').css('display','block');
+							}
+							ca.prompt("请求成功");
+								if(mark) {	
+									mark = 0;
+									var interval; 
+									num = 60;
+									$(".huoqu_code").html("重新发送(60)秒");
+									interval = setInterval(function() {
+										num--;
+										$(".huoqu_code").html("重新发送(" + num + ")秒");
+										if(num <= 0) {
+											mark = 1;
+											$(".huoqu_code").html("重新获取验证码");
+										}
+									}, 1000);
+								}
+							code_huoqu = res.data;
+							console.log(code_huoqu);
+						} 
+					},error:function(e){
+						alert(JSON.stringify(e));
+					}
+				}) 
+			}	
+		});
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		$('.footer-li input').click(function(){
+			var index=$(this).val();
+			console.log(index);
+			if(index==1){
+				$(this).val(2);
+			}else{
+				$(this).val(1);
+			}
+		});
+		
+		$('.zhuce span').click(function(){	
+			
+			var obj={};
+			var phone=$(".phone").val();
+			var code=$('.code').val();
+			// var password=$('.password').val();
+			// var qr_password=$('.qr_password').val();
+			var yaoqing=$('.yaoqing').val();
+			if(!(/^1[3-9][0-9]{9}$/.test(phone))){
+	     		 ca.prompt('手机号格式不正确');
+	     		 return;
+			 }
+			if(phone!=phone_zhuce){
+				ca.prompt('两次的手机号不一致');
+				return;
+			}
+			if(code!=code_huoqu){
+				ca.prompt('您输入的验证码不正确');
+				return;
+			}
+			// var pwd_reg = /^[A-Za-z0-9]{6,20}$/;
+			// if(!(pwd_reg.test(password))) {
+			// 	mui.toast("密码不符合规则，请重新输入!");
+			// 	return;
+			// };
+			// if(qr_password!=password){
+			// 	mui.toast("两次输入的密码不一致，请重新输入!");
+			// 	return;
+			// }
+			if(yaoqing_type==0){
+				if(!yaoqing){
+					mui.toast("请输入邀请码!");
+					return;
+				}else{
+					obj.invite_code=yaoqing;
+				}
+			}
+			obj.uid=user_id;
+			obj.token=token;
+			obj.mobile=phone;
+			obj.code=code;
+			// obj.pwd=password;
+			console.log(JSON.stringify(obj));
+			console.log(hetao.url+'login/jsApimobileBind');
+			ca.post({
+				url:hetao.url+'login/jsApimobileBind',
+				data:obj,
+				succFn:function(data){
+					var res=JSON.parse(data);
+					console.log(JSON.stringify(res));
+					if(res.status==1){
+						ca.prompt('恭喜您绑定手机号成功');
+						// 商品
+                        if (result_type == 'goods') {
+                            var param_str = "?goodsid="+goodsid+"&act_id="+act_id+"&type="+type+"&bargain_id="+bargain_id+"&sku_id="+sku_id;
+                            window.location.href = hetao.url3+"/Api/Fx/goodsDetail"+param_str;
+                        }
+                        // 优惠券
+                        if (result_type == 'coupon') {
+                            var param_str = "?c_id="+c_id+"&user_id="+to_uid+"&liuyan_val="+liuyan_val;
+                            window.location.href = hetao.url3+"/Api/Fx/my_discount"+param_str;
+                        }
+                        // 邀请开店
+                        if (result_type == 'libao') {
+                            var param_str = "?yaoqingma="+yaoqingma+"&user_id="+to_uid;
+                            window.location.href = hetao.url3+"/Api/Fx/shop_libao"+param_str;
+                        }
+                        // 礼包订单
+                        if (result_type == 'order') {
+                            var param_str = "?goodsid="+goodsid+"&type=weixin&sku_id="+sku_id+"&order_type="+order_type+"&user_id="+to_uid;
+                            window.location.href = hetao.url3+"/Api/Fx/write_order"+param_str;
+                        }
+                        // 分享元宝
+                        if (result_type == 'yuanbao') {
+                            var param_str = 'type='+type+'&yaoqingma='+yaoqingma+'&share_uid='+share_uid+'&yin_id='+yin_id;
+                            window.location.href = hetao.url3+"/Api/Fx/my_yuanbao?"+param_str;
+                        }
+                        // 砍价
+                        if (result_type == 'kanjia') {
+                            var param_str = 'type='+type+'&yaoqingma='+yaoqingma+'&kaikan_id='+kaikan_id+'&bargain_id='+bargain_id;
+                            window.location.href = hetao.url3+"/Api/Fx/zhuli_kanjia?"+param_str;
+                        }
+                        // 邀请注册
+                        if (result_type == 'register') {
+                            window.location.href = hetao.url3+"/Api/Fx/register_ok";
+                        }
+						// localStorage.setItem('user_id',res.data.uid);
+						// localStorage.setItem('token',res.data.token);
+						// localStorage.setItem('login_type',res.data.is_seller);
+						// var appid = plus.runtime.appid;
+						// var arr = [appid];
+                        // ca.sendNotice(arr, "my", {});
+						// var arr1=['pages/index.html','pages/find.html','pages/shop.html','pages/car.html','pages/my.html','index/index-page.html','goods-details.html','index/goods-details.html','goods-details-jifen.html','goods-details-yushou.html','seckill-details.html','pintuan_xx.html'];
+						// ca.sendNotice(arr1,'login',{});
+						// ca.newInterface({
+						// 	url: '../../index.html',
+						// 	id: '../../index.html'
+						// })
+					}else{
+						ca.prompt(res.msg);
+					}
+				}
+			})		
+		});
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		$('.xieyi').click(function(){
+			ca.newInterface({
+				url:'user-protocol.html',
+				id:'user-protocol.html'
+			})
+		});
+	</script>	
+</html>

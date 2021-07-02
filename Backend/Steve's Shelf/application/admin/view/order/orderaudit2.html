@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    {include file="public/head" title="售后审核" /}
+<style>
+ul.order_list{width:100%; margin-bottom:20px; margin-left:50px;}
+.order_list li{ width:50%; float:left; list-style:none;}
+</style>
+    <body class="inside-header inside-aside is-dialog">
+        <div id="main" role="main">
+            <div class="tab-content tab-addtabs">
+                <div id="content">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <section class="content-header hide">
+                                <h1>
+                                    控制台                                    <small>Control panel</small>
+                                </h1>
+                            </section>
+
+                            <div class="content">
+                                <form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="{:url('admin/order/orderAudit')}">
+
+                                    <input type="hidden" name="order_id" value="{$row['order_id']}">
+									<input type="hidden" name="og_id" value="{$row['og_id']}">
+                                    <input type="hidden" name="after_state_status" value="{$row['after_state_status']}">
+									<input type="hidden" name="og_goods_pay_price" value="{$row['og_goods_pay_price']}">
+									<ul class="order_list">
+									<li>   
+										<div class="form-group">
+											<label for="c-goods_name" class="control-label col-xs-12 col-sm-2">订单编号:</label>
+											<div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+												<span>{$row['order_no']}</span>
+											</div>
+										</div> 
+									</li>
+									<li>   
+										<div class="form-group">
+											<label for="c-goods_name" class="control-label col-xs-12 col-sm-2">售后单号:</label>
+											<div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+												<span>{$row['audit_no']}</span>
+											</div>
+										</div> 
+									</li>
+										<li>
+											<div class="form-group">
+												<label for="c-goods_name" class="control-label col-xs-12 col-sm-2">商品单价:</label>
+												<div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+													<span>{$row['og_goods_price']}元</span>
+												</div>
+											</div>
+										</li>
+									<li>
+										<div class="form-group">
+											<label for="c-goods_name" class="control-label col-xs-12 col-sm-2">订单状态:</label>
+											<div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+												<span>{$row['order_status_val']}</span>
+											</div>
+										</div>
+									</li>
+										<li>
+										<div class="form-group">
+											<label for="c-goods_name" class="control-label col-xs-12 col-sm-2">物流单号:</label>
+											<div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+												<span>{$row['post_no']}</span>
+											</div>
+										</div>
+									</li>
+									
+									<li>
+										<div class="form-group">
+											<label for="c-goods_name" class="control-label col-xs-12 col-sm-2">物流状态:</label>
+											<div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+												<span>{$row['post_status_val']}</span>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="form-group">
+                                        <label for="c-goods_name" class="control-label col-xs-12 col-sm-2">下单时间:</label>
+                                        <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+                                            <span>{$row['create_time']}</span>
+                                        </div>
+										</div>
+									</li>
+										<li>
+											
+										<div class="form-group">
+											<label for="c-goods_name" class="control-label col-xs-12 col-sm-2">订购商品:</label>
+											<div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+
+												<span>{$row.goods_name}</span><br>
+
+											</div>
+										</div>
+										</li>
+										<li>
+											<div class="form-group">
+												<label for="c-goods_name" class="control-label col-xs-12 col-sm-2">商品编号:</label>
+												<div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+													<span>{$row['goods_numbers']} </span>
+												</div>
+											</div>	
+										</li>	
+										<li>
+											<div class="form-group">
+												<label for="c-goods_name" class="control-label col-xs-12 col-sm-2">商品数量:</label>
+												<div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+													<span>{$row['og_goods_num']} </span>
+												</div>
+											</div>	
+										</li>
+										<li>
+											<div class="form-group">
+												<label for="c-goods_name" class="control-label col-xs-12 col-sm-2">支付金额:</label>
+												<div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+													<span>{$row['og_goods_pay_price']}元</span>
+												</div>
+											</div>
+										</li>
+
+																			 
+										<li>
+										 <div class="form-group">
+                                        <label for="c-goods_name" class="control-label col-xs-12 col-sm-2">申请时间:</label>
+                                        <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+                                            <span> {:date('Y-m-d H:i',$row['apply_time'])}
+											</span>
+                                        </div>
+										</div>
+										
+										</li>
+										<li>
+										 <div class="form-group">
+                                        <label for="c-goods_name" class="control-label col-xs-12 col-sm-2">退货原因:</label>
+                                        <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+                                            <span> 
+											   {$row['audit_reason']} 
+											</span>
+                                        </div>
+										</div>
+										</li>	
+										<li>
+										 <div class="form-group">
+                                        <label for="c-goods_name" class="control-label col-xs-12 col-sm-2">用户备注:</label>
+                                        <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+                                            <span> 
+											  {$row['audit_issue']}
+											</span>
+                                        </div>
+										</div>
+										
+										</li>
+									 
+									</ul>
+									{if condition="($row['group_id'] eq 9) or ($row['group_id'] eq 1) or ($row['group_id'] eq 13)"}  
+									
+										{if condition="$row['post_status'] egt 4"}
+									   <div class="form-group">
+											<label for="c-goods_name" class="control-label col-xs-12 col-sm-2"> 退款金额:</label>
+											<div class="col-xs-3 col-sm-5" style="padding-top:7px;">
+											<input class="col-xs-3 col-sm-5" style="padding-top:7px;" id="order_refund_price"  name="order_refund_price" type="text" value="{$row['order_refund_price']}">
+											</div>
+										</div>
+										{/if}
+									{else/}
+									  <div class="form-group">
+											<label for="c-goods_name" class="control-label col-xs-12 col-sm-2"> 退款金额:</label>
+											<div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+												<span>{$row['order_refund_price']}</span>
+											</div>
+										</div>
+									{/if}
+								{if condition="($row['group_id'] eq 9) or ($row['group_id'] eq 1)"}  
+								 <div class="form-group">
+                                        <label for="status" class="control-label col-xs-12 col-sm-2">审核状态:</label>
+                                        <div class="col-xs-12 col-sm-8">											 
+                                            <label ><input id="row[status]-2" {if $row['status']=='2'}checked="checked"  {/if} name="status" type="radio" value="2" onclick =" typeChange();"> 审核通过</label>
+                                            <label  ><input id="row[status]-3" {if $row['status']=='3'}checked="checked"  {/if} name="status" type="radio" value="3" onclick =" typeChange();"> 审核不通过</label>
+                                            
+                                        </div>
+                                    </div>
+									<div class="form-group">
+                                        <label for="c-goods_numbers" class="control-label col-xs-12 col-sm-2"> 审核备注:</label>
+                                        <div class="col-xs-12 col-sm-8">
+											<textarea {if  condition="$row['or_goods_note']"}  {/if} cols="100" rows="5" id="or_goods_note" name="or_goods_note" data-rule="">{$row['or_goods_note']} </textarea>
+                                        </div>
+                                    </div>
+								{/if}
+								{if condition="($row['group_id'] eq 13) or ($row['group_id'] eq 1)"}  
+								<div class="form-group">
+                                        <label for="financial_status" class="control-label col-xs-12 col-sm-2">客服审核:</label>
+										<input type="hidden" name="status" value="{$row.status}">
+										<input type="hidden" name="or_goods_note" value="{$row.or_goods_note}">
+                                        <div class="col-xs-12 col-sm-8">
+                                            	<div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+												<span>【{$row['status_val']}】 {$row['or_goods_note']}</span>
+											</div>
+                                        </div>
+                                    </div>		
+									<div class="form-group">
+                                        <label for="financial_status" class="control-label col-xs-12 col-sm-2">供应商审核:</label>
+										<input type="hidden" name="supplier_status" value="{$row.supplier_status}">
+										<input type="hidden" name="or_supplier_note" value="{$row.or_supplier_note}">
+										<input type="hidden" name="supplier_post_status" value="{$row.supplier_post_status}">
+										<input type="hidden" name="supplier_post_status" value="{$row.supplier_post_status}">
+                                        <div class="col-xs-12 col-sm-8">
+                                            	<div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+												<span>
+											{if condition="$row.supplier_post_status eq 1"}【确认收货】  {else/}【未收货】{/if}
+											【{$row['supplier_status_val']}】 {$row['or_supplier_note']}</span>
+											</div>
+                                        </div>
+                                    </div>
+									<div class="form-group">
+                                        <label for="financial_status" class="control-label col-xs-12 col-sm-2">财务审核状态:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <label ><input id="row[financial_status]-2" {if $row['financial_status']=='2'}checked="checked"   {/if} name="financial_status" type="radio" value="2" onclick =" typeChange();"> 审核通过</label>
+                                            <label  ><input id="row[financial_status]-3" {if $row['financial_status']=='3'}checked="checked"  {/if} name="financial_status" type="radio" value="3" onclick =" typeChange();"> 审核不通过</label>
+                                            
+                                        </div>
+                                    </div>
+									<div class="form-group">
+										<label for="status" class="control-label col-xs-12 col-sm-2">退款状态:</label>
+										<div class="col-xs-12 col-sm-8">
+											<label >
+												<input  id="row[refund_status]-2" {if $row['refund_status']=='1'}checked="checked"  {/if} name="refund_status" type="radio" value="1"> 确认退款 </label><label ><input  id="row[refund_status]-2" {if $row['refund_status']=='0'}checked="checked"  {/if} name="refund_status" type="radio" value="0"> 暂未退款 </label>
+										</div>
+									</div>
+									   <div class="form-group">
+											<label for="c-goods_numbers" class="control-label col-xs-12 col-sm-2"> 财务审核备注:</label>
+											<div class="col-xs-12 col-sm-8">
+												<textarea {if condition="$row['or_financial_note']" }checked="checked"  {/if} cols="100" rows="5" id="or_financial_note" name="or_financial_note" data-rule="">{$row['or_financial_note']} </textarea>
+											</div>
+										</div>
+										<!-- <div class="form-group">
+											<label for="c-goods_numbers" class="control-label col-xs-12 col-sm-2"> 回邮地址:</label>
+											<div class="col-xs-12 col-sm-8">
+												<textarea {if condition="$row['back_address']" }checked="checked"  {/if} cols="100" rows="5" id="back_address" name="back_address" data-rule="">{$row['back_address']} </textarea>
+											</div>
+										</div> -->
+										<div class="form-group">
+											<label for="c-goods_numbers" class="control-label col-xs-12 col-sm-2"> 回邮地址:</label>
+											<div class="col-xs-12 col-sm-8">
+												<!--<textarea {if condition="$row['back_address']" }    {/if} cols="100" rows="5" id="back_address" name="back_address" data-rule="">{$row['back_address']} </textarea>-->
+												售后地址：<input type="text" id="supplier_addr" name="supplier_addr" style=" width: 80%;" value="{if condition="$row['back_address']['supplier_addr']"} {$row['back_address']['supplier_addr']} {/if}"><br>
+												姓名：<input type="text" id="supplier_name" name="supplier_name" style=" width: 80%;" value="{if condition="$row['back_address']['supplier_name']"} {$row['back_address']['supplier_name']} {/if}"><br>
+												电话：<input type="text" id="supplier_phone" name="supplier_phone" style=" width: 80%;" value="{if condition="$row['back_address']['supplier_phone']"} {$row['back_address']['supplier_phone']} {/if}">
+											</div>
+										</div>
+								{/if}
+								{if condition=" ($row['group_id'] eq 3) or ($row['group_id'] eq 1)"} 
+								<div class="form-group">
+									<div class="form-group">
+                                        <label for="financial_status" class="control-label col-xs-12 col-sm-2">客服审核:</label>
+										<input type="hidden" name="status" value="{$row.status}">
+										<input type="hidden" name="or_goods_note" value="{$row.or_goods_note}">
+                                        <div class="col-xs-12 col-sm-8">
+                                            	<div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+												<span>【{$row['status_val']}】 {$row['or_goods_note']}</span>
+											</div>
+                                        </div>
+                                    </div>
+									<div class="form-group">
+                                        <label for="supplier_status" class="control-label col-xs-12 col-sm-2">供应商审核状态:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <label ><input {if condition="$row['supplier_status'] eq 2" }    {/if} id="row[supplier_status]-2" {if $row['supplier_status']=='2'}checked="checked"{/if} name="supplier_status" type="radio" value="2" onclick =" typeChange();"> 审核通过</label>
+                                            <label  ><input {if condition="$row['supplier_status'] eq 3" }    {/if} id="row[supplier_status]-3" {if $row['supplier_status']=='3'}checked="checked"{/if} name="supplier_status" type="radio" value="3" onclick =" typeChange();"> 审核不通过</label>
+                                        </div>
+                                     </div>
+									<div class="form-group">
+										<label for="status" class="control-label col-xs-12 col-sm-2">退货状态:</label>
+										<div class="col-xs-12 col-sm-8">
+											<label >
+												<input  id="row[supplier_post_status]-2" {if $row['supplier_post_status']=='0'}checked="checked"  {/if} name="supplier_post_status" type="radio" value="0"> 未收到货 </label>
+												<label >
+												<input  id="row[supplier_post_status]-2" {if $row['supplier_post_status']=='1'}checked="checked"  {/if} name="supplier_post_status" type="radio" value="1"> 确认退货 </label>
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="c-goods_numbers" class="control-label col-xs-12 col-sm-2"> 供应商审核备注:</label>
+										<div class="col-xs-12 col-sm-8">
+											<textarea {if condition="$row['or_supplier_note']" }    {/if}cols="100" rows="5" id="or_supplier_note" name="or_supplier_note" data-rule="">{$row['or_supplier_note']} </textarea>
+										</div>
+									</div>
+									<div class="form-group">
+											<label for="c-goods_numbers" class="control-label col-xs-12 col-sm-2"> 回邮地址:</label>
+											<div class="col-xs-12 col-sm-8">
+												<!--<textarea {if condition="$row['back_address']" }    {/if} cols="100" rows="5" id="back_address" name="back_address" data-rule="">{$row['back_address']} </textarea>-->
+												售后地址：<input type="text" id="supplier_addr" name="supplier_addr" style=" width: 80%;" value="{if condition="$row['back_address']['supplier_addr']"} {$row['back_address']['supplier_addr']} {/if}"><br>
+												姓名：<input type="text" id="supplier_name" name="supplier_name" style=" width: 80%;" value="{if condition="$row['back_address']['supplier_name']"} {$row['back_address']['supplier_name']} {/if}"><br>
+												电话：<input type="text" id="supplier_phone" name="supplier_phone" style=" width: 80%;" value="{if condition="$row['back_address']['supplier_phone']"} {$row['back_address']['supplier_phone']} {/if}">
+											</div>
+										</div>
+								 {/if}
+								 	 
+								 {if condition="($row['post_status'] eq 0) and ($row['group_id'] eq 1)"}
+									<div class="form-group">
+										<label for="status" class="control-label col-xs-12 col-sm-2">退货状态:</label>
+										<div class="col-xs-12 col-sm-8"> 
+											<label >
+											<input id="row[refund_status]-2" {if $row['refund_status']=='1'}checked="checked"  {/if} name="refund_status" type="radio" value="1"> 确认退款 </label><label >
+											<input id="row[refund_status]-2" {if $row['refund_status']=='0'}checked="checked"  {/if} name="refund_status" type="radio" value="0"> 暂未退款 </label>
+										</div>
+									</div>
+									{/if}
+                                    <div class="form-group layer-footer">
+                                        <label class="control-label col-xs-12 col-sm-2"></label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <button type="submit" class="btn btn-success btn-embossed " >确定</button>
+                                            <button type="reset" class="btn btn-default btn-embossed">重置</button>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            var index_url="{:url('admin/order/index',['order_status'=>$order_status])}";
+            var add_url="{:url('admin/goods/add')}";
+            var edit_url="{:url('admin/order/post')}";
+            var del_url="{:url('admin/order/close')}";
+            var multi_url="{:url('admin/goods/multi')}";
+        </script>
+        {include file="public/javascript" jsname="backend/order/index" controllername="order"  actionname="add"/}
+    </body>
+	<script type="text/javascript">
+	window.onload = typeChange();
+	//select的onchange调用函数
+	function typeChange(){
+	var countrySelect = document.getElementsByName('status');//获取select的dom
+	var remark = document.getElementById('or_goods_note');//备注
+		if(countrySelect[1].checked == true){	  
+		  remark.setAttribute('data-rule','required');						  
+		}else{
+		  remark.setAttribute('data-rule','checked');
+		} 
+
+	}
+</script>  
+</html>

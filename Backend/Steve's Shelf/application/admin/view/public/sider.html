@@ -1,0 +1,60 @@
+            <!-- Left side column. contains the logo and sidebar -->
+            <aside class="main-sidebar">
+                <!-- sidebar: style can be found in sidebar.less -->
+                <section class="sidebar">
+                    <!-- Sidebar user panel -->
+                    <div class="user-panel hidden-xs">
+                        <div class="pull-left image">
+                            <a href="#"><img src="__STATIC__/assets/img/avatar.png" class="img-circle" /></a>
+                        </div>
+                        <div class="pull-left info">
+                            <p>{:session('nickname')}</p>
+                             <i class=""></i> </div>
+                    </div>
+                    <!--如果想始终显示子菜单,则给ul加上show-submenu类即可-->
+                        <ul class="sidebar-menu">
+                        <li class="header">站内导航</li>
+                            <li>
+                                <a href="javascript:;" addtabs="0" url="{:url('admin/index/dashboard')}" py="kzt" pinyin="kongzhitai">
+                                    <i class="fa fa-dashboard"></i>
+                                    <span>控制台</span>
+                                    <span class="pull-right-container">
+                                        <small class="label pull-right bg-blue">hot</small>
+                                    </span>
+                                </a>
+                            </li>
+                            {volist name="menus" id="menu"}
+                                {if condition="count(menu.child) > 0"}
+                                <li class="treeview">
+                                    <a href="javascript:;">
+                                        <i class="{$menu.icon}"></i>
+                                        <span>{$menu.title}</span>
+                                        <span class="pull-right-container"></span>
+                                    </a>
+                                    <ul class="treeview-menu">
+                                        {volist name="menu.child" id="child"}
+                                        <li>
+                                            <a href="javascript:;" addtabs="{$child.id}" url="{:url($child.name)}">
+                                                <i class="{$child.icon}"></i>
+                                                <span>{$child.title}</span>
+                                                <span class="pull-right-container"></span>
+                                            </a>
+                                        </li>
+                                        {/volist}
+                                    </ul>
+                                </li>
+                                {else /}
+                                <li>
+                                    <a href="javascript:;">
+                                        <i class="{$menu.icon}"></i>
+                                        <span>{$menu.title}</span>
+                                        <span class="pull-right-container"></span>
+                                    </a>
+                                </li>
+                                {/if}
+                            {/volist}
+                    </ul>
+                    </div>
+                </section>
+                <!-- /.sidebar -->
+            </aside>

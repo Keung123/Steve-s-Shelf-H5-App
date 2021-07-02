@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>我的优惠券</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="__STATIC__/fx/css/base/mui.css" rel="stylesheet" />
+		<link href="__STATIC__/fx/css/base/base.css" rel="stylesheet" />
+		<link href="__STATIC__/fx/iconfont/iconfont.css" rel="stylesheet" />
+		<link href="__STATIC__/fx/css/pages/personal/my_discount.css" rel="stylesheet" />
+	</head>
+	<style>
+		body{
+			background-color: #f5f5f5 !important;
+		}
+		.mui-content{
+			background-color: #f5f5f5 !important;
+		}
+		/*.menu{
+			width: 100%;
+			height: 45px;
+			background: #fff !important;
+		}
+		.menu ul li{
+			width: 50%;
+			height: 45px;
+			text-align: center;
+			line-height: 45px;
+			float: left;
+		}
+		.menu ul li span{
+			height: 45px;
+			display: inline-block;
+			color: #666;
+		}
+		.menu ul li span.active{
+			color: #D31A1A;
+			border-bottom: 1px solid #D31A1A;
+		}*/
+		.discount{
+			width: 96%;
+			margin-top: 10px;
+			
+			margin-left: 2%;
+			
+		}
+		.discount li{
+			width: 100%;
+			margin-bottom: 10px;
+			overflow: hidden;
+			background: #fff;
+			border-radius: 4px;
+		}
+		.discount li .thunm_left{
+			width:18%;
+			margin-top: 20%;
+			float: left;
+		}
+		.discount li .thunm_right{
+			width: 82%;
+			float: right;
+		}
+		
+		.discount li .menu{
+			width: 96%;
+			margin-left: 2%;
+			padding-bottom: 15px;
+			overflow: hidden;
+			border-bottom: 1px dashed #dadada;
+		}
+		.discount li .shop_sp{
+			width: 96%;
+			margin-left: 2%;
+			margin-bottom: 15px;
+			font-size: 12px;
+			color: #737373;
+			background: #f7f7f7;
+		}
+		
+		.discount li .money{
+			width: 23%;
+			margin-top: 35px;
+			text-align: center;
+			float: left;
+			
+		}
+		.discount li .money label{
+			font-size: 26px;
+			color: #D31A1A;
+		}
+		.discount li .money p{
+			width: 90%;
+			margin-left: 5%;
+			margin-top: 10px;
+			font-size: 12px;
+			color: #383838;
+			border: 1px solid #b3b3b3;
+		}
+		
+		.discount li .shijian{
+			width: 54%;
+			margin-top: 15px;
+			margin-left: 19%;
+			
+		}
+		.discount li .shijian span{
+			font-size: 16px;
+			color: #191919;
+		}
+		.discount li .shijian p{
+			margin: 5px 0;
+			font-size: 12px;
+			color: #666666;
+		}
+		.discount li .shijian label{
+			font-size: 12px;
+			color: #666666;
+		}
+		.discount li .shijian div{
+			color: #666666;
+		}
+		.discount li .shijian div i{
+			
+		}
+		.discount li .shijian div em{
+			width: 20px;
+			height: 20px;
+			text-align: center;
+			line-height: 22px;
+			margin-left: 5px;
+			display: inline-block;
+			transform: rotate(-90deg);
+			color: #fff;
+			border-radius: 10px;
+			background: #d1d1d1;
+			
+		}
+		.discount li .shop{
+			width: 19%;
+			margin-top: -60px;
+			text-align: center;
+			height: 30px;
+			line-height: 30px;
+			float: right;
+			font-size: 12px;
+			color: #D31A1A;
+			border: 1px solid #D31A1A;
+			border-radius: 5px;
+		}
+		.share{
+			height: 45px;
+			line-height: 45px;
+			float: right;
+		}
+		.mui-radio input[type='radio']:checked:before{
+			content: '\e442';
+		}
+		.mui-radio input[type='radio']:checked:before, .mui-checkbox input[type='checkbox']:checked:before{
+			color: #D31A1A;
+		}
+		.mui-radio input[type='radio']:before, .mui-checkbox input[type='checkbox']:before{
+			font-size: 24px;
+		}
+		.sure{
+			width: 96%;
+			height: 45px;
+			text-align: center;
+			line-height: 45px;
+			margin: 30px 2%;
+			font-size: 15px;
+			color: #fff;
+			background: #D31A1A;
+			border-radius: 20px;
+		}
+		.youhui_wu{
+			width: 100%;
+			text-align: center;
+		}
+		.youhui_wu img{
+			width: 30%;
+			margin: 25px 0;
+		}
+	</style>
+	<body>  
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">选择优惠券</h1>
+		</header>
+		<div class="mui-content">
+			<!--<div class="menu">
+				<ul>
+					<li>
+						<span class="active">可用优惠券</span>
+					</li>
+					<li>
+						<span>不可用优惠券</span>
+					</li>
+				</ul>
+			</div>-->
+			
+			
+			<div>
+				<ul class="discount">
+					<!--<li>
+						<div class="thunm_left">
+							<div class="mui-input-row mui-radio mui-left">
+							    <label></label>
+							    <input name="radio" type="radio" checked>
+							</div>
+						</div>
+						<div class="thunm_right">
+							<div class="menu">
+								<div class="money">
+									<label>85</label><em>元</em>
+									<p>仅剩3天</p>
+								</div>
+								<div class="shijian">
+									<span>9月末大促全场通用券</span>
+									<p>满250可用</p>
+									<label>18/09/30 0:00-18/09/30 23:59</label>
+									<div><i>全场通用</i><em class="iconfont icon-icon-test2"></em></div>
+								</div>
+							</div>
+							<div class="shop_sp">合陶礼包、品牌专柜礼包、手机电脑、相机、大家电、旅游、黄金珠宝、汽车、保险、体验、未来小七等不可用</div>
+						</div>
+					</li>-->
+					
+					
+				</ul>
+			</div>
+			<div class="youhui_wu" style="display: none;">
+				<img src="__STATIC__/fx/img/youhui5.png" />
+			</div>
+			<div class="sure">确定</div>
+		</div>	
+	</body>
+	<script src="__STATIC__/fx/js/base/mui.js"></script>
+	<script src="__STATIC__/fx/js/base/castapp.js"></script>
+	<script src="__STATIC__/fx/js/base/jquery-3.2.1.min.js"></script>
+	<script src="__STATIC__/fx/js/base/hetao.js"></script>
+	<script type="text/javascript">
+		mui.init();
+		ca.init();
+		var user_id= "{$uid}";
+		var token= "{$token}";
+		var type=1;
+
+		var zongjia="{$zongjia}";
+		var goods_id= "{$goodsid}";
+		var sku_id= "{$sku_id}";
+		console.log(zongjia);
+		console.log(goods_id);
+		console.log(sku_id);
+		
+		
+		ca.receiveNotice('order',function(){
+			youhui();
+		})
+		console.log(zongjia);
+        function youhui(){
+            var obj={};
+            obj.uid=user_id;
+            obj.token=token;
+            obj.all_price=zongjia;
+            obj.goods_id=goods_id;
+            obj.sku_id=sku_id;
+            obj.type=type;
+            //alert(JSON.stringify(obj));
+            console.log(obj);
+            ca.get({
+                url:hetao.url+'order/avaiCoupon',
+                data:obj,
+                succFn:function(data){
+                    var res=JSON.parse(data);
+                    console.log(JSON.stringify(res));
+                    var data=res.data.avai;
+                    console.log(data);
+                    //alert(res.status);
+                    var str='';
+                    var chec;
+                    var pic;
+                    var xuan_status;
+                    var xuan_status1;
+                    if(res.status==1){
+                        if(data.length!=0){
+                            $('.youhui_wu').css('display','none');
+                            for(var i in data){
+                                var s_time = data[i].s_time.substr(0,data[i].s_time.length-6);
+                                var e_time = data[i].e_time.substr(0,data[i].e_time.length-6);
+                                if(i==0){
+                                    chec=true;
+                                }else{
+                                    chec=false;
+                                }
+                                if(type==1){
+                                    pic="__STATIC__/fx/img/youhui3.png";
+                                    xuan_status='block';
+                                    $('.sure').css('display','block');
+                                }else{
+                                    pic="__STATIC__/fx/img/youhui2.png";
+                                    xuan_status='none';
+                                    $('.sure').css('display','none');
+                                }
+
+                                if(data[i].disabled_value){
+                                    xuan_status1='inline-block';
+                                }else{
+                                    xuan_status1='none';
+                                }
+                                str+='<li c_id="'+data[i].c_id+'">'
+                                    +'<div class="thunm_left">'
+                                    +'<div class="mui-input-row mui-radio mui-left box" style="display:'+xuan_status+'">'
+                                    +'<label></label>'
+                                    +'<input name="radio" type="radio"'
+                                if (chec) {
+                                    str += 'checked'
+                                }
+                                str +=' />'
+                                    +'</div>'
+                                    +'</div>'
+                                    +'<div class="thunm_right">'
+                                    +'<div class="menu">'
+                                    +'<div class="money">'
+                                    +'<label>'+data[i].c_coupon_price+'</label><em>元</em>'
+                                    +'<p>仅剩'+data[i].surplus_time+'天</p >'
+                                    +'</div>'
+                                    +'<div class="shijian">'
+                                    +'<span>'+data[i].c_coupon_title+'</span>'
+                                    +'<p>满<em>'+data[i].c_coupon_buy_price+'</em>可用</p >'
+                                    +'<label>'+s_time+' - '+e_time+'</label>'
+                                    +'<div><i>'+data[i].coupon_type_value+'</i><em class="iconfont icon-icon-test2"  style="display:'+xuan_status1+'"></em></div>'
+                                    +'</div>'
+                                    +'</div>'
+                                    +'<div class="shop_sp" style="display:none">'+data[i].disabled_value+'等不可用</div>'
+                                    +'</div>'
+                                str+='</li>'
+                            }
+                            $('.discount').html(str);
+                            $('.discount').on('tap','li',function(){
+                                $('.discount input').each(function (a, b) {
+                                    $(b).removeAttr("checked");
+                                })
+                                $(this).find('input').attr('checked', true)
+                            })
+                        }else{
+                            $('.sure').css('display','none');
+                            $('.discount').html('');
+                            $('.youhui_wu').css('display','block');
+//							$('.discount').html('<p style="text-align: center;padding:30vw 0;font-size:13px;">没有满足该商品的优惠券</p >');
+                        }
+                    }else{
+                        $('.sure').css('display','none');
+                        $('.discount').html('');
+                        $('.youhui_wu').css('display','block');
+//						$('.discount').html('<p style="text-align: center;padding:30vw 0;font-size:13px;">没有满足该商品的优惠券</p >');
+                    }
+                }
+            })
+        }
+		youhui();
+		
+		//点击显示限制
+		$('.discount').on('tap','.shijian div em',function(){
+			var index=$(this).attr('id');
+			console.log(index);
+			if(index==1){
+				$(this).attr('id',2);
+				$(this).css('transform','rotate(90deg)');
+				$(this).parents('.menu').siblings('.shop_sp').css('display','block');
+			}else{
+				$(this).attr('id',1);
+				$(this).css('transform','rotate(-90deg)');
+				$(this).parents('.menu').siblings('.shop_sp').css('display','none');
+			}
+		});
+		
+		
+		
+		
+		
+		
+		
+		
+		var index;
+		var money;
+		var manjian;
+		$('.discount').on('tap','input',function(){
+			index=$(this).parents('li').attr('c_id');
+			money=$(this).parents('li').find('.money label').html();
+			manjian=$(this).parents('li').find('.shijian p em').html();
+			
+		})
+		//确定
+		$('.sure').click(function(){
+			console.log(index);
+			if(index==undefined){
+				//console.log(11111111);
+				$('.discount .box input').each(function(){
+					var che=$(this).attr('checked');
+					if(che=='checked'){
+						index=$(this).parents('li').attr('c_id');
+						money=$(this).parents('li').find('.money label').html();
+						manjian=$(this).parents('li').find('.shijian p em').html();
+						console.log(manjian);
+						console.log(zongjia);
+						
+						if(parseInt(zongjia)>parseInt(manjian) || parseInt(manjian) == 0){
+							console.log('获取默认');
+							console.log(index);
+							console.log(money);
+							localStorage.setItem('coupon_id',index);
+							localStorage.setItem('coupon_money',money);
+							var arr=['../car/write_order.html'];
+							ca.sendNotice(arr,'youhui',{});
+							ca.closeCurrentInterface();
+						}else{
+							ca.prompt('您选择的优惠券不满足该商品使用');
+						}
+					}				
+				})
+			}else if(parseInt(zongjia)>parseInt(manjian)){
+				
+				console.log('选中获取');
+				console.log(index);
+				console.log(money);
+				localStorage.setItem('coupon_id',index);
+				localStorage.setItem('coupon_money',money);
+				ca.closeCurrentInterface();
+			}else{
+				ca.prompt('您选择的优惠券不满足该商品使用');
+			}	
+		});
+		
+		
+		
+		
+		
+		
+		
+		
+		
+//		$('.menu').on('tap','li',function(){
+//			$(this).find('span').addClass('active').parents('li').siblings().find('span').removeClass('active');
+//			var index=$(this).index();
+//			console.log(index)
+//			if(index==0){
+//				type=1;
+//				$('.discount li img').attr('src','__STATIC__/fx/img/youhui3.png');
+//				$('.discount li .leixing span').css('color','#181818');
+//				$('.discount li .box').css('display','block');
+//				youhui();
+//			}else{
+//				type=2;
+//				$('.discount li img').attr('src','__STATIC__/fx/img/youhui2.png');
+//				$('.discount li .leixing span').css('color','#666666');
+//				$('.discount li .box').css('display','none');
+//				youhui();
+//			}
+//		});
+	</script>	
+</html>

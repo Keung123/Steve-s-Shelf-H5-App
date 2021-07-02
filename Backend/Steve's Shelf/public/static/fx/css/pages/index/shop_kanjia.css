@@ -1,0 +1,72 @@
+.mui-bar span{
+	margin-top: 12px;
+}
+.menu{
+	width: 100%;
+}
+.pic{
+	width: 96%;
+	margin-left: 2%;
+	margin-right: 2%;
+}
+.pic img{
+	width: 100%;
+	margin-top: 12px;
+	margin-bottom: 12px;
+	border-radius: 4px;
+}
+.menu ul li{
+	width: 94%;
+	margin-left: 3%;
+	margin-right: 3%;
+	padding-bottom: 10px;
+	overflow: hidden;
+	border-bottom: 1px solid #E8E8E8;
+}
+.menu ul li img{
+	width: 30%;
+	/*height: 116px;*/
+	float: left;
+}
+.menu ul li .content{
+	width: 68%;
+	margin-top: 10px;
+	float: right;
+}
+.menu ul li .content span.shop_xx{
+	width: 100%;
+	display: block;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	overflow: hidden;
+}
+/*.menu ul li .content .thunm {
+	margin-top: 12px;
+}*/
+.menu ul li .content .thunm .thunm_left{
+	width: 50%;
+	height: 40px;
+	float: left;
+}
+.menu ul li .content .thunm .thunm_left p{
+	margin: 0;
+	font-size: 12px;
+	color: #999;
+}
+.menu ul li .content .thunm .thunm_left span{
+	color: #D31A1A;
+}
+.menu ul li .content .thunm .thunm_right{
+	width: 40%;
+	height: 30px;
+	text-align: center;
+	line-height: 30px;
+	margin-top: 5px;
+	margin-right: 3%;
+	float: right;
+	font-size: 13px;
+	color: #D31A1A;
+	border: 1px solid #D31A1A;
+	border-radius: 4px;
+}

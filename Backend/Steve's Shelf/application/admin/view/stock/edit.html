@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    {include file="public/head" title="仓库添加" /}
+
+    <body class="inside-header inside-aside is-dialog">
+        <div id="main" role="main">
+            <div class="tab-content tab-addtabs">
+                <div id="content">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <section class="content-header hide">
+                                <h1>
+                                    控制台                                    <small>Control panel</small>
+                                </h1>
+                            </section>
+                            <div class="content">
+                                <form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="{:url('admin/stock/add')}">
+
+                                    <div class="form-group">
+                                        <label for="c-title" class="control-label col-xs-12 col-sm-2">仓库名称:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input id="c-title" data-rule="required" class="form-control" name="row[title]" type="text" value="{$row['title']}" data-rule="required">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="c-city" class="control-label col-xs-12 col-sm-2">所在城市:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input id="c-city" data-rule="required" class="form-control" name="row[city]" type="text" value="{$row['city']}" >
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="c-address" class="control-label col-xs-12 col-sm-2">详细地址:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input id="c-address" data-rule="required" class="form-control" name="row[address]" type="text" value="{$row['address']}" >
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-12 col-sm-2">位置:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <button type="button" class="btn btn-success " id="get_address">获取位置</button>
+                                            <div class="marginB" style="width: 100%;height: 300px;background-color: #ddd;margin-bottom: 10px;" id="allmap"></div>
+                                            <div>
+                                                <input id="lat" name="row[lat]" class="layui-input" required style="width: 100px;display: inline-block;margin-right: 20px;" type="text" value="{$row['lat']}" readonly="readonly" />
+                                                <input id="lng" name="row[lng]" class="layui-input" required style="width: 100px;display: inline-block;" type="text" value="{$row['lng']}" readonly="readonly" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                     <div class="form-group">
+                                        <label for="c-start_distance" class="control-label col-xs-12 col-sm-2">起送距离:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input id="c-start_distance" data-rule="required" class="form-control" name="row[start_distance]" type="number" value="{$row['start_distance']}" >
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="c-start_price" class="control-label col-xs-12 col-sm-2">起送价格:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input id="c-start_price" data-rule="required" class="form-control" name="row[start_price]" type="number" value="{$row['start_price']}" >
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="c-add_price" class="control-label col-xs-12 col-sm-2">每公里增加价格:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input id="c-add_price" data-rule="required" class="form-control" name="row[add_price]" type="number" value="{$row['add_price']}" >
+                                        </div>
+                                    </div>
+                                                                                                                                        
+
+
+                                    <div class="form-group layer-footer">
+                                        <label class="control-label col-xs-12 col-sm-2"></label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <button type="submit" class="btn btn-success btn-embossed disabled">确定</button>
+                                            <button type="reset" class="btn btn-default btn-embossed">重置</button>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=uXsaG51IAYk2Bf4GCuvGRiKadnAQkqOG"></script>
+        {include file="public/javascript" jsname="backend/stock/index" controllername="index"  actionname="edit"/}
+    </body>
+</html>

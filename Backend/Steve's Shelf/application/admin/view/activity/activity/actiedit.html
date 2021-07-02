@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    {include file="public/head" title="活动编辑" /}
+    <body class="inside-header inside-aside is-dialog">
+        <div id="main" role="main">
+            <div class="tab-content tab-addtabs">
+                <div id="content">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <section class="content-header hide">
+                                <h1>
+                                    控制台                                    <small>Control panel</small>
+                                </h1>
+                            </section>
+                            <div class="content">
+                                <form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" >
+                                    <input name="id" type="hidden" value="{$row['id']}" />
+                                    <!--<div class="form-group">-->
+                                        <!--<label for="c-pid" class="control-label col-xs-12 col-sm-2">活动类型:</label>-->
+                                        <!--<div class="col-xs-12 col-sm-8">-->
+
+                                            <!--<select  id="category" data-rule="required" class="form-control selectpicker" name="row[active_id]">-->
+                                                <!--{volist name="active_list" id="v"}-->
+                                                <!--<option value="{$v.id}" {if $row['active_id']==$v.id}selected{/if} >{$v.active_title}</option>-->
+                                                <!--{/volist}-->
+                                            <!--</select>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <input type="hidden" name="row[active_id]" value="9">
+                                    <div class="form-group">
+                                        <label for="c-goods_name" class="control-label col-xs-12 col-sm-2">活动名称:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input data-rule="required" class="form-control" name="row[active_type_name]" type="text" value="{$row['active_type_name']}" data-rule="required">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="c-rules_title" class="control-label col-xs-12 col-sm-2">活动标签:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input id="" class="form-control" name="row[label_title]" type="text" value="{$row['label_title']}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="c-picture" class="control-label col-xs-12 col-sm-2">活动图片:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <div class="form-inline">
+                                                <input id="c-picture" class="form-control" size="50" name="row[active_img]" type="text" value="{$row['active_img']}">
+
+                                                <span><button type="button" id="plupload-picture" class="btn btn-danger plupload" data-multiple="false" data-maxsize="102400" data-input-id="c-picture" data-preview-id="p-picture"><i class="fa fa-upload"></i> 上传</button></span>
+
+<!--                                                 <span><button type="button" id="fachoose-image" class="btn btn-primary fachoose" data-multiple="false" data-input-id="c-image"><i class="fa fa-list-ul"></i> 选择</button></span> -->
+                                                
+                                                <ul class="row list-inline plupload-preview" id="p-picture"></ul>
+                                            </div>
+                                        </div>
+                                    </div>                                     
+									<div class="form-group">
+                                        <label for="c-banner" class="control-label col-xs-12 col-sm-2">活动bnner:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <div class="form-inline">
+                                                <input id="c-banner" class="form-control" size="50" name="row[active_banner]" type="text" value="{$row['active_banner']} "  >
+
+                                                <span><button type="button" id="plupload-banner" class="btn btn-danger plupload" data-multiple="false" data-maxsize="102400" data-input-id="c-banner" data-preview-id="p-banner"><i class="fa fa-upload"></i> 上传</button></span>
+
+<!--                                                 <span><button type="button" id="fachoose-image" class="btn btn-primary fachoose" data-multiple="false" data-input-id="c-image"><i class="fa fa-list-ul"></i> 选择</button></span> -->
+                                                
+                                                <ul class="row list-inline plupload-preview" id="p-banner"></ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="c-commission" class="control-label col-xs-12 col-sm-2">活动开始时间:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input type="text" class="form-control" name="row[start_time]" onclick="laydate({istime: true, format: 'YYYY-MM-DD'})" autocomplete="off" value="{$row['start_time']}" placeholder="开始时间" autocomplete="off">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="c-stock" class="control-label col-xs-12 col-sm-2">活动结束时间:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input type="text" class="form-control" name="row[end_time]" onclick="laydate({istime: true, format: 'YYYY-MM-DD'})" autocomplete="off" value="{$row['end_time']}" placeholder="结束时间" autocomplete="off">
+
+                                        </div>
+                                    </div>
+									
+                                    <div class="form-group">
+                                        <label for="c-active_type" class="control-label col-xs-12 col-sm-2">活动分类:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <label ><input name="row[active_type]" class="active_type" {if condition="$row['active_type'] eq 1"}checked{/if}  type="radio" value="1"> 减价</label>
+                                            <label ><input name="row[active_type]" class="active_type" {if condition="$row['active_type'] eq 2"}checked{/if}  type="radio" value="2"> 打折</label>
+                                            <!--<label ><input name="row[active_type]" class="active_type" {if condition="$row['active_type'] eq 3"}checked{/if}  type="radio" value="3"> 免邮</label>-->
+                                            <!--<label ><input name="row[active_type]" class="active_type" {if condition="$row['active_type'] eq 4"}checked{/if}  type="radio" value="4"> 积分奖励</label>-->
+                                            <label ><input name="row[active_type]" class="active_type" {if condition="$row['active_type'] eq 5"}checked{/if}  type="radio" value="5"> 专题</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group" id="c-active_type_vals" {if condition="$row['active_type'] eq 3"}style="display:none"{/if} {if condition="$row['active_type'] eq 5"}style="display:none;"{else/}style="display:block;"{/if} >
+                                        <label for="c-active_type_val" id="c-active_type_val" class="control-label col-xs-12 col-sm-2">{if condition="$row['active_type'] eq 1"}减价{/if}
+                                            {if condition="$row['active_type'] eq 2"}打折{/if}
+                                            {if condition="$row['active_type'] eq 4"}积分奖励{/if}:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input class="form-control" name="row[active_type_val]" type="number" value="{$row['active_type_val']}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group" id="weight_" {if condition="$row['active_type'] eq 5"}style="display:none;"{else/}style="display:block;"{/if}>
+                                        <label for="c-weigh" class="control-label col-xs-12 col-sm-2">权重:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input id="c-weigh" class="form-control" name="row[weigh]" type="number" value="{$row['weigh']}">
+                                        </div>
+                                    </div>
+									<div class="form-group" id="">
+                                        <label for="c-rules_title" class="control-label col-xs-12 col-sm-2">活动规则标题:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input id="c-rules_title" class="form-control" name="row[rules_title]" type="text" value="{$row['rules_title']}">
+                                        </div>
+                                    </div>
+								   
+                                    <div class="form-group" id="limit_" {if condition="$row['active_type'] eq 5"}style="display:none;"{else/}style="display:block;"{/if}>
+                                        <label for="c-keywords" class="control-label col-xs-12 col-sm-2">每人限购:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input id="c-keywords" class="form-control" name="row[limit_num]" type="text" value="{$row['limit_num']}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="c-rules_title" class="control-label col-xs-12 col-sm-2">简单介绍:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input class="form-control" name="row[abstract_content]" type="text" value="{$row['abstract_content']}">
+                                        </div>
+                                    </div>
+									 <div class="form-group">
+                                        <label for="c-rules_content" class="control-label col-xs-12 col-sm-2">活动规则内容:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <textarea id="c-rules_content" class="form-control summernote" name="row[rules_content]">{$row['rules_content']}</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group" id="status_">
+                                        <label for="c-status" class="control-label col-xs-12 col-sm-2">状态:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <label for="row[status]-normal"><input id="row[status]-normal" {if $row['status']=='0'}checked="checked"{/if} name="row[status]" type="radio" value="0"> 进行中</label>
+                                            <label for="row[status]-hidden"><input id="row[status]-hidden" {if $row['status']=='1'}checked="checked"{/if} name="row[status]" type="radio" value="1"> 已结束</label>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group layer-footer">
+                                        <label class="control-label col-xs-12 col-sm-2"></label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <button type="submit" class="btn btn-success btn-embossed disabled">确定</button>
+                                            <button type="reset" class="btn btn-default btn-embossed">重置</button>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+        var attribute_url="{:url('goods/attributeInfo')}";
+        var getcatebrand_url="{:url('goods/getCatebrand')}";
+        </script>        
+        {include file="public/javascript" jsname="backend/goods/actilist" controllername="index"  actionname="add"/}
+    </body>
+</html>

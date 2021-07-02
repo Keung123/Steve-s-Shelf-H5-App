@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    {include file="public/head" title="系统设置" /}
+
+    <body class="inside-header inside-aside ">
+        <div id="main" role="main">
+            <div class="tab-content tab-addtabs">
+                <div id="content">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <section class="content-header hide">
+                                <h1>
+                                    控制台                                    <small>Control panel</small>
+                                </h1>
+                            </section>
+                            <!-- RIBBON -->
+                            <div id="ribbon">
+                                <ol class="breadcrumb pull-left">
+                                   <li><a href="{:url('admin/index/dashboard')}" class="addtabsit"><i class="fa fa-dashboard"></i> 控制台</a></li>
+                                </ol>
+                                <ol class="breadcrumb pull-right">
+                                    <li><a href="javascript:;" data-url="general">常规管理</a></li>
+                                    <li><a href="javascript:;" data-url="general/profile">个人配置</a></li>
+                                </ol>
+                            </div>
+                            <!-- END RIBBON -->
+                            <div class="content">
+                                <style>
+                                    .profile-avatar-container {
+                                        position:relative;
+                                        width:100px;margin:0 auto;
+                                    }
+                                    .profile-avatar-container .profile-user-img{
+                                        width:100px;
+                                        height:100px;
+                                    }
+                                    .profile-avatar-container .profile-avatar-text {
+                                        display:none;
+                                    }
+                                    .profile-avatar-container:hover .profile-avatar-text {
+                                        display:block;
+                                        position:absolute;
+                                        height:100px;
+                                        width:100px;
+                                        background:#444;
+                                        opacity: .6;
+                                        color: #fff;
+                                        top:0;
+                                        left:0;
+                                        line-height: 100px;
+                                        text-align: center;
+                                    }
+                                    .profile-avatar-container button{
+                                        position:absolute;
+                                        top:0;left:0;width:100px;height:100px;opacity: 0;
+                                    }
+                                </style>
+                                <div class="row animated fadeInRight">
+                                    <div class="col-md-6">
+                                        <div class="box box-success">
+                                            <div class="panel-heading">
+                                                个人资料            </div>
+                                            <div class="panel-body">
+
+                                                <form id="update-form" role="form" data-toggle="validator" method="POST" action="{:url('/admin/admin/info')}">
+                                                    <input type="hidden" id="c-avatar" name="row[avatar]" value="{$row['avatar']}" />
+                                                    <div class="box-body box-profile">
+
+                                                        <div class="profile-avatar-container">
+                                                            <img class="profile-user-img img-responsive img-circle plupload" src="{$row['avatar']}" alt="">
+                                                            <div class="profile-avatar-text img-circle">点击修改</div>
+                                                            <button id="plupload-avatar" class="plupload" data-input-id="c-avatar" data-after-upload="changeavatar"><i class="fa fa-upload"></i> 上传</button>
+                                                        </div>
+
+                                                        <h3 class="profile-username text-center">{$row['admin_name']}</h3>
+
+                                                        <p class="text-muted text-center">{$row['email']}</p>
+                                                        <div class="form-group">
+                                                            <label for="username" class="control-label">用户名:</label>
+                                                            <input type="text" class="form-control" name="row[admin_name]" value="{$row['admin_name']}" disabled />
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="nickname" class="control-label">昵称:</label>
+                                                            <input type="text" class="form-control" name="row[nickname]" value="{$row['nickname']}" data-rule="required" />
+                                                        </div>    
+                                                        <div class="form-group">
+                                                            <label for="email" class="control-label">手机号:</label>
+                                                            <input type="text" class="form-control" name="row[mobile]" value="{$row['mobile']}" data-rule="mobile" />
+                                                        </div>                                                         
+                                                        <div class="form-group">
+                                                            <label for="email" class="control-label">Email:</label>
+                                                            <input type="text" class="form-control" name="row[email]" value="{$row['email']}" data-rule="email" />
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="email" class="control-label">QQ:</label>
+                                                            <input type="text" class="form-control" name="row[qq]" value="{$row['qq']}" />
+                                                        </div>                                                                                                             
+                                                        <div class="form-group">
+                                                            <label for="password" class="control-label">密码:</label>
+                                                            <input type="password" class="form-control" placeholder="不修改密码请留空" name="row[password]" value=""/>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <button type="submit" class="btn btn-success">提交</button>
+                                                            <button type="reset" class="btn btn-default">重置</button>
+                                                        </div>
+
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-6">
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>     
+        {include file="public/javascript" jsname="backend/admin/info" controllername="admin"  actionname="index"/}
+    </body>
+</html>

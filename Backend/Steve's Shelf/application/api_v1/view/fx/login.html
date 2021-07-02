@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>登录</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="__STATIC__/fx/css/base/mui.css" rel="stylesheet" />
+		<link href="__STATIC__/fx/css/base/base.css" rel="stylesheet" />
+		<link href="__STATIC__/fx/iconfont/iconfont.css" rel="stylesheet" />
+		<link href="__STATIC__/fx/css/pages/personal/login.css" rel="stylesheet" />
+	</head>
+	<body>  
+		<header class="mui-bar mui-bar-nav">
+		    <!--<span class="iconfont icon-guanbi mui-pull-right"></span>-->
+		</header>
+		<div class="mui-content">
+			<div class="top">
+				<h3>登录</h3>
+				<span>欢迎登录合陶家商城</span>
+			</div>
+			<div class="liebiao">
+				<ul>
+					<li>
+						<input type="text" class="phone" placeholder="手机号码" oninput="functionName()" />
+					</li>
+					<li>
+						<input type="password" class="password" placeholder="登录密码" oninput="functionName()" style="position: relative;t" />
+					</li>
+				</ul>
+			</div>
+		    <div class="login" id="denglu">
+		    	<span>登录</span>
+		    </div>
+		    <div class="menu">
+		    	<!--<span class="forget-paw">忘记密码</span>-->
+		    	<span class="register mui-pull-right">注册账号</span>
+		    </div>
+		    <!--<div class="kuaijie">
+		    	<span></span>
+		    	<label>快捷登录</label>
+		    	<span></span>
+		    </div>
+		    <div class="pic">
+		    	<img src="__STATIC__/fx/img/weibo.png" class="weibo" />
+		    	<img src="__STATIC__/fx/img/qq.png" class="qq" />
+		    	<img src="__STATIC__/fx/img/weixin.png" class="weixin" />   	
+		    </div>-->
+		</div>	
+	</body>
+	<script src="__STATIC__/fx/js/base/mui.js"></script>
+	<script src="__STATIC__/fx/js/base/castapp.js"></script>
+	<script src="__STATIC__/fx/js/base/jquery-3.2.1.min.js"></script>
+	<script src="__STATIC__/fx/js/base/third_login.js"></script>
+	<script src="__STATIC__/fx/js/base/hetao.js"></script>
+	<script type="text/javascript">
+		mui.init();
+		ca.init();
+		
+		var yaoqingma=window.location.search.split('=')[1];
+		console.log(yaoqingma);
+		function functionName(){	
+			var phone=$('.phone').val();
+			var password=$('.password').val();
+			console.log(password);
+			if(phone){
+				if(password){
+					$('.login span').css('background','#D31A1A');
+				}else{
+					$('.login span').css('background','#cccccc');
+				}
+			}else{
+				$('.login span').css('background','#cccccc');
+			}
+		}
+		
+		
+		
+		
+		
+		//登录
+		$('.login').on('tap','span',function(){
+			//alert(33333333);
+			var phone=$('.phone').val();
+			var password=$('.password').val();
+			console.log(phone);
+			console.log(password);
+			if(!phone){
+				ca.prompt('请输入手机号');
+				return;
+			}
+			if(!password){
+				ca.prompt('请输入登录密码');
+				return;
+			}
+			var obj={};
+			obj.mobile=phone;
+			obj.pwd=password;
+			console.log(obj);
+			console.log(hetao.url+'User/login');
+			ca.post({
+				url:hetao.url+'User/login',
+				data:obj,
+				succFn:function(data){
+					var res=JSON.parse(data);
+					console.log(res);
+					if(res.status==1){
+						ca.prompt('登录成功');
+						localStorage.setItem('login_id',res.data.uid);
+						localStorage.setItem('login_token',res.data.token);
+						ca.closeCurrentInterface();
+						//window.location.href='http://juangou.tainongnongzi.com/public/erweima/xianshang/goods-libao.html?goods_id='+goods_id+'&'+bag_id+'&'+yaoqingma+'&'+res.data.uid+'&'+res.data.token;
+						
+					}else{
+						ca.prompt(res.msg);
+					}
+				}
+			})
+		});
+		
+//		function xianshi(){
+//			ca.get({
+//				url:hetao.url+'user/apiLogin',
+//				succFn:function(data){
+//					var res=JSON.parse(data);
+//					console.log(res);
+//					var data=res.data;
+//					if(res.status==1){
+//						if(data){
+//							$('.kuaijie').css('display','block');
+//							$('.pic').css('display','block');
+//							console.log(data);
+//							if(data.indexOf('qq')!=-1){
+//								$('.qq').css('display','inline-block');
+//							}else{
+//								$('.qq').css('display','none');
+//							}
+//							if(data.indexOf('weixin')!=-1){
+//								$('.weixin').css('display','inline-block');
+//							}else{
+//								$('.weixin').css('display','none');
+//							}
+//							if(data.indexOf('sina')!=-1){
+//								$('.weibo').css('display','inline-block');
+//							}else{
+//								$('.weibo').css('display','none');
+//							}	
+//						}else{
+//							$('.kuaijie').css('display','none');
+//							$('.pic').css('display','none');
+//						}
+//					}
+//				}
+//			})
+//		}
+//		xianshi();
+		
+		
+		
+		//注册
+		$('.register').click(function(){
+			window.location.href=hetao.url3+'/api/fx/register_xianshang?yaoqingma='+yaoqingma;
+		});
+
+		
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</script>	
+</html>

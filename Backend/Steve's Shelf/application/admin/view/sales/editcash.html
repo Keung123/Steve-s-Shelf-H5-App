@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+{include file="public/head" title="添加返现信息" /}
+
+<body class="inside-header inside-aside is-dialog">
+<div id="main" role="main">
+    <div class="tab-content tab-addtabs">
+        <div id="content">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <section class="content-header hide">
+                        <h1>
+                            控制台                                    <small>Control panel</small>
+                        </h1>
+                    </section>
+
+                    <div class="content">
+                        <form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="{:url('admin/sales/editCash')}">
+
+                            <input type="hidden" name="row[order_id]" value="{$order_id}">
+
+                            <div class="form-group">
+                                <label for="c-invoice_com" class="control-label col-xs-12 col-sm-2">返现金额:</label>
+                                <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+                                    <input id="c-goods_name" class="form-control" name="row[cash]" type="number" value="" data-rule="required">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="c-invoice_com" class="control-label col-xs-12 col-sm-2">操作员姓名:</label>
+                                <div class="col-xs-12 col-sm-8" style="padding-top:7px;">
+                                    <input id="c-remark" class="form-control" name="row[remark]" type="text" value="" data-rule="required">
+                                </div>
+                            </div>
+
+                            <div class="form-group layer-footer">
+                                <label class="control-label col-xs-12 col-sm-2"></label>
+                                <div class="col-xs-12 col-sm-8">
+                                    <button type="submit" class="btn btn-success btn-embossed disabled">确定</button>
+                                    <button type="reset" class="btn btn-default btn-embossed">重置</button>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var index_url="{:url('admin/sales/index',['order_status'=>$order_status])}";
+</script>
+{include file="public/javascript" jsname="backend/sales/index" controllername="sales"  actionname="add"/}
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="__STATIC__/fx/css/base/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="__STATIC__/fx/css/base/base.css" />
+		<link rel="stylesheet" href="__STATIC__/fx/css/base/header.css" />
+		<link rel="stylesheet" href="__STATIC__/fx/css/kaidian.css"/>
+		<link href="__STATIC__/fx/iconfont/iconfont.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">开店</h1>
+		</header>
+		<div class="mui-content">
+		    <div class="top">
+		    	<div class="touxiang">
+		    		<img src="__STATIC__/fx/images/001.png" />
+		    		<label>海阔天空</label>
+		    		<div></div>
+		    		<p>送你一个大红包,快去选择喜欢的商品吧~</p>
+		    	</div>
+		    	<div class="youhuiquan">
+		    		<label>恭喜你,已成功领取优惠券</label>
+		    		<div class="liebiao">
+		    			<!--<div class="quan">
+			    			<div class="quan_l">
+			    				<span>¥</span><em>25</em>
+			    			</div>
+			    			<div class="quan_r">
+			    				<p>9月末大促全场通用券</p>
+			    				<a>满250可用</a>
+			    				<span><em>18/09/30 0:00</em>-<i>18/09/30 23:59</i></span>
+			    			</div>
+			    		</div>
+			    		<div class="quan_b">
+		    				<span>合陶礼包、品牌专柜礼包、手机电脑、相机、大家电</span>
+		    				<i class="iconfont icon-aui-icon-right"></i>	
+		    			</div>-->
+		    		</div>
+		    		
+		    	</div>
+		    </div>
+		    <div class="mid">
+		    	<div class="title">
+		    		<img src="__STATIC__/fx/img/m01.png"/>
+		    		<span>用券下单 立减优惠</span>
+		    		<img src="__STATIC__/fx/img/m02.png"/>
+		    	</div>
+		    	<div class="shangpin">
+		    		<ul>
+		    			<!--<li>
+		    				<img src="../images/001.png"/>
+		    				<p>海蓝之谜修复精华霜</p>
+		    				<span>￥150</span><del>¥228</del>
+		    			</li>
+		    			<li>
+		    				<img src="../images/001.png"/>
+		    				<p>海蓝之谜修复精华霜</p>
+		    				<span>￥150</span><del>¥228</del>
+		    			</li>
+		    			<li>
+		    				<img src="../images/001.png"/>
+		    				<p>海蓝之谜修复精华霜</p>
+		    				<span>￥150</span><del>¥228</del>
+		    			</li>
+		    			<li>
+		    				<img src="../images/001.png"/>
+		    				<p>海蓝之谜修复精华霜</p>
+		    				<span>￥150</span><del>¥228</del>
+		    			</li>-->
+		    		</ul>
+		    	</div>
+		    </div>
+		</div>	
+	</body>
+		<script src="__STATIC__/fx/js/base/mui.min.js"></script>
+		<script src="__STATIC__/fx/js/base/castapp.js"></script>
+		<script src="__STATIC__/fx/js/base/jquery-3.2.1.min.js"></script>
+		<script src="__STATIC__/fx/js/base/hetao.js"></script>
+		<script type="text/javascript">
+			mui.init();
+			ca.init();
+			//获取优惠券信息
+			var c_id=window.location.search.split('=')[1];
+			var login_id=localStorage.getItem('login_id');
+			var login_token=localStorage.getItem('login_token');
+			var login_type=localStorage.getItem('login_type');
+			function yohui(){
+				var obj={};
+				obj.c_id=c_id;
+				console.log(obj);
+				ca.get({
+					url:hetao.url+'User/CouponInfo',
+					data:obj,
+					succFn:function(data){
+						var res=JSON.parse(data);
+						console.log(res);
+						var data=res.data;
+						var str='';
+						if(res.status==1){
+							$('.touxiang img').attr('src',data.user_avat);
+							$('.touxiang p').attr('src',data.user_name);
+							str+='<div class="quan">'
+								+'<div class="quan_l">'
+									+'<span>¥</span><em>'+data.c_coupon_price+'</em>'
+								+'</div>'
+								+'<div class="quan_r">'
+									+'<p>'+data.c_coupon_title+'</p>'
+									+'<a>满'+data.c_coupon_buy_price+'可用</a>'
+									+'<span><em>'+data.add_time+'</em>-<i>'+data.coupon_aval_time+'</i></span>'
+								+'</div>'
+							str+='</div>'
+//							str+='<div class="quan_b">'
+//								+'<span>合陶礼包、品牌专柜礼包、手机电脑、相机、大家电</span>'
+//								+'<i class="iconfont icon-aui-icon-right"></i>'
+//							str+='</div>'
+							$('.liebiao').html(str);						
+						}else{
+							ca.prompt(res.msg);
+						}
+					}
+				})
+			}
+			yohui();
+			
+			
+			
+			var page=0;	
+			function yhq_goods(){
+				page++;
+				var obj={};
+				obj.page=page;
+				obj.coupon_id=c_id;
+				console.log(obj);
+				ca.get({
+					url:hetao.url+'User/goodsCoupon',
+					data:obj,
+					succFn:function(data){
+						var res=JSON.parse(data);
+						console.log(res);
+						var data=res.data;
+						var str='';
+						var user_dz;//判断店主显示隐藏
+						var user_vip;//判断店主显示隐藏
+						var zhuan;
+						var picture;
+						if(res.status==1){
+							if(login_type==1){
+								user_dz='block';
+								user_vip='none';
+							}else{
+								user_dz='none';
+								user_vip='block';
+							}
+							if(data.length!=0){
+								for(var i in data){
+									if(data[i].show_price==0.00){
+										show_price='none';
+									}else{
+										show_price='inline-block';
+									}
+									if(data[i].picture.indexOf('http')!=-1){
+										picture=data[i].picture;
+									}else{
+										picture=hetao.url2+ data[i].picture;
+									}
+									str+='<li goods_id="'+data[i].goods_id+'" prom_type="'+data[i].prom_type+'" prom_id="'+data[i].prom_id+'">'
+										+'<img src="'+picture+'"/>'
+										+'<p>'+data[i].goods_name+'</p>'
+										+'<div class="vip like-list-price" style="display: '+user_vip+';"><span class="t-color">¥'+data[i].price+'</span><del style="display: '+show_price+';">¥'+data[i].show_price+'</del></div>'
+										+'<div class="dz like-list-price" style="display: '+user_dz+';" >'
+											+'<span >¥'+data[i].price+'</span>'
+											+'<i class="t-color">赚¥'+data[i].dianzhu_price+'</i>'
+										+'</div>'
+									str+='</li>'	
+								}
+								if(page==1){
+									$('.shangpin ul').html(str);
+								}else{
+									$('.shangpin ul').append(str);
+								}
+								
+							}else{
+								$('.like-list ul').html('<p style="text-align: center;padding:30vw 0;font-size:13px;">没有相关商品</p>');
+							}
+						}else{
+							$('.like-list ul').html('<p style="text-align: center;padding:30vw 0;font-size:13px;">没有相关商品</p>');
+						}
+						//mui.plusReady(function(){plus.nativeUI.closeWaiting();})  
+					}
+				})
+			}
+			yhq_goods();		
+		</script>
+</html>

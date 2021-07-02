@@ -1,0 +1,61 @@
+  /*@import url("arrow.css");*/
+  .header{
+    height: 50px;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    top: 0px;
+    z-index: 98;
+    left: 0;
+    background: #f7f7f7;
+    border-bottom: 1px solid #e7e7e8;
+  }  
+  .header h1 {
+    font-size: 18px;
+    line-height: 50px;
+    padding-top:3px;
+    box-sizing: border-box;
+    margin: 0 86px;
+    color: #393940;
+    position: relative; }
+  .header #btn_prev, .header #btn_next {
+    position: absolute;  
+    height: 100%;
+    text-decoration: none;}
+  .header #btn_prev{    
+    width: 90px;
+    left: 0;
+    text-align: left;
+    margin-left: 15px;
+    }
+  .header #btn_prev .arrow-left {
+      /*margin-left: -20px;*/
+      width: 20px;
+      height: 25px;
+      background: url(../../img/page/live/coachLogo.png) no-repeat -128px 0px;
+      background-size: 150px;
+      display: inline-block;
+      vertical-align: middle;
+      margin-top: 3px;
+  }
+  .header #left_text{
+    font-size:18px;
+    color: #393940;
+    line-height: 48px;
+    margin-left: 25px;}
+  .header #btn_next{
+    /*width: 50px;*/
+    right: 0px;
+    padding-top: 25px;
+    width: auto;
+    box-sizing: border-box;
+    color: #F4681E;
+    line-height: 50px;
+    padding-top: 5px;
+    padding-right: 20px;
+    font-size: 14px;
+    display: inline-block;
+  }
+  /*.header #btn_prev:active{
+    background: #e1e1e1;
+  }*/

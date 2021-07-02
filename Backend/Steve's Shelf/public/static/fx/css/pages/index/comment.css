@@ -1,0 +1,62 @@
+/*评论列表*/
+.comment li .photo img{
+	height: 42px;
+	border-radius: 50%;
+}
+.mui-table-view:before{
+	background-color: #f2f3f5;
+}
+.mui-table-view:after{
+	background-color: #f2f3f5;
+	left: 2%;
+}
+.photo span{
+	padding-left: 4px;
+	color: #181818;
+	font-size: 14px;
+}
+.mui-navigate-right:after, .mui-push-right:after {
+    right: 2%;
+}
+.photo i{
+	line-height: 40px;
+	color: #999999;
+}
+.mui-table-view li .text>p{
+	font-size: 13px;
+	color: #181818;
+	padding-left: 46px;
+	line-height: 22px;
+	margin-bottom: 0;
+}
+.text ul{
+	padding-left: 46px;
+}
+.text ul li img{
+	width: 100%;
+	padding: 1%;
+	max-width: 116px;
+	max-height: 116px;
+}
+.mui-table-view-cell>a:not(.mui-btn).mui-active{
+	background-color: inherit;
+}
+.more{
+	text-align: center;
+	line-height: 40px;
+	background-color: #fff;
+}
+.more icon{
+	color: #999;
+	vertical-align: middle;
+	-moz-transform: rotate(180deg);
+	-webkit-transform: rotate(180deg);
+	-ms-transform: rotate(180deg);
+	transform: rotate(180deg);
+	display: inline-block;
+}
+.more span{
+	font-size: 13px;
+	color: #999;
+	transform: rotate(90deg);
+}

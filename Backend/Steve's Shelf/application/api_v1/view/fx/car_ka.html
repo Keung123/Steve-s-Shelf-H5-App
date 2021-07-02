@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>我的充值卡</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="__STATIC__/fx/css/base/mui.css" rel="stylesheet" />
+		<link href="__STATIC__/fx/css/base/base.css" rel="stylesheet" />
+		<link href="__STATIC__/fx/iconfont/iconfont.css" rel="stylesheet" />
+	</head>
+	<style>
+		.pic{
+			width: 100%;
+			margin-top: 15px;
+		}
+		.pic ul li{
+			width: 96%;
+			margin-left: 2%;
+			margin-right: 2%;
+			position: relative;
+			margin-bottom: 15px;
+			overflow: hidden;
+		}
+		.pic ul li img{
+			width: 90%;
+			float: right;
+		}
+		.pic ul li span{
+			margin-top: 100px;
+			right: 13%;
+			display: block;
+			position: absolute;
+			color: #fff;
+		}
+		.pic ul li span label{
+			font-size: 23px;
+		}
+		.pic ul li i{
+			margin-top: 100px;
+			margin-left:60px;
+			display: block;
+			position: absolute;
+			color: #fff;
+		}
+		.pic ul li i label{
+			font-size: 23px;
+		}
+		.box{
+			width:16%;
+			position: absolute;
+			margin-top: 15%;
+		}
+		.mui-radio input[type='radio']:checked:before{
+			content: '\e442';
+		}
+		.mui-radio input[type='radio']:checked:before, .mui-checkbox input[type='checkbox']:checked:before{
+			color: #D31A1A;
+		}
+		.mui-radio input[type='radio']:before, .mui-checkbox input[type='checkbox']:before{
+			font-size: 22px;
+		}
+		.sure{
+			width: 96%;
+			height: 45px;
+			text-align: center;
+			line-height: 45px;
+			margin: 30px 2%;
+			font-size: 15px;
+			color: #fff;
+			background: #D31A1A;
+			border-radius: 20px;
+		}
+	</style>
+	<body>  
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">我的充值卡</h1>
+		</header>
+		<div class="mui-content">
+			<div class="pic">
+				<ul>
+					<!--<li>
+						<div class="mui-input-row mui-radio box">
+						    <label></label>
+						    <input name="radio" type="radio" checked>
+						</div>
+						<img src="__STATIC__/fx/images/chonghzi.png" />
+						<span>
+							<label>100</label>
+							<em>元</em>
+						</span>
+						<i>
+							余额：
+							<label>100</label>
+							<em>元</em>
+						</i>
+					</li>
+					<li>
+						<div class="mui-input-row mui-radio box">
+						    <label></label>
+						    <input name="radio" type="radio" checked>
+						</div>
+						<img src="__STATIC__/fx/images/chonghzi.png" />
+						<span>
+							<label>100</label>
+							<em>元</em>
+						</span>
+						<i>
+							余额：
+							<label>100</label>
+							<em>元</em>
+						</i>
+					</li>-->
+				</ul>
+			</div>
+			<div class="sure">确定</div>
+		</div>	
+	</body>
+	<script src="__STATIC__/fx/js/base/mui.js"></script>
+	<script src="__STATIC__/fx/js/base/castapp.js"></script>
+	<script src="__STATIC__/fx/js/base/jquery-3.2.1.min.js"></script>
+	<script src="__STATIC__/fx/js/base/hetao.js"></script>
+	<script type="text/javascript">
+		mui.init();
+		ca.init();
+        var user_id= "{$uid}";
+        var token= "{$token}";
+        var type=1;
+
+        var zongjia="{$zongjia}";
+        var goods_id= "{$goodsid}";
+        var sku_id= "{$keu_id}";
+		console.log(zongjia);
+		console.log(goods_id);
+		console.log(sku_id);
+		
+		var type=1;
+		var page=0;
+		function chongzhi(){
+			var obj={};
+			page++;
+			obj.uid=user_id;
+			obj.token=token;
+			obj.type=type;
+			obj.p=page;
+			console.log(obj);
+			ca.post({
+				url:hetao.url+'user/myRcharge',
+				data:obj,
+				succFn:function(data){
+					var res=JSON.parse(data);
+					console.log(res);
+					var list=res.data.list;
+					var str='';
+					console.log(list.length);
+					if(res.status==1){
+						if(list.length!=0){
+							for(var i in list){
+								str+='<li c_id="'+list[i].card_id+'">'
+									+'<div class="mui-input-row mui-radio box">'
+										+'<label></label>'
+                                if (i == 0) {
+                                    str += '<input name="radio" type="radio" checked>'
+                                } else {
+                                    str += '<input name="radio" type="radio">'
+                                }
+                                str +='</div>'
+									+'<img src="__STATIC__/fx/images/chonghzi.png" />'
+									+'<span>'
+										+'<label>'+list[i].card_price+'</label>'
+										+'<em>元</em>'
+									+'</span>'
+									+'<i>余额：'
+										+'<label>'+list[i].card_balance+'</label>'
+										+'<em>元</em>'
+									+'</i>'
+								str+='</li>'
+							}
+							$('.pic ul').html(str);
+                            $('.pic ul').on('tap','li',function(){
+                                $('.pic ul input').each(function (a, b) {
+                                    $(b).removeAttr("checked");
+                                })
+                                $(this).find('input').attr('checked', true)
+                            })
+						}else{
+                            $('.sure').css('display','none');
+							$('.pic ul').html('<p style="text-align: center;padding:30vw 0;font-size:13px;">您暂时没有任何充值卡</p>');
+						}
+						
+					}
+				}
+			})
+		}
+		chongzhi();
+		
+	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		var coupon_ka_id;
+		var coupon_ka_money;
+		$('.pic').on('tap','input',function(){
+			coupon_ka_id=$(this).parents('li').attr('c_id');
+			coupon_ka_money=$(this).parents('li').find('i label').html();
+			console.log(coupon_ka_id);
+			console.log(coupon_ka_money);
+		})
+		
+		
+		
+		//确定
+		$('.sure').click(function(){
+			console.log(coupon_ka_id);
+			if(coupon_ka_id==undefined){
+				//console.log(11111111);
+				$('.pic .box input').each(function(){
+					var che=$(this).attr('checked');
+					if(che=='checked'){
+						coupon_ka_id=$(this).parents('li').attr('c_id');
+						coupon_ka_money=$(this).parents('li').find('i label').html();
+						console.log(zongjia);
+						
+						if(parseInt(zongjia)>parseInt(coupon_ka_money)){
+							console.log('获取默认');
+							console.log(coupon_ka_id);
+							console.log(coupon_ka_money);
+							localStorage.setItem('coupon_ka_id',coupon_ka_id);
+							localStorage.setItem('coupon_ka_money',coupon_ka_money);
+							var arr=['../car/write_order.html'];
+							ca.sendNotice(arr,'youhui',{});
+							ca.closeCurrentInterface();
+						}else{
+							localStorage.setItem('coupon_ka_id',coupon_ka_id);
+							localStorage.setItem('coupon_ka_money',zongjia);
+							var arr=['../car/write_order.html'];
+							ca.sendNotice(arr,'youhui',{});
+							ca.closeCurrentInterface();
+						}
+					}				
+				})
+			}else if(parseInt(zongjia)>parseInt(money)){
+				
+				console.log('选中获取');
+				console.log(coupon_ka_id);
+				console.log(money);
+				localStorage.setItem('coupon_ka_id',coupon_ka_id);
+				localStorage.setItem('coupon_ka_money',money);
+				ca.closeCurrentInterface();
+			}else{
+				localStorage.setItem('coupon_ka_id',coupon_ka_id);
+				localStorage.setItem('coupon_ka_money',zongjia);
+				var arr=['../car/write_order.html'];
+				ca.sendNotice(arr,'youhui',{});
+				ca.closeCurrentInterface();
+			}	
+		});
+	</script>	
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    {include file="public/head" title="添加打印记录" /}
+    <style type="text/css">
+    #add-form table tr td,#add-form table tr th{
+            border: 1px solid #d2d6de;
+    }
+    </style>
+    <body class="inside-header inside-aside is-dialog">
+        <div id="main" role="main">
+            <div class="tab-content tab-addtabs">
+                <div id="content">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <section class="content-header hide">
+                                <h1>
+                                    控制台                                    <small>Control panel</small>
+                                </h1>
+                            </section>
+                            <div class="content">
+                                <form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="{:url('admin/task/add')}">
+                                    
+                                    <input type="hidden" name="row[task_goods_ids]" value="{:input('ids')}">
+
+                                    <div class="form-group" style="display: none;">
+                                        <label for="c-code" class="control-label col-xs-12 col-sm-2">单据名称:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input id="c-code" class="form-control" size="50" name="row[title]" type="text" value="上海力三装饰材料销售单">
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group" style="display: none;">
+                                        <label for="c-post_address" class="control-label col-xs-12 col-sm-2">发货仓库:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input id="c-post_address" data-rule="required" class="form-control" name="row[post_address]" type="hidden" value="上海松江仓库">
+                                        </div>
+                                    </div> 
+
+                                    <div class="form-group">
+                                        <label for="c-post_name" class="control-label col-xs-12 col-sm-2">送货人:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input id="c-post_name" class="form-control" name="row[post_name]" type="text" value="">
+                                        </div>
+                                    </div>  
+
+                                    <div class="form-group">
+                                        <label for="c-post_no" class="control-label col-xs-12 col-sm-2">送货车号:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input id="c-post_no" class="form-control" name="row[post_no]" type="text" value="">
+                                        </div>
+                                    </div>                                     
+
+                                    <div class="form-group">
+                                        <label for="c-buyer" class="control-label col-xs-12 col-sm-2">购买单位:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input id="c-buyer" class="form-control" name="row[buyer]" type="text" value="">
+                                        </div>
+                                    </div> 
+
+                                    <div class="form-group">
+                                        <label for="c-link_name" class="control-label col-xs-12 col-sm-2">联系人:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input id="c-link_name" class="form-control" style="width: 200px;" name="row[link_name]" type="text" value="" placeholder="姓名">
+                                            <input id="c-link_type" class="form-control" style="width: 200px;" name="row[link_type]" type="text" value="" placeholder="联系方式">
+                                        </div>
+                                    </div>                             
+
+                                    <div class="form-group">
+                                        <label for="c-address" class="control-label col-xs-12 col-sm-2">收货地址:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input id="c-address" class="form-control" name="row[address]" type="text" value="">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="c-pay_type" class="control-label col-xs-12 col-sm-2">收款方式:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <select  id="c-flag" class="form-control selectpicker" name="row[pay_type]">
+                                                <option value="现款">现款</option>
+                                                <option value="转账">转账</option>
+                                                <option value="支付宝">支付宝</option>
+                                                <option value="微信">微信</option>
+                                                <option value="其他">其他</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="c-action_user" class="control-label col-xs-12 col-sm-2">经许人:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input id="c-action_user" class="form-control" name="row[action_user]" type="text" value="">
+                                        </div>
+                                    </div>        
+
+
+                                    <div class="form-group" style="display: none;">
+                                        <label for="c-post_phone" class="control-label col-xs-12 col-sm-2">调度电话:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input id="c-post_phone" class="form-control" name="row[post_phone]" type="hidden" value="13625739089">
+                                        </div>
+                                    </div>                                                                  
+
+                                    <div class="form-group">
+                                        <label for="c-do_user" class="control-label col-xs-12 col-sm-2">开单人:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input id="c-do_user" data-rule="required" class="form-control" name="row[do_user]" type="text" value="">
+                                        </div>
+                                    </div>                                                                        
+
+                                    <div class="form-group">
+                                        <label for="c-createtime" class="control-label col-xs-12 col-sm-2"></label>
+                                        <div class="col-xs-12 col-sm-8">
+                                        <table class="table table-bordered">
+                                            <tr>
+                                                <th>序号</th>
+                                                <th>编号</th>
+                                                <th>商品名称</th>
+                                                <th>数量</th>
+                                                <th>单位</th>
+                                                <th>单价</th>
+                                                <th>金额</th>
+                                                <th>备注</th>
+                                            </tr>
+                                            {assign name="total" value="0.00"}
+                                            {volist name="rows" id="vo"}
+                                            {php}
+                                            $total+=$vo['num']*$vo['price'];
+                                            {/php}                                            
+                                            <tr>
+                                                <td>{$key+1}</td>
+                                                <td>{$vo.code}</td>
+                                                <td>{$vo.goods_name}</td>
+                                                <td>{$vo.num}</td>
+                                                <td>{$vo.unit}</td>
+                                                <td>{$vo.price}</td>
+                                                <td>{$vo.num*$vo.price}</td>
+                                                <td>{$vo.remark}</td>
+                                            </tr>
+                                            {/volist}
+                                        </table>
+                                        </div>
+                                    </div>   
+
+                                    <input type="hidden" name="row[price]" value="{$total}">                                 
+
+                                    <div class="form-group layer-footer">
+                                        <label class="control-label col-xs-12 col-sm-2"></label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <button type="submit" class="btn btn-success btn-embossed disabled">确定</button>
+                                            <button type="reset" class="btn btn-default btn-embossed">重置</button>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+        var info_url="{:url('admin/task/info')}";
+        </script>
+        {include file="public/javascript" jsname="backend/task/index" controllername="index"  actionname="add"/}
+    </body>
+</html>

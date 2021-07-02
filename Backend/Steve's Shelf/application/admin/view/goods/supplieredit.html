@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    {include file="public/head" title="供应商修改" /}
+    <body class="inside-header inside-aside is-dialog">
+        <div id="main" role="main">
+            <div class="tab-content tab-addtabs">
+                <div id="content">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <section class="content-header hide">
+                                <h1>
+                                    控制台                                    <small>Control panel</small>
+                                </h1>
+                            </section>
+                            <div class="content">
+                                <form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="{:url('admin/goods/supplierEdit')}">
+                                    <input name="id" type="hidden" value="{$row['id']}" />
+
+
+                                    <div class="form-group">
+                                        <label for="c-goods_name" class="control-label col-xs-12 col-sm-2">供应商名称:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input data-rule="required" class="form-control" name="row[supplier_title]" type="text" value="{$row['supplier_title']}" data-rule="required">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="c-price" class="control-label col-xs-12 col-sm-2">联系人:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input id="c-price" class="form-control" name="row[supplier_name]" type="text" value="{$row['supplier_name']}">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="c-unit" class="control-label col-xs-12 col-sm-2">联系人电话:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input id="c-unit" data-rule="required" class="form-control" name="row[supplier_phone]" type="text" value="{$row['supplier_phone']}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="c-commission" class="control-label col-xs-12 col-sm-2">联系地址:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input id="c-commission" data-rule="required" class="form-control" name="row[supplier_addr]" type="text" value="{$row['supplier_addr']}">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="c-stock" class="control-label col-xs-12 col-sm-2">备注:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input id="c-stock"  class="form-control" name="row[supplier_remark]" type="text" value="{$row['supplier_remark']}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="c-stock" class="control-label col-xs-12 col-sm-2">结算方式:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <select name="row[jiesuan]" class="form-control" >
+                                                <option value="1" {if $row['jiesuan'] == 1} selected {/if}>周结</option>
+                                                <option value="2" {if $row['jiesuan'] == 2} selected {/if} >月结</option>
+                                            </select>
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group layer-footer">
+                                        <label class="control-label col-xs-12 col-sm-2"></label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <button type="submit" class="btn btn-success btn-embossed disabled">确定</button>
+                                            <button type="reset" class="btn btn-default btn-embossed">重置</button>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+        var attribute_url="{:url('admin/goods/attributeInfo')}";
+        var getcatebrand_url="{:url('admin/goods/getCatebrand')}";
+        </script>        
+        {include file="public/javascript" jsname="backend/goods/index" controllername="index"  actionname="add"/}
+    </body>
+</html>

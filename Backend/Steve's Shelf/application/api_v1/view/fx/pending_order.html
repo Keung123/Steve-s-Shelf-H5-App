@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>待付款订单</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link href="__STATIC__/fx/css/base/mui.css" rel="stylesheet" />
+    <link href="__STATIC__/fx/css/base/base.css" rel="stylesheet" />
+    <link href="__STATIC__/fx/iconfont/iconfont.css" rel="stylesheet" />
+    <link href="__STATIC__/fx/css/pages/personal/my_order.css" rel="stylesheet" />
+</head>
+<style>
+    .mui-scroll-wrapper{
+        top: 45px;
+    }
+
+    .mui-pull-caption{
+        font-size: 13px;
+        color: #666;
+        font-weight: 500;
+    }
+
+    .pic {
+        display: block;
+        text-decoration: none;
+        color: #000;
+    }
+    [v-cloak]{
+        display:none;
+    }
+</style>
+<body>
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+    <h1 class="mui-title">待付款订单</h1>
+</header>
+<div class="mui-content" id="payment" v-cloak>
+    <div class="menu">
+        <div id="refreshContainer" class="mui-scroll-wrapper">
+            <div class="mui-scroll">
+                <div class="no_data" v-if="!ctrl">
+                    <img src="__STATIC__/fx/img/order6.png" />
+                </div>
+                <ul v-if="ctrl" v-for="(item,index) in list" key="index">
+                    <li>
+                        <div class="order_hao">
+                            <label>订单编号：{{item.order_no}}</label>
+                            <!-- <span id="timer" class="mui-pull-right">已取消</span> -->
+                        </div>
+                        <div @click="detail(item.order_id)" class="pic" v-for="(gitem,gindex) in item.goods">
+                            <img :src="gitem.picture" />
+                            <div class="mui-pull-right">
+                                <span>{{gitem.goods_name}}</span>
+                                <label>规格：{{gitem.goods_spec}}</label>
+                                <p>
+                                    <em>¥{{gitem.goods_price}}</em>
+                                    <i class="mui-pull-right">x{{gitem.goods_num}}</i>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="status">
+                            <label>应付金额：¥{{item.pay_price}}</label>
+                            <span class="liji"  @click="payNow(item.order_id)">立即付款</span>
+                            <span class="quxiao" @click="cancel(item.order_id,index)">取消订单</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="__STATIC__/fx/js/base/vue.min.js"></script>
+<script src="__STATIC__/fx/js/base/mui.js"></script>
+<script src="__STATIC__/fx/js/base/castapp.js"></script>
+<script src="__STATIC__/fx/js/base/jquery-3.2.1.min.js"></script>
+<script src="__STATIC__/fx/js/base/hetao.js"></script>
+<script type="text/javascript">
+    ca.init();
+
+    var vm = new Vue({
+        el: "#payment",
+        data: {
+            list: {},
+        ctrl:true,
+        ajax_lock:false,
+        obj: {
+            uid: "{$uid}",
+            token: "{$token}",
+            type:2
+        },
+    },
+    created: function() {
+        this.getData();
+    },
+    methods: {
+        getData:function(){
+            var self = this;
+            ca.get({
+                // url:hetao.url+'order/orderCancle',
+                url:"{:url('order/orderList')}",
+                data:this.obj,
+                succFn:function(data){
+                    var res=JSON.parse(data);
+                    if(res.status==1){
+                        self.ctrl = true
+                        self.list = res.data.list;
+                    }else{
+                        self.ctrl = false
+                    }
+                }
+            })
+        },
+        payNow:function(order_id){
+            window.location.href = hetao.url3+"/Api/Fx/zhifu_order?order_id="+order_id;
+        },
+        detail:function(order_id){
+            //订单详情页
+            window.location.href = hetao.url3+"/Api/Fx/orderdetail?order_id="+order_id;
+        },
+        qx_order:function(order_id,index){
+            var obg = {};
+            obg.uid = this.obj.uid;
+            obg.token = this.obj.token;
+            obg.orderid = order_id;
+            ajax_lock = true;
+            ca.get({
+                url:"{:url('order/orderCancle')}",
+                data:obg,
+                succFn:function(data){
+                    var res=JSON.parse(data);
+                    if(res.status==1){
+                        ca.prompt('订单已取消');
+                        if(Object.keys(vm.list).length==1){
+                            vm.ctrl = false;
+                        }else{
+                            vm.list.splice(index,1);
+                        }
+
+                    }else{
+                        ajax_lock = false;
+                        ca.prompt(res.msg);
+                    }
+                }
+            })
+        },
+        cancel:function(order_id,index){
+            if(this.ajax_lock){
+                return false;
+            }
+            ca.confirm({
+                title:'提示',
+                content:'是否取消订单',
+                callback:function(data){
+                    if(data){
+                        //取消订单
+                        vm.qx_order(order_id,index);
+                    }
+                }
+            })
+        },
+
+    }
+    })
+</script>
+
+</body>
+</html>

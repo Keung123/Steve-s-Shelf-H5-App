@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    {include file="public/head" title="销售单" /}
+    <style>
+        body{font-family:SimHei;}#content h1{text-align: center;}.list{margin-top:2px;}#content table{margin-bottom: 0px}#content table tr td,#content table tr th{border: 1px solid #d2d6de;text-align: center;}#content table tr td{padding: 3px;}
+        .remark{overflow: hidden;  white-space: nowrap;  text-overflow: ellipsis;  }.print .list>div{padding-left: 5px;padding-right: 5px}
+        .footer{font-weight: 800}.title{font-size: 18px}
+    </style>
+    <body class="inside-header inside-aside is-dialog">
+        <div id="main" role="main">
+            <div class="tab-content tab-addtabs print">
+                <div id="content">
+                    <h1 class="title">{$info.title}</h1>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 list">
+                            <div class="col-xs-5 col-sm-5">
+                            购货单位：{$info.buyer}
+                            </div>
+                            <div class="col-xs-4 col-sm-4">
+                            送货人：{$info.post_name}
+                            </div>  
+                            <div class="col-xs-3 col-sm-3" style="text-align: right;">
+                            发货仓：{$info.post_address}
+                            </div>                                                    
+                        </div>
+                        <div class="col-xs-12 col-sm-12 list">
+                            <div class="col-xs-5 col-sm-5">
+                            联系人：{$info.link_name}/{$info.link_type}
+                            </div>
+                            <div class="col-xs-4 col-sm-4">
+                            送货车号：{$info.post_no}
+                            </div>
+                            <div class="col-xs-3 col-sm-3" style="text-align: right;">
+                            经许人：{$info.action_user}
+                            </div>                         
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 list">
+                            <div class="col-xs-5 col-sm-5">
+                            收货地址：{$info.address}
+                            </div>
+                            <div class="col-xs-7 col-sm-7">
+                            单据编号：{$info.task_no}
+                            <span style="float: right;">录单时间：{$info.create_time}</span>
+                            </div>                     
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 list">
+                            <div class="col-xs-12 col-sm-12">
+                                        <table class="table table-bordered">
+                                            <tr>
+                                                <th>序号</th>
+                                                <th>编号</th>
+                                                <th width="35%">商品名称</th>
+                                                <th>数量</th>
+                                                <th>单位</th>
+                                                <th>单价</th>
+                                                <th>金额</th>
+                                                <th width="15%">备注</th>
+                                            </tr>
+                                            {volist name="info.goods" id="vo"}
+                                            <tr>
+                                                <td>{$pageSize*($page-1)+$key+1}</td>
+                                                <td>{$vo.code}</td>
+                                                <td style="text-align: left;">{$vo.goods_name}</td>
+                                                <td>{$vo.num}</td>
+                                                <td>{$vo.unit}</td>
+                                                <td>{$vo.price}</td>
+                                                <td>{:number_format($vo.num*$vo.price,2)}</td>
+                                                <td class="remark">{$vo.remark}</td>
+                                            </tr>
+                                            {/volist}
+                                            <tr class="footer">
+                                                <td></td>
+                                                <td>总计</td>
+                                                <td><i>{:number2chinese($info.price,1,0)}</i></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td><i>{:number_format($info.price,2)}</i></td>
+                                                <td></td>
+                                            </tr>                                            
+                                        </table>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 list">
+                            <div class="col-xs-3 col-sm-3">
+                            收款方式：{$info.pay_type}
+                            </div>
+                            <div class="col-xs-3 col-sm-3">
+                            开单人：{$info.do_user}
+                            </div>
+                            <div class="col-xs-3 col-sm-3">
+                            调度电话：{$info.post_phone}
+                            </div>
+                            <div class="col-xs-3 col-sm-3">
+                            客户签字：
+
+                            <span style="float: right;">第{$page}页，共{$totalPage}页</span>
+                            </div>                      
+                        </div>
+
+                    </div>
+                </div>
+
+                <center id="none" style="margin-top: 30px;">
+                    {if $page>1}
+                    <a href="{:url('admin/task/info')}?task_id={:input('task_id')}&dialog={:input('dialog')}&page={$page-1}">上一页</a>
+                    {/if}
+                    <button class="btn btn-success" id="print">立即打印</button>
+                    {if $page<$totalPage}
+                    <a href="{:url('admin/task/info')}?task_id={:input('task_id')}&dialog={:input('dialog')}&page={$page+1}">下一页</a>
+                    {/if}
+                </center>
+            </div>
+        </div>
+        {include file="public/javascript" jsname="backend/task/index" controllername="index"  actionname="info"/}
+    </body>
+</html>

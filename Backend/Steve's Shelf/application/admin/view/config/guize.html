@@ -1,0 +1,285 @@
+<div class="tab-pane fade" id="guize">
+    <div class="widget-body no-padding">
+        <form id="basic-form" class="edit-form form-horizontal" role="form" data-toggle="validator" method="POST" action="{:url('admin/config/guizeadd')}">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th width="15%">
+                            变量标题
+                        </th>
+                        <th width="70%">
+                            变量值
+                        </th>
+                      <!--   <th width="15%">
+                            调用方法
+                        </th> -->
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            签到规则
+                        </td>
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-8 col-xs-12">
+                                    <textarea name="row[qiandao]" class="form-control" data-rule="" rows="5" data-tip="" >{$config.qiandao}</textarea>
+                                </div>
+                                <div class="col-sm-4">
+                                </div>
+                            </div>
+                        </td>
+                     <!--    <td>
+                            {literal}{$config.qiandao}{/literal}
+                        </td> -->
+                    </tr>
+                    <tr>
+                        <td>
+                            积分兑换规则
+                        </td>
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-8 col-xs-12">
+                                    <textarea name="row[jifenduihuan]" class="form-control" data-rule="" rows="5" data-tip="" >{$config.jifenduihuan}</textarea>
+                                </div>
+                                <div class="col-sm-4">
+                                </div>
+                            </div>
+                        </td>
+                    <!--     <td>
+                            {literal}{$config.jifenduihuan}{/literal}
+                        </td> -->
+                    </tr>
+<!--                     <tr>
+                        <td>
+                            积分兑换介绍
+                        </td>
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-8 col-xs-12">
+                                    <dl class="fieldlist" rel="4" data-name="row[jifenjieshao]">
+                                        <dd>
+                                            <ins>
+                                                标题
+                                            </ins>
+                                            <ins>
+                                                内容
+                                            </ins>
+                                        </dd> 
+										
+                                        {if $config.jifenjieshao}
+                                        <?php $jifenjieshao = json_decode($config['jifenjieshao'], true);?>
+                                        {volist name="jifenjieshao.field" id="val"}
+                                        <dd class="form-inline">
+                                            <input type="text" name="row[jifenjieshao][field][]" class="form-control" value="{$val}"/>
+                                            <input type="text" name="row[jifenjieshao][value][]" class="form-control" value="{$jifenjieshao['value'][$key]}" />
+                                            <span class="btn btn-sm btn-danger btn-remove">
+                                                <i class="fa fa-times">
+                                                </i>
+                                            </span>
+                                            <span class="btn btn-sm btn-primary btn-dragsort">
+                                                <i class="fa fa-arrows">
+                                                </i>
+                                            </span>
+                                        </dd>
+                                        {/volist}
+                                        {else}
+                                        <dd class="form-inline">
+                                            <input type="text" name="row[jifenjieshao][field][]" class="form-control" value="" />
+                                            <input type="text" name="row[jifenjieshao][value][]" class="form-control" value=""/>
+                                            <span class="btn btn-sm btn-danger btn-remove">
+                                                <i class="fa fa-times">
+                                                </i>
+                                            </span>
+                                            <span class="btn btn-sm btn-primary btn-dragsort">
+                                                <i class="fa fa-arrows">
+                                                </i>
+                                            </span>
+                                        </dd>
+                                        {/if}
+                                        <dd>
+                                            <a href="javascript:;" class="append btn btn-sm btn-success">
+                                                <i class="fa fa-plus">
+                                                </i>
+                                                追加
+                                            </a>
+                                        </dd>
+                                    </dl>
+                                </div>
+                                <div class="col-sm-4">
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+
+                        </td>
+                    </tr> -->
+                   <!--  <tr>
+                        <td>
+                            关于我们
+                        </td>
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-8 col-xs-12">
+                                    <textarea name="row[guanyu]" class="form-control" data-rule="" rows="5" data-tip="" >{$config.guanyu}</textarea>
+                                </div>
+                                <div class="col-sm-4">
+                                </div>
+                            </div>
+                        </td>
+                      <td>
+                            {literal}{$config.guanyu}{/literal}
+                        </td>  
+                    </tr> -->
+                   <!--  <tr>
+                        <td>
+                            砍价
+                        </td>
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-8 col-xs-12">
+                                    <textarea name="row[kanjia]" class="form-control" data-rule="" rows="5" data-tip="" >{$config.kanjia}</textarea>
+                                </div>
+                                <div class="col-sm-4">
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            {literal}{$config.kanjia}{/literal}
+                        </td>  
+                    </tr> -->
+                   <!--  <tr>
+                        <td>
+                            秒杀
+                        </td>
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-8 col-xs-12">
+                                    <textarea name="row[miaosha]" class="form-control" data-rule="" rows="5" data-tip="" >{$config.miaosha}</textarea>
+                                </div>
+                                <div class="col-sm-4">
+                                </div>
+                            </div>
+                        </td>
+                       <td>
+                            {literal}{$config.miaosha}{/literal}
+                        </td> 
+                    </tr> -->
+                   <!--  <tr>
+                        <td>
+                            提现小贴士
+                        </td>
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-8 col-xs-12">
+                                    <textarea name="row[tixian]" class="form-control" data-rule="" rows="5" data-tip="" >{$config.tixian}</textarea>
+                                </div>
+                                <div class="col-sm-4">
+                                </div>
+                            </div>
+                        </td>
+                       <td>
+                            {literal}{$config.tixian}{/literal}
+                        </td> 
+                    </tr> -->
+                    <!-- <tr>
+                        <td>
+                            充值说明
+                        </td>
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-8 col-xs-12">
+                                    <textarea name="row[chongzhi]" class="form-control" data-rule="" rows="5" data-tip="" >{$config.chongzhi}</textarea>
+                                </div>
+                                <div class="col-sm-4">
+                                </div>
+                            </div>
+                        </td>
+                       <td>
+                            {literal}{$config.chongzhi}{/literal}
+                        </td>  
+                    </tr> -->
+<!--                     <tr>
+                        <td>
+                            帮助中心
+                        </td>
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-8 col-xs-12">
+                                    <dl class="fieldlist" rel="4" data-name="row[bangzhu]">
+                                        <dd>
+                                            <ins>
+                                                标题
+                                            </ins>
+                                            <ins>
+                                                内容
+                                            </ins>
+                                        </dd>
+                                        {if $config.bangzhu}
+                                        <?php $bangzhu = json_decode($config['bangzhu'], true);?>
+                                        {volist name="bangzhu.field" id="val"}
+                                        <dd class="form-inline">
+                                            <input type="text" name="row[bangzhu][field][]" class="form-control" value="{$val}" />
+                                            <input type="text" name="row[bangzhu][value][]" class="form-control" value="{$bangzhu['value'][$key]}" />
+                                            <span class="btn btn-sm btn-danger btn-remove">
+                                                <i class="fa fa-times">
+                                                </i>
+                                            </span>
+                                            <span class="btn btn-sm btn-primary btn-dragsort">
+                                                <i class="fa fa-arrows">
+                                                </i>
+                                            </span>
+                                        </dd>
+                                        {/volist}
+                                        {else}
+                                        <dd class="form-inline">
+                                            <input type="text" name="row[bangzhu][field][]" class="form-control" value="" />
+                                            <input type="text" name="row[bangzhu][value][]" class="form-control" value="" />
+                                            <span class="btn btn-sm btn-danger btn-remove">
+                                                <i class="fa fa-times">
+                                                </i>
+                                            </span>
+                                            <span class="btn btn-sm btn-primary btn-dragsort">
+                                                <i class="fa fa-arrows">
+                                                </i>
+                                            </span>
+                                        </dd>
+                                        {/if}
+                                        <dd>
+                                            <a href="javascript:;" class="append btn btn-sm btn-success">
+                                                <i class="fa fa-plus">
+                                                </i>
+                                                追加
+                                            </a>
+                                        </dd>
+                                    </dl>
+                                </div>
+                                <div class="col-sm-4">
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+
+                        </td>
+                    </tr> -->
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>
+                        </td>
+                        <td>
+                            <button type="submit" class="btn btn-success btn-embossed">
+                                确定
+                            </button>
+                            <button type="reset" class="btn btn-default btn-embossed">
+                                重置
+                            </button>
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </form>
+    </div>
+</div>

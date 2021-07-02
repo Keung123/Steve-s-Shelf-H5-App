@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	    <link href="__STATIC__/fx/css/base/mui.css" rel="stylesheet"/>
+	    <link rel="stylesheet" href="__STATIC__/fx/css/base/base.css" />
+	</head>
+	<style type="text/css">
+		body{
+			background-color: #fff;	
+			overflow-y: initial;
+			overflow: initial;
+		}
+		.mui-content{
+			padding: 0 2%;
+			background-color: #fff;
+		}
+		.text{
+			font-size: 14px;
+			color: #333;
+			text-indent: 2rem;
+			padding-top: 10px;	
+		}
+	</style>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">用户协议</h1>
+		</header>
+		<div class="mui-content">
+			<div id="" class="content">
+				
+			</div>
+		</div>
+	</body>
+	<script src="__STATIC__/fx/js/base/mui.js"></script>
+	<script src="__STATIC__/fx/js/base/castapp.js"></script>
+	<script src="__STATIC__/fx/js/base/jquery-3.2.1.min.js"></script>
+	<script src="__STATIC__/fx/js/base/hetao.js"></script>
+	<script type="text/javascript">
+		mui.init();
+		ca.init();
+		mui.init({
+	        statusBarBackground:"#333333"
+	    });
+		var type = 'usercom';
+		ca.get({
+			url:hetao.url + 'content/getContent',
+			data:{type:type},
+			succFn:function(data){
+				var res = JSON.parse(data);
+				var data=res.data;
+				console.log(res)
+				html='<p class="text">'+ data.content +'</p>';				
+				$('.content').html(html);
+			}
+		})
+	</script>
+</html>

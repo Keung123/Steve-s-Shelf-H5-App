@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+{include file="public/head" title="实名认证审核" /}
+<style>
+    .auth-img{
+       	width : 100%;
+			transform: scale(0.6);
+			-ms-transform: scale(0.6);
+			-moz-transform: scale(0.6);
+			-webkit-transform: scale(0.6);
+			-o-transform: scale(0.6);
+    }
+</style>
+<body class="inside-header inside-aside is-dialog">
+<div id="main" role="main">
+    <div class="tab-content tab-addtabs">
+        <div id="content">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <section class="content-header hide">
+                        <h1>
+                            控制台                                    <small>Control panel</small>
+                        </h1>
+                    </section>
+                    <div class="content">
+                        <form id="edit-form" class="form-horizontal form-ajax" role="form" data-toggle="validator" method="POST" action="{:url('admin/Idauth/edit')}">
+                            <input type="hidden" name="auth_id" value="{$row['auth_id']}" />
+                            <div class="form-group">
+                                <label class="control-label col-xs-12 col-sm-2">会员id:</label>
+                                <div class="col-xs-12 col-sm-8">
+                                    <input type="text" class="form-control" name="row[auth_uid]" readonly="readonly" value="{$row['auth_uid']}"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-xs-12 col-sm-2">会员昵称:</label>
+                                <div class="col-xs-12 col-sm-8">
+                                    <input type="text" class="form-control" name="row[auth_uname]" disabled="disabled" value="{$row['auth_uname']}"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-xs-12 col-sm-2">真实姓名:</label>
+                                <div class="col-xs-12 col-sm-8">
+                                    <input type="text" class="form-control" name="row[auth_truename]" disabled="disabled" value="{$row['auth_truename']}"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="rc_aval_time" class="control-label col-xs-12 col-sm-2">联系方式:</label>
+                                <div class="col-xs-12 col-sm-8">
+                                    <input type="text" class="form-control" name="row[auth_phone]" readonly="readonly" value="{$row['auth_phone']}"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-xs-12 col-sm-2">身份证号:</label>
+                                <div class="col-xs-12 col-sm-8">
+                                    <input type="text" class="form-control" name="row[auth_id_no]" readonly="readonly" value="{$row['auth_id_no']}"/>
+                                </div>
+                            </div>
+
+                            <!-- <div class="form-group">
+                                <label class="control-label col-xs-12 col-sm-2">手持身份证照:</label>
+                                <div class="col-xs-12 col-sm-8">
+                                    <img class="auth-img" src="{$row['auth_id_people']}" />
+                                </div>
+                            </div> -->
+
+                            <div class="form-group">
+                                <label class="control-label col-xs-12 col-sm-2">身份证正面照:</label>
+                                <div class="col-xs-12 col-sm-8">
+                                    <img class="auth-img" src="{$row['auth_id_front']}" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-xs-12 col-sm-2">身份证反面照:</label>
+                                <div class="col-xs-12 col-sm-8">
+                                    <img class="auth-img" src="{$row['auth_id_back']}" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="auth_addtime" class="control-label col-xs-12 col-sm-2">申请时间:</label>
+                                <div class="col-xs-12 col-sm-8">
+                                    <input type="text" class="form-control" id="auth_addtime" name="row[auth_addtime]" readonly="readonly" value="{$row['auth_addtime']}"/>
+                                </div>
+                            </div> 
+							<div class="form-group">
+                                <label for="auth_addtime" class="control-label col-xs-12 col-sm-2">审核备注:</label>
+                                <div class="col-xs-12 col-sm-8">
+								<textarea cols="80" rows="5" id="or_goods_note" name="auth_remark">   {$row['auth_remark']}  
+								</textarea> 
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-xs-12 col-sm-2"></label>
+                                <div class="col-xs-12 col-sm-8">
+                                    <input type="button" value="通过" id="check_pass" class="btn btn-success btn-embossed" />
+                                    <input type="button" value="拒绝" id="check_fail" class="btn btn-danger btn-embossed" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function(){
+        $("#check_pass").on("click", function(){
+            var auth_id = $(this).parents("form").find('[name="auth_id"]').val();
+			var auth_remark = $(this).parents("form").find('[name="auth_remark"]').val();
+            $.post('/admin/idauth/edit', {auth_id : auth_id,stat : 2,auth_remark:auth_remark}, function(res){
+                if(res.code){
+                    layer.msg('保存成功');
+                    setTimeout(function(){
+                    parent.location.reload();
+                    }, 100);
+                }
+                else layer.msg(res.msg);
+            });
+        });
+
+        $("#check_fail").on("click", function(){
+            var auth_id = $(this).parents("form").find('[name="auth_id"]').val(); 
+			var auth_remark = $(this).parents("form").find('[name="auth_remark"]').val();
+            $.post('/admin/idauth/edit', {auth_id : auth_id,stat : 3,auth_remark:auth_remark}, function(res){
+                if(res.code){
+                    layer.msg('保存成功');
+                    setTimeout(function(){
+                      parent.location.reload();
+                    }, 100);
+                }
+                else layer.msg(res.msg);
+            });
+        });
+    });
+</script>
+{include file="public/javascript" jsname="backend/topic/index" controllername="index"  actionname="add"/}
+</body>
+</html>

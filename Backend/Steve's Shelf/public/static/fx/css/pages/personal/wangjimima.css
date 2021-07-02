@@ -1,0 +1,55 @@
+.menu{
+	width: 100%;
+}
+.menu ul li{
+	width: 88%;
+	height: 65px;
+	margin-left: 6%;
+	margin-right: 6%;
+	border-bottom: 1px solid #e7e7e7;
+}
+.menu ul li img{
+	width: 5%;
+}
+.menu ul li input{
+	width: 80%;
+	height: 40px;
+	margin-top: 20px;
+	border: none;
+	font-size: 14px;
+}
+.menu ul li input.code{
+	width: 50%;
+	height: 40px;
+	margin-top: 20px;
+}
+.menu ul li span{
+	margin-top: 28px;
+}
+.tijiao{
+	width: 100%;
+}
+.tijiao span{
+	 width: 88%;
+	 height: 40px;
+	 margin-left: 6%;
+	 margin-right: 6%;
+	 margin-top: 80px;
+	 text-align: center;
+	 line-height: 40px;
+	background: #d31a1a;
+	display: block;
+	color: #fff;
+	border-radius: 20px;
+}
+.mui-input-row .mui-input-clear ~ .mui-icon-clear, .mui-input-row .mui-input-speech ~ .mui-icon-speech, .mui-input-row .mui-input-password ~ .mui-icon-eye{
+	top:0;
+}
+.mui-password em{
+	display: inline-block;
+}
+
+
+
+
+

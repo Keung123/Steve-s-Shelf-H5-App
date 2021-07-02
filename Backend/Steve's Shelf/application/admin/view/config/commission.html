@@ -1,0 +1,148 @@
+<style>
+    .radio .radio-style{
+        margin-left: 20px;
+    }
+    .prom-text .text-style{
+        display: inherit;
+        margin-bottom: : 10px;
+        /*margin-right: 15px;*/
+    }
+    .shop-text .text-style{
+        display: inherit;
+        margin-bottom: : 10px;
+        /*margin-right: 15px;*/
+    }
+    .text-style input{
+        width: 50px;
+        padding-left: 5px;
+        margin-left: 20px;
+    }
+</style>
+
+<div class="tab-pane fade" id="commission">
+    <div class="widget-body no-padding">
+        <form id="commission-form" class="edit-form form-horizontal" role="form" data-toggle="validator" method="POST" action="{:url('admin/config/index')}">
+            <input type="hidden" name="key" value="commission"/>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th width="15%">变量标题</th>
+                        <th width="70%">变量值</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php $config['commission'] = json_decode($config['commission'],true);?>
+                    <tr>
+                        <td>购物返利</td>
+                        <td>
+                            <div class="radio">
+                                <label class="radio-style" data-type="shop">
+                                    <input type="radio" name="row[shop_ctrl]" value="1" {$config['commission']['shop_ctrl']?'checked':''} />开
+                                </label>
+                                <label class="radio-style" data-type="shop">
+                                    <input type="radio" name="row[shop_ctrl]" value="0" {$config['commission']['shop_ctrl']?'':'checked'} />关
+                                </label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>购物比例</td>
+                        <td>
+                            <div class="shop-text">
+                                <label class="text-style">
+                                    <span>一级比例</span>
+                                    <input type="text" name="row[f_s_rate]" value="{$config.commission.f_s_rate}" min="0" {$config['commission']['shop_ctrl']?'':'disabled'} />  %
+                                </label>
+                                <label class="text-style">
+                                    <span>二级比例</span>
+                                    <input type="text" name="row[s_s_rate]" value="{$config.commission.s_s_rate}" min="0" {$config['commission']['shop_ctrl']?'':'disabled'} />  %
+                                </label>
+                                <label class="text-style" style="display: none">
+                                    <span>三级比例</span>  
+                                    <input type="text" name="row[t_s_rate]" value="{$config.commission.t_s_rate}" min="0" {$config['commission']['shop_ctrl']?'':'disabled'} />  %
+                                </label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr style="display: none">
+                        <td>促销开关</td>
+                        <td>
+                            <div class="radio">
+                                <label class="radio-style" data-type="prom">
+                                    <input type="radio" name="row[prom_ctrl]" value="1" {$config['commission']['prom_ctrl']?'checked':''} />开
+                                </label>
+                                <label class="radio-style" data-type="prom">
+                                    <input type="radio" name="row[prom_ctrl]" value="0" {$config['commission']['prom_ctrl']?'':'checked'} />关
+                                </label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr style="display: none">
+                        <td>促销返利</td>
+                        <td>
+                            <div class="prom-text">
+                                <label class="text-style">
+                                    <span>一级返利</span>
+                                    <input type="text" name="row[f_p_rate]" value="{$config.commission.f_p_rate}" min="0" {$config['commission']['prom_ctrl']?'':'disabled'} />  元
+                                </label>
+                                <label class="text-style">
+                                    <span>二级返利</span>
+                                    <input type="text" name="row[s_p_rate]" value="{$config.commission.s_p_rate}" min="0"  {$config['commission']['prom_ctrl']?'':'disabled'} />  元
+                                </label>
+                                <label class="text-style">
+                                    <span>三级返利</span>
+                                    <input type="text" name="row[t_p_rate]" value="{$config.commission.t_p_rate}" min="0" {$config['commission']['prom_ctrl']?'':'disabled'} />  元
+                                </label>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="button" onclick="checkForm()" class="btn btn-success btn-embossed" value="确定">
+                            <button type="reset" class="btn btn-default btn-embossed">重置</button>
+                        </td>
+                        <td></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </form>
+    </div>
+</div>
+<script type="text/javascript" src="__STATIC__/assets/libs/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="__STATIC__/assets/js/layer/layer.min.js"></script>
+<script type="text/javascript">
+    $(".radio-style").children("input").on("change", function(){
+        var oType = $(this).parent().data('type');
+        if($(this).val() == 0){
+            $("."+oType+"-text").find("input").each(function(){
+                $(this).attr("disabled", "true");
+            });
+            // $(".shop-text").parent().parent("tr").fadeOut();
+        }
+        else{
+            $("."+oType+"-text").find("input").each(function(){
+                $(this).removeAttr("disabled");
+            });
+            // $(".shop-text").parent().parent("tr").fadeIn();   
+        }
+    });
+    function checkForm(){
+        try{
+            $("#commission-form").find('[type="text"]').each(function(){
+                console.log($(this).val());
+                if($(this).val() < 0){
+                    layer.msg('比例不能小于0');
+                    throw "err";
+                }
+            });
+        }
+        catch(err){
+            return false;
+        }
+
+        $("#commission-form").submit();
+    }
+</script>

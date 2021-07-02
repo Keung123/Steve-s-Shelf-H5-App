@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    {include file="public/head" title="内容分类编辑" /}
+
+    <body class="inside-header inside-aside is-dialog">
+        <div id="main" role="main">
+            <div class="tab-content tab-addtabs">
+                <div id="content">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <section class="content-header hide">
+                                <h1>
+                                    控制台                                    <small>Control panel</small>
+                                </h1>
+                            </section>
+                            <div class="content">
+                                <form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="{:url('admin/content/categoryEdit')}">
+
+                                    <input type="hidden" name="category_id" value="{$row['category_id']}">
+                                    <input type="hidden" name="row[pid]" value="{$row['pid']}">
+
+                                    <div class="form-group">
+                                        <label for="c-name" class="control-label col-xs-12 col-sm-2">栏目名称:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input id="c-name" data-rule="required" class="form-control" name="row[category_name]" type="text" value="{$row['category_name']}">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="c-keywords" class="control-label col-xs-12 col-sm-2">关键字:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input id="c-keywords" class="form-control" name="row[keywords]" type="text" value="{$row['keywords']}">
+                                        </div>
+                                    </div>
+
+                                    
+                                    <div class="form-group">
+                                        <label for="c-description" class="control-label col-xs-12 col-sm-2">描述:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <textarea id="c-description" class="form-control" name="row[description]" value="{$row['description']}"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="c-weigh" class="control-label col-xs-12 col-sm-2">权重:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <input id="c-weigh" class="form-control" name="row[weigh]" type="number" value="{$row['weigh']}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="c-status" class="control-label col-xs-12 col-sm-2">状态:</label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <label for="row[status]-normal"><input id="row[status]-normal" {if $row['status']=='normal'}checked="checked"{/if} name="row[status]" type="radio" value="normal"> 正常</label> 
+                                            <label for="row[status]-hidden"><input id="row[status]-hidden" {if $row['status']=='hidden'}checked="checked"{/if} name="row[status]" type="radio" value="hidden"> 关闭</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group layer-footer">
+                                        <label class="control-label col-xs-12 col-sm-2"></label>
+                                        <div class="col-xs-12 col-sm-8">
+                                            <button type="submit" class="btn btn-success btn-embossed disabled">确定</button>
+                                            <button type="reset" class="btn btn-default btn-embossed">重置</button>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {include file="public/javascript" jsname="backend/goods/category" controllername="category"  actionname="add"/}
+    </body>
+</html>

@@ -1,0 +1,9 @@
+{
+    "require": {
+        "yansongda/pay": "^2.7",
+        "lcobucci/jwt": "^3.3",
+        "qiniu/php-sdk": "^7.2",
+        "5ini99/think-addons": "^2.1"
+
+    }
+}

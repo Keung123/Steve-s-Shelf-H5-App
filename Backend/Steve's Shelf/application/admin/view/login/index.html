@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>登录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+
+    <link rel="shortcut icon" href="__STATIC__/assets/img/favicon.ico" />
+    <!-- Loading Bootstrap -->
+    <link href="__STATIC__/assets/css/backend.min.css" rel="stylesheet">
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+
+        }
+        body{
+            background: url('/static/assets/img/bg.jpg');
+            background-size: cover;
+            position: relative;
+        }
+        .container{
+            width: 685px;
+            height: 510px;
+            background: url('/static/assets/img/from.png');
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+        .container-from{
+            width: 320px;
+            height: 103px;
+            position: absolute;
+            top: 241px;
+            left: 126px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .container-button{
+            display: block;
+            width: 185px;
+            height: 176px;
+            overflow: hidden;
+            background-repeat: no-repeat;
+            background-color: transparent;
+            border: none;
+            background-image: url('/static/assets/img/button.png');
+            position: absolute;
+            top: -35px;
+            left: 330px;
+            cursor: pointer;
+        }
+        .container-button:hover{
+            background-position: -184px;
+        }
+        .container-button:focus{
+            outline: none;
+        }
+        .container-from > div{
+            display: flex;
+            align-items: center;
+
+        }
+        .container-from span{
+            width: 75px;
+            color: #ffffff;
+            text-align: right;
+        }
+        .container-from input{
+            flex: 1;
+            height: 26px;
+            text-indent: 10px;
+        }
+        .container-from img{
+            vertical-align: middle;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <form method="post" action="{:url('admin/login/index')}" id="login-form"  class="container-from">
+        <div id="errtips" class="hide"></div>
+        <div>
+            <span>账号：</span>
+            <input type="text" name="admin_name" placeholder="用户名" />
+        </div>
+        <div>
+            <span>密码：</span>
+            <input type="password" name="password" placeholder="密码" />
+        </div>
+      <div>
+            <span></span>
+            
+        </div>
+        <input id="verfyCode" name="verfyCode" type="hidden" placeholder="验证码" style="width: 115px;"/>
+        <button class="container-button form-actions" type="submit"></button>
+    </form>
+</div>
+<script type="text/javascript">
+    var debug="{$app_debug}";
+    var version="{$Think.const.VERSION}";
+    var root="__STATIC__";
+    var actionname="login";
+</script>
+<script src="__STATIC__/assets/js/config.js?v={$Think.const.VERSION}"></script>
+<script src="__STATIC__/assets/js/require.min.js?v={$Think.const.VERSION}" data-main="__STATIC__/assets/js/require-backend.min.js?v={$Think.const.VERSION}"></script>
+</body>
+</html>
