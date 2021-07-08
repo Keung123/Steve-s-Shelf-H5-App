@@ -15,7 +15,7 @@ class wxpay{
         $this->app_id = 'wx86e2ba24a16357bb';
         $this->mch_id = '1600882984';
         $this->app_secret = '11231e20139d4b6d6b7a19953c6e80d2';
-        $this->notify_url = 'http://api.taixingxinyijiaju.com/api/ApiPay/wxNotify';
+        $this->notify_url = 'http://108.61.169.36/index/api/ApiPay/wxNotify';
     }
 
     /*

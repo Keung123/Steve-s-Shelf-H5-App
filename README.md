@@ -24,8 +24,9 @@
 
 2. ##### 导入应用和数据库
 
-   ```
-   
+   ```bash
+   # 上传应用文件
+   # 配置面板入口
    ```
 
    
@@ -35,11 +36,21 @@
    ```bash
    # 更新 composer
    composer selfupdate
+   # 允许 putenv() 和 proc_open(),在输出的配置文件路径里修改
+   php -i | grep "Loaded Configuration File"
+   
    # 安装插件
    composer install
    # 更新插件
-   composer update
+   composer update --no-plugins
    ```
 
    
+
+4. ##### 更新 api 和 backend 地址
+
+   ```bash
+   # SQL文件
+   # 前端的commmen.js
+   ```
 
